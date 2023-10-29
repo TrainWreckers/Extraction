@@ -1,0 +1,59 @@
+GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
+ ID "51E0C144AB96DABD"
+ components {
+  SCR_SoundDataComponent "{5EBAA7DDA75889B3}" {
+   m_aAudioSourceConfiguration {
+    SCR_AudioSourceConfiguration "{5EBAA7DD7A165A5C}" {
+     m_sSoundProject "{A73D28179B395F19}Sounds/Props/Military/AmmoBoxes/AmmoBox_Big_Wooden/Props_AmmoBox_Big_Wooden.acp"
+     m_sSoundEventName "SOUND_CONTAINER_OPEN"
+    }
+    SCR_AudioSourceConfiguration "{5EBAA7DDA49A5FAC}" {
+     m_sSoundProject "{A73D28179B395F19}Sounds/Props/Military/AmmoBoxes/AmmoBox_Big_Wooden/Props_AmmoBox_Big_Wooden.acp"
+     m_sSoundEventName "SOUND_CONTAINER_CLOSE"
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5EBABC6BEA684DFE}" {
+   Attributes SCR_ItemAttributeCollection "{5EBABC6BDDEE62C7}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EBABC6BC03A4BA6}" {
+     Name "Storage Box"
+     Description "Can be used for storing items."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5EBABC6BCE60C2CA}" {
+     Weight 1000
+    }
+    m_Size SLOT_3x3
+    m_SlotType SLOT_ANY
+   }
+   UseCapacityCoefficient 0
+   m_fMaxWeight 1000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBABC6BE6A4909B}" {
+  }
+  ActionsManagerComponent "{5EBAA7DDD04CC082}" {
+   ActionContexts {
+    UserActionContext "{5EBAA7DDD74A5363}" {
+     UIInfo UIInfo "{5EBAA7DDDA6F7758}" {
+      Name "Open"
+     }
+     ContextName "default"
+     Position PointInfo "{5EBAA7DDC3FBCB3F}" {
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EBABC689D56D5FE}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EBABC6881C6DA4E}" {
+      Name "Open Storage"
+     }
+    }
+   }
+  }
+  RplComponent "{5EBABC6BF8372D9E}" {
+  }
+ }
+}

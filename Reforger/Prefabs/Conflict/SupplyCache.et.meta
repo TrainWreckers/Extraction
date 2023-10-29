@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{411B58C2BF4ECDB7}Reforger/Prefabs/Conflict/SupplyCache.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

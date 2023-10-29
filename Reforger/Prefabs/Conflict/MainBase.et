@@ -1,0 +1,19 @@
+GenericEntity : "{1391CE8C0E255636}Prefabs/Systems/MilitaryBase/ConflictMilitaryBase.et" {
+ ID "5AFC9B0D8792F4E2"
+ components {
+  SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+   m_bIsControlPoint 1
+   m_sBaseName "#AR-Campaign_MapLocation_HQ_North"
+   m_sBaseNameUpper "#AR-Campaign_MapLocation_HQ_North-UC"
+   m_sMapLocationName "LocationStPhillipe_Harbour"
+  }
+ }
+ coords 4405.805 1.643 11035.317
+ angleY 30.231
+ {
+  GenericEntity {
+   ID "5CCED514A5908822"
+   coords -21.936 -0.008 37.67
+  }
+ }
+}

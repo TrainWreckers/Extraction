@@ -1,0 +1,107 @@
+SCR_AIWorld : "{10EF0F8A76B4929C}Reforger/Prefabs/Conflict/SCR_AIWorld.et" {
+ coords 9494.562 8.544 5187.272
+}
+SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger/Prefabs/Conflict/CampaignFactionManager.et" {
+ coords 9487.126 10.878 5195.892
+}
+TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
+ coords 9493.934 8.524 5187.457
+}
+PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Conflict/PerceptionManager.et" {
+ coords 9493.011 8.001 5190.303
+}
+RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
+ coords 9493.938 8.166 5189.432
+}
+ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
+ coords 9493.751 8.61 5186.884
+}
+ProjectileSoundsManager : "{B4DA8B0024536625}Prefabs/World/Game/ProjectileSoundsManager.et" {
+ coords 4849.074 162.714 6859.517
+}
+SCR_GameModeCampaign GameMode_Campaign1 : "{C517A8317A926228}Reforger/Prefabs/Conflict/GameMode_Campaign.et" {
+ components {
+  SCR_RespawnTimerComponent "{5B2A94A0E605AAFF}" {
+   m_fRespawnTime 3
+  }
+  SCR_SpawnProtectionComponent "{5D167A246026C95B}" {
+   m_bAllowPlayerSpawnpoints 1
+  }
+  SCR_TimedSpawnPointComponent "{5D0A73EB7076C758}" {
+   m_fRespawnTime 3
+  }
+ }
+ coords 9488.862 8.092 5190.449
+}
+GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/AmmoBoxArsenal_Ammunition_FIA.et" {
+ coords 4755.633 169.218 6996.042
+}
+SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
+ coords 9492.545 8.449 5187.931
+}
+$grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5EBAA7DB1698E119}" {
+    Attributes SCR_ItemAttributeCollection "{5EBAA7D7D664B890}" {
+     ItemDisplayName SCR_InventoryUIInfo "{5EBAA7D7C8A3A95F}" {
+      Name "Test Name"
+      Description "Test description here"
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{5EBAA7D73D8F49F2}" {
+      Weight 1000
+     }
+     m_Size SLOT_3x3
+     m_SlotType SLOT_ANY
+    }
+    UseCapacityCoefficient 0
+    MaxCumulativeVolume 10000
+    m_fMaxWeight 10000
+    m_aSlotsToShow {
+    }
+   }
+   UniversalInventoryStorageComponent "{5EBAA7DE00822784}" {
+    Enabled 0
+   }
+   SCR_InventoryStorageManagerComponent "{5EBAA7D78A84E1E0}" {
+   }
+   ActionsManagerComponent "{5EBAA7DDD04CC082}" {
+    ActionContexts {
+     UserActionContext "{5EBAA7DDD74A5363}" {
+      Radius 0.85
+     }
+    }
+    additionalActions {
+     SCR_OpenStorageAction "{5EBAA7DDCB681974}" {
+     }
+    }
+   }
+   RplComponent "{5EBAA7D5C0A0C08E}" {
+   }
+  }
+  coords 4752.791 169.32 6993.549
+ }
+ {
+  components {
+   SCR_TW_InventoryLoot "{5EBABC6CEC0441E9}" {
+    LootItemTypes 96
+   }
+  }
+  coords 4751.78 169.312 6995.103
+ }
+}
+SCR_BaseTaskManager : "{826C5AFFA977DAC3}Reforger/Prefabs/Conflict/CampaignTaskManager.et" {
+ coords 9487.725 8.003 5191.519
+}
+ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
+ coords 9492.482 8.478 5187.743
+}
+HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
+ coords 9493.889 8.498 5187.616
+}
+BasePreloadManager PreloadManager_Campaign1 : "{F686EF3A41A0262A}Reforger/Prefabs/Conflict/PreloadManager_Campaign.et" {
+ coords 9493.978 8.039 5190.076
+}
+SCR_LoadoutManager : "{FC5ADC68DBE61CCB}Reforger/Prefabs/Conflict/CampaignLoadoutManager.et" {
+ coords 9486.613 7.996 5192.109
+}

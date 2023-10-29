@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{10EF0F8A76B4929C}Reforger/Prefabs/Conflict/SCR_AIWorld.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

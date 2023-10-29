@@ -1,0 +1,13 @@
+GenericEntity : "{1391CE8C0E255636}Prefabs/Systems/MilitaryBase/ConflictMilitaryBase.et" {
+ ID "5AFC9B0D8792F4E2"
+ components {
+  SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+   m_sBaseName "#AR-MapLocation_Chotain"
+   m_sBaseNameUpper "#AR-Campaign_MapLocation_Chotain-UC"
+   m_sMapLocationName "LocationChotain"
+  }
+ }
+ coords 6991.033 121.236 6075.385
+ angleY -132.859
+ angleZ -2.328
+}

@@ -1,0 +1,140 @@
+$grp GenericEntity : "{16B04CD1D8D4DA53}Reforger/Prefabs/Conflict/MainBase.et" {
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_bSeizedByMajority 1
+    m_sBaseName "Airport"
+    m_sBaseNameUpper "AIRPORT"
+    m_sMapLocationName "LocationAirport"
+   }
+  }
+  coords 4951.05 28.258 11937.895
+  angleY 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Southern Airport"
+    m_sBaseNameUpper "SOUTHERN AIRPORT"
+    m_sMapLocationName "LocationAirport"
+   }
+  }
+  coords 4647.203 27.78 11211.586
+  angleY 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Tyrone"
+    m_sBaseNameUpper "TYRONE"
+    m_sMapLocationName "LocationTyrone"
+   }
+  }
+  coords 5039.443 37.921 9144.506
+  angleY 0
+ }
+}
+GenericEntity : "{411B58C2BF4ECDB7}Reforger/Prefabs/Conflict/SupplyCache.et" {
+ coords 5840.673 233.206 7277.903
+}
+$grp GenericEntity : "{4E237CD155CEA2CC}Reforger/Prefabs/Conflict/TownBase.et" {
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Kermovan"
+    m_sBaseNameUpper "KERMOVAN"
+    m_sMapLocationName "LocationKermovan"
+   }
+  }
+  coords 6464.392 9.135 9647.89
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Meaux"
+    m_sBaseNameUpper "MEAUX"
+    m_sMapLocationName "LocationMeaux"
+   }
+  }
+  coords 4463.919 6.846 9398.146
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Gravette"
+    m_sBaseNameUpper "GRAVETTE"
+    m_sMapLocationName "LocationGravette"
+   }
+  }
+  coords 4107.637 38.505 7884.57
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Montignac"
+    m_sBaseNameUpper "montignac"
+    m_sMapLocationName "LocationMontignac"
+   }
+  }
+  coords 4702.075 158.129 7185.383
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Provins"
+    m_sBaseNameUpper "PROVINS"
+    m_sMapLocationName "LocationProvins"
+   }
+  }
+  coords 5509.807 93.2 6003.798
+  angleY 0
+  angleZ 0
+ }
+}
+$grp GenericEntity : "{74B4C143149A9D05}Reforger/Prefabs/Conflict/SmallBase.et" {
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "Les Creux"
+    m_sBaseNameUpper "LES CREUX"
+    m_sMapLocationName "Location_LesCreux"
+   }
+  }
+  coords 5293.875 37.157 11377.769
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "StPhillipe"
+    m_sBaseNameUpper "STPHILLIPE"
+   }
+  }
+  coords 4275.417 1.653 10705.138
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_sBaseName "St Phillipe Factory"
+    m_sBaseNameUpper "ST PHILLIPE FACTORY"
+   }
+  }
+  coords 4548.593 16.403 10536.402
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+}

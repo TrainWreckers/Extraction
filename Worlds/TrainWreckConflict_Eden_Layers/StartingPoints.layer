@@ -1,0 +1,74 @@
+$grp GenericEntity : "{61D2EE527C809BFF}Reforger/Prefabs/Conflict/StartingPos0.et" {
+ {
+  coords 6880.19 123.337 6597.168
+  angleY 0
+ }
+ {
+  coords 8539.118 0.907 5399.732
+  angleY 0
+ }
+ {
+  coords 7558.118 6.501 6053.486
+  angleY 0
+ }
+ {
+  coords 9185.375 2.123 5375.242
+  angleY 0
+ }
+ {
+  coords 4358.747 14.975 12095.438
+  angleY 0
+ }
+ {
+  coords 6810.124 88.153 1974.656
+  angleY 0
+ }
+ {
+  coords 2752.072 11.595 4055.555
+  angleY 0
+ }
+ {
+  coords 2181.461 18.902 7500.424
+  angleY 0
+ }
+ {
+  coords 4695.082 27.899 3472.583
+  angleY 0
+ }
+ {
+  coords 3370.375 10.776 3469.925
+  angleY 0
+ }
+ {
+  coords 9185.015 218.133 1244.635
+  angleY 0
+ }
+ {
+  coords 9994.645 138.996 582.793
+  angleY 0
+ }
+ {
+  coords 5786.133 1.183 10801.669
+  angleY 0
+ }
+ {
+  coords 11962.903 20.819 1856.175
+  angleY 0
+ }
+ {
+  coords 5144.257 18.588 12379.341
+  angleY 0
+ }
+ {
+  coords 1523.934 34.966 5483.997
+  angleY 0
+ }
+ {
+  coords 5949.39 5.014 3432.503
+  angleY 0
+ }
+ {
+  coords 9791.784 1.335 4584.484
+  angleY 0
+ }
+}

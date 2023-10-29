@@ -1,0 +1,27 @@
+GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
+ ID "5CCEC603A58CB072"
+ components {
+  SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+   m_bPickRandomGroupType 1
+   m_iRespawnPeriod 500
+   m_fAILimitThreshold 0.33
+  }
+ }
+ coords 9848.209 7.482 1614.384
+ {
+  $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
+   {
+    ID "5EA96DE9E61C7658"
+    coords 6.707 -3.126 -68.766
+   }
+   {
+    ID "5EA96DE9E61C7667"
+    coords 180.378 -1.06 15.487
+   }
+   {
+    ID "5EA96DE9E61C7CCD"
+    coords 102.429 -5.254 -82.418
+   }
+  }
+ }
+}
