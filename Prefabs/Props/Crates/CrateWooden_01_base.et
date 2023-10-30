@@ -13,14 +13,13 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
     }
    }
   }
+  SCR_TW_InventoryLoot "{5EBABC4CB4728FE1}" {
+  }
   SCR_UniversalInventoryStorageComponent "{5EBABC6BEA684DFE}" {
    Attributes SCR_ItemAttributeCollection "{5EBABC6BDDEE62C7}" {
     ItemDisplayName SCR_InventoryUIInfo "{5EBABC6BC03A4BA6}" {
      Name "Storage Box"
      Description "Can be used for storing items."
-    }
-    ItemPhysAttributes ItemPhysicalAttributes "{5EBABC6BCE60C2CA}" {
-     Weight 1000
     }
     m_Size SLOT_3x3
     m_SlotType SLOT_ANY

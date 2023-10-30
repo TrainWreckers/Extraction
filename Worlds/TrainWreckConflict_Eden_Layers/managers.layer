@@ -83,11 +83,12 @@ $grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base
  }
  {
   components {
-   SCR_TW_InventoryLoot "{5EBABC6CEC0441E9}" {
-    LootItemTypes 96
+   SCR_TW_InventoryLoot "{5EBABC4CB4728FE1}" {
+    m_lootItemTypes 1030
+    m_lootItemModes 12
    }
   }
-  coords 4751.78 169.312 6995.103
+  coords 4752.212 169.315 6995.936
  }
 }
 SCR_BaseTaskManager : "{826C5AFFA977DAC3}Reforger/Prefabs/Conflict/CampaignTaskManager.et" {
