@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{59E846445A56B65C}Prefabs/Props/Military/AmmoBoxes/US/EquipmentBoxWooden_Equipment_01_US.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

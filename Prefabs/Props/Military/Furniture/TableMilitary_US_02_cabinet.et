@@ -1,0 +1,42 @@
+StaticModelEntity : "{5EC6836A5694F691}Prefabs/Props/Military/Furniture/FurnitureMilitary_base.et" {
+ ID "5272E314F01B2DBE"
+ components {
+  SCR_TW_InventoryLoot "{5EBCEAF0D09C93E9}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5EBCEAF0B745576F}" {
+   Attributes SCR_ItemAttributeCollection "{5EBCEAF0B1738506}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EBCEAF0B2051E2A}" {
+     Name "Loot"
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBCEAF0C85E6BC0}" {
+  }
+  ActionsManagerComponent "{5EBCEAF0CB5CC28D}" {
+   ActionContexts {
+    UserActionContext "{5EBCEAF0C535B9D0}" {
+     UIInfo UIInfo "{5EBCEAF0C7A80563}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EBCEAF0DC5AB042}" {
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EBCEAF0D9848F51}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EBCEAF0D690AC7C}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+ }
+}

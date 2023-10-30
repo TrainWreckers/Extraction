@@ -1,0 +1,44 @@
+GenericEntity : "{3619812B192CCAE9}Prefabs/Props/Core/Wreck_Base.et" {
+ ID "51144E07A08FB8F8"
+ components {
+  SCR_TW_InventoryLoot "{5EBCEAEBD14C05B2}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5EBCEAEBB0E66DA1}" {
+   Attributes SCR_ItemAttributeCollection "{5EBCEAEBB2D19016}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EBCEAEBB369F897}" {
+     Name "Loot"
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBCEAEBCAEFE2CC}" {
+  }
+  ActionsManagerComponent "{5EBCEAEBC5D0B513}" {
+   ActionContexts {
+    UserActionContext "{5EBCEAEBC7CEFED6}" {
+     UIInfo UIInfo "{5EBCEAEBC1A39D83}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EBCEAEBDDDED96A}" {
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EBCEAEBDB961210}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EBCEAEBD79887C7}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+  RplComponent "{5EBCEAEBCB6233A7}" {
+  }
+ }
+}

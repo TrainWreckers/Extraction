@@ -1,0 +1,44 @@
+GenericEntity : "{70384CA135D9DBE8}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_Base.et" {
+ ID "55DAD3EB50374E38"
+ components {
+  SCR_TW_InventoryLoot "{5EBB144F2CBE68D5}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5EBB144CF59656B6}" {
+   Attributes SCR_ItemAttributeCollection "{5EBB144CF72722A1}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EBB144CF16AE135}" {
+     Name "Loot"
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBB144F087FC9D6}" {
+  }
+  ActionsManagerComponent "{5EBB144F05744F11}" {
+   ActionContexts {
+    UserActionContext "{5EBB144F01954755}" {
+     UIInfo UIInfo "{5EBB144F0247E91E}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EBB144F18A09764}" {
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EBB144F15B57AAE}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EBB144F117AE250}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+  RplComponent "{5EBB144F0BE99FCB}" {
+  }
+ }
+}

@@ -1,0 +1,37 @@
+GenericEntity : "{42894F191BC9EDE1}Prefabs/Props/Core/AmmoBox_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_TW_InventoryLoot "{5EBCEAFF50C929C6}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Attributes SCR_ItemAttributeCollection "{5476CDB2EAD8225E}" {
+    ItemDisplayName SCR_InventoryUIInfo "{54F48AF1F3C103C1}" {
+     Name "Loot"
+     Description ""
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBCEAFF4FA642EA}" {
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   ActionContexts {
+    UserActionContext "{5476B36C47B0461A}" {
+     UIInfo UIInfo "{5EBCEAFF451D16D7}" {
+      Name "Loot"
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5476DE57AA50402F}" {
+     UIInfo UIInfo "{52E6EC759A11C684}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{D46121EE8A589310}Prefabs/Props/Industrial/ToolBox_01/Dst/ToolBox_01_dst_base.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

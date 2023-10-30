@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{6BF847A5EB920F8A}Prefabs/Props/Industrial/OvenIndustrial_01/OvenIndustrial_01.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

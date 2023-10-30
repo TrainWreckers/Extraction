@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{25ED9C1A5F68A573}Prefabs/Props/Garbage/Bins/BinInterior_01_green.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

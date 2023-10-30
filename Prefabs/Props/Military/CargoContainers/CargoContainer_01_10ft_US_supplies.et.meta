@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{EF490B50F7E11EBA}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_US_supplies.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

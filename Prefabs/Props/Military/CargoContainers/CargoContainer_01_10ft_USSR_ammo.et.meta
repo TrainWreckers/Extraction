@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{124DC29CA359557C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_USSR_ammo.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
