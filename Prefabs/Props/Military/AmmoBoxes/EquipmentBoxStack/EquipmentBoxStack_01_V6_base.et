@@ -1,0 +1,37 @@
+GenericEntity : "{86EB7E536E8A7206}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_TW_InventoryLoot "{5EBCEAFD0A2ECA14}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5EBCEAFEE66B668E}" {
+   Attributes SCR_ItemAttributeCollection "{5EBCEAFEE0544577}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EBCEAFEE240A9ED}" {
+     Name "Loot"
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBCEAFEFAABCB97}" {
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+   ActionContexts {
+    UserActionContext "{5476B36C47B0461A}" {
+     UIInfo UIInfo "{5EBCEAFEF172245B}" {
+      Name "Loot"
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5476DE57AA50402F}" {
+     UIInfo UIInfo "{52E6EC759A11C684}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+ }
+}

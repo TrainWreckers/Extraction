@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

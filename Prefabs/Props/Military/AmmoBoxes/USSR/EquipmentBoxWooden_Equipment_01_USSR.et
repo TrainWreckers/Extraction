@@ -1,0 +1,37 @@
+GenericEntity : "{9C4642487946A666}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxWooden_01_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_TW_InventoryLoot "{5EBCEAF258D3993D}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5EBCEAF23C206A8F}" {
+   Attributes SCR_ItemAttributeCollection "{5EBCEAF23FDB989E}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EBCEAF238542603}" {
+     Name "Loot"
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBCEAF230E5B3FB}" {
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+   ActionContexts {
+    UserActionContext "{5476B36C47B0461A}" {
+     UIInfo UIInfo "{5EBCEAF24AEFAC42}" {
+      Name "Loot"
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5476DE57AA50402F}" {
+     UIInfo UIInfo "{52E6EC759A11C684}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+ }
+}

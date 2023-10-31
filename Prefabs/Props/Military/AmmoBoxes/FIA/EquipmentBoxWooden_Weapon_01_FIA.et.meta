@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A9989C248817C11E}Prefabs/Props/Military/AmmoBoxes/FIA/EquipmentBoxWooden_Weapon_01_FIA.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

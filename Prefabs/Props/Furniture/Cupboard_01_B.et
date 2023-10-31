@@ -1,0 +1,42 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "6093E737EA263CF7"
+ components {
+  SCR_TW_InventoryLoot "{5EBB14561B603B43}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5EBB1457FEDDCB41}" {
+   Attributes SCR_ItemAttributeCollection "{5EBB1457F884397A}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EBB1457FB59A74E}" {
+     Name "Loot"
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{5EBB1457F1200248}" {
+  }
+  ActionsManagerComponent "{5EBB14560E83E366}" {
+   ActionContexts {
+    UserActionContext "{5EBB14560ABDD00F}" {
+     UIInfo UIInfo "{5EBB14560B041B89}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EBB14560758F10D}" {
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EBB14561C47C98F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EBB145619E088AC}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
