@@ -31,6 +31,9 @@ class SCR_TW_AISpawnPoint : GenericEntity
 	
 	override void EOnInit(IEntity owner)
 	{
+		if(!GetGame().InPlayMode())
+			return;
+		
 		SCR_TW_ExtractionSpawnHandler spawnHandler = SCR_TW_ExtractionSpawnHandler.GetInstance();
 		
 		if(!spawnHandler)
