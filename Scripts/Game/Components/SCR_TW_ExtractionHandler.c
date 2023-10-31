@@ -41,32 +41,55 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		Print(string.Format("TrainWreck: Valid(%1) Invalid(%2)", validCount, globalCount-validCount), LogLevel.WARNING);
 		
 		foreach(SCR_TW_InventoryLoot container : SCR_TW_InventoryLoot.GlobalLootContainers)
-		{			
-			int spawnCount = Math.RandomIntInclusive(0, 3);
+		{					
+			if(!container) 
+				continue;
+			
+			string format = string.Format("TrainWreck: %1", container.GetOwner().GetPrefabData().GetPrefabName());
+			int spawnCount = Math.RandomIntInclusive(1, 6);
 			
 			if(spawnCount > 0)
-				Print(string.Format("TrainWreck: SpawnCount(%1)", spawnCount), LogLevel.WARNING);
-								
+				Print(string.Format("%1: SpawnCount(%2)", format, spawnCount), LogLevel.WARNING);
+			
+			// How many different things are we going to try spawning?								
 			for(int i = 0; i < spawnCount; i++)
-			{								
+			{	
+				string baseFormat = string.Format("%1\n\tFlags(%2)", format, container.GetTypeFlags());
 				auto arsenalItem = GetRandomItemByFlag(container.GetTypeFlags());
 				
-				Print(string.Format("TrainWreck: Selected(%1)", arsenalItem.GetItemResourceName()), LogLevel.WARNING);
+				baseFormat += string.Format("%1\n\tSelected: %2", format, arsenalItem.GetItemResourceName());
 				
 				if(!arsenalItem)
 				{
-					Print("TrainWreck: Selected loot item is null", LogLevel.ERROR);					
+					Print(string.Format("%1\n\tSelected loot item is null", baseFormat), LogLevel.ERROR);		
 					break;
 				}				
 				
-				float seedPercentage = Math.RandomFloat(0.001, 100);
+				// Are we going to spawn the selected item?
+				/*float seedPercentage = Math.RandomFloat(0.001, 100);				
 				if(arsenalItem.GetItemChanceToSpawn() < seedPercentage)
+				{
+					Print(string.Format("%1: Skipping (no chance): %2", baseFormat, arsenalItem.GetItemResourceName()), LogLevel.WARNING);
+					spawnCount -= 1;
 					continue;
+				}*/
 				
 				// Add item a random amount of times to the container based on settings
 				int itemCount = Math.RandomIntInclusive(0, arsenalItem.GetItemMaxSpawnCount());
+				bool tryAgain = false;
 				for(int x = 0; x < itemCount; x++)
-					container.InsertItem(arsenalItem);				
+				{
+					bool success = container.InsertItem(arsenalItem);
+					
+					if(!success)
+					{
+						tryAgain = true;
+						break;
+					}
+				}
+				
+				if(tryAgain)
+					spawnCount--;
 			}
 		}
 	}
@@ -137,7 +160,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	{
 		array<SCR_EArsenalItemType> selectedItems = {};
 		
-		if(type != 0)
+		if(type > 0)
 		{
 			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.HEAL) && lootMap.Contains(SCR_EArsenalItemType.HEAL))
 				selectedItems.Insert(SCR_EArsenalItemType.HEAL);

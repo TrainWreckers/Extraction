@@ -1,0 +1,24 @@
+SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger/Prefabs/Conflict/CampaignFactionManager.et" {
+ coords 6833.429 125.384 6659.783
+}
+SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+ coords 6841.766 125.285 6661.594
+}
+TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
+ coords 6841.94 125.282 6661.059
+}
+PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Conflict/PerceptionManager.et" {
+ coords 6841.824 125.284 6661.328
+}
+RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
+ coords 6842.523 125.281 6661.002
+}
+ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
+ coords 6841.999 125.282 6661.14
+}
+HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
+ coords 6841.941 125.282 6661.145
+}
+BasePreloadManager PreloadManager_Campaign1 : "{F686EF3A41A0262A}Reforger/Prefabs/Conflict/PreloadManager_Campaign.et" {
+ coords 6842.64 125.281 6660.99
+}

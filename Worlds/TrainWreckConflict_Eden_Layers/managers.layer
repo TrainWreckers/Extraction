@@ -41,14 +41,22 @@ GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
  coords 9492.545 8.449 5187.931
 }
-GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
- components {
-  SCR_TW_InventoryLoot "{5EBABC4CB4728FE1}" {
-   m_lootItemTypes 1030
-   m_lootItemModes 12
+$grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
+ {
+  components {
+   SCR_TW_InventoryLoot "{5EBABC4CB4728FE1}" {
+    m_lootItemTypes 1030
+    m_lootItemModes 12
+   }
+   SCR_TW_InventoryLoot "{5EBB14553FD5CF9E}" {
+    Enabled 0
+   }
   }
+  coords 4752.744 169.315 6995.936
  }
- coords 4752.93 169.315 6995.936
+ {
+  coords 4758.916 169.218 6996.004
+ }
 }
 SCR_BaseTaskManager : "{826C5AFFA977DAC3}Reforger/Prefabs/Conflict/CampaignTaskManager.et" {
  coords 9487.725 8.003 5191.519

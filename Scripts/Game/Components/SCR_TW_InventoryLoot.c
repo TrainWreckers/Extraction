@@ -26,9 +26,6 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		// For testing purposes the logs for host + client are hard to validate
 		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
 		
-		if(!rpl.IsMaster())
-			return;
-		
 		if(!GlobalLootContainers.Contains(this))
 			GlobalLootContainers.Insert(this);
 				
@@ -36,21 +33,28 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		storage = BaseUniversalInventoryStorageComponent.Cast(owner.FindComponent(BaseUniversalInventoryStorageComponent));				
 	}
 	
-	void InsertItem(SCR_ArsenalItem item)
+	bool InsertItem(SCR_ArsenalItem item)
 	{
 		if(!item)
 		{
 			Print("TrainWreck: can't insert null item", LogLevel.ERROR);
-			return;
+			return false;
 		}
 		
 		if(!item.GetItemPrefab())
 		{
 			Print(string.Format("TrainWreck: Invalid prefab. %1", item.GetItemResourceName()), LogLevel.ERROR);
-			return;
+			return false;
 		}
 				
-		storageManager.TrySpawnPrefabToStorage(item.GetItemPrefab());
+		auto result = storageManager.TrySpawnPrefabToStorage(item.GetItemPrefab());
+		
+		if(!result)
+		{
+			Print(string.Format("TrainWreck: Failed to insert item: %1", item.GetItemResourceName()), LogLevel.ERROR);
+		}
+		
+		return result;
 	}
 	
 };
