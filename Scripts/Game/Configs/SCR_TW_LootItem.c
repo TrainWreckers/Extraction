@@ -1,3 +1,4 @@
+[BaseContainerProps()]
 class SCR_TW_LootItem
 {
 	private SCR_ArsenalItem m_ArsenalData;

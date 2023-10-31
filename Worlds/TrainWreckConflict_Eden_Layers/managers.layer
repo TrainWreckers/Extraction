@@ -27,6 +27,8 @@ SCR_GameModeCampaign GameMode_Campaign1 : "{C517A8317A926228}Reforger/Prefabs/Co
   SCR_SpawnProtectionComponent "{5D167A246026C95B}" {
    m_bAllowPlayerSpawnpoints 1
   }
+  SCR_TW_ExtractionHandler "{5EBC0B912DD592D1}" {
+  }
   SCR_TimedSpawnPointComponent "{5D0A73EB7076C758}" {
    m_fRespawnTime 3
   }
@@ -39,57 +41,14 @@ GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
  coords 9492.545 8.449 5187.931
 }
-$grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5EBAA7DB1698E119}" {
-    Attributes SCR_ItemAttributeCollection "{5EBAA7D7D664B890}" {
-     ItemDisplayName SCR_InventoryUIInfo "{5EBAA7D7C8A3A95F}" {
-      Name "Test Name"
-      Description "Test description here"
-     }
-     ItemPhysAttributes ItemPhysicalAttributes "{5EBAA7D73D8F49F2}" {
-      Weight 1000
-     }
-     m_Size SLOT_3x3
-     m_SlotType SLOT_ANY
-    }
-    UseCapacityCoefficient 0
-    MaxCumulativeVolume 10000
-    m_fMaxWeight 10000
-    m_aSlotsToShow {
-    }
-   }
-   UniversalInventoryStorageComponent "{5EBAA7DE00822784}" {
-    Enabled 0
-   }
-   SCR_InventoryStorageManagerComponent "{5EBAA7D78A84E1E0}" {
-   }
-   ActionsManagerComponent "{5EBAA7DDD04CC082}" {
-    ActionContexts {
-     UserActionContext "{5EBAA7DDD74A5363}" {
-      Radius 0.85
-     }
-    }
-    additionalActions {
-     SCR_OpenStorageAction "{5EBAA7DDCB681974}" {
-     }
-    }
-   }
-   RplComponent "{5EBAA7D5C0A0C08E}" {
-   }
+GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
+ components {
+  SCR_TW_InventoryLoot "{5EBABC4CB4728FE1}" {
+   m_lootItemTypes 1030
+   m_lootItemModes 12
   }
-  coords 4752.791 169.32 6993.549
  }
- {
-  components {
-   SCR_TW_InventoryLoot "{5EBABC4CB4728FE1}" {
-    m_lootItemTypes 1030
-    m_lootItemModes 12
-   }
-  }
-  coords 4752.212 169.315 6995.936
- }
+ coords 4752.93 169.315 6995.936
 }
 SCR_BaseTaskManager : "{826C5AFFA977DAC3}Reforger/Prefabs/Conflict/CampaignTaskManager.et" {
  coords 9487.725 8.003 5191.519

@@ -1,4 +1,532 @@
 SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFactionManager.et" {
  ID "50A6CDA4F7C1474A"
  coords 20.291 0 5.837
+ Factions {
+  SCR_CampaignFaction "{50B30C3AF4BFD934}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C68A0E9AFE1E631}" {
+     m_aMultiLists {
+      SCR_EntityCatalogMultiListEntry "{5C68AD5F14BDB1A7}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7DF56B8D07A}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE992CCCD3}" {
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF54238366}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE862BD2B2}" {
+           m_ItemChanceToSpawn 32.126
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF548ED203}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE8591DED5}" {
+           m_ItemChanceToSpawn 44.54
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5297B987}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE8D4765BD}" {
+           m_ItemChanceToSpawn 37.644
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF50ACF66F}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE89845D54}" {
+           m_ItemChanceToSpawn 32.126
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5E8D492A}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEB4217B40}" {
+           m_ItemChanceToSpawn 49.598
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5CF57E20}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEB0A511F5}" {
+           m_ItemChanceToSpawn 56.494
+          }
+         }
+        }
+       }
+      }
+      SCR_EntityCatalogMultiListEntry "{5C68AD5F148714C4}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7DF57A5E254}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE9B814D24}" {
+           m_ItemChanceToSpawn 36.264
+           m_ItemMaxSpawnCount 7
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF55FE15F2}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE875034B8}" {
+           m_ItemChanceToSpawn 11.667
+           m_ItemMaxSpawnCount 5
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5CB899464A1D2487}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5CB89941BF5D7A73}" {
+           m_ItemChanceToSpawn 40.402
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF53ED1A87}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE83B0AB3B}" {
+           m_ItemChanceToSpawn 38.333
+           m_ItemMaxSpawnCount 5
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF52339571}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE80DC8D4B}" {
+           m_ItemChanceToSpawn 33.276
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF51F85BAB}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE8CA9F176}" {
+           m_ItemChanceToSpawn 34.425
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF504A3A3B}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE8A49ED7D}" {
+           m_ItemChanceToSpawn 32.586
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5FE4E0E9}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEB7247E08}" {
+           m_ItemChanceToSpawn 39.713
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5E3D0485}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEB6985D2F}" {
+           m_ItemChanceToSpawn 45.92
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5DA35EF8}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEB3871A5B}" {
+           m_ItemChanceToSpawn 41.092
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5B3201AF}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEBC4C74B8}" {
+           m_ItemChanceToSpawn 54.425
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF594F5F3C}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEA31337A1}" {
+           m_ItemChanceToSpawn 46.379
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF598D6455}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEA28B4362}" {
+           m_ItemChanceToSpawn 40.172
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF58ED03D0}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEAF6748F3}" {
+           m_ItemChanceToSpawn 38.793
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+       }
+      }
+      SCR_EntityCatalogMultiListEntry "{5C68AD5F137C9AFF}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7DF5AE77809}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEBB8F5AF2}" {
+           m_ItemChanceToSpawn 50.747
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+       }
+      }
+      SCR_EntityCatalogMultiListEntry "{5C68AD5F1351A624}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7DF28F44679}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE9EC9ABE9}" {
+           m_ItemChanceToSpawn 12.126
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF574D96D7}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE9C66C645}" {
+           m_ItemChanceToSpawn 30.747
+           m_ItemMaxSpawnCount 4
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF47B8BF41}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DEAEC68866}" {
+           m_ItemChanceToSpawn 65
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+       }
+      }
+      SCR_EntityCatalogMultiListEntry "{5C68AD5F7414CA4A}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7DF32FB7626}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF4DC2857D}" {
+           m_ItemChanceToSpawn 49.828
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF3138C6BB}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF4B595696}" {
+           m_ItemChanceToSpawn 42.471
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF307FC925}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF4AADAC76}" {
+           m_ItemChanceToSpawn 49.828
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF30AA69BA}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF48D7131C}" {
+           m_ItemChanceToSpawn 61.092
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5DBA6ECEC895C324}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5DBA6ECF3C8B63E3}" {
+           m_ItemChanceToSpawn 36.264
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5E0304F3AECF0F6E}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5E0304F3C2661223}" {
+           m_ItemChanceToSpawn 53.966
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5E0304F3ABDD024C}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5E0304F3CD2A67DF}" {
+           m_ItemChanceToSpawn 44.31
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5E22CEC974AFD875}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5E22CEC9604D7886}" {
+           m_ItemChanceToSpawn 49.138
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5E22CEC973C283C6}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5E22CEC96997827D}" {
+           m_ItemChanceToSpawn 56.264
+          }
+         }
+        }
+       }
+      }
+      SCR_EntityCatalogMultiListEntry "{5C68AD5F13464B23}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7DF3CADCB12}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF7EE3634D}" {
+           m_ItemChanceToSpawn 52.586
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF22B7262D}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF6115074F}" {
+           m_ItemChanceToSpawn 53.966
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF21B30AE2}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF6F7C1820}" {
+           m_ItemChanceToSpawn 39.483
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF20002A93}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF6E8A1177}" {
+           m_ItemChanceToSpawn 44.08
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF2F537B90}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF6CFFBD28}" {
+           m_ItemChanceToSpawn 45
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF2FA09020}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF6A7E4581}" {
+           m_ItemChanceToSpawn 52.816
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF2EE74B4C}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF690D0917}" {
+           m_ItemChanceToSpawn 31.437
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF2D3C68C7}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE973BE380}" {
+           m_ItemChanceToSpawn 40.402
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF2C7DC728}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE969EEE08}" {
+           m_ItemChanceToSpawn 32.816
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7DF2CA33990}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DE94436996}" {
+           m_ItemChanceToSpawn 39.253
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  SCR_CampaignFaction "{50B30C3ADB052C80}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" {
+     m_aMultiLists {
+      SCR_EntityCatalogMultiListEntry "{5C68AD59AB9FBDDC}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7D8ECAFAAA3}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D84AAB75D4}" {
+           m_ItemChanceToSpawn 17.414
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8EA121E09}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D876479B4D}" {
+           m_ItemChanceToSpawn 44.08
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8E95012DA}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D875A05D99}" {
+           m_ItemChanceToSpawn 55.805
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8E99F4654}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D873F38DFB}" {
+           m_ItemChanceToSpawn 45.92
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D81660D0B9}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D87D91AC38}" {
+           m_ItemChanceToSpawn 43.851
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8140863A6}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D867B8DFDC}" {
+           m_ItemChanceToSpawn 50.747
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8128DB218}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D860F26C5A}" {
+           m_ItemChanceToSpawn 39.023
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D810F58511}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D86D938060}" {
+           m_ItemChanceToSpawn 51.897
+          }
+         }
+        }
+       }
+      }
+      SCR_EntityCatalogMultiListEntry "{5C68AD59AA6FA1B8}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5C62F7D8ED340882}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D84DFF26CF}" {
+           m_ItemChanceToSpawn 54.885
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8ED9E5390}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D84B59D2FC}" {
+           m_ItemChanceToSpawn 44.31
+           m_ItemMaxSpawnCount 4
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8EBC8251B}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D848E8A152}" {
+           m_ItemChanceToSpawn 13.506
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8E8E0BB47}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D8715AC76A}" {
+           m_ItemChanceToSpawn 35.345
+           m_ItemMaxSpawnCount 3
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8172BDCE3}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D87FA98E13}" {
+           m_ItemChanceToSpawn 44.08
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D816ADEECB}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D87BE255BC}" {
+           m_ItemChanceToSpawn 51.207
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D815E4A238}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D879C139A4}" {
+           m_ItemChanceToSpawn 42.931
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D813556BD9}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D8641686D9}" {
+           m_ItemChanceToSpawn 48.908
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D8126A50EF}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D8622A2D44}" {
+           m_ItemChanceToSpawn 59.943
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D811B80EEB}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7D86E47386D}" {
+           m_ItemChanceToSpawn 50.747
+           m_ItemMaxSpawnCount 2
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D81EA1A633}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF96C89A81}" {
+           m_ItemChanceToSpawn 53.736
+          }
+         }
+        }
+        SCR_EntityCatalogInventoryItem "{5C62F7D81D0E5581}" {
+         m_aEntityDataList {
+          SCR_ArsenalItem "{5C62F7DF94CA2FF2}" {
+           m_ItemChanceToSpawn 60.632
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
