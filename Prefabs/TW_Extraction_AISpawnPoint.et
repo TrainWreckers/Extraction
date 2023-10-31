@@ -5,6 +5,7 @@ SCR_TW_AISpawnPoint {
   "{691B8F48538144D8}Prefabs/Groups/INDFOR/TW_FIA_1Guy.et"
  }
  m_ChanceToSpawn 10
+ m_CanRespawn 1
  m_WaypointPrefabs {
   "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" "{2A81753527971941}Prefabs/AI/Waypoints/AIWaypoint_Defend_CP.et" "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
  }
