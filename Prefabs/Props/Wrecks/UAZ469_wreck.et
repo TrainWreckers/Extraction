@@ -23,6 +23,7 @@ GenericEntity : "{3619812B192CCAE9}Prefabs/Props/Core/Wreck_Base.et" {
      }
      ContextName "default"
      Position PointInfo "{5EBCEAEBF02764F3}" {
+      Offset 0.4133 1.219 0.5648
      }
      Radius 0.8
     }

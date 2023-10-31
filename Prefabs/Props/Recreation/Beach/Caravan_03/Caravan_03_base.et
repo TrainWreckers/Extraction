@@ -23,6 +23,7 @@ SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Buil
      }
      ContextName "default"
      Position PointInfo "{5EBCEAF6517020E8}" {
+      Offset 0.847 1.2009 0.7948
      }
      Radius 0.8
     }

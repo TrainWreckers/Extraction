@@ -1,3 +1,14 @@
 GenericEntity : "{02A8148519E81867}Prefabs/Props/Wrecks/M998_wreck.et" {
  ID "F0DBA538AC2A0552"
+ components {
+  ActionsManagerComponent "{5EBCEAEB785907B7}" {
+   ActionContexts {
+    UserActionContext "{5EBCEAEB7AB37189}" {
+     Position PointInfo "{5EBCEAEB7752785B}" {
+      Offset 0 1.0675 0.2403
+     }
+    }
+   }
+  }
+ }
 }

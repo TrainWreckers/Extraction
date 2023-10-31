@@ -1,3 +1,14 @@
 GenericEntity : "{751C45A8DEFBEB7E}Prefabs/Props/Commercial/ShelfShop_02/ShelfShop_02_base.et" {
  ID "F0DBA538AC2A0552"
+ components {
+  ActionsManagerComponent "{5EBB145A901AB906}" {
+   ActionContexts {
+    UserActionContext "{5EBB145AACF6D073}" {
+     Position PointInfo "{5EBB145ABD1563A8}" {
+      Offset -0.2629 0.4572 0.1542
+     }
+    }
+   }
+  }
+ }
 }

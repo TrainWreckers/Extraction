@@ -23,6 +23,7 @@ GenericEntity : "{70384CA135D9DBE8}Prefabs/Props/Industrial/CargoContainers/Carg
      }
      ContextName "default"
      Position PointInfo "{5EBB144F494AF9E5}" {
+      Offset 0 1.0582 6.0709
      }
      Radius 0.8
     }

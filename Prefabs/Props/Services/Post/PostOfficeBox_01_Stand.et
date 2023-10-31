@@ -23,6 +23,7 @@ SCR_DestructibleEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Prop
      }
      ContextName "default"
      Position PointInfo "{5EBCEAF43E8E1F0A}" {
+      Offset 0 1.1901 0.1503
      }
      Radius 0.8
     }

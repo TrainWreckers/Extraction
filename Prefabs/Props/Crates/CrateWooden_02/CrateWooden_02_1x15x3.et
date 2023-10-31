@@ -1,3 +1,29 @@
 GenericEntity : "{7E2EC66747A3FBA3}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_base.et" {
  ID "F0DBA538AC2A0552"
+ components {
+  ActionsManagerComponent "{5EBB14558B71E079}" {
+   ActionContexts {
+    UserActionContext "{5EBB1455850C3F59}" {
+     UIInfo UIInfo "{5EBEE20CA6A98A62}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EBEE20CB48DF460}" {
+      Offset 0 1.4202 -0.0179
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EBEE20CCB126543}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EBEE20CC7C2D88C}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+ }
 }
