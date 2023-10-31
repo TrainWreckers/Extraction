@@ -1,6 +1,15 @@
 GenericEntity : "{4AD200C829CAFE34}Prefabs/Props/Furniture/CupboardOld_01_base.et" {
  ID "F0DBA538AC2A0552"
  components {
+  ActionsManagerComponent "{5EBB1451193BB8D3}" {
+   ActionContexts {
+    UserActionContext "{5EBB145115D9973E}" {
+     Position PointInfo "{5EBB14512FA6F348}" {
+      Offset -0.7242 0.9144 0.5418
+     }
+    }
+   }
+  }
   RplComponent "{5624A88DC2D9928D}" {
    Enabled 1
   }

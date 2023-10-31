@@ -18,6 +18,24 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
   ActionsManagerComponent "{5EBB14558B71E079}" {
    ActionContexts {
     UserActionContext "{5EBB1455850C3F59}" {
+     UIInfo UIInfo "{5EBEE20F212538B9}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EBEE20F3F2C01E2}" {
+      Offset 0 0.8007 0
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EBEE20F3628B113}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EBEE20F32580901}" {
+      Name "Loot"
+     }
     }
    }
   }

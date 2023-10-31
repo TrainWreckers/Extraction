@@ -1,3 +1,14 @@
 GenericEntity : "{A46F8469F129E154}Prefabs/Props/Military/CargoContainers/CargoContainer_01_military_base.et" {
  ID "F0DBA538AC2A0552"
+ components {
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   ActionContexts {
+    UserActionContext "{5476B36C47B0461A}" {
+     Position PointInfo "{5476B36C45ADDA89}" {
+      Offset 0 1.4585 1.4021
+     }
+    }
+   }
+  }
+ }
 }

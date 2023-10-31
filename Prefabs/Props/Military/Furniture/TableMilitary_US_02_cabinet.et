@@ -23,6 +23,7 @@ StaticModelEntity : "{5EC6836A5694F691}Prefabs/Props/Military/Furniture/Furnitur
      }
      ContextName "default"
      Position PointInfo "{5EBCEAF0DC5AB042}" {
+      Offset 0.3735 0.6844 -0.0022
      }
      Radius 0.8
     }

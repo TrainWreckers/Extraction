@@ -23,6 +23,7 @@ GenericEntity : "{51B08BDA20AF8FF7}Prefabs/Props/Industrial/Pallets/WoodenPallet
      }
      ContextName "default"
      Position PointInfo "{5EBCEAFBF396136E}" {
+      Offset 0 0.9096 0
      }
      Radius 0.8
     }

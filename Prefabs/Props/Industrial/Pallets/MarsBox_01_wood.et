@@ -23,6 +23,7 @@ GenericEntity : "{6E6CBE3556D6E381}Prefabs/Props/Industrial/Pallets/MarsBox_01_B
      }
      ContextName "default"
      Position PointInfo "{5EBCEAFB55E6FFB7}" {
+      Offset 0 0.5266 0
      }
      Radius 0.8
     }

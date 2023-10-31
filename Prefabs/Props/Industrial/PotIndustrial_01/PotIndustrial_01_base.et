@@ -23,6 +23,7 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
      }
      ContextName "default"
      Position PointInfo "{5EBCEAFA3F6029D4}" {
+      Offset -0.6018 0.9287 0.6551
      }
      Radius 0.8
     }

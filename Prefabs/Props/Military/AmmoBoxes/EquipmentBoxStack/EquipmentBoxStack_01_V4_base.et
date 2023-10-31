@@ -22,6 +22,9 @@ GenericEntity : "{86EB7E536E8A7206}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      UIInfo UIInfo "{5EBCEAFEBF5839EB}" {
       Name "Loot"
      }
+     Position PointInfo "{5476B36C45ADDA89}" {
+      Offset 0 1.2015 0
+     }
      Radius 0.8
     }
    }

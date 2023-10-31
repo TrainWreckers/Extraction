@@ -23,6 +23,7 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
      }
      ContextName "default"
      Position PointInfo "{5EBB145227F68016}" {
+      Offset -0.2949 0.7281 0
      }
      Radius 0.8
     }
