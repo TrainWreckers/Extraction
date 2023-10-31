@@ -313,6 +313,30 @@ class SCR_TW_Util
 		return GetLandPositionAround(center.GetOrigin(), radius);	
 	}
 	
+	static bool IsOutsideOfPlayers(vector position, array<IEntity> entities, float distance)
+	{
+		foreach(IEntity entity : entities)
+		{
+			if(vector.Distance(entity.GetOrigin(), position) < distance)
+				return false;
+		}
+		
+		return true;
+	}
+	
+	static bool IsWithinRange(vector position, array<IEntity> entities, float min, float max)
+	{
+		foreach(IEntity entity : entities)
+		{
+			float distance = Math.AbsFloat(vector.Distance(entity.GetOrigin(), position));
+			
+			if(distance < min || distance > max)
+				return false;		
+		}
+		
+		return true;
+	}
+	
 	/*Delete group and its members*/
 	static void DeleteGroup(SCR_AIGroup group)
 	{

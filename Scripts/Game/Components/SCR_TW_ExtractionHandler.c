@@ -75,7 +75,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 				}*/
 				
 				// Add item a random amount of times to the container based on settings
-				int itemCount = Math.RandomIntInclusive(0, arsenalItem.GetItemMaxSpawnCount());
+				int itemCount = Math.RandomIntInclusive(1, arsenalItem.GetItemMaxSpawnCount());
 				bool tryAgain = false;
 				for(int x = 0; x < itemCount; x++)
 				{
@@ -132,6 +132,9 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 				
 				if(!arsenalItem)	
 					continue;
+				
+				if(!arsenalItem.IsEnabled())
+					break;
 				
 				auto itemType = arsenalItem.GetItemType();
 				auto itemMode = arsenalItem.GetItemMode();

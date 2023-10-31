@@ -1,7 +1,34 @@
+SCR_AIWorld : "{10EF0F8A76B4929C}Reforger/Prefabs/Conflict/SCR_AIWorld.et" {
+ coords 6594.031 159.873 6415.379
+}
 SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger/Prefabs/Conflict/CampaignFactionManager.et" {
  coords 6833.429 125.384 6659.783
+ Factions {
+  SCR_CampaignFaction "{50B30C3ADB052C80}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" {
+     m_aMultiLists {
+      SCR_EntityCatalogMultiListEntry "{5C68AD59AA6FA1B8}" {
+       m_aEntities {
+        SCR_EntityCatalogInventoryItem "{5CB8995694A786D7}" {
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+ components {
+  SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
+  }
+  SCR_TW_ExtractionSpawnHandler "{5EBF0B14A6CAF6AB}" {
+   m_MaxAgents 20
+   m_MinimumAISpawnDistance 200
+  }
+ }
  coords 6841.766 125.285 6661.594
 }
 TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
@@ -13,8 +40,17 @@ PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Confl
 RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
  coords 6842.523 125.281 6661.002
 }
+ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
+ coords 6597.423 159.83 6413.302
+}
+SCR_LoadoutManager : "{58FBD035E53D95C1}Prefabs/MP/Campaign/CampaignLoadoutManager.et" {
+ coords 6841.931 125.282 6661.605
+}
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
  coords 6841.999 125.282 6661.14
+}
+GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/PlayerHub_S_US_01.et" {
+ coords 6384.262 165.031 6775.197
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
  coords 6841.941 125.282 6661.145
