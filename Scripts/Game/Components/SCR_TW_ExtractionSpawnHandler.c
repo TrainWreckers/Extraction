@@ -36,6 +36,11 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	
 	override void OnGameModeStart()
 	{		
+		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		
+		if(!rpl.IsMaster())
+			return;		
+		
 		GetGame().GetCallqueue().CallLater(FirstPass, 30 * 1000, false);
 		
 		// These methods periodically update our stuff. Thus need to repeat indefinitely
