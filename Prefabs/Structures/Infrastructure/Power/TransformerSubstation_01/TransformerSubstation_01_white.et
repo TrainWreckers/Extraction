@@ -1,3 +1,9 @@
 SCR_DestructibleBuildingEntity : "{605E8648EB341075}Prefabs/Structures/Infrastructure/Power/TransformerSubstation_01/TransformerSubstation_01_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   ID "5EC371B10EE98448"
+   coords 0.069 0.287 2.049
+  }
+ }
 }

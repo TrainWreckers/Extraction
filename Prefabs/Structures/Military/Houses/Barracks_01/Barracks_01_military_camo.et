@@ -1,3 +1,35 @@
 SCR_DestructibleBuildingEntity : "{5F97E54397247954}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_military_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B048AF1E43"
+    coords 3.148 0.119 2.129
+   }
+   {
+    ID "5EC371B048AF1E61"
+    coords 3.518 0.119 -5.63
+   }
+   {
+    ID "5EC371B048AF1E83"
+    coords -1.059 0.119 -9.77
+   }
+   {
+    ID "5EC371B048AF1E92"
+    coords 3.409 0.119 -12.362
+   }
+   {
+    ID "5EC371B048AF1EA0"
+    coords -3.698 0.119 -11.455
+   }
+   {
+    ID "5EC371B048AF1EAE"
+    coords 3.817 0.119 11.805
+   }
+   {
+    ID "5EC371B048AF1EB1"
+    coords -3.57 0.119 -10.219
+   }
+  }
+ }
 }

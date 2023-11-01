@@ -1,3 +1,63 @@
 SCR_DestructibleBuildingEntity : "{EFAB965711619154}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_01/ControlTowerMilitary_E_01_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B32E74FCA2"
+    coords -1.945 12.597 1.748
+   }
+   {
+    ID "5EC371B32E74FCC8"
+    coords -2.614 12.597 -1.744
+   }
+   {
+    ID "5EC371B32E74FCDD"
+    coords 1.731 12.597 -2.489
+   }
+   {
+    ID "5EC371B32E74FCE5"
+    coords -5.855 9.026 2.17
+   }
+   {
+    ID "5EC371B32E74FCEC"
+    coords -0.694 9.026 -0.262
+   }
+   {
+    ID "5EC371B32E74FCF1"
+    coords 4.467 9.025 3.701
+   }
+   {
+    ID "5EC371B32E74FCFA"
+    coords 5.372 9.023 -4.807
+   }
+   {
+    ID "5EC371B32E74FF05"
+    coords 3.107 4.846 -4.038
+   }
+   {
+    ID "5EC371B32E74FF0C"
+    coords -5.528 4.846 2.586
+   }
+   {
+    ID "5EC371B32E74FF15"
+    coords 2.348 3.326 4.05
+   }
+   {
+    ID "5EC371B32E74FF25"
+    coords -2.255 1.05 -0.467
+   }
+   {
+    ID "5EC371B32E74FF2C"
+    coords 1.823 12.597 1.714
+   }
+   {
+    ID "5EC371B32E74FF37"
+    coords -4.767 1.05 3.466
+   }
+   {
+    ID "5EC371B32E74FF3E"
+    coords 2.042 1.05 -0.552
+   }
+  }
+ }
 }

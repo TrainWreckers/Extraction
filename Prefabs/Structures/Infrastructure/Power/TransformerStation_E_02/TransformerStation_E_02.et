@@ -1,3 +1,31 @@
 SCR_DestructibleBuildingEntity : "{9ACEB1AC0BA9561D}Prefabs/Structures/Infrastructure/Power/TransformerStation_E_02/TransformerStation_E_02_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B6FD37ED6B"
+    coords 1.743 0.05 -3.065
+   }
+   {
+    ID "5EC371B6FD37ED70"
+    coords -3.794 9.65 0.886
+   }
+   {
+    ID "5EC371B6FD37ED81"
+    coords -3.95 1.2 5.938
+   }
+   {
+    ID "5EC371B6FD37ED98"
+    coords 0.208 1.2 5.811
+   }
+   {
+    ID "5EC371B6FD37EDA2"
+    coords -0.514 9.65 -2.59
+   }
+   {
+    ID "5EC371B6FD37EDB5"
+    coords 4.784 0.05 2.197
+   }
+  }
+ }
 }

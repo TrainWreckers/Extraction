@@ -1,3 +1,39 @@
 SCR_DestructibleBuildingEntity : "{63F42771BBDF3915}Prefabs/Structures/Industrial/Houses/Sawmill_E_01/Sawmill_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B493E9ECFF"
+    coords 0.298 -0.39 16.906
+   }
+   {
+    ID "5EC371B493E9EF04"
+    coords -9.974 0 12.327
+   }
+   {
+    ID "5EC371B493E9EF0D"
+    coords -4.932 0.025 1.971
+   }
+   {
+    ID "5EC371B493E9EF1A"
+    coords -9.712 -0.313 5.443
+   }
+   {
+    ID "5EC371B493E9EF24"
+    coords 6.476 0.039 4.497
+   }
+   {
+    ID "5EC371B493E9EF2A"
+    coords 2.153 0.025 -11.792
+   }
+   {
+    ID "5EC371B493E9EF38"
+    coords -4.382 0.025 -9.669
+   }
+   {
+    ID "5EC371B493E9EF53"
+    coords 10.848 0.021 -1.065
+   }
+  }
+ }
 }

@@ -1,3 +1,27 @@
 SCR_DestructibleBuildingEntity : "{84DEA01FFFE606FE}Prefabs/Structures/Military/Bunkers/AirfieldBunker_E_01/AirfieldBunker_E_01_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B1AC8DE4B8"
+    coords 1.381 -1.019 1.8
+   }
+   {
+    ID "5EC371B1AC8DE4C4"
+    coords 1.435 -0.999 6.167
+   }
+   {
+    ID "5EC371B1AC8DE4CC"
+    coords 0.049 -0.018 11.94
+   }
+   {
+    ID "5EC371B1AC8DE4D1"
+    coords -1.231 -1.019 4.887
+   }
+   {
+    ID "5EC371B1AC8DE4DC"
+    coords -0.328 -1.019 6.317
+   }
+  }
+ }
 }

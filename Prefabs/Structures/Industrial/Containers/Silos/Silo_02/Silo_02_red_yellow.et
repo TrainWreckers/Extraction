@@ -1,3 +1,9 @@
 SCR_DestructibleBuildingEntity : "{A46A8D4B5A534D2E}Prefabs/Structures/Industrial/Containers/Silos/Silo_02/Silo_02_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   ID "5EC371B5BDAB6AD4"
+   coords -0.128 13.498 0.129
+  }
+ }
 }
