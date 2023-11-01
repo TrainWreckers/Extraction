@@ -1,6 +1,6 @@
 SCR_TW_AISpawnPoint {
  ID "5EBF0B0EC38FCFFC"
- coords -1.767 0.94 1.924
+ coords -4.298 3.59 8.196
  m_EntityPrefabs {
   "{62B6D3AF04AE910A}Prefabs/Characters/Factions/OPFOR/USSR_Army/TW_AI_USSR_Rifleman.et"
  }

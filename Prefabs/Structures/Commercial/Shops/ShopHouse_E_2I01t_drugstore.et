@@ -1,3 +1,23 @@
 SCR_DestructibleBuildingEntity : "{9064E65F34097C8F}Prefabs/Structures/Commercial/Shops/ShopHouse_E_2I01t_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC30343BA3E86D4"
+    coords 3.373 0.2 0.888
+   }
+   {
+    ID "5EC30343BA3E86E0"
+    coords 0.889 6.39 -7.082
+   }
+   {
+    ID "5EC30343BA3E86EA"
+    coords -0.76 0.495 -2.043
+   }
+   {
+    ID "5EC30343BA3E86F1"
+    coords -3.271 4.3 4.927
+   }
+  }
+ }
 }

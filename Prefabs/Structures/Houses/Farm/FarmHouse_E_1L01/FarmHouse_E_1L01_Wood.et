@@ -1,3 +1,23 @@
 SCR_DestructibleBuildingEntity : "{23ED22AC15AA9EE7}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01/FarmHouse_E_1L01_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC303416468AD5E"
+    coords 0.792 0.278 8.235
+   }
+   {
+    ID "5EC303416468AD66"
+    coords 0.323 3.583 -6.379
+   }
+   {
+    ID "5EC303416468AD6F"
+    coords 3.651 0.278 0.529
+   }
+   {
+    ID "5EC303416468AD7B"
+    coords 3.112 0.279 -4.962
+   }
+  }
+ }
 }

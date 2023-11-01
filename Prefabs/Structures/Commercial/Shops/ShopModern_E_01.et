@@ -1,3 +1,31 @@
 SCR_DestructibleBuildingEntity : "{9ABD5AF92E43D2AA}Prefabs/Structures/Commercial/Shops/ShopModern_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC3034018622FAB"
+    coords 10.865 0 -7.261
+   }
+   {
+    ID "5EC3034018622FC1"
+    coords 0.994 0 -10.338
+   }
+   {
+    ID "5EC3034018622FCB"
+    coords -8.477 0 -6.93
+   }
+   {
+    ID "5EC3034018622FE1"
+    coords 9.286 0 -2.968
+   }
+   {
+    ID "5EC3034018622FF3"
+    coords -3.1 0 -9.27
+   }
+   {
+    ID "5EC3034018622FFA"
+    coords 2.735 4 -6.432
+   }
+  }
+ }
 }
