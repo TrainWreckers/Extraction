@@ -1,0 +1,27 @@
+SCR_DestructibleBuildingEntity : "{A05E08085F564AFB}Prefabs/Structures/Cultural/Churches/Church_01/Church_01_Base.et" {
+ ID "5206DA6BF27D60C9"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC3034101E4AA1D"
+    coords 4.824 3.59 10.481
+   }
+   {
+    ID "5EC3034101E4AA22"
+    coords 3.684 0.37 -8.874
+   }
+   {
+    ID "5EC3034101E4AA2E"
+    coords 2.314 0.37 -7.122
+   }
+   {
+    ID "5EC3034101E4AA37"
+    coords -3.828 0.37 -8.7
+   }
+   {
+    ID "5EC3034101E4AA56"
+    coords 0.856 10.258 13.597
+   }
+  }
+ }
+}

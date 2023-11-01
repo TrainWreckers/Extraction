@@ -27,6 +27,16 @@ SCR_ChimeraCharacter : "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_
    MainType Unit
    UnitType Infantry
   }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5EC2C7D3037F13DF}" {
+    }
+    ItemsInitConfigurationItem "{5EC2C7D3030EF8A1}" {
+    }
+    ItemsInitConfigurationItem "{5EC2C7D31CE4B508}" {
+    }
+   }
+  }
   SCR_ResourceComponent "{5EBF418CA2C43B16}" {
    m_aConsumers {
     SCR_ResourceConsumer "{5E6485852E650CC4}" : "{E77EA96D4FC48177}Configs/Resources/Supplies/Consumers/Generic/Consumer_Self.conf" {

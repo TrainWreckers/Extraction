@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{C363B659675041BA}Prefabs/Structures/Agriculture/Barn/Barn_E_03_closed.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,23 @@
+SCR_DestructibleBuildingEntity : "{0B1B8B16E7E9481F}Prefabs/Structures/Commercial/Pubs/PubVillage_E_2L01/PubVillage_E_2L01_Base.et" {
+ ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC303438D691248"
+    coords 5.274 0 -5.999
+   }
+   {
+    ID "5EC303438D691250"
+    coords -7.237 0 -5.694
+   }
+   {
+    ID "5EC303438D691273"
+    coords -6.892 -0 -0.918
+   }
+   {
+    ID "5EC303438D69127A"
+    coords 0.996 0 -0.919
+   }
+  }
+ }
+}

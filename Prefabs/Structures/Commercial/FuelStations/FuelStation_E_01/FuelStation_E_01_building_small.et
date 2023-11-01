@@ -1,0 +1,9 @@
+SCR_DestructibleBuildingEntity : "{614555E9CD7A4399}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_building_small_base.et" {
+ ID "F0DBA538AC2A0552"
+ {
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   ID "5EC3034264F6B6A8"
+   coords 0.326 0.1 -0.565
+  }
+ }
+}
