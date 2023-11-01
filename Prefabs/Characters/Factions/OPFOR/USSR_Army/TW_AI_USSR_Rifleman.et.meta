@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{62B6D3AF04AE910A}Prefabs/Characters/Factions/OPFOR/USSR_Army/TW_Rifleman.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

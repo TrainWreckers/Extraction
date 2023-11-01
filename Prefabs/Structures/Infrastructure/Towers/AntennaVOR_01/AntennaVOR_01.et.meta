@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{5C9F32A26A42876F}Prefabs/Structures/Infrastructure/Towers/AntennaVOR_01/AntennaVOR_01.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

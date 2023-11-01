@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{C526728F8920399A}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_green.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

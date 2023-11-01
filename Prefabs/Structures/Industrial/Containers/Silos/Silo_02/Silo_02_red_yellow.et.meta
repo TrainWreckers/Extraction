@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{0DB364ED28333396}Prefabs/Structures/Industrial/Containers/Silos/Silo_02/Silo_02_red_yellow.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
