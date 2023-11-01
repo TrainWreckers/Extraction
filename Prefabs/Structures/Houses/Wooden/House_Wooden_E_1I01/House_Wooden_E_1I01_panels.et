@@ -1,3 +1,19 @@
 SCR_DestructibleBuildingEntity : "{339AC3B9905BA1AE}Prefabs/Structures/Houses/Wooden/House_Wooden_E_1I01/House_Wooden_E_1I01_panels_Base.et" {
  ID "51A2846100141E7D"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC3486804926A0C"
+    coords -2.529 1.16 -1.878
+   }
+   {
+    ID "5EC3486804926A37"
+    coords 1.897 1.16 0.57
+   }
+   {
+    ID "5EC3486804926BEF"
+    coords -4.128 1.16 -1.925
+   }
+  }
+ }
 }

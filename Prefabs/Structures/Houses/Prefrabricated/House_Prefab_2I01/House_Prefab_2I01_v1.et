@@ -16,7 +16,11 @@ SCR_DestructibleBuildingEntity : "{7B848786FAA52728}Prefabs/Structures/Houses/Pr
    }
    {
     ID "5EC303418B974C79"
-    coords -2.42 -0 2.67
+    coords -2.42 0 2.67
+   }
+   {
+    ID "5EC3486DD5861E07"
+    coords -2.284 3 5.499
    }
   }
  }

@@ -1,3 +1,23 @@
 SCR_DestructibleBuildingEntity : "{DAB70F359B58E2DC}Prefabs/Structures/Houses/Village/House_Mountain_E_1I01/House_Mountain_E_1I01_short_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC3486F93FD993C"
+    coords -9.336 0 2.285
+   }
+   {
+    ID "5EC3486F93FD9942"
+    coords -4.358 0 -1.704
+   }
+   {
+    ID "5EC3486F93FD994B"
+    coords -0.759 0.019 1.912
+   }
+   {
+    ID "5EC3486F93FD9953"
+    coords -9.07 0 -1.659
+   }
+  }
+ }
 }

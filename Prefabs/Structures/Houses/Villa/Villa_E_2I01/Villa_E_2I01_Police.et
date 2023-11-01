@@ -1,3 +1,31 @@
 SCR_DestructibleBuildingEntity : "{29CABA57BEA2A188}Prefabs/Structures/Houses/Villa/Villa_E_2I01/Villa_E_2I01_Police_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC3486F189D5814"
+    coords -5.336 3.8 -1.534
+   }
+   {
+    ID "5EC3486F189D581D"
+    coords -1.439 -0.208 -4.861
+   }
+   {
+    ID "5EC3486F189D59D7"
+    coords 2.784 -0 0.592
+   }
+   {
+    ID "5EC3486F189D59E2"
+    coords 4.052 3.8 3.26
+   }
+   {
+    ID "5EC3486F189D59EC"
+    coords -0.98 3.8 0.425
+   }
+   {
+    ID "5EC3486F189D59F2"
+    coords 2.634 3.8 -2.615
+   }
+  }
+ }
 }
