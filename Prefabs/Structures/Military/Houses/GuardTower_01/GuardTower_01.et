@@ -1,3 +1,19 @@
 SCR_DestructibleBuildingEntity : "{33F50E1C918159AB}Prefabs/Structures/Military/Houses/GuardTower_01/GuardTower_01_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC4C7752BE91E49"
+    coords 1.615 6.949 1.92
+   }
+   {
+    ID "5EC4C7752BE91E64"
+    coords -1.652 6.949 1.738
+   }
+   {
+    ID "5EC4C7752BE91E6F"
+    coords -0.008 6.986 0.505
+   }
+  }
+ }
 }

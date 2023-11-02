@@ -1,3 +1,71 @@
 SCR_DestructibleBuildingEntity : "{80F53B22769563A5}Prefabs/Structures/Services/Hotels/MountainHotel_01/MountainHotel_01_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC4C7722EF2B200"
+    coords -10.507 3.4 0.283
+   }
+   {
+    ID "5EC4C7722EF2B207"
+    coords -13.056 3.4 -3.942
+   }
+   {
+    ID "5EC4C7722EF2B20D"
+    coords -8.555 3.4 -9.323
+   }
+   {
+    ID "5EC4C7722EF2B213"
+    coords 8.613 3.4 -6.763
+   }
+   {
+    ID "5EC4C7722EF2B21A"
+    coords -8.302 3.4 -7.882
+   }
+   {
+    ID "5EC4C7722EF2B234"
+    coords -6.663 -0 -6.591
+   }
+   {
+    ID "5EC4C7722EF2B239"
+    coords 9.325 0 1.014
+   }
+   {
+    ID "5EC4C7722EF2B23F"
+    coords -10.995 0 -10.534
+   }
+   {
+    ID "5EC4C7722EF2B3A5"
+    coords 9.842 0 -7.064
+   }
+   {
+    ID "5EC4C7722EF2B3CA"
+    coords 3.618 0.019 0.498
+   }
+   {
+    ID "5EC4C7722EF2B3DD"
+    coords 0.476 0 -7.77
+   }
+   {
+    ID "5EC4C7722EF2B3E2"
+    coords -4.882 3.4 0.714
+   }
+   {
+    ID "5EC4C7722EF2B3E7"
+    coords 8.003 3.4 -3.49
+   }
+   {
+    ID "5EC4C7722EF2B3EE"
+    coords 3.841 3.4 -7.922
+   }
+   {
+    ID "5EC4C7722EF2B3F2"
+    coords -10.646 0 -3.548
+   }
+   {
+    ID "5EC4C7722EF2B3FA"
+    coords -16.863 -0 -3.863
+   }
+  }
+ }
 }
