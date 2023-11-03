@@ -1,3 +1,9 @@
 SCR_DestructibleBuildingEntity : "{1FDD5F0D46F29CF5}Prefabs/Structures/Industrial/Houses/Workshop_01/Workshop_01_Side_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   ID "5EC371B744F70C01"
+   coords 1.035 0.19 0.094
+  }
+ }
 }

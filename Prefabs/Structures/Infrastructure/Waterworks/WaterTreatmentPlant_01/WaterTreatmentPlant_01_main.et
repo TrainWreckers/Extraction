@@ -1,3 +1,19 @@
 SCR_DestructibleBuildingEntity : "{0C818BB5D185C49F}Prefabs/Structures/Infrastructure/Waterworks/WaterTreatmentPlant_01/WaterTreatmentPlant_01_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B133D7FA82"
+    coords 3.285 0.705 6.947
+   }
+   {
+    ID "5EC371B133D7FAA9"
+    coords 0.367 0.1 11.77
+   }
+   {
+    ID "5EC371B133D7FABD"
+    coords 6.21 0.1 -9.623
+   }
+  }
+ }
 }

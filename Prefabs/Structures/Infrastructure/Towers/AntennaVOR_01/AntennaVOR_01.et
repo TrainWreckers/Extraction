@@ -1,3 +1,23 @@
 StaticModelEntity : "{9523128F98C1788F}Prefabs/Structures/Infrastructure/Towers/AntennaVOR_01/AntennaVOR_01_base.et" {
  ID "50D67C36F43527FE"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B11559790D"
+    coords -13.665 4.853 -2.987
+   }
+   {
+    ID "5EC371B115597917"
+    coords -7.264 5.061 -2.767
+   }
+   {
+    ID "5EC371B115597935"
+    coords 6.465 5.219 4.073
+   }
+   {
+    ID "5EC371B11559793D"
+    coords -14.378 2.573 2.365
+   }
+  }
+ }
 }

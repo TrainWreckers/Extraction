@@ -1,3 +1,19 @@
 SCR_DestructibleBuildingEntity : "{5B74046E4F7FBBDC}Prefabs/Structures/Houses/Village/House_Village_E_1I01/House_Village_E_1I01_base.et" {
  ID "74F1A6F6FC4C0299"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC3486FB234F62F"
+    coords -2.589 0.337 3.69
+   }
+   {
+    ID "5EC3486FB234F649"
+    coords 2.699 0.337 4.71
+   }
+   {
+    ID "5EC3486FB234F674"
+    coords -0.544 0.337 -3.374
+   }
+  }
+ }
 }

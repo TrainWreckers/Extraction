@@ -1,3 +1,43 @@
 SCR_DestructibleBuildingEntity : "{8FE02C29CCA9942D}Prefabs/Structures/Services/Fire/FireStation_E_01/FireStation_E_01_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC4C77562D6777F"
+    coords 1.269 9.235 5.456
+   }
+   {
+    ID "5EC4C77562D67784"
+    coords 0.551 0.05 4.875
+   }
+   {
+    ID "5EC4C77562D6778D"
+    coords -0.739 0.05 -4.258
+   }
+   {
+    ID "5EC4C77562D67799"
+    coords -1.032 9.251 6.463
+   }
+   {
+    ID "5EC4C77562D677A0"
+    coords -5.923 0.05 -4.566
+   }
+   {
+    ID "5EC4C77562D677A8"
+    coords -4.023 0.05 -4.578
+   }
+   {
+    ID "5EC4C77562D677B7"
+    coords 5.476 0.05 -1.724
+   }
+   {
+    ID "5EC4C77562D677D0"
+    coords 0.528 0.05 0.856
+   }
+   {
+    ID "5EC4C77562D677D6"
+    coords -1.31 9.213 3.552
+   }
+  }
+ }
 }

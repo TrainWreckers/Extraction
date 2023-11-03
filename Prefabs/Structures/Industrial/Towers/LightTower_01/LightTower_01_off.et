@@ -1,3 +1,15 @@
 StaticModelEntity : "{A64C66196086B206}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01_base.et" {
  ID "50D67C36F43527FE"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B78BD6FA0F"
+    coords 0.35 15.085 -0.616
+   }
+   {
+    ID "5EC371B78BD6FA17"
+    coords -0.283 15.085 -0.685
+   }
+  }
+ }
 }

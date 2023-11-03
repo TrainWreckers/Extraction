@@ -1,3 +1,19 @@
 SCR_DestructibleBuildingEntity : "{1E7AC996BD3B73A7}Prefabs/Structures/Military/Houses/GarageMilitary_E_01/GarageMilitary_E_01_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC4C77621838D12"
+    coords -16.43 0.439 -2.834
+   }
+   {
+    ID "5EC4C776218392CC"
+    coords -12.387 0.439 2.865
+   }
+   {
+    ID "5EC4C776218392E7"
+    coords 23.968 0.439 3.227
+   }
+  }
+ }
 }

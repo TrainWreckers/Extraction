@@ -1,3 +1,9 @@
 SCR_DestructibleBuildingEntity : "{BA9AA73432603113}Prefabs/Structures/Infrastructure/Naval/Sheds/FishermanShed_02_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   ID "5EC371B66606C7A3"
+   coords 0.193 0.45 0.297
+  }
+ }
 }

@@ -1,3 +1,23 @@
 SCR_DestructibleBuildingEntity : "{9D656741EA2AABC5}Prefabs/Structures/Industrial/Garages/Garage_E_02/Garage_E_02_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B5C7EFA904"
+    coords 10.525 0.073 6.608
+   }
+   {
+    ID "5EC371B5C7EFA913"
+    coords -10.963 0.073 6.142
+   }
+   {
+    ID "5EC371B5C7EFA91C"
+    coords -9.705 0.073 -4.214
+   }
+   {
+    ID "5EC371B5C7EFAEFB"
+    coords 11.624 0.073 -6.078
+   }
+  }
+ }
 }

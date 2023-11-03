@@ -1,3 +1,83 @@
 SCR_DestructibleBuildingEntity : "{A5E49CC9C7C6E1E3}Prefabs/Structures/Infrastructure/Power/DieselPowerPlant_01/DieselPowerPlant_01_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC371B6C8DC984E"
+    coords 7.414 15.183 13.437
+   }
+   {
+    ID "5EC371B6C8DC9864"
+    coords 13.053 15.186 13.673
+   }
+   {
+    ID "5EC371B6C8DC986E"
+    coords 10.281 11.97 4.219
+   }
+   {
+    ID "5EC371B6C8DC9883"
+    coords -1.065 8.757 4.465
+   }
+   {
+    ID "5EC371B6C8DC988A"
+    coords 12.471 8.169 7.124
+   }
+   {
+    ID "5EC371B6C8DC9895"
+    coords 10.906 11.968 -8.806
+   }
+   {
+    ID "5EC371B6C8DC989C"
+    coords -5.561 8.465 -9.613
+   }
+   {
+    ID "5EC371B6C8DC98A5"
+    coords 24.101 1.14 0.327
+   }
+   {
+    ID "5EC371B6C8DC98AB"
+    coords 12.729 6.269 14.719
+   }
+   {
+    ID "5EC371B6C8DC98B0"
+    coords 11.296 8.169 -3.981
+   }
+   {
+    ID "5EC371B6C8DC98B8"
+    coords 11.858 8.169 -8.766
+   }
+   {
+    ID "5EC371B6C8DC98BE"
+    coords 15.929 5.517 -3.498
+   }
+   {
+    ID "5EC371B6C8DC98C2"
+    coords 12.262 0.57 -1.185
+   }
+   {
+    ID "5EC371B6C8DC98C7"
+    coords 7.553 0.568 -5.241
+   }
+   {
+    ID "5EC371B6C8DC98CE"
+    coords -3.926 0.57 -4.014
+   }
+   {
+    ID "5EC371B6C8DC98D4"
+    coords 7.139 0.57 4.992
+   }
+   {
+    ID "5EC371B6C8DC98DA"
+    coords 12.125 0.57 7.035
+   }
+   {
+    ID "5EC371B6C8DC98F4"
+    coords 10.624 4.369 -6.03
+   }
+   {
+    ID "5EC371B6C8DC98F9"
+    coords 8.674 4.369 0.923
+   }
+  }
+ }
 }

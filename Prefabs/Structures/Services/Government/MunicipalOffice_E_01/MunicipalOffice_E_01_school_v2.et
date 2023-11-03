@@ -1,3 +1,51 @@
 SCR_DestructibleBuildingEntity : "{76D7178C2C1F92A9}Prefabs/Structures/Services/Government/MunicipalOffice_E_01/MunicipalOffice_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC4C7743633CA08"
+    coords -4.822 3.997 6.299
+   }
+   {
+    ID "5EC4C7743633CA0F"
+    coords 1.889 3.997 6.414
+   }
+   {
+    ID "5EC4C7743633CA12"
+    coords -8.612 0.2 3.757
+   }
+   {
+    ID "5EC4C7743633CA19"
+    coords 3.453 2.098 -4.137
+   }
+   {
+    ID "5EC4C7743633CA1F"
+    coords -8.204 3.997 6.655
+   }
+   {
+    ID "5EC4C7743633CA20"
+    coords -1.747 3.997 -0.617
+   }
+   {
+    ID "5EC4C7743633CA26"
+    coords 5.274 0.2 5.684
+   }
+   {
+    ID "5EC4C7743633CA33"
+    coords 6.815 3.997 6.579
+   }
+   {
+    ID "5EC4C7743633CA3A"
+    coords 8.348 3.997 -1.145
+   }
+   {
+    ID "5EC4C7743633CBCC"
+    coords 0.394 0.2 3.792
+   }
+   {
+    ID "5EC4C7743633CBE7"
+    coords -4.368 0.2 5.461
+   }
+  }
+ }
 }
