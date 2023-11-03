@@ -9,7 +9,10 @@ class SCR_TW_Test_SaveLoadout : ScriptedUserAction
 		bool success = SCR_TW_ExtractionPlayerInventoryComponent.GetInstance().SavePlayerLoadout(currentPlayerId);
 		
 		if(success)
+		{
 			SCR_NotificationsComponent.SendLocal(ENotification.PLAYER_LOADOUT_SAVED);
+			SCR_TW_ExtractionHandler.GetInstance().UpdateInventory(currentPlayerId);
+		}
 		else
 			SCR_NotificationsComponent.SendLocal(ENotification.PLAYER_LOADOUT_NOT_SAVED);
 	}

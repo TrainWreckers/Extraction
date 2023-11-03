@@ -23,6 +23,8 @@ SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger
 SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  components {
   SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
+   m_SpawnLocation "SpawnArea"
+   m_PlayerLoadoutCrateSpacing 1
   }
   SCR_TW_ExtractionPlayerInventoryComponent "{5EBF4A5F232BAFAE}" {
   }
@@ -52,28 +54,6 @@ SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadout
 }
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
  coords 6841.999 125.282 6661.14
-}
-GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/PlayerHub_S_US_01.et" {
- coords 6384.262 165.031 6775.197
- {
-  GenericEntity {
-   ID "5E6B134F140F6135"
-   components {
-    ActionsManagerComponent "{5E3298BE3694CAAB}" {
-     additionalActions {
-      SCR_TW_Test_SaveLoadout "{5EBF4A4573F087BD}" {
-       ParentContextList {
-        "default"
-       }
-       UIInfo UIInfo "{5EBF4A457BEA3CB3}" {
-        Name "Test Save Loadout"
-       }
-      }
-     }
-    }
-   }
-  }
- }
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
  coords 6841.941 125.282 6661.145

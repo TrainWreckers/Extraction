@@ -18,8 +18,36 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		return s_Instance;
 	}
 	
-
 	private ref map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>> lootMap = new map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>>();	
+	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
+	
+	override void OnPlayerConnected(int playerId)
+	{
+		if(!crates.Contains(playerId))
+		{
+			Print(string.Format("TrainWreck: %1 -> Not enough crates to support players", playerId), LogLevel.ERROR);
+			return;
+		}
+		
+		crates.Get(playerId).InitializeForPlayer(playerId);
+	}
+	
+	void RegisterPlayerCrate(int playerId, SCR_TW_PlayerCrateComponent crate)
+	{
+		if(!crates.Contains(playerId))
+		{
+			Print(string.Format("TrainWreck: Registering player crate for %1", playerId), LogLevel.NORMAL);
+			crates.Insert(playerId, crate);
+		}
+	}
+	
+	void UpdateInventory(int playerId)
+	{
+		if(!crates.Contains(playerId))
+			return;
+		
+		crates.Get(playerId).InitializeForPlayer(playerId);
+	}
 	
 	override void OnGameModeStart()
 	{

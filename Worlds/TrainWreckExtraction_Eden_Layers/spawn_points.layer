@@ -1,3 +1,75 @@
-SCR_ChimeraCharacter : "{5D86C8643E266A5E}Prefabs/Characters/Campaign/Final/TW_Extraction_US_Base.et" {
- coords 6383.228 165.291 6776.798
+$grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    Attributes SCR_ItemAttributeCollection "{5476CDB2EAD8225E}" {
+     m_Size SLOT_3x3
+     m_SlotType SLOT_ANY
+    }
+   }
+  }
+  coords 4970.699 108.351 8406.986
+ }
+ {
+  components {
+   SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
+    playerId 2
+   }
+  }
+  coords 4972.171 108.292 8407.031
+ }
+ {
+  components {
+   SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
+    playerId 3
+   }
+  }
+  coords 4973.822 108.263 8407.358
+ }
+ {
+  components {
+   SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
+    playerId 4
+   }
+  }
+  coords 4975.594 108.3 8407.248
+ }
+ {
+  components {
+   SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
+    playerId 5
+   }
+  }
+  coords 4977.667 108.395 8407.804
+ }
+ {
+  components {
+   SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
+    playerId 6
+   }
+  }
+  coords 4977.902 107.749 8405.514
+ }
+}
+GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/PlayerHub_S_US_01.et" {
+ coords 4969.941 106.528 8398.556
+ {
+  GenericEntity {
+   ID "5E6B134F140F6135"
+   components {
+    ActionsManagerComponent "{5E3298BE3694CAAB}" {
+     additionalActions {
+      SCR_TW_Test_SaveLoadout "{5EC34CF6C50A4B2F}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{5EC34CF6C95C2825}" {
+        Name "Save Test Loadout"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }

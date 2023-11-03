@@ -97,22 +97,12 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			if(!slot) continue;
 			IEntity attachedEntity = slot.GetAttachedEntity();
 			if(!attachedEntity) continue;
-			ResourceName prefabName;
-			BaseContainer prefab = attachedEntity.GetPrefabData().GetPrefab();
 			
-			while (prefabName.IsEmpty() && prefab)
-			{
-		      	prefabName = prefab.GetName();
-		      	prefab = prefab.GetAncestor();
-		    }
-		
-		    if (prefabName.IsEmpty())
-		       continue;
-				
-			int count = prefab.GetNumVars();
+			ResourceName prefabName = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
+			
 			// at this point we have figured out the container items.
 			// now we need to dive into this items to figure out what's inside them
-			Print(string.Format("TrainWreck: Loadout: %1 -> %2 (%3)", name, prefabName, count));
+			Print(string.Format("TrainWreck: Loadout: %1 -> %2", name, prefabName));
 			
 			
 			BaseInventoryStorageComponent substorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
@@ -135,11 +125,11 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 		
 		// Bring in existing save file
 		string playerSaveFile = string.Format("%1.json", name);
-		if(FileIO.FileExists(playerSaveFile))
+		
+		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
+		bool success = loadContext.LoadFromFile(playerSaveFile);
+		if(success)
 		{
-			SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
-			loadContext.LoadFromFile(playerSaveFile);
-			
 			ref map<string, int> saved;
 			loadContext.ReadValue("items", saved);
 			
@@ -157,7 +147,7 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 		return true;	
 	}
 	
-	private void ProcessInventory(string name, BaseInventoryStorageComponent storage, out notnull map<string, int> loadout, bool isWeapon = false)
+	private void ProcessInventory(string name, BaseInventoryStorageComponent storage, out notnull map<string, int> loadout, bool isWeapon = false, int depth = 0)
 	{
 		int slotsCount = storage.GetSlotsCount();
 			
@@ -186,27 +176,14 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			BaseInventoryStorageComponent entityStorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
 			
 			if(entityStorage)
-			{
-				ProcessInventory(name, entityStorage, loadout);
-				// For weapons we want to get the ammo inside + the weapon itself
-				if(!isWeapon)
-					continue;
-			}
+				ProcessInventory(name, entityStorage, loadout, depth: depth++);				
 			
-		    ResourceName prefabName;
-		    BaseContainer prefab = attachedEntity.GetPrefabData().GetPrefab();
-		    while (prefabName.IsEmpty() && prefab)
-			{
-		      	prefabName = prefab.GetName();
-		      	prefab = prefab.GetAncestor();
-		    }
+		    ResourceName prefabName = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();		    
 		
 		    if (prefabName.IsEmpty())
 		       continue;
 				
-			int count = prefab.GetNumVars();
-				
-			Print(string.Format("TrainWreck: Loadout: %1 -> %2 (%3)", name, prefabName, count));
+			Print(string.Format("TrainWreck: Loadout: %1 -> %2", name, prefabName));
 			
 			if(!loadout.Contains(prefabName))
 				loadout.Insert(prefabName, 1);
