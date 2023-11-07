@@ -1,6 +1,9 @@
 class SCR_TW_ExtractionSpawnHandlerClass : SCR_BaseGameModeComponentClass {};
 class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 {
+	[Attribute("", UIWidgets.CheckBox, category: "Spawn Details")]
+	protected bool m_DisableSpawns;
+	
 	[Attribute("10", UIWidgets.Slider, params: "5 75 1", category: "Spawn Details")]
 	protected int m_MaxAgents;
 	
@@ -41,7 +44,10 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		if(!rpl.IsMaster())
 			return;		
 		
-		GetGame().GetCallqueue().CallLater(FirstPass, 30 * 1000, false);
+		if(m_DisableSpawns)
+			return;
+		
+		GetGame().GetCallqueue().CallLater(FirstPass, 15 * 1000, false);
 		
 		// These methods periodically update our stuff. Thus need to repeat indefinitely
 		GetGame().GetCallqueue().CallLater(ReinitializePlayers, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
@@ -71,6 +77,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			players.Insert(player);
 		}
 		
+		Print(string.Format("TrainWreck: Players: %1", players.Count()));
 		this.players = players;
 	}
 	
@@ -82,7 +89,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		Print(string.Format("TrainWreck: Added spawn point. Now have %1", m_AISpawnPoints.Count()));
 		m_AISpawnPoints.Insert(point);
 	}
 	
@@ -105,7 +111,19 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	
 	int GetAgentCount(out notnull array<AIAgent> agents)
 	{
-		GetGame().GetAIWorld().GetAIAgents(agents);
+		ref array<AIAgent> worldAgents = {};
+		GetGame().GetAIWorld().GetAIAgents(worldAgents);
+		
+		// We want to ensure we're only grabbing AI we care about -- specifically AI
+		foreach(auto agent : worldAgents)
+		{
+			SCR_ChimeraAIAgent ai = SCR_ChimeraAIAgent.Cast(agent);
+			if(!ai)
+				continue;
+			
+			agents.Insert(agent);
+		}
+		
 		return agents.Count();
 	}
 	
@@ -124,7 +142,10 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		int nearbyCount = GetPointsInPlayerVicinity(nearbyPoints);
 		
 		if(nearbyCount == 0)
+		{
 			Print("TrainWreck: Failed to find nearby SCR_TW_AISpawnPoints", LogLevel.WARNING);
+			return;
+		}
 		
 		int spawnCount = Math.RandomIntInclusive(0, 10);
 		for(int i = 0; spawnCount; i++)
@@ -138,10 +159,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			nearbyCount--;
 			
 			if(!currentPoint.CanSpawn())
-			{
-				i--;
 				continue;
-			}
 			
 			SCR_AIGroup group = currentPoint.Spawn();
 			
@@ -173,11 +191,19 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		int currentAgents = GetAgentCount(agents);
 		int queuedForGC = 0;
 		
+		if(currentAgents <= 0)
+			return;
+		
+		Print("TrainWreck: GarbageCollection Pass");
+		
 		foreach(AIAgent agent : agents)
 		{
+			if(!agent)
+				continue;
+			
 			if(SCR_TW_Util.IsOutsideOfPlayers(agent.GetOrigin(), players, m_MaximumAIDistance))
-			{
-				GetGame().GetCallqueue().CallLater(ProcessForGC, m_ExceedDistanceGarbageTimerInSeconds, false, agent);
+			{				
+				GetGame().GetCallqueue().CallLater(ProcessForGC, SCR_TW_Util.FromSecondsToMilliseconds(m_ExceedDistanceGarbageTimerInSeconds), false, agent);
 				queuedForGC++;
 			}
 		}

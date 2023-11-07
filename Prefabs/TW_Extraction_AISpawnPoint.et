@@ -1,8 +1,12 @@
 SCR_TW_AISpawnPoint {
  ID "5EBF0B0EC38FCFFC"
+ components {
+  RplComponent "{5ECECECE46D14228}" {
+  }
+ }
  coords 1.381 -1.019 1.8
  m_EntityPrefabs {
-  "{62B6D3AF04AE910A}Prefabs/Characters/Factions/OPFOR/USSR_Army/TW_AI_USSR_Rifleman.et"
+  "{A914A9FF67CA2AF3}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman.et"
  }
  m_ChanceToSpawn 10
  m_CanRespawn 1

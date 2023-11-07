@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{4C05534FF72ACB7D}Configs/Journal/Journal_TW_Extraction_Eden.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

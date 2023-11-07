@@ -313,10 +313,13 @@ class SCR_TW_Util
 		return GetLandPositionAround(center.GetOrigin(), radius);	
 	}
 	
-	static bool IsOutsideOfPlayers(vector position, array<IEntity> entities, float distance)
+	static bool IsOutsideOfPlayers(vector position, notnull array<IEntity> entities, float distance)
 	{
 		foreach(IEntity entity : entities)
 		{
+			if(!entity)
+				continue;
+			
 			if(vector.Distance(entity.GetOrigin(), position) < distance)
 				return false;
 		}
@@ -328,6 +331,8 @@ class SCR_TW_Util
 	{
 		foreach(IEntity entity : entities)
 		{
+			if(!entity) continue;
+			
 			float distance = Math.AbsFloat(vector.Distance(entity.GetOrigin(), position));
 			
 			if(distance < min || distance > max)

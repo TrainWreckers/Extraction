@@ -22,15 +22,28 @@ SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger
 }
 SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  components {
+  SCR_CommandingManagerComponent "{5EC61A8D7686C0E3}" {
+  }
+  SCR_RespawnBriefingComponent "{5EC61A8D59063ACE}" {
+   m_sJournalConfigPath "{4C05534FF72ACB7D}Configs/Journal/Journal_TW_Extraction_Eden.conf"
+   m_Info SCR_UIInfo "{5EC61A8A151066B1}" {
+    Description "Briefing"
+   }
+   m_SimpleBriefingBackground "{BDF87A87F81B03EF}UI/TrainWreck.edds"
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_AutoSpawnLogic "{5D36888CC966608A}" {
+    m_sForcedFaction "US"
+   }
+  }
   SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
-   m_SpawnLocation "SpawnArea"
-   m_PlayerLoadoutCrateSpacing 1
   }
   SCR_TW_ExtractionPlayerInventoryComponent "{5EBF4A5F232BAFAE}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5EBF0B14A6CAF6AB}" {
-   m_MaxAgents 20
-   m_MinimumAISpawnDistance 200
+   m_MaxAgents 35
+   m_MinimumAISpawnDistance 150
+   m_GarbageCollectionTimer 80
   }
   SerializerInventoryStorageManagerComponent "{5EBF4A5F293DC235}" {
   }

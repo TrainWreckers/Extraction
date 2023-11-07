@@ -103,17 +103,19 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			// at this point we have figured out the container items.
 			// now we need to dive into this items to figure out what's inside them
 			Print(string.Format("TrainWreck: Loadout: %1 -> %2", name, prefabName));
-			
+			if(!loadoutMap.Contains(prefabName))
+				loadoutMap.Insert(prefabName, 1);
 			
 			BaseInventoryStorageComponent substorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
 						
 			if(!substorage)
 				continue;
-			ProcessInventory(name, substorage, loadoutMap);
+			
+			ProcessInventory(name, substorage, loadoutMap, depth: 1);
 		}
 		
 		BaseInventoryStorageComponent weaponStorage = inventory.GetWeaponStorage();		
-		ProcessInventory(name, weaponStorage, loadoutMap, true);
+		ProcessInventory(name, weaponStorage, loadoutMap, true, depth: 1);
 		
 		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
 		
@@ -162,6 +164,19 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			if (!attachedEntity)
 				continue;
 			
+			if(isWeapon && depth == 0)
+			{
+				ResourceName weaponResource = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
+				
+				if(weaponResource != ResourceName.Empty)
+				{
+					if(!loadout.Contains(weaponResource))
+						loadout.Insert(weaponResource, 1);
+					else
+						loadout.Set(weaponResource, loadout.Get(weaponResource) + 1);
+				}
+			}
+			
 			/*
 				Odds are if this attached entity contains storage 
 				it's something similar to the alice-vest where 
@@ -175,8 +190,12 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			*/
 			BaseInventoryStorageComponent entityStorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
 			
+			Print(string.Format("TrainWreck: <%1> AttachedEntityProcessInv: %2", depth, attachedEntity.GetPrefabData().GetPrefab().GetResourceName()));
+			
 			if(entityStorage)
-				ProcessInventory(name, entityStorage, loadout, depth: depth++);				
+			{
+				ProcessInventory(name, entityStorage, loadout, depth: depth++);
+			}				
 			
 		    ResourceName prefabName = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();		    
 		
@@ -212,24 +231,5 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		string playerFilename = string.Format("%1.json", playerName);
-		if(FileIO.FileExists(playerFilename))
-		{
-			TW_PlayerLootJSON savedData = new TW_PlayerLootJSON();
-			if(savedData.LoadFromFile(playerFilename))
-			{
-				Print(string.Format("TrainWreck: Successfully loaded %1's loadout", playerName));
-				
-				if(!m_PlayerLoadouts.Contains(playerName))
-					m_PlayerLoadouts.Insert(playerName, savedData);
-				else
-					m_PlayerLoadouts.Set(playerName, savedData);
-			}
-			else
-			{
-				Print(string.Format("TrainWreck: Failed to load %1's loadout", playerName), LogLevel.ERROR);
-				return;
-			}
-		}
 	}
 };

@@ -34,6 +34,11 @@ class SCR_TW_AISpawnPoint : GenericEntity
 		if(!GetGame().InPlayMode())
 			return;
 		
+		RplComponent rpl = RplComponent.Cast(FindComponent(RplComponent));
+		
+		if(!rpl.IsMaster())
+			return;
+		
 		SCR_TW_ExtractionSpawnHandler spawnHandler = SCR_TW_ExtractionSpawnHandler.GetInstance();
 		
 		if(!spawnHandler)
