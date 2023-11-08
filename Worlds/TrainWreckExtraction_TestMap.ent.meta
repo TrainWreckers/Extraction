@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{FA277C5C2D88638D}Worlds/TrainWreckExtraction_TestMap.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+ }
+}

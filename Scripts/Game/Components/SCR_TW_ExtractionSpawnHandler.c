@@ -61,44 +61,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		SpawnLoop();
 	}
 	
-	void ReinitializePlayers()
-	{
-		ref array<int> playerIds = {};
-		ref array<IEntity> players = {};
-		GetGame().GetPlayerManager().GetPlayers(playerIds);
-		
-		foreach(int playerId : playerIds)
-		{
-			auto player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-			
-			if(!player)
-				continue;
-			
-			players.Insert(player);
-		}
-		
-		Print(string.Format("TrainWreck: Players: %1", players.Count()));
-		this.players = players;
-	}
-	
-	void RegisterAISpawnPoint(SCR_TW_AISpawnPoint point)
-	{
-		if(!point)
-		{
-			Print("TrainWreck: invalid spawn point. Cannot be null", LogLevel.ERROR);
-			return;
-		}
-		
-		m_AISpawnPoints.Insert(point);
-	}
-	
-	void UnregisterAISpawnPoint(SCR_TW_AISpawnPoint point)
-	{
-		if(!point) return;
-		
-		m_AISpawnPoints.RemoveItem(point);
-	}
-	
 	void ProcessForGC(AIAgent agent)
 	{
 		if(!agent) return;
@@ -107,24 +69,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			return;
 		
 		SCR_EntityHelper.DeleteEntityAndChildren(agent);
-	}
-	
-	int GetAgentCount(out notnull array<AIAgent> agents)
-	{
-		ref array<AIAgent> worldAgents = {};
-		GetGame().GetAIWorld().GetAIAgents(worldAgents);
-		
-		// We want to ensure we're only grabbing AI we care about -- specifically AI
-		foreach(auto agent : worldAgents)
-		{
-			SCR_ChimeraAIAgent ai = SCR_ChimeraAIAgent.Cast(agent);
-			if(!ai)
-				continue;
-			
-			agents.Insert(agent);
-		}
-		
-		return agents.Count();
 	}
 	
 	void SpawnLoop()
@@ -147,7 +91,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		int spawnCount = Math.RandomIntInclusive(0, 10);
+		int spawnCount = Math.RandomIntInclusive(0, Math.Min(10, nearbyCount));
 		for(int i = 0; spawnCount; i++)
 		{
 			if(currentAgents >= m_MaxAgents) break;
@@ -210,4 +154,61 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		Print(string.Format("TrainWreck: AI Agents Detected: %1. Queued for GC: %2", currentAgents, queuedForGC), LogLevel.WARNING);
 	}
+	
+	void ReinitializePlayers()
+	{
+		ref array<int> playerIds = {};
+		ref array<IEntity> players = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		
+		foreach(int playerId : playerIds)
+		{
+			auto player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			
+			if(!player)
+				continue;
+			
+			players.Insert(player);
+		}
+		
+		Print(string.Format("TrainWreck: Players: %1", players.Count()));
+		this.players = players;
+	}
+	
+	void RegisterAISpawnPoint(SCR_TW_AISpawnPoint point)
+	{
+		if(!point)
+		{
+			Print("TrainWreck: invalid spawn point. Cannot be null", LogLevel.ERROR);
+			return;
+		}
+		
+		m_AISpawnPoints.Insert(point);
+	}
+	
+	void UnregisterAISpawnPoint(SCR_TW_AISpawnPoint point)
+	{
+		if(!point) return;
+		
+		m_AISpawnPoints.RemoveItem(point);
+	}
+	
+	int GetAgentCount(out notnull array<AIAgent> agents)
+	{
+		ref array<AIAgent> worldAgents = {};
+		GetGame().GetAIWorld().GetAIAgents(worldAgents);
+		
+		// We want to ensure we're only grabbing AI we care about -- specifically AI
+		foreach(auto agent : worldAgents)
+		{
+			SCR_ChimeraAIAgent ai = SCR_ChimeraAIAgent.Cast(agent);
+			if(!ai)
+				continue;
+			
+			agents.Insert(agent);
+		}
+		
+		return agents.Count();
+	}
+	
 };

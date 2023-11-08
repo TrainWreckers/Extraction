@@ -12,47 +12,9 @@ class SCR_TW_ExtractionPlayerInventoryComponentClass : SCR_BaseGameModeComponent
 	}
 };
 
-class TW_PlayerLootItemJSON : JsonApiStruct
-{
-	string resourceName;
-	int quantity;
-	
-	void TW_PlayerLootItem()
-	{
-		RegV("resourceName");
-		RegV("quantity");
-	}
-}
-
-class TW_PlayerLootJSON : JsonApiStruct
-{
-	string playerName;
-	ref array<string> items;
-	
-	void TW_PlayerLootJSON()
-	{
-		RegV("playerName");
-		RegV("items");				
-	}
-	
-	void AddItem(string resource) 
-	{ 
-		if(!items)
-		{
-			Print("TrainWreck: Initializing json loadout");
-			items = {};
-		}
-		items.Insert(resource); 		
-	}
-}
-
 class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 {
 	protected static SCR_TW_ExtractionPlayerInventoryComponent s_Instance;
-	
-	// Key: player name
-	// Value: saved data
-	protected ref map<string, ref TW_PlayerLootJSON> m_PlayerLoadouts = new map<string, ref TW_PlayerLootJSON>();
 	
 	protected bool m_LocalPlayerLoadoutAvailable;
 	ref SCR_PlayerLoadoutData m_LocalLoadoutData;

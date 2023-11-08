@@ -26,6 +26,15 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		// For testing purposes the logs for host + client are hard to validate
 		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
 		
+		if(!rpl)
+		{
+			Print("TrainWreck: InventoryLoot Container requires a RPL Component in order to function property", LogLevel.ERROR);
+			return;
+		}
+		
+		if(!rpl.IsMaster())
+			return;
+		
 		if(!GlobalLootContainers.Contains(this))
 			GlobalLootContainers.Insert(this);
 				
@@ -47,7 +56,7 @@ class SCR_TW_InventoryLoot : ScriptComponent
 			return false;
 		}
 				
-		auto result = storageManager.TrySpawnPrefabToStorage(item.GetItemPrefab());
+		auto result = storageManager.TrySpawnPrefabToStorage(item.GetItemResourceName());
 		
 		if(!result)
 		{

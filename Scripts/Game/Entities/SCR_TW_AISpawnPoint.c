@@ -73,9 +73,16 @@ class SCR_TW_AISpawnPoint : GenericEntity
 		if(CanSpawnInRadius())
 			spawnPosition = SCR_TW_Util.RandomPositionAround(this, GetSpawnRadius());
 		else
-			spawnPosition = GetOrigin();
+		{			
+			vector mat[4];
+			GetWorldTransform(mat);
+			spawnPosition = mat[3];
+		}
 		
-		SCR_AIGroup group = SCR_TW_Util.SpawnGroup(GetRandomPrefab(), spawnPosition, 1);
+		auto prefab = GetRandomPrefab();
+		
+		Print(string.Format("TrainWreck: Selected Prefab: %1", prefab));
+		SCR_AIGroup group = SCR_TW_Util.SpawnGroup(prefab, spawnPosition, 1);
 		
 		if(!group)
 		{
@@ -84,7 +91,9 @@ class SCR_TW_AISpawnPoint : GenericEntity
 		}
 		
 		m_HasSpawned = true;
-		AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(GetRandomWaypoint(), spawnPosition);
+		auto waypointPrefab = GetRandomWaypoint();
+		Print(string.Format("TrainWreck: Selected Waypoint: %1", waypointPrefab));
+		AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointPrefab, spawnPosition);
 		
 		if(!waypoint)
 		{

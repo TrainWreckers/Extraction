@@ -61,6 +61,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		int globalCount = SCR_TW_InventoryLoot.GlobalLootContainers.Count();
 		
 		Print(string.Format("TrainWreck: Loot Containers -> %1", globalCount), LogLevel.NORMAL);
+		
 		int validCount = 0;
 		foreach(auto container : SCR_TW_InventoryLoot.GlobalLootContainers)
 			if(container)
@@ -75,9 +76,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			
 			string format = string.Format("TrainWreck: %1", container.GetOwner().GetPrefabData().GetPrefabName());
 			int spawnCount = Math.RandomIntInclusive(1, 6);
-			
-			if(spawnCount > 0)
-				Print(string.Format("%1: SpawnCount(%2)", format, spawnCount), LogLevel.WARNING);
 			
 			// How many different things are we going to try spawning?								
 			for(int i = 0; i < spawnCount; i++)

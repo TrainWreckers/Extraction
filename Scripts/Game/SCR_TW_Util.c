@@ -206,24 +206,28 @@ class SCR_TW_Util
 	/*Spawn a group of AI at a given point*/
 	static SCR_AIGroup SpawnGroup(ResourceName groupPrefab, vector center, int radius, int minimumDistance = 0)
 	{
-		if(!groupPrefab) return null;
-		
-		Resource resource = Resource.Load(groupPrefab);
-		EntitySpawnParams params();
-		
-		vector mat[4];
-		vector position = RandomPositionAroundPoint(center, radius, minimumDistance);
-		
-		if(!position)
+		if(!groupPrefab || groupPrefab.IsEmpty()) 
 			return null;
 		
-		mat[3] = position;
+		Resource resource = Resource.Load(groupPrefab);
 		
+		if(!resource || !resource.IsValid())
+		{
+			Print(string.Format("TrainWreck: Invalid Group Prefab: %1", groupPrefab), LogLevel.ERROR);
+			return null;
+		}
+		
+		EntitySpawnParams params = EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
-		params.Transform = mat;
+		
+		if(radius <= 4)
+			params.Transform[3] = center;
+		else
+			params.Transform[3] = RandomPositionAroundPoint(center, radius, minimumDistance);
 		
 		return SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params));
-	}	
+	}
+	
 	
 	/*Get a position between two points*/
 	static vector PositionBetween(vector origin, vector destination, int distance)
