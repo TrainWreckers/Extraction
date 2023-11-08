@@ -201,11 +201,17 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		// We want to ensure we're only grabbing AI we care about -- specifically AI
 		foreach(auto agent : worldAgents)
 		{
-			SCR_ChimeraAIAgent ai = SCR_ChimeraAIAgent.Cast(agent);
-			if(!ai)
-				continue;
+			bool skip = false;
 			
-			agents.Insert(agent);
+			SCR_ChimeraAIAgent ai = SCR_ChimeraAIAgent.Cast(agent);
+			
+			if(ai)
+				agents.Insert(agent);
+			
+			SCR_AIGroup group = SCR_AIGroup.Cast(agent);
+			
+			if(group)
+				agents.Insert(agent);			
 		}
 		
 		return agents.Count();
