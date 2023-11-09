@@ -12,12 +12,12 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      71
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{5EC62D428423EB39}" {
+     SCR_EntityBudgetValue "{5ED30392A8DCC910}" {
       m_BudgetType AI
       m_Value 5
      }
     }
-    m_MilitarySymbol SCR_MilitarySymbol "{5EC62D428423EB3D}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{5ED30392A8DCC91E}" {
      m_Identity INDFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -34,7 +34,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   SCR_PreviewEntityComponent "{56FCFA56AF8F68E9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{5EC62D428423EB32}" {
+    SCR_BasePreviewEntry "{5ED30392A8DCC91A}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -44,7 +44,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{5EC62D428423EB34}" {
+    SCR_BasePreviewEntry "{5ED30392A8DCC905}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -54,7 +54,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{5EC62D428423EB35}" {
+    SCR_BasePreviewEntry "{5ED30392A8DCC904}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -64,7 +64,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{5EC62D428423EB37}" {
+    SCR_BasePreviewEntry "{5ED30392A8DCC907}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -74,7 +74,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition -3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{5EC62D4284236994}" {
+    SCR_BasePreviewEntry "{5ED30392A8DCB46E}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -84,7 +84,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition 6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{5EC62D428423698A}" {
+    SCR_BasePreviewEntry "{5ED30392A8DCB468}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -99,7 +99,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  }
  m_faction "USSR"
  m_aUnitPrefabSlots {
-  "{958156FB52E6BEA2}Prefabs/Characters/Factions/OPFOR/USSR_Army/TW_AI_USSR_Rifleman_TEST1.et"
+  "{1C492EE2E2C7A6E7}Prefabs/Characters/Factions/OPFOR/USSR_Army/TW_AI_USSR_Rifleman_TEST3.et"
  }
  m_bSnapToTerrain 0
 }

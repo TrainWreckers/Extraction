@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{B18BE995428363E1}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman3.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
