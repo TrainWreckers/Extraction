@@ -1,3 +1,8 @@
 GenericEntity : "{37DA9B4DBC0427E5}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V2_base.et" {
  ID "F0DBA538AC2A0552"
+ components {
+  RplComponent "{5476B36C54387F41}" {
+   Enabled 1
+  }
+ }
 }
