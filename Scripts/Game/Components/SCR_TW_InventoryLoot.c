@@ -42,25 +42,19 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		storage = BaseUniversalInventoryStorageComponent.Cast(owner.FindComponent(BaseUniversalInventoryStorageComponent));				
 	}
 	
-	bool InsertItem(SCR_ArsenalItem item)
+	bool InsertItem(TW_LootConfigItem item)
 	{
 		if(!item)
 		{
 			Print("TrainWreck: can't insert null item", LogLevel.ERROR);
 			return false;
 		}
-		
-		if(!item.GetItemPrefab())
-		{
-			Print(string.Format("TrainWreck: Invalid prefab. %1", item.GetItemResourceName()), LogLevel.ERROR);
-			return false;
-		}
 				
-		auto result = storageManager.TrySpawnPrefabToStorage(item.GetItemResourceName());
+		auto result = storageManager.TrySpawnPrefabToStorage(item.resourceName);
 		
 		if(!result)
 		{
-			Print(string.Format("TrainWreck: Failed to insert item: %1", item.GetItemResourceName()), LogLevel.ERROR);
+			Print(string.Format("TrainWreck: Failed to insert item: %1", item.resourceName), LogLevel.ERROR);
 		}
 		
 		return result;

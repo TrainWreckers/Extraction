@@ -346,6 +346,33 @@ class SCR_TW_Util
 		return true;
 	}
 	
+	static string ArsenalTypeAsString(SCR_EArsenalItemType type)
+	{
+		switch(type)
+		{
+			case SCR_EArsenalItemType.HEAL: return "HEAL";
+			case SCR_EArsenalItemType.LEGS: return "LEGS";
+			case SCR_EArsenalItemType.TORSO: return "TORSO";
+			case SCR_EArsenalItemType.RIFLE: return "RIFLE";
+			case SCR_EArsenalItemType.PISTOL: return "PISTOL";
+			case SCR_EArsenalItemType.FOOTWEAR: return "FOOTWEAR";
+			case SCR_EArsenalItemType.BACKPACK: return "BACKPACK";
+			case SCR_EArsenalItemType.HEADWEAR: return "HEADWEAR";
+			case SCR_EArsenalItemType.EQUIPMENT: return "EQUIPMENT";
+			case SCR_EArsenalItemType.EXPLOSIVES: return "EXPLOSIVES";
+			case SCR_EArsenalItemType.MACHINE_GUN: return "MACHINE_GUN";
+			case SCR_EArsenalItemType.SNIPER_RIFLE: return "SNIPER_RIFLE";
+			case SCR_EArsenalItemType.RADIO_BACKPACK: return "RADIO_BACKPACK";
+			case SCR_EArsenalItemType.VEST_AND_WAIST: return "VEST_AND_WAIST";
+			case SCR_EArsenalItemType.ROCKET_LAUNCHER: return "ROCKET_LAUNCHER";
+			case SCR_EArsenalItemType.LETHAL_THROWABLE: return "LETHAL_THROWABLE";
+			case SCR_EArsenalItemType.WEAPON_ATTACHMENT: return "WEAPON_ATTACHMENT";
+			case SCR_EArsenalItemType.NON_LETHAL_THROWABLE: return "NON_LETHAL_THROWABLE";			
+		}
+		
+		return "HEAL";
+	}
+	
 	/*Delete group and its members*/
 	static void DeleteGroup(SCR_AIGroup group)
 	{
@@ -372,5 +399,5 @@ class SCR_TW_Util
 		
 		wp.SetOrigin(waypointPosition);
 		return wp;
-	}
+	}	
 };
