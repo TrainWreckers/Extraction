@@ -72,7 +72,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			saveContext.WriteValue(SCR_TW_Util.ArsenalTypeAsString(type), typeLoot);
 		}
 		
-		bool success = saveContext.SaveToFile("lootmap.json");
+		bool success = saveContext.SaveToFile("$profile:lootmap.json");
 		
 		return success;
 	}
@@ -80,13 +80,13 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	private bool HasLootTable()
 	{
 		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
-		return loadContext.LoadFromFile("lootmap.json");
+		return loadContext.LoadFromFile("$profile:lootmap.json");
 	}
 	
 	private bool IngestLootTableFromFile()
 	{
 		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
-		bool loadSuccess = loadContext.LoadFromFile("lootmap.json");
+		bool loadSuccess = loadContext.LoadFromFile("$profile:lootmap.json");
 		
 		if(!loadSuccess)
 		{

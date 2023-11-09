@@ -8,7 +8,10 @@ $grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/Equipme
     }
    }
   }
-  coords 4970.699 108.351 8406.986
+  coords 10381.813 40.75 1779.956
+  angleX 7.689
+  angleY 1.571
+  angleZ 11.588
  }
  {
   components {
@@ -16,7 +19,10 @@ $grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/Equipme
     playerId 2
    }
   }
-  coords 4972.171 108.292 8407.031
+  coords 10383.101 41.207 1783.459
+  angleX 10.201
+  angleY 2.095
+  angleZ 11.669
  }
  {
   components {
@@ -24,7 +30,10 @@ $grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/Equipme
     playerId 3
    }
   }
-  coords 4973.822 108.263 8407.358
+  coords 10383.728 41.616 1785.801
+  angleX 12.421
+  angleY 3.157
+  angleZ 14.38
  }
  {
   components {
@@ -32,7 +41,10 @@ $grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/Equipme
     playerId 4
    }
   }
-  coords 4975.594 108.3 8407.248
+  coords 10384.335 41.858 1787.309
+  angleX 14.01
+  angleY 3.576
+  angleZ 14.476
  }
  {
   components {
@@ -40,7 +52,10 @@ $grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/Equipme
     playerId 5
    }
   }
-  coords 4977.667 108.395 8407.804
+  coords 10382.147 40.975 1781.485
+  angleX 10.368
+  angleY 1.638
+  angleZ 9.029
  }
  {
   components {
@@ -48,11 +63,17 @@ $grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/Equipme
     playerId 6
    }
   }
-  coords 4977.902 107.749 8405.514
+  coords 10385.612 42.018 1789.371
+  angleX 12.329
+  angleY 3.328
+  angleZ 15.235
  }
 }
 GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/PlayerHub_S_US_01.et" {
- coords 4969.941 106.528 8398.556
+ coords 10390.835 39.895 1781.099
+ angleX 3.796
+ angleY 20.236
+ angleZ 5.192
  {
   GenericEntity {
    ID "5E6B134F140F6135"
