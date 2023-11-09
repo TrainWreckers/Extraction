@@ -11,6 +11,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF56B8D07A}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DE992CCCD3}" {
+           m_ItemChanceToSpawn 50.591
            m_ItemMaxSpawnCount 2
           }
          }
@@ -18,7 +19,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF54238366}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DE862BD2B2}" {
-           m_ItemChanceToSpawn 32.126
+           m_ItemChanceToSpawn 37.244
            m_ItemMaxSpawnCount 2
           }
          }
@@ -26,7 +27,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF548ED203}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DE8591DED5}" {
-           m_ItemChanceToSpawn 44.54
+           m_ItemChanceToSpawn 24.855
           }
          }
         }
@@ -65,7 +66,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF57A5E254}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DE9B814D24}" {
-           m_ItemChanceToSpawn 36.264
+           m_ItemChanceToSpawn 42.957
            m_ItemMaxSpawnCount 7
           }
          }
@@ -73,7 +74,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF55FE15F2}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DE875034B8}" {
-           m_ItemChanceToSpawn 11.667
+           m_ItemChanceToSpawn 28.596
            m_ItemMaxSpawnCount 5
           }
          }
@@ -89,7 +90,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF53ED1A87}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DE83B0AB3B}" {
-           m_ItemChanceToSpawn 38.333
+           m_ItemChanceToSpawn 43.451
            m_ItemMaxSpawnCount 5
           }
          }
@@ -137,7 +138,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF5DA35EF8}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DEB3871A5B}" {
-           m_ItemChanceToSpawn 41.092
+           m_ItemChanceToSpawn 21.013
            m_ItemMaxSpawnCount 2
           }
          }
@@ -153,7 +154,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF594F5F3C}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DEA31337A1}" {
-           m_ItemChanceToSpawn 46.379
+           m_ItemChanceToSpawn 31.812
            m_ItemMaxSpawnCount 2
           }
          }
@@ -161,7 +162,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF598D6455}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DEA28B4362}" {
-           m_ItemChanceToSpawn 40.172
+           m_ItemChanceToSpawn 21.668
            m_ItemMaxSpawnCount 2
           }
          }
@@ -169,7 +170,7 @@ SCR_CampaignFactionManager : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFact
         SCR_EntityCatalogInventoryItem "{5C62F7DF58ED03D0}" {
          m_aEntityDataList {
           SCR_ArsenalItem "{5C62F7DEAF6748F3}" {
-           m_ItemChanceToSpawn 38.793
+           m_ItemChanceToSpawn 31.313
            m_ItemMaxSpawnCount 2
           }
          }
