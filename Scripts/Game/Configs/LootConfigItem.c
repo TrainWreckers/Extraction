@@ -3,18 +3,22 @@
 	TrainWreck loot tables.
 */
 
-class TW_LootConfigItem : Managed
+class TW_LootConfigItem
 {
 	string resourceName;
-	float chanceToSpawn;
+	int chanceToSpawn;
 	int randomSpawnCount;
-	string tags;
+	ref array<string> tags;
 	
-	void SetData(ResourceName resource, float chance, int spawnCount, string tags = string.Empty)
+	void SetData(ResourceName resource, int chance, int spawnCount, array<string> tags = null)
 	{
 		this.resourceName = resource;
 		this.chanceToSpawn = chance;
 		this.randomSpawnCount = spawnCount;
-		this.tags = tags;
+		
+		if(tags)
+			this.tags = tags;
+		else 
+			this.tags = {};
 	}
 }

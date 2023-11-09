@@ -19,7 +19,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	}
 	
 	private ref map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>> lootMap = new map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>>();
-	private ref map<SCR_EArsenalItemType, array<ref TW_LootConfigItem>> lootTable = new ref map<SCR_EArsenalItemType, array<ref TW_LootConfigItem>>();	
+	private ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>> lootTable = new ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>>();	
 	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
 	
 	override void OnPlayerConnected(int playerId)
@@ -93,12 +93,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			Print("TrainWreck: Was unable to load loot map. Please verify it exists, and has valid syntax");
 			return false;
 		}
-		
-		ref array<ref TW_LootConfigItem> items;
-		string keyValue = SCR_TW_Util.ArsenalTypeAsString(SCR_EArsenalItemType.HEAL);
-		
-		bool success = loadContext.ReadValue(keyValue, items);
-		
+				
 		if(!LoadSection(loadContext, SCR_EArsenalItemType.HEAL))
 			Print("TrainWreck: LootMap: unable to load HEAL", LogLevel.ERROR);
 		
@@ -157,8 +152,8 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	}
 	
 	private bool LoadSection(notnull SCR_JsonLoadContext context, SCR_EArsenalItemType type)
-	{
-		ref array<ref TW_LootConfigItem> items;
+	{		
+		array<ref TW_LootConfigItem> items = {};
 		string keyValue = SCR_TW_Util.ArsenalTypeAsString(type);
 		
 		bool success = context.ReadValue(keyValue, items);
