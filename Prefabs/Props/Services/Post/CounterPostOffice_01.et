@@ -1,3 +1,8 @@
 GenericEntity : "{9BBC77EACCC3E442}Prefabs/Props/Services/Post/CounterPostOffice_01_base.et" {
  ID "F0DBA538AC2A0552"
+ components {
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
 }
