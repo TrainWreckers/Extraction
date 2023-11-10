@@ -4,17 +4,6 @@ SCR_DestructibleBuildingEntity : "{12310677867A85D4}Prefabs/Structures/Industria
 SCR_DestructibleBuildingEntity : "{1A18A755842DCA36}Prefabs/Structures/Industrial/Houses/Sawmill_E_01/Sawmill_E_01.et" {
  coords 94.361 1.973 24.253
 }
-GenericEntity : "{39568880CC1F9CED}Prefabs/Props/Military/Arsenal/ArsenalBoxes/FIA/ArsenalBox_FIA.et" {
- components {
-  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
-   m_eArsenalSaveType SAVING_DISABLED
-  }
-  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
-   m_bUseSupplies 0
-  }
- }
- coords 245.237 1 10.8
-}
 SCR_DestructibleBuildingEntity : "{427D2BB4E4D96606}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_Office_V2.et" {
  coords 202.158 1.93 139.657
 }
@@ -148,27 +137,6 @@ SCR_DestructibleBuildingEntity : "{BBCEDBF2C4E3E896}Prefabs/Structures/Industria
 }
 SCR_DestructibleBuildingEntity : "{BE70E3BA6C1911A9}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_Workshop.et" {
  coords 157.178 0 117.621
-}
-$grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et" {
- {
-  components {
-   SCR_MapDescriptorComponent "{5EC34C9B6E5CFFFC}" {
-    Enabled 0
-   }
-   SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
-    playerId 0
-   }
-  }
-  coords 242.597 1 10.944
- }
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
-    MaxItemSize 200 200 200
-   }
-  }
-  coords 242.827 1 13.096
- }
 }
 SCR_DestructibleBuildingEntity : "{E30E1250FD927736}Prefabs/Structures/Industrial/Houses/PortableCabin_E_01/PortableCabin_E_01_beige.et" {
  coords 225.935 1.484 27.655

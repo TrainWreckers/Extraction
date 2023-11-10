@@ -27,7 +27,8 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		
 		this.playerId = playerId;
-		GetGame().GetCallqueue().CallLater(InitializePlayerInventory, SCR_TW_Util.FromSecondsToMilliseconds(15), false);
+		InitializePlayerInventory();
+		//GetGame().GetCallqueue().CallLater(InitializePlayerInventory, SCR_TW_Util.FromSecondsToMilliseconds(15), false);
 	}
 	
 	private void InitializePlayerInventory()

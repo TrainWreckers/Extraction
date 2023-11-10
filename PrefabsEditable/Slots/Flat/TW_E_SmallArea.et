@@ -1,0 +1,30 @@
+SCR_SiteSlotEntity : "{3526B3B4DC6320E8}PrefabsEditable/Slots/E_SlotBase.et" {
+ ID "51B0BC2502CB89BD"
+ components {
+  SCR_EditableEntityComponent "{51B0A7B1D3E03B13}" {
+   m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{528C94DA3B1A682F}" {
+    Name "#AR-EditableEntity_SlotFlatSmall_Name"
+    Icon "{68269EE13B15D0A1}UI/Textures/Editor/EditableEntities/Slots/EditableEntity_Slot_FlatSmall.edds"
+    m_aAuthoredLabels {
+     90
+    }
+    m_ContentBrowserLabelConfig SCR_EditorContentBrowserDisplayConfig "{59ACB625EC8945E6}" : "{D6D78697B6DABB66}Configs/Editor/ContentBrowser/ContentBrowserSlotSmallLabelConfig.conf" {
+    }
+   }
+   m_fMaxDrawDistance 375
+  }
+  SCR_TW_SpawnAreaEntity "{5ED4D3C8F56CB6AE}" {
+  }
+ }
+ {
+  StaticModelEntity {
+   ID "52E8C3643526D54D"
+   components {
+    MeshObject "{52E8CACFF071F9EC}" {
+     Object "{0B6FDCDB4823ABB6}Assets/Editor/CompositionSlot/SlotFlatSmall_01.xob"
+    }
+   }
+   coords 0 -0.75 0
+  }
+ }
+}

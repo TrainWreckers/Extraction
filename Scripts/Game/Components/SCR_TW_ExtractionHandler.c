@@ -21,15 +21,26 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	private ref map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>> lootMap = new map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>>();
 	private ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>> lootTable = new ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>>();	
 	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
+	private ref array<SCR_SiteSlotEntity> possibleSpawnAreas = {};
 	
-	override void OnPlayerConnected(int playerId)
+	[Attribute("{5A52168A894DDB7E}Prefabs/Compositions/Slotted/SlotFlatSmall/TW_US_PlayerHub_Extraction.et", UIWidgets.ResourcePickerThumbnail, params: "et", category: "Player Spawn", desc: "Composition to spawn as a player starting area")]
+	private ResourceName playerHubPrefab;
+	
+	[Attribute("", UIWidgets.Slider, params: "3, 20, 1", category: "Player Spawn", desc: "After this timer elapses, the player spawn composition is deleted")]
+	private int playerHubDespawnTimerInMinutes;
+	
+	
+	void RegisterSpawnArea(SCR_SiteSlotEntity spawnSlot)
 	{
-		if(!crates.Contains(playerId))
-		{
-			Print(string.Format("TrainWreck: %1 -> Not enough crates to support players", playerId), LogLevel.ERROR);
+		if(possibleSpawnAreas.Contains(spawnSlot))
 			return;
-		}
 		
+		possibleSpawnAreas.Insert(spawnSlot);
+	}
+	
+	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
+	{
+		super.OnPlayerSpawned(playerId, controlledEntity);
 		crates.Get(playerId).InitializeForPlayer(playerId);
 	}
 	
@@ -180,9 +191,10 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	{
 		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
 		
-		if(!rpl.IsMaster())
+		if(!rpl.IsMaster() && rpl.Role() != RplRole.Authority)
 			return;
 		
+		GetGame().GetCallqueue().CallLater(InitializePlayerHub, SCR_TW_Util.FromSecondsToMilliseconds(1), false);
 		InitializeLootMap();
 		
 		int globalCount = SCR_TW_InventoryLoot.GlobalLootContainers.Count();
@@ -244,6 +256,40 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 					spawnCount--;
 			}
 		}
+	}
+	
+	private void InitializePlayerHub()
+	{
+		if(possibleSpawnAreas.IsEmpty())
+		{
+			Print("TrainWreck: No spawn points have been registered", LogLevel.ERROR);
+			return;
+		}
+		
+		SCR_SiteSlotEntity site = possibleSpawnAreas.GetRandomElement();
+		
+		Resource hubResource = Resource.Load(playerHubPrefab);
+		
+		if(!hubResource.IsValid())
+		{
+			Print(string.Format("TrainWreck: Unable to spawn %1, invalid resource", playerHubPrefab), LogLevel.ERROR);
+			return;
+		}
+		
+		IEntity spawnSiteEntity = site.SpawnEntityInSlot(hubResource);
+		
+		if(!spawnSiteEntity)
+		{
+			Print(string.Format("TrainWreck: Was unable to spawn player hub. %1", playerHubPrefab), LogLevel.ERROR);
+			return;
+		}
+		
+		//GetGame().GetCallqueue().CallLater(DespawnPlayerSpawn, 1000 * 60 * playerHubDespawnTimerInMinutes, false, spawnSiteEntity);		
+	}
+	
+	private void DespawnPlayerSpawn(IEntity entity)
+	{
+		SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 	
 	private void InitializeLootMap()

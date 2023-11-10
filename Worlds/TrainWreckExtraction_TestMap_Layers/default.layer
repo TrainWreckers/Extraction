@@ -22,6 +22,8 @@ SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger
 }
 SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  components {
+  SCR_CompositionSlotManagerComponent "{5ED5118F1FF0C7AE}" {
+  }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_AutoSpawnLogic "{5D36888CC966608A}" {
     m_sForcedFaction "US"
@@ -32,8 +34,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
-   m_DisableSpawns 1
-   m_MaxAgents 12
+   m_MaxAgents 30
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220
    m_GarbageCollectionTimer 80
@@ -66,24 +67,42 @@ SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
  coords 114.616 1 106.678
 }
-GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/PlayerHub_S_US_01.et" {
- coords 247.583 1 9.591
+$grp SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea.et" {
  {
-  GenericEntity {
-   ID "5E6B134F140F6135"
-   components {
-    ActionsManagerComponent "{5E3298BE3694CAAB}" {
-     additionalActions {
-      SCR_TW_Test_SaveLoadout "{5ED34755C14F8896}" {
-       ParentContextList {
-        "default"
-       }
-       UIInfo UIInfo "{5ED34755C44A24C5}" {
-        Name "Save"
-       }
-      }
-     }
-    }
+  coords 248.297 1.626 247.74
+  {
+   StaticModelEntity {
+    ID "52E8C3643526D54D"
+    coords 0 -0.626 0
+   }
+  }
+ }
+ {
+  coords 10.35 0.252 243.908
+  {
+   StaticModelEntity {
+    ID "52E8C3643526D54D"
+    coords 0 0.748 0
+   }
+  }
+ }
+ {
+  coords 10.336 1.252 10.433
+  {
+   StaticModelEntity {
+    ID "52E8C3643526D54D"
+    coords 0 -0.252 0
+   }
+  }
+ }
+ {
+  coords 249.252 1.252 6.99
+  {
+   StaticModelEntity {
+    ID "52E8C3643526D54D"
+    coords 0 -0.752 0
+    angleX 3.825
+    angleZ 3.825
    }
   }
  }
