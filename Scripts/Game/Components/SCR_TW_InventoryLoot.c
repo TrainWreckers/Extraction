@@ -49,8 +49,8 @@ class SCR_TW_InventoryLoot : ScriptComponent
 			Print("TrainWreck: can't insert null item", LogLevel.ERROR);
 			return false;
 		}
-				
-		auto result = storageManager.TrySpawnPrefabToStorage(item.resourceName);
+		
+		auto result = storageManager.TrySpawnPrefabToStorage(item.resourceName, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT);
 		
 		if(!result)
 		{

@@ -42,12 +42,22 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		}
 	}
 	
-	void UpdateInventory(int playerId)
+	//------------------------------------------------------------------------------------------------
+	//! RPC Call to server to ensure only the server udpates/saves inventory 
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcUpdatePlayerCrate(int playerId)
 	{
 		if(!crates.Contains(playerId))
 			return;
 		
 		crates.Get(playerId).InitializeForPlayer(playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	
+	void UpdatePlayerInventoryCrate(int playerId)
+	{
+		Rpc(RpcUpdatePlayerCrate, playerId);
 	}
 	
 	private bool OutputLootTableFile()
@@ -210,7 +220,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 				
 				// Are we going to spawn the selected item?
 				float seedPercentage = Math.RandomFloat(0.001, 100);
-				if(arsenalItem.chanceToSpawn < seedPercentage)
+				if(arsenalItem.chanceToSpawn > seedPercentage)
 				{
 					Print(string.Format("%1: Skipping (no chance): %2", baseFormat, arsenalItem.resourceName), LogLevel.WARNING);
 					continue;

@@ -29,11 +29,16 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   }
   SCR_TW_ExtractionHandler "{5ECF3441B37ADCAE}" {
   }
+  SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
+  }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
+   m_DisableSpawns 1
    m_MaxAgents 12
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220
    m_GarbageCollectionTimer 80
+  }
+  SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
   }
  }
  coords 191.393 1 69.437
@@ -63,6 +68,25 @@ ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger
 }
 GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/PlayerHub_S_US_01.et" {
  coords 247.583 1 9.591
+ {
+  GenericEntity {
+   ID "5E6B134F140F6135"
+   components {
+    ActionsManagerComponent "{5E3298BE3694CAAB}" {
+     additionalActions {
+      SCR_TW_Test_SaveLoadout "{5ED34755C14F8896}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{5ED34755C44A24C5}" {
+        Name "Save"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
  coords 114.585 1 106.716
