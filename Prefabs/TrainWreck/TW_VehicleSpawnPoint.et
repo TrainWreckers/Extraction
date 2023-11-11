@@ -1,0 +1,13 @@
+GenericEntity {
+ ID "5ED6E0D3004AE436"
+ components {
+  SCR_TW_VehicleSpawn "{5ED64A40FDACDFCC}" {
+   m_ChanceToSpawn 20
+   m_VehiclePrefabs {
+    "{7524FB186D534ACA}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_base.et"
+   }
+  }
+ }
+ coords 212.768 1.21 36.099
+ angleY 101.602
+}

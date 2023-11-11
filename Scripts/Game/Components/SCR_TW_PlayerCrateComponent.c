@@ -15,9 +15,10 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		if (!(rpl && rpl.IsMaster() && rpl.Role() == RplRole.Authority))
 			return;
 		
-		SCR_TW_ExtractionHandler.GetInstance().RegisterPlayerCrate(playerId, this);
+		SCR_TW_ExtractionHandler.GetInstance().RegisterPlayerLoadoutCrate(this);
 	}
 	
+	int GetPlayerId() { return playerId; }
 	bool CanOpen(int playerId) { return this.playerId == playerId; }
 	
 	void InitializeForPlayer(int playerId)
@@ -28,7 +29,6 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		
 		this.playerId = playerId;
 		InitializePlayerInventory();
-		//GetGame().GetCallqueue().CallLater(InitializePlayerInventory, SCR_TW_Util.FromSecondsToMilliseconds(15), false);
 	}
 	
 	private void InitializePlayerInventory()

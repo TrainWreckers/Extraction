@@ -22,13 +22,43 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	private ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>> lootTable = new ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>>();	
 	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
 	private ref array<SCR_SiteSlotEntity> possibleSpawnAreas = {};
+	private ref array<SCR_TW_ExtractionSiteComponent> possibleExtractionSites = {};
 	
+	[Attribute("{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et", UIWidgets.ResourcePickerThumbnail, category: "Player Spawn", desc: "Player loadout crate prefab", params: "et")]
+	private ResourceName playerCratePrefab;
+		
 	[Attribute("{5A52168A894DDB7E}Prefabs/Compositions/Slotted/SlotFlatSmall/TW_US_PlayerHub_Extraction.et", UIWidgets.ResourcePickerThumbnail, params: "et", category: "Player Spawn", desc: "Composition to spawn as a player starting area")]
 	private ResourceName playerHubPrefab;
 	
 	[Attribute("", UIWidgets.Slider, params: "3, 20, 1", category: "Player Spawn", desc: "After this timer elapses, the player spawn composition is deleted")]
 	private int playerHubDespawnTimerInMinutes;
 	
+	[Attribute("1", UIWidgets.Slider, params: "1, 5, 1", category: "Extraction", desc: "Number of potential extractions available at once")]
+	private int numberOfExtractionSites;
+	
+	void RegisterExtractionSite(SCR_TW_ExtractionSiteComponent site)
+	{
+		if(!possibleExtractionSites.Contains(site))
+			possibleExtractionSites.Insert(site);				
+	}
+	
+	void RegisterPlayerLoadoutCrate(SCR_TW_PlayerCrateComponent crate)
+	{
+		int playerId = crate.GetPlayerId();
+		
+		if(playerId < 0)
+			return;
+		
+		if(!crates.Contains(playerId))
+			crates.Insert(playerId, crate);
+		else
+			crates.Set(playerId, crate);
+	}
+	
+	private void DeleteCrateLater(IEntity owner)
+	{
+		SCR_EntityHelper.DeleteEntityAndChildren(owner);
+	}
 	
 	void RegisterSpawnArea(SCR_SiteSlotEntity spawnSlot)
 	{
@@ -41,16 +71,22 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
 		super.OnPlayerSpawned(playerId, controlledEntity);
-		crates.Get(playerId).InitializeForPlayer(playerId);
-	}
-	
-	void RegisterPlayerCrate(int playerId, SCR_TW_PlayerCrateComponent crate)
-	{
+		
 		if(!crates.Contains(playerId))
 		{
-			Print(string.Format("TrainWreck: Registering player crate for %1", playerId), LogLevel.NORMAL);
-			crates.Insert(playerId, crate);
+			Print(string.Format("TrainWreck: No crate registered for player Id: %1", playerId), LogLevel.ERROR);
+			return;
 		}
+		
+		SCR_TW_PlayerCrateComponent crate = crates.Get(playerId);
+		crate.InitializeForPlayer(playerId);
+		GetGame().GetCallqueue().CallLater(DestoryCrate, 5 * 60 * 1000, false, crate.GetOwner());
+	}
+	
+	private void DestoryCrate(IEntity crate)
+	{
+		Print("TrainWreck: Deleting Player Crate", LogLevel.WARNING);
+		SCR_EntityHelper.DeleteEntityAndChildren(crate);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -256,6 +292,16 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 					spawnCount--;
 			}
 		}
+	}
+	
+	private void InitializeExtractionSites()
+	{
+		int randomCount = Math.RandomIntInclusive(1, numberOfExtractionSites);
+		randomCount = Math.Min(randomCount, possibleExtractionSites.Count());
+		
+		int exclude = possibleExtractionSites.Count() - randomCount;
+		for(int i = 0; i < exclude; i++)
+			possibleExtractionSites.Remove(possibleExtractionSites.GetRandomIndex());
 	}
 	
 	private void InitializePlayerHub()

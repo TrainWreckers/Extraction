@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{1DDA71FF79C8A59A}PrefabsEditable/Slots/Flat/TW_E_SmallArea_ExtractionSite.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

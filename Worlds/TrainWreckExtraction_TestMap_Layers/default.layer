@@ -34,6 +34,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
+   m_DisableSpawns 1
    m_MaxAgents 30
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220
@@ -58,6 +59,17 @@ ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.e
  "Base style" BaseChatChannelStyle "{5ECF344074775EDF}" {
  }
 }
+GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
+ components {
+  SCR_TW_VehicleSpawn "{5ED64A40FDACDFCC}" {
+   m_ChanceToSpawn 100
+  }
+  RplComponent "{5ED6E0D4FB9DA034}" {
+  }
+ }
+ coords 211.049 1 37.272
+ angleY 0
+}
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
  coords 116.216 1 126.552
 }
@@ -67,7 +79,7 @@ SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
  coords 114.616 1 106.678
 }
-$grp SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea.et" {
+$grp SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
  {
   coords 248.297 1.626 247.74
   {
