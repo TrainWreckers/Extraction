@@ -2,6 +2,7 @@ GenericEntity : "{70384CA135D9DBE8}Prefabs/Props/Industrial/CargoContainers/Carg
  ID "55DAD3EB50381589"
  components {
   SCR_TW_InventoryLoot "{5EBB144CE0EB7962}" {
+   m_lootItemTypes 524286
   }
   SCR_UniversalInventoryStorageComponent "{5EBB144CC4EE464B}" {
    Attributes SCR_ItemAttributeCollection "{5EBB144CC6667DA0}" {

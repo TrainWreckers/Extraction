@@ -2,6 +2,7 @@ GenericEntity : "{51B08BDA20AF8FF7}Prefabs/Props/Industrial/Pallets/WoodenPallet
  ID "F0DBA538AC2A0552"
  components {
   SCR_TW_InventoryLoot "{5EBCEAFA00FDCACC}" {
+   m_lootItemTypes 4098
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAFBD006937A}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAFBD3C27420}" {

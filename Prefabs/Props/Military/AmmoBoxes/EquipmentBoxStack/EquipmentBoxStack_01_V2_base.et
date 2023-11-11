@@ -2,6 +2,7 @@ GenericEntity : "{86EB7E536E8A7206}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
  ID "F0DBA538AC2A0552"
  components {
   SCR_TW_InventoryLoot "{5EBCEAFE46F00E96}" {
+   m_lootItemTypes 306
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAFE265E4116}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAFE207C7241}" {

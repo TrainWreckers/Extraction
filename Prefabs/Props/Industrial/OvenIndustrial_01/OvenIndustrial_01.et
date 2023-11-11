@@ -1,6 +1,9 @@
 GenericEntity : "{004D86BBA393C53B}Prefabs/Props/Industrial/OvenIndustrial_01/OvenIndustrial_01_base.et" {
  ID "F0DBA538AC2A0552"
  components {
+  SCR_TW_InventoryLoot "{5EBB144F86D0F2A4}" {
+   m_lootItemTypes 262668
+  }
   ActionsManagerComponent "{5EBB144F75B08D6F}" {
    ActionContexts {
     UserActionContext "{5EBB144F763BF70F}" {

@@ -2,6 +2,7 @@ GenericEntity : "{84B029EBE9BD61C8}Prefabs/Props/Industrial/Pallets/MarsBoxConta
  ID "F0DBA538AC2A0552"
  components {
   SCR_TW_InventoryLoot "{5EBCEAFBDEB2B149}" {
+   m_lootItemTypes 262146
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAFBA1CCE68D}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAFBA370E9A8}" {

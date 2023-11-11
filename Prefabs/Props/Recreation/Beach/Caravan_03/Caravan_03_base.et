@@ -2,6 +2,7 @@ SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Buil
  ID "F0DBA538AC2A0552"
  components {
   SCR_TW_InventoryLoot "{5EBCEAF67E5715FE}" {
+   m_lootItemTypes 130798
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAF6253A8A7F}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAF62096D3B5}" {
