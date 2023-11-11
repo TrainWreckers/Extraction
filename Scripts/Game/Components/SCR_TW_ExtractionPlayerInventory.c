@@ -26,73 +26,112 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			s_Instance = SCR_TW_ExtractionPlayerInventoryComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_TW_ExtractionPlayerInventoryComponent));
 		
 		return s_Instance;
-	}	
+	}
 	
-	bool SavePlayerLoadout(int playerId)
+	//------------------------------------------------------------------------------------------------
+	//! RPC Call to server to ensure only the server udpates/saves inventory 
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcUpdatePlayerInventory(int playerId)
 	{
+		bool success = SavePlayerLoadout(playerId);
+		
+		if(success)
+		{
+			SCR_NotificationsComponent.SendToPlayer(playerId, ENotification.PLAYER_LOADOUT_SAVED);
+			SCR_TW_ExtractionHandler.GetInstance().UpdatePlayerInventoryCrate(playerId);
+		}
+		else
+			SCR_NotificationsComponent.SendToPlayer(playerId, ENotification.PLAYER_LOADOUT_NOT_SAVED);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdatePlayerInventory(int playerId)
+	{
+		Rpc(RpcUpdatePlayerInventory, playerId);
+	}
+		
+	protected bool SavePlayerLoadout(int playerId)
+	{		
+		// First lets grab the player whose inventory we're trying to save 
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		
+		if(!entity)
+		{
+			Print(string.Format("TrainWreck: unable to save player inventory for ID: %1 - no controllable entity found", playerId), LogLevel.ERROR);
+			return false;
+		}
+		
+		// We'll be using the player name to save loadouts because it's more reliable than player Id
+		// which could change between sessions. 
 		string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		
 		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		
 		if(!inventory)
 		{
-			Print(string.Format("TrainWreck: %1 does not have a character inventory component", name), LogLevel.ERROR);
+			Print(string.Format("TrainWreck: %1 does not have a CharacterInventoryStorageCompnent", name), LogLevel.ERROR);
 			return false;
 		}
 		
 		ref array<SCR_UniversalInventoryStorageComponent> storages = {};
-		inventory.GetStorages(storages);				
+		inventory.GetStorages(storages);
 		
-		Print(string.Format("TrainWreck: %1 has %2 storages", name, storages.Count()));
+		Print(string.Format("TrainWreck: %1 has %2 storages", name, storages.Count()), LogLevel.DEBUG);
 		
 		ref array<InventoryItemComponent> items = {};
 		ref map<string, int> loadoutMap = new map<string, int>();
 		inventory.GetOwnedItems(items);
 		
+		ref array<BaseInventoryStorageComponent> storageQueue = {};
+		
 		// This will actually grab all equippable inventories
-		// Alice, backpack, clothing, etc.
-		// excludes weapons
+		// Alice, backpack, clothing, etc 
 		foreach(InventoryItemComponent item : items)
 		{
 			InventoryStorageSlot slot = item.GetParentSlot();
 			if(!slot) continue;
-			IEntity attachedEntity = slot.GetAttachedEntity();
+			
+			IEntity attachedEntity = slot.GetAttachedEntity();			
 			if(!attachedEntity) continue;
 			
 			ResourceName prefabName = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
 			
-			// at this point we have figured out the container items.
-			// now we need to dive into this items to figure out what's inside them
-			Print(string.Format("TrainWreck: Loadout: %1 -> %2", name, prefabName));
 			if(!loadoutMap.Contains(prefabName))
 				loadoutMap.Insert(prefabName, 1);
+			else
+				loadoutMap.Set(prefabName, loadoutMap.Get(prefabName) + 1);						
+			
+			ClothNodeStorageComponent clothNode = ClothNodeStorageComponent.Cast(attachedEntity.FindComponent(ClothNodeStorageComponent));
+			
+			if(clothNode)
+			{
+				ProcessNode(clothNode, loadoutMap);
+				continue;
+			}
 			
 			BaseInventoryStorageComponent substorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
-						
-			if(!substorage)
-				continue;
 			
-			ProcessInventory(name, substorage, loadoutMap, depth: 1);
+			if(substorage)
+			{
+				ProcessStorage(substorage, loadoutMap);
+				continue;
+			}
+			
 		}
 		
-		BaseInventoryStorageComponent weaponStorage = inventory.GetWeaponStorage();		
-		ProcessInventory(name, weaponStorage, loadoutMap, true, depth: 1);
+		BaseInventoryStorageComponent weaponStorage = inventory.GetWeaponStorage();
+		ProcessStorage(weaponStorage, loadoutMap);				
 		
 		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
-		
 		saveContext.WriteValue("playerName", name);
-		/*ref array<string> playerItems = {};
-		foreach(auto itemName, auto itemCount : loadoutMap)
-			for(int i = 0; i < itemCount; i++)
-				playerItems.Insert(itemName);*/
 		
-		// Bring in existing save file
-		string playerSaveFile = string.Format("%1.json", name);
+		string filename = string.Format("$profile:%1.json", name);
 		
+		// Load anything that may have been saved prior 
 		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
-		bool success = loadContext.LoadFromFile(playerSaveFile);
-		if(success)
+		bool priorLoad = loadContext.LoadFromFile(filename);
+		
+		if(priorLoad)
 		{
 			ref map<string, int> saved;
 			loadContext.ReadValue("items", saved);
@@ -106,76 +145,78 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 		
 		saveContext.WriteValue("items", loadoutMap);
 		
-		Print(string.Format("TrainWreck: PlayerLoadout: %1 %2", name, saveContext.ExportToString()));
-		saveContext.SaveToFile(playerSaveFile);
-		return true;	
+		bool success = saveContext.SaveToFile(filename);
+		return success;
 	}
 	
-	private void ProcessInventory(string name, BaseInventoryStorageComponent storage, out notnull map<string, int> loadout, bool isWeapon = false, int depth = 0)
+	private void ProcessNode(ClothNodeStorageComponent node, out notnull map<string, int> loadout)
+	{
+		// This is an alice/vest item and contains multiple nodes/items within it 
+		int slotsCount = node.GetSlotsCount();
+		
+		for(int i = 0; i < slotsCount; i++)
+		{
+			InventoryStorageSlot slot = node.GetSlot(i);
+			
+			if(!slot) 
+				continue;
+			
+			IEntity entity = slot.GetAttachedEntity();
+			
+			if(!entity)
+				continue;
+			
+			BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(entity.FindComponent(BaseInventoryStorageComponent));
+			
+			if(!storage)
+				continue;
+			
+			ProcessStorage(storage, loadout);
+		}
+	}
+	
+	private void ProcessStorage(BaseInventoryStorageComponent storage, out notnull map<string, int> loadout)
 	{
 		int slotsCount = storage.GetSlotsCount();
-			
+		
 		for(int i = 0; i < slotsCount; i++)
 		{
 			InventoryStorageSlot slot = storage.GetSlot(i);
-		    if (!slot)
-		       continue;
-		
-		    IEntity attachedEntity = slot.GetAttachedEntity();
 			
-			if (!attachedEntity)
+			if(!slot) 
 				continue;
 			
-			if(isWeapon && depth == 0)
-			{
-				ResourceName weaponResource = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
-				
-				if(weaponResource != ResourceName.Empty)
-				{
-					if(!loadout.Contains(weaponResource))
-						loadout.Insert(weaponResource, 1);
-					else
-						loadout.Set(weaponResource, loadout.Get(weaponResource) + 1);
-				}
-			}
+			IEntity attachedEntity = slot.GetAttachedEntity();
 			
-			/*
-				Odds are if this attached entity contains storage 
-				it's something similar to the alice-vest where 
-				items are attached to it, but aren't actually 
-				the item(s) we're looking for.
-				
-				So the hierarchy looks something like this
-				vest > pouch > item
+			if(!attachedEntity)
+				continue;
 			
-				Through recursion we go to the furthest depths
-			*/
-			BaseInventoryStorageComponent entityStorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
+			ResourceName resource = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
 			
-			Print(string.Format("TrainWreck: <%1> AttachedEntityProcessInv: %2", depth, attachedEntity.GetPrefabData().GetPrefab().GetResourceName()));
+			if(!resource || resource.IsEmpty())
+				continue;
 			
-			if(entityStorage)
-			{
-				ProcessInventory(name, entityStorage, loadout, depth: depth++);
-			}				
-			
-		    ResourceName prefabName = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();		    
-		
-		    if (prefabName.IsEmpty())
-		       continue;
-				
-			Print(string.Format("TrainWreck: Loadout: %1 -> %2", name, prefabName));
-			
-			if(!loadout.Contains(prefabName))
-				loadout.Insert(prefabName, 1);
+			if(!loadout.Contains(resource))
+				loadout.Insert(resource, 1);
 			else
-				loadout.Set(prefabName, loadout.Get(prefabName) + 1);
+				loadout.Set(resource, loadout.Get(resource) + 1);
+			
+			BaseInventoryStorageComponent substorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
+			
+			if(substorage)
+			{
+				Print(string.Format("TrainWreck: %1: %2", substorage.ClassName(), attachedEntity.GetPrefabData().GetPrefabName()), LogLevel.DEBUG);
+			}
 		}
 	}
 	
 	override void EOnInit(IEntity owner)
 	{
 		if(!GetGame().InPlayMode())
+			return;
+		
+		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		if (!(rpl && rpl.Role() == RplRole.Authority))
 			return;
 		
 		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());

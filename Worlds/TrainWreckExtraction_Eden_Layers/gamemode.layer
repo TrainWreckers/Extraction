@@ -24,6 +24,8 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
  components {
   SCR_CommandingManagerComponent "{5EC61A8D7686C0E3}" {
   }
+  SCR_CompositionSlotManagerComponent "{5ED5118857153988}" {
+  }
   SCR_RespawnBriefingComponent "{5EC61A8D59063ACE}" {
    m_sJournalConfigPath "{4C05534FF72ACB7D}Configs/Journal/Journal_TW_Extraction_Eden.conf"
    m_Info SCR_UIInfo "{5EC61A8A151066B1}" {
@@ -44,9 +46,6 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    m_MaxAgents 35
    m_MinimumAISpawnDistance 150
    m_GarbageCollectionTimer 80
-   groupPrefabs {
-    "{FCF7F5DC4F83955C}Prefabs/Groups/BLUFOR/Group_US_LightFireTeam.et"
-   }
   }
   SerializerInventoryStorageManagerComponent "{5EBF4A5F293DC235}" {
   }

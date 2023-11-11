@@ -77,4 +77,6 @@ GenericEntity : "{86EB7E536E8A7206}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
    AutoHierarchy 1
   }
  }
+ coords -3.089 -0.06 -3.523
+ angleY -95.705
 }

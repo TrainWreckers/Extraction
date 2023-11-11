@@ -4,6 +4,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 {
 	[Attribute("1", UIWidgets.Slider, params: "0 100, 1")]
 	private int playerId;
+	private bool initialized = false;
 	
 	override void OnPostInit(IEntity owner)
 	{
@@ -11,25 +12,32 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		
 		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
-		if(!rpl) return;
-		if(!rpl.IsMaster()) return;
+		if (!(rpl && rpl.IsMaster() && rpl.Role() == RplRole.Authority))
+			return;
 		
-		SCR_TW_ExtractionHandler.GetInstance().RegisterPlayerCrate(playerId, this);		
-		GetGame().GetCallqueue().CallLater(InitializePlayerInventory, SCR_TW_Util.FromSecondsToMilliseconds(15), false);
+		SCR_TW_ExtractionHandler.GetInstance().RegisterPlayerCrate(playerId, this);
 	}
 	
 	bool CanOpen(int playerId) { return this.playerId == playerId; }
 	
 	void InitializeForPlayer(int playerId)
 	{
+		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		if (!(rpl && rpl.Role() == RplRole.Authority))
+			return;
+		
 		this.playerId = playerId;
-		GetGame().GetCallqueue().CallLater(InitializePlayerInventory, SCR_TW_Util.FromSecondsToMilliseconds(15), false);
+		InitializePlayerInventory();
+		//GetGame().GetCallqueue().CallLater(InitializePlayerInventory, SCR_TW_Util.FromSecondsToMilliseconds(15), false);
 	}
 	
 	private void InitializePlayerInventory()
-	{
+	{		
+		if(initialized) return;
+		initialized = true;
+		
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		string filename = string.Format("%1.json", playerName);
+		string filename = string.Format("$profile:%1.json", playerName);
 		
 		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
 		if(!loadContext.LoadFromFile(filename))
@@ -55,18 +63,18 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		}
 		
+		BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(GetOwner().FindComponent(BaseInventoryStorageComponent));
+		
+		Print("TrainWreck: Populating Player Loot Box", LogLevel.NORMAL);
 		foreach(string name, int amount : items)
 		{
-			string text = string.Format("TrainWreck: %1 -> Attempting to spawn %2", playerId, name);
+			Print(string.Format("TrainWreck: Inserting %1 (%2)", name, amount), LogLevel.NORMAL);
 			
 			for(int i = 0; i < amount; i++)
-			{
-				bool success = manager.TrySpawnPrefabToStorage(name);
-				if(success)
-					text = string.Format("%1 - SUCCESS - (%2/%3)", text, i+1, amount);
-				else
-					text = string.Format("%1 - FAIL - (%2/%3)", text, i+1, amount);
-				Print(text);
+			{				
+				bool success = manager.TrySpawnPrefabToStorage(name, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT);
+				if(!success)
+					Print(string.Format("TrainWreck: Failed to insert %1 for %2", name, playerName), LogLevel.ERROR);
 			}
 		}
 			

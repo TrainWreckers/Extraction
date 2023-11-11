@@ -4,17 +4,8 @@ class SCR_TW_Test_SaveLoadout : ScriptedUserAction
 {	
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
-		int currentPlayerId = GetGame().GetPlayerController().GetPlayerId();
-		
-		bool success = SCR_TW_ExtractionPlayerInventoryComponent.GetInstance().SavePlayerLoadout(currentPlayerId);
-		
-		if(success)
-		{
-			SCR_NotificationsComponent.SendLocal(ENotification.PLAYER_LOADOUT_SAVED);
-			SCR_TW_ExtractionHandler.GetInstance().UpdateInventory(currentPlayerId);
-		}
-		else
-			SCR_NotificationsComponent.SendLocal(ENotification.PLAYER_LOADOUT_NOT_SAVED);
+		int currentPlayerId = GetGame().GetPlayerController().GetPlayerId();		
+		SCR_TW_ExtractionPlayerInventoryComponent.GetInstance().UpdatePlayerInventory(currentPlayerId);		
 	}
 	
 	override bool CanBeShownScript(IEntity user) { return true; }
