@@ -1,7 +1,19 @@
 SCR_DestructibleBuildingEntity : "{A31C6EAC2D6E8BA2}Prefabs/Structures/Industrial/Houses/FactoryHall_E_01/FactoryHall_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
+   {
+    ID "5ED715FFE0450F18"
+    coords 7.456 0.1 -2.607
+    angleY 77.178
+   }
+   {
+    ID "5ED715FFE0450F34"
+    coords 1.728 0.1 5.449
+    angleY 0
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B43A9E9E15"
     coords -10.22 11.84 -4.321
