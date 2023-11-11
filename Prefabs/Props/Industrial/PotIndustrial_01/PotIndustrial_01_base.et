@@ -2,6 +2,7 @@ GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
  ID "F0DBA538AC2A0552"
  components {
   SCR_TW_InventoryLoot "{5EBCEAFA4C7AE098}" {
+   m_lootItemTypes EQUIPMENT
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAFA187E9C18}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAFA1B95F830}" {

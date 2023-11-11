@@ -2,6 +2,7 @@ SCR_DestructibleEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Prop
  ID "51A4CC6263B8A7BF"
  components {
   SCR_TW_InventoryLoot "{5EBCEAF44EFEC920}" {
+   m_lootItemTypes 66056
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAF4111B0D2D}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAF42CFAFA78}" {

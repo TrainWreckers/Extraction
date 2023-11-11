@@ -1,6 +1,9 @@
 GenericEntity : "{72F6A52C535C8670}Prefabs/Props/Garbage/Bins/TrashBin_02_base.et" {
  ID "F0DBA538AC2A0552"
  components {
+  SCR_TW_InventoryLoot "{5EBB144C58319883}" {
+   m_lootItemTypes 97792
+  }
   ActionsManagerComponent "{5EBB144C4C904CF4}" {
    ActionContexts {
     UserActionContext "{5EBB144C4EB506BB}" {

@@ -2,6 +2,7 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
  ID "6093E737D2748756"
  components {
   SCR_TW_InventoryLoot "{5EBB145251A26DF4}" {
+   m_lootItemTypes 262668
   }
   SCR_UniversalInventoryStorageComponent "{5EBB1452307ACAC5}" {
    Attributes SCR_ItemAttributeCollection "{5EBB145233DAD783}" {

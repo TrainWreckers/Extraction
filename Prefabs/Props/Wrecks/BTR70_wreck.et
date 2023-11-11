@@ -2,6 +2,7 @@ GenericEntity : "{3619812B192CCAE9}Prefabs/Props/Core/Wreck_Base.et" {
  ID "F0DBA538AC2A0552"
  components {
   SCR_TW_InventoryLoot "{5EBCEAF4C23B681E}" {
+   m_lootItemTypes 394046
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAF4A00FFDBA}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAF4A376D73F}" {

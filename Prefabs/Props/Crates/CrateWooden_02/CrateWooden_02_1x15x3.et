@@ -1,6 +1,9 @@
 GenericEntity : "{7E2EC66747A3FBA3}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_base.et" {
  ID "F0DBA538AC2A0552"
  components {
+  SCR_TW_InventoryLoot "{5EBB1455ECA373C9}" {
+   m_lootItemTypes 434
+  }
   ActionsManagerComponent "{5EBB14558B71E079}" {
    ActionContexts {
     UserActionContext "{5EBB1455850C3F59}" {
