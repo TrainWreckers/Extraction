@@ -4,10 +4,8 @@ Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
    FuelNodes {
     SCR_FuelNode "{5622A70CD4036C5A}" {
-     m_eFuelNodeType 3
     }
     SCR_FuelNode "{5AD4F813E67ECBD3}" {
-     m_eFuelNodeType 3
     }
    }
   }

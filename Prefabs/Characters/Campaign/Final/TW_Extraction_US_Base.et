@@ -13,7 +13,7 @@ SCR_ChimeraCharacter : "{836E7E39AAC5888B}Prefabs/Characters/Factions/BLUFOR/US_
    MainType Unit
    UnitType Infantry
   }
-  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponTemplate "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et"
   }
  }

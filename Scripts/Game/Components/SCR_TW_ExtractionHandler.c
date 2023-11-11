@@ -79,6 +79,10 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		}
 		
 		SCR_TW_PlayerCrateComponent crate = crates.Get(playerId);
+		
+		if(!crate)
+			return;
+		
 		crate.InitializeForPlayer(playerId);
 		GetGame().GetCallqueue().CallLater(DestoryCrate, 5 * 60 * 1000, false, crate.GetOwner());
 	}

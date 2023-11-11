@@ -1,0 +1,8 @@
+SCR_DestructibleBuildingEntity : "{4D869EE5C19F98D9}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_tankpistol_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_RepairSupportStationComponent "{5ED72772DDAE9FFF}" {
+   m_bUseSupplies 0
+  }
+ }
+}
