@@ -1,9 +1,14 @@
 SCR_DestructibleBuildingEntity : "{85C6B051DE85112B}Prefabs/Structures/Industrial/Houses/Workshop_01/Workshop_01_Garage_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
+   ID "5ED715F0B5D6EBE1"
+   coords 0.509 0.19 -0.138
+   angleY 89.593
+  }
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    ID "5EC371B726EAE9DC"
-   coords 0.784 0.19 -0.472
+   coords -2.353 0.19 1.908
   }
  }
 }
