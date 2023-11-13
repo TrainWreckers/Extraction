@@ -1,4 +1,4 @@
-$grp SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea.et" {
+$grp SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
  {
   coords 7170.864 32.261 1737.593
   {
@@ -227,6 +227,17 @@ $grp SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_Sma
     coords 0 0.542 0
     angleX 2.943
     angleZ 2.544
+   }
+  }
+ }
+ {
+  coords 4214.063 66.87 8433.05
+  {
+   StaticModelEntity {
+    ID "52E8C3643526D54D"
+    coords 0 0.529 0
+    angleX 0.553
+    angleZ -6.628
    }
   }
  }

@@ -25,8 +25,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_CompositionSlotManagerComponent "{5ED5118F1FF0C7AE}" {
   }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
-   m_SpawnLogic SCR_AutoSpawnLogic "{5D36888CC966608A}" {
-    m_sForcedFaction "US"
+   m_SpawnLogic SCR_AutoSpawnLogic "{5ED8F1A8045926B2}" {
    }
   }
   SCR_TW_ExtractionHandler "{5ECF3441B37ADCAE}" {
@@ -58,6 +57,19 @@ ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.e
  coords 114.624 1 106.583
  "Base style" BaseChatChannelStyle "{5ECF344074775EDF}" {
  }
+}
+SCR_TW_ExtractionSite {
+ components {
+  SCR_MapDescriptorComponent "{5ED8F1AA7B581567}" {
+   DisplayName "Extraction"
+   MapItemDescriptor 1
+   MainType Task
+   Scale 2
+  }
+  RplComponent "{5ED8F1AA76BD5BAF}" {
+  }
+ }
+ coords 173.363 1 86.476
 }
 GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
  components {

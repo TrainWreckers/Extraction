@@ -22,9 +22,20 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("120", UIWidgets.Slider, params: "0 500 1", category: "Garbage Collection", desc: "Time in seconds. Interval GC is checked (nothing happens)")]
 	protected float m_GarbageCollectionTimer;
 	
+	[Attribute("120", UIWidgets.Slider, params: "0 500 1", category: "Vehicle Spawn", desc: "Minimum distance vehicles may spawn")]
+	protected int m_MinimumVehicleSpawnDistance;
+	
+	[Attribute("500", UIWidgets.Slider, params: "0 1500 1", category: "Vehicle Spawn", desc: "Maximum distance vehicles may spawn")]
+	protected int m_MaximumVehicleSpawnDistance;	
+	
+	[Attribute("800", UIWidgets.Slider, params: "0 5000 10", category: "Garbage Collection", desc: "Vehicles exceeding this distance shall get removed")]
+	protected int m_VehicleGarbageCollectionDistance;
+	
 	protected ref array<SCR_AIGroup> m_CurrentGroups = {};
 	protected ref array<SCR_TW_AISpawnPoint> m_AISpawnPoints = {};
 	protected ref array<IEntity> players;
+	protected ref array<SCR_TW_VehicleSpawn> m_VehicleSpawnPoints = {};
+	protected ref array<IEntity> m_SpawnedVehicles = {};
 	
 	static SCR_TW_ExtractionSpawnHandler sInstance;
 	
@@ -32,7 +43,15 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	{
 		if(sInstance) return sInstance;
 		
-		sInstance = SCR_TW_ExtractionSpawnHandler.Cast(GetGame().GetGameMode().FindComponent(SCR_TW_ExtractionSpawnHandler));
+		if(!GetGame().InPlayMode())
+			return null;
+		
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		
+		if(!gameMode)
+			return null;
+		
+		sInstance = SCR_TW_ExtractionSpawnHandler.Cast(gameMode.FindComponent(SCR_TW_ExtractionSpawnHandler));
 		
 		return sInstance;
 	}
@@ -53,6 +72,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(ReinitializePlayers, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
 		GetGame().GetCallqueue().CallLater(GarbageCollection, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
 		GetGame().GetCallqueue().CallLater(SpawnLoop, SCR_TW_Util.FromMinutesToMilliseconds(m_SpawnTimerInMinutes), true);
+		
+		Print(string.Format("TrainWreck: Registered Vehicle Spawn Points: %1", m_VehicleSpawnPoints.Count()), LogLevel.WARNING);
 	}
 	
 	void FirstPass()
@@ -90,6 +111,16 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		}
 	}
 	
+	void ProcessVehicleForGC(IEntity vehicle)
+	{
+		if(!vehicle) return;
+		
+		if(!SCR_TW_Util.IsOutsideOfPlayers(vehicle.GetOrigin(), players, m_VehicleGarbageCollectionDistance))
+			return;
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(vehicle);
+	}
+	
 	void SpawnLoop()
 	{
 		if(players.Count() <= 0)
@@ -97,6 +128,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			Print("TrainWreck: No players on map. Skipping spawn.", LogLevel.WARNING);
 			return;
 		}
+		
+		HandleVehicleSpawning();
 		
 		ref array<AIAgent> agents = {};
 		int currentAgents = GetAgentCount(agents);
@@ -139,6 +172,45 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		}
 	}
 	
+	private void HandleVehicleSpawning()
+	{
+		ref array<SCR_TW_VehicleSpawn> nearbyPoints = {};
+		int nearbyCount = GetVehiclePointsInPlayerVicinity(nearbyPoints);
+		
+		if(nearbyCount == 0)
+		{
+			Print("TrainWreck: No vehicle spawn points nearby", LogLevel.WARNING);
+			return;
+		}
+		else
+			Print(string.Format("TrainWreck: Nearby Vehicle Spawns: %1", nearbyCount), LogLevel.WARNING);
+		
+		int max = Math.Min(6, nearbyCount);
+		int spawnCount = Math.RandomIntInclusive(1, max);
+		
+		int i = 0;
+		foreach(SCR_TW_VehicleSpawn point : nearbyPoints)			
+		{
+			UnregisterVehicleSpawnPoint(point);
+			GetGame().GetCallqueue().CallLater(InvokeSpawnOnVehicle, SCR_TW_Util.FromSecondsToMilliseconds(i * 1), false, point);
+			i++;
+		}
+	}
+	
+	private void InvokeSpawnOnVehicle(SCR_TW_VehicleSpawn spawnPoint)
+	{
+		IEntity vehicle;
+		if(spawnPoint.SpawnVehicle(vehicle))
+		{
+			if(vehicle)
+				m_SpawnedVehicles.Insert(vehicle);
+			else
+				Print("TrainWreck: Vehicle spawned successfully but variable is null", LogLevel.ERROR);
+		}
+		else
+			Print("TrainWreck: Vehicle did not spawn", LogLevel.DEBUG);
+	}
+	
 	// This is purely to enable delayed/staggered spawning
 	private void InvokeSpawnOn(SCR_TW_AISpawnPoint spawnPoint)
 	{
@@ -160,13 +232,30 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		return count;
 	}
 	
+	int GetVehiclePointsInPlayerVicinity(notnull array<SCR_TW_VehicleSpawn> points)
+	{
+		int count = 0;
+		foreach(SCR_TW_VehicleSpawn point : m_VehicleSpawnPoints)
+		{
+			if(!point) continue;
+			if(!SCR_TW_Util.IsWithinRange(point.GetOwner().GetOrigin(), players, m_MinimumVehicleSpawnDistance, m_MaximumVehicleSpawnDistance))
+				continue;
+			
+			points.Insert(point);
+			count++;
+		}
+		
+		return count;
+	}
+	
 	void GarbageCollection()
 	{
 		ref array<AIAgent> agents = {};
 		int currentAgents = GetAgentCount(agents);
 		int queuedForGC = 0;
+		int vehiclesQueuedForGC = 0;
 		
-		if(currentAgents <= 0)
+		if(currentAgents <= 0 && m_SpawnedVehicles.IsEmpty())
 			return;
 		
 		Print("TrainWreck: GarbageCollection Pass");
@@ -204,6 +293,25 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		Print(string.Format("TrainWreck: Players: %1", players.Count()));
 		this.players = players;
+	}
+	
+	void RegisterVehicleSpawnPoint(SCR_TW_VehicleSpawn point)
+	{
+		if(!point)
+		{
+			Print("TrainWreck: Vehicle spawn point cannot be null", LogLevel.ERROR);
+			return;
+		}
+		
+		m_VehicleSpawnPoints.Insert(point);
+	}
+	
+	void UnregisterVehicleSpawnPoint(SCR_TW_VehicleSpawn point)
+	{
+		if(!point)
+			return;
+		
+		m_VehicleSpawnPoints.RemoveItem(point);
 	}
 	
 	void RegisterAISpawnPoint(SCR_TW_AISpawnPoint point)

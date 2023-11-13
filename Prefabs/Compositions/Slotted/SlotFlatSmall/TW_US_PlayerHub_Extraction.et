@@ -344,63 +344,6 @@ GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposi
    coords -4.814 0 -2.502
    angleY -36.77
   }
-  $grp GenericEntity : "{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et" {
-   {
-    ID "5ED4D3F027D3A659"
-    components {
-     SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
-      playerId 6
-     }
-    }
-    coords 0.128 -0.06 -3.059
-    angleY 0
-   }
-   {
-    ID "5ED4D3F1D98696EB"
-    coords -3.089 -0.06 -3.523
-    angleY -95.705
-   }
-   {
-    ID "5ED4D3F1F0805C48"
-    components {
-     SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
-      playerId 2
-     }
-    }
-    coords -2.739 -0.06 -5.648
-    angleY 80.561
-   }
-   {
-    ID "5ED4D3F1F0805C58"
-    components {
-     SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
-      playerId 3
-     }
-    }
-    coords -1.447 -0.06 -6.09
-    angleY 80.561
-   }
-   {
-    ID "5ED4D3F1F0805C7B"
-    components {
-     SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
-      playerId 5
-     }
-    }
-    coords 0.285 -0.06 -4.373
-    angleY 0
-   }
-   {
-    ID "5ED4D3F1F0805FA5"
-    components {
-     SCR_TW_PlayerCrateComponent "{5EC34C91ADCBF9C2}" {
-      playerId 4
-     }
-    }
-    coords -0.113 -0.06 -5.794
-    angleY 80.561
-   }
-  }
   GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
    ID "5ED4D3F0A5E52769"
    components {

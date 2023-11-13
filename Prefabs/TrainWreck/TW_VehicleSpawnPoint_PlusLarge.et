@@ -8,6 +8,8 @@ GenericEntity {
    }
    m_MinimumFuel 0.01
   }
+  RplComponent "{5ED74C01873646AB}" {
+  }
  }
  coords -5.071 0.045 0.131
  angleY 59.271

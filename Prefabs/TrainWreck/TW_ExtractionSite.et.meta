@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A46C2A6689C20BC9}Prefabs/TrainWreck/TW_ExtractionSite.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -21,42 +21,59 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 	[Attribute("0.5", UIWidgets.Slider, category: "Fuel", desc: "Maximum amount of fuel to start with", params: "0.01 1 0.01")]
 	protected float m_MaximumFuel;
 	
+	protected bool m_CanSpawn = true;
+	
 	private ref RandomGenerator random = new RandomGenerator();
 	
 	override void OnPostInit(IEntity owner)
 	{
-		// Must be in gamemode (otherwise it'll spawn in the workbench)
 		if(!GetGame().InPlayMode())
 			return;
 		
+		GetGame().GetCallqueue().CallLater(Register, 100, false);
+	}
+	
+	private void Register()
+	{
+		SCR_TW_ExtractionSpawnHandler spawnHandler = SCR_TW_ExtractionSpawnHandler.GetInstance();
+		
+		if(spawnHandler)
+			spawnHandler.RegisterVehicleSpawnPoint(this);
+	}
+	
+	bool SpawnVehicle(out IEntity vehicle)
+	{
+		if(!m_CanSpawn)
+			return false;
+		
 		// Must have something available for spawn
 		if(m_VehiclePrefabs.IsEmpty())
-			return;
+			return false;
 		
 		// Must be from an authoritative source
-		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
+		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
 		if(!rpl.IsMaster() && rpl.Role() != RplRole.Authority)
-			return;
+			return false;
 		
 		if(random.RandIntInclusive(0,100) >= m_ChanceToSpawn)
-			return;
+			return false;
 
 		ResourceName prefabName = m_VehiclePrefabs.GetRandomElement();
 		Resource prefabResource = Resource.Load(prefabName);
 			
 		if(!prefabResource.IsValid())
-			return;
+			return false;
 			
 		EntitySpawnParams params = EntitySpawnParams();
-		owner.GetTransform(params.Transform);
+		GetOwner().GetTransform(params.Transform);
 		params.TransformMode = ETransformMode.WORLD;
 			
-		IEntity vehicle = GetGame().SpawnEntityPrefab(prefabResource, GetGame().GetWorld(), params);
+		vehicle = GetGame().SpawnEntityPrefab(prefabResource, GetGame().GetWorld(), params);
 		
 		if(!vehicle)
 		{
 			Print(string.Format("TrainWreck: Was unable to spawn vehicle %1", prefabName), LogLevel.ERROR);
-			return;
+			return false;
 		}
 		
 		DamageManagerComponent damageManager = DamageManagerComponent.Cast(vehicle.FindComponent(DamageManagerComponent));
@@ -64,7 +81,7 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 		if(!damageManager)
 		{
 			Print(string.Format("TrainWreck: Was unable to find a DamageManagerComponent on %1", prefabName), LogLevel.ERROR);
-			return;
+			return false;
 		}
 		
 		ref array<HitZone> zones = {};
@@ -83,11 +100,14 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 		if(!fuelManager)
 		{
 			Print(string.Format("TrainWreck: Fuel Manager component not found on vehicle: %1", prefabName), LogLevel.ERROR);
-			return;
+			return false;
 		}
 		
 		float fuelLevel = random.RandFloatXY(m_MinimumFuel, m_MaximumFuel);
 		fuelManager.SetTotalFuelPercentage(fuelLevel);
+		
+		m_CanSpawn = false;
+		return true;
 	}
 	
 	vector GetForwardVec()

@@ -1,27 +1,41 @@
-class SCR_TW_ExtractionSiteComponentClass: ScriptComponentClass
+[EntityEditorProps(category: "GameScripted/TrainWreck/Systems", description: "Extraction Point for players")]
+class SCR_TW_ExtractionSiteClass: SCR_SiteSlotEntityClass
 {
 	
 };
 
-class SCR_TW_ExtractionSiteComponent : ScriptComponent
+class SCR_TW_ExtractionSite : SCR_SiteSlotEntity
 {
-	override void OnPostInit(IEntity owner)
-	{		
+	[Attribute("", UIWidgets.ResourcePickerThumbnail, category: "Prefabs", params: "et", desc: "Composition prefabs")]
+	private ref array<ResourceName> extractionSitePrefabs;
+	
+	void SpawnSite()
+	{
+		if(IsOccupied())
+			return;
+		
+		if(extractionSitePrefabs.IsEmpty())
+			return;
+		
+		ResourceName randomPrefab = extractionSitePrefabs.GetRandomElement();
+		
+		if(randomPrefab == ResourceName.Empty)
+			return;
+		
+		Resource resource = Resource.Load(randomPrefab);
+		if(!resource.IsValid())
+			return;
+		
+		SpawnEntityInSlot(resource);
+	}
+	
+	override void EOnInit(IEntity owner)
+	{
 		super.EOnInit(owner);
 		
 		if(!GetGame().InPlayMode())
 			return;
 		
-		auto slot = SCR_SiteSlotEntity.Cast(owner);
-		
-		if(!slot)
-		{
-			Print("TrainWreck: SCR_TW_ExtractionSiteComponent requires a SCR_SiteSlotEntity", LogLevel.ERROR);
-			return;
-		}
-		
-		SCR_TW_ExtractionHandler.GetInstance().RegisterExtractionSite(this);
+		SCR_TW_ExtractionHandler.GetInstance().RegisterExtractionSite(this);				
 	}
-	
-
 };
