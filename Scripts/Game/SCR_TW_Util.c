@@ -405,4 +405,59 @@ class SCR_TW_Util
 		wp.SetOrigin(waypointPosition);
 		return wp;
 	}	
+	
+	static bool IsMagazineNotFull(MagazineComponent magazine)
+	{
+		return magazine.GetAmmoCount() < magazine.GetMaxAmmoCount();
+	}
+	
+	static bool CharacterMagCount(MagazineComponent currentMag, SCR_InventoryStorageManagerComponent storageManager)
+	{
+		SCR_MagazinePredicate magPredicate = new SCR_MagazinePredicate();
+		BaseMagazineWell magWell = currentMag.GetMagazineWell();
+		
+		magPredicate.magWellType = magWell.Type();
+		
+		array<IEntity> magEntities = new array<IEntity>();
+		int magCount = storageManager.FindItems(magEntities, magPredicate);
+		return magCount > 1;
+	}
+	
+	static array<MagazineComponent> SortedMagazines(notnull array<IEntity> magEntities)
+	{
+		array<MagazineComponent> mags = new array<MagazineComponent>();		
+		array<int> tempArray = new array<int>();
+		
+		foreach(IEntity item : magEntities)
+		{
+			MagazineComponent mag = MagazineComponent.Cast(item.FindComponent(MagazineComponent));
+			int ammoCount = mag.GetAmmoCount();
+			
+			if(tempArray.Contains(ammoCount))
+				continue;
+			
+			tempArray.Insert(mag.GetAmmoCount());
+		}
+		
+		tempArray.Sort();
+		
+		foreach(int count : tempArray)
+		{
+			foreach(IEntity item : magEntities)
+			{
+				MagazineComponent mag = MagazineComponent.Cast(item.FindComponent(MagazineComponent));
+				if(mag.GetAmmoCount() == count)
+					mags.Insert(mag);
+			}
+		}
+		
+		return mags;
+	}
+	
+	static void ResetInventoryMenu()
+	{
+		MenuManager menuManager = GetGame().GetMenuManager();
+		menuManager.CloseAllMenus();
+		SCR_InventoryMenuUI inventoryMenu = SCR_InventoryMenuUI.Cast(menuManager.OpenMenu(ChimeraMenuPreset.Inventory20Menu));
+	}
 };

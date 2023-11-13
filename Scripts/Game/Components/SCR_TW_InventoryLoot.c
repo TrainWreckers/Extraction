@@ -46,9 +46,61 @@ class SCR_TW_InventoryLoot : ScriptComponent
 	{
 		if(!item)		
 			return false;
+		
+		Resource prefabResource = Resource.Load(item.resourceName);
+		
+		if(!prefabResource.IsValid())
+		{
+			Print(string.Format("TrainWreck: Invalid resource. Cannot spawn %1", item.resourceName), LogLevel.ERROR);
+			return false;
+		}
+		
+		EntitySpawnParams params = EntitySpawnParams();
+		GetOwner().GetTransform(params.Transform);
+		
+		IEntity spawnedItem = GetGame().SpawnEntityPrefab(prefabResource, GetGame().GetWorld(), params);
+		
+		if(!spawnedItem)
+		{
+			Print(string.Format("TrainWreck: Was unable to spawn %1", item.resourceName), LogLevel.ERROR);
+			return false;
+		}
+		
+		BaseWeaponComponent weapon = BaseWeaponComponent.Cast(spawnedItem.FindComponent(BaseWeaponComponent));
+		
+		if(weapon)
+		{
+			BaseMagazineComponent magazine = weapon.GetCurrentMagazine();
+			
+			if(magazine)
+			{
+				int maxAmmo = magazine.GetMaxAmmoCount();
+				int newCount = Math.RandomIntInclusive(0, maxAmmo);
+				magazine.SetAmmoCount(newCount);
+			}
+		}
+		else
+		{
+			BaseMagazineComponent magazine = BaseMagazineComponent.Cast(spawnedItem.FindComponent(BaseMagazineComponent));
+		
+			if(magazine)
+			{
+				int maxAmmo = magazine.GetMaxAmmoCount();
+				float percent = SCR_TW_ExtractionHandler.GetInstance().GetRandomAmmoPercent();
 				
-		auto result = storageManager.TrySpawnPrefabToStorage(item.resourceName, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT);		
-		return result;
+				int ammo = Math.RandomIntInclusive(1, maxAmmo * percent);
+				magazine.SetAmmoCount(Math.ClampInt(ammo, 0, maxAmmo));
+			}
+		}
+		
+		
+		bool success = storageManager.TryInsertItemInStorage(spawnedItem, storage);
+		
+		// If it failed to add to stoarge we must delete it from the world
+		if(!success)
+			SCR_EntityHelper.DeleteEntityAndChildren(spawnedItem);
+		
+		return success;
 	}
 	
 };
