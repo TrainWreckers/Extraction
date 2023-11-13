@@ -58,6 +58,17 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("3", UIWidgets.Slider, params: "1 50 1", category: "Insertion", desc: "Maximum number of insertion points that may appear")]
 	private int numberOfInsertionPoints;
 	
+	[Attribute("0.25", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Minimum percentage of ammo per weapon/mag")]
+	private float minimumAmmoPercent;
+	
+	[Attribute("1", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Maximum percentage of ammo per weapon/mag")]
+	private float maximumAmmoPercent;
+	
+	float GetRandomAmmoPercent()
+	{
+		return Math.RandomFloat(minimumAmmoPercent, maximumAmmoPercent);
+	}
+	
 	int GetExtractionTimePeriod() { return extractionTimePeriod; }
 	
 	void RegisterExtractionSite(SCR_TW_ExtractionSite site)
@@ -150,24 +161,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		}
 		
 		crate.InitializeForPlayer(playerId);
-
-		/*
-		if(!crates.Contains(playerId))
-		{
-			Print(string.Format("TrainWreck: No crate registered for player Id: %1", playerId), LogLevel.ERROR);
-			return;
-		}
-		
-		if(!crates.Contains(playerId))
-			return;
-		
-		foreach(SCR_TW_PlayerCrateComponent crate : crates.Get(playerId))
-		{			
-			if(!crate)
-				return;
-			
-			crate.InitializeForPlayer(playerId);			
-		}*/					
 	}
 	
 	//------------------------------------------------------------------------------------------------
