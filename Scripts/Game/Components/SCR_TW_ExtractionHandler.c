@@ -1,6 +1,7 @@
 [EntityEditorProps(category: "GameScripted/TrainWreck/Systems", description: "Handles extraction related setup at a game-mode level")]
 class SCR_TW_ExtractionHandlerClass : SCR_BaseGameModeComponentClass {};
 
+
 class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 {
 	static SCR_TW_ExtractionHandler s_Instance;
@@ -22,7 +23,19 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	private ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>> lootTable = new ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>>();	
 	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
 	private ref array<SCR_SiteSlotEntity> possibleSpawnAreas = {};
-	private ref array<SCR_TW_ExtractionSiteComponent> possibleExtractionSites = {};
+	private ref array<SCR_TW_ExtractionSite> possibleExtractionSites = {};
+	private ref array<SCR_EArsenalItemType> arsenalItemTypes = {};
+	private bool playersHaveSpawned = false;
+	
+	protected bool m_MatchOver;
+	protected EGameOverTypes m_GameOverType = EGameOverTypes.NEUTRAL;
+	
+	private ref set<string> globalItems = new set<string>();
+	
+	bool IsValidItem(ResourceName resource)
+	{
+		return globalItems.Contains(resource);
+	}
 	
 	[Attribute("{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et", UIWidgets.ResourcePickerThumbnail, category: "Player Spawn", desc: "Player loadout crate prefab", params: "et")]
 	private ResourceName playerCratePrefab;
@@ -33,10 +46,21 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.Slider, params: "3, 20, 1", category: "Player Spawn", desc: "After this timer elapses, the player spawn composition is deleted")]
 	private int playerHubDespawnTimerInMinutes;
 	
-	[Attribute("1", UIWidgets.Slider, params: "1, 5, 1", category: "Extraction", desc: "Number of potential extractions available at once")]
-	private int numberOfExtractionSites;
+	[Attribute("3", UIWidgets.Slider, params: "1, 5, 1", category: "Extraction", desc: "Number of potential extractions available at once")]
+	private int numberOfExtractionSites;	
 	
-	void RegisterExtractionSite(SCR_TW_ExtractionSiteComponent site)
+	[Attribute("60", UIWidgets.Slider, params: "5 180 5", category: "Extraction", desc: "Time in minutes until Game Mode ends")]
+	private int gameModeDurationInMinutes;
+	
+	[Attribute("30", UIWidgets.Slider, params: "5, 500, 5", category: "Extraction", desc: "Time in seconds players must wait in extraction until they get extracted")]
+	private int extractionTimePeriod;
+	
+	[Attribute("3", UIWidgets.Slider, params: "1 50 1", category: "Insertion", desc: "Maximum number of insertion points that may appear")]
+	private int numberOfInsertionPoints;
+	
+	int GetExtractionTimePeriod() { return extractionTimePeriod; }
+	
+	void RegisterExtractionSite(SCR_TW_ExtractionSite site)
 	{
 		if(!possibleExtractionSites.Contains(site))
 			possibleExtractionSites.Insert(site);				
@@ -49,10 +73,22 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		if(playerId < 0)
 			return;
 		
-		if(!crates.Contains(playerId))
-			crates.Insert(playerId, crate);
-		else
+		if(crates.Contains(playerId))
+		{
+			Print(string.Format("TrainWreck: Crate for %1 has already been registered. Removing already registered crate", playerId), LogLevel.WARNING);
+			SaveAndDeleteCrate(playerId);
 			crates.Set(playerId, crate);
+		}
+		else
+			crates.Insert(playerId, crate);
+	}
+	
+	void UnregisterPlayerLoadoutCrate(SCR_TW_PlayerCrateComponent crate, int playerId)
+	{
+		if(!crates.Contains(playerId))
+			return;
+		
+		crates.Remove(playerId);
 	}
 	
 	private void DeleteCrateLater(IEntity owner)
@@ -62,35 +98,76 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	void RegisterSpawnArea(SCR_SiteSlotEntity spawnSlot)
 	{
-		if(possibleSpawnAreas.Contains(spawnSlot))
+		possibleSpawnAreas.Insert(spawnSlot);
+	}
+	
+	override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
+	{
+		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
+		
+		if(!crates.Contains(playerId))
 			return;
 		
-		possibleSpawnAreas.Insert(spawnSlot);
+		SaveAndDeleteCrate(playerId);
 	}
 	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
 		super.OnPlayerSpawned(playerId, controlledEntity);
+		playersHaveSpawned = true;
 		
+		vector forwardDirection = SCR_TW_Util.GetForwardVec(controlledEntity) * (playerId * 3);
+		vector position = controlledEntity.GetOrigin() + forwardDirection;
+		
+		Resource crateResource = Resource.Load(playerCratePrefab);
+		
+		if(!crateResource.IsValid())
+		{
+			Debug.Error("TrainWreck: Invalid crate prefab");
+			return;
+		}
+		
+		EntitySpawnParams params = EntitySpawnParams();
+		controlledEntity.GetTransform(params.Transform);				
+		
+		position[1] = GetGame().GetWorld().GetSurfaceY(position[0], position[2]);
+		params.Transform[3] = position;
+		
+		IEntity crateEntity = GetGame().SpawnEntityPrefab(crateResource, GetGame().GetWorld(), params);
+		
+		if(!crateEntity)
+		{
+			Debug.Error("TrainWreck: Crate couldn't spawn");
+			return;
+		}
+		
+		SCR_TW_PlayerCrateComponent crate = SCR_TW_PlayerCrateComponent.Cast(crateEntity.FindComponent(SCR_TW_PlayerCrateComponent));
+		
+		if(!crate)
+		{
+			Debug.Error("TrainWreck: Could not locate SCR_TW_PlayerCrateComponent");
+			return;
+		}
+		
+		crate.InitializeForPlayer(playerId);
+
+		/*
 		if(!crates.Contains(playerId))
 		{
 			Print(string.Format("TrainWreck: No crate registered for player Id: %1", playerId), LogLevel.ERROR);
 			return;
 		}
 		
-		SCR_TW_PlayerCrateComponent crate = crates.Get(playerId);
-		
-		if(!crate)
+		if(!crates.Contains(playerId))
 			return;
 		
-		crate.InitializeForPlayer(playerId);
-		GetGame().GetCallqueue().CallLater(DestoryCrate, 5 * 60 * 1000, false, crate.GetOwner());
-	}
-	
-	private void DestoryCrate(IEntity crate)
-	{
-		Print("TrainWreck: Deleting Player Crate", LogLevel.WARNING);
-		SCR_EntityHelper.DeleteEntityAndChildren(crate);
+		foreach(SCR_TW_PlayerCrateComponent crate : crates.Get(playerId))
+		{			
+			if(!crate)
+				return;
+			
+			crate.InitializeForPlayer(playerId);			
+		}*/					
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -102,6 +179,18 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			return;
 		
 		crates.Get(playerId).InitializeForPlayer(playerId);
+	}
+	
+	void SaveAndDeleteCrate(int playerId)
+	{
+		if(!crates.Contains(playerId))
+			return;
+		
+		auto crate = crates.Get(playerId);
+		crate.SaveCrateContents_S();
+		crates.Remove(playerId);
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(crate.GetOwner());		
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -154,61 +243,20 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			Print("TrainWreck: Was unable to load loot map. Please verify it exists, and has valid syntax");
 			return false;
 		}
+		
+		array<SCR_EArsenalItemType> itemTypes = {};
+		SCR_Enum.GetEnumValues(SCR_EArsenalItemType, itemTypes);		
+		string name = string.Empty;
+		
+		foreach(SCR_EArsenalItemType itemType : itemTypes)
+		{
+			if(!LoadSection(loadContext, itemType))
+			{
+				name = SCR_Enum.GetEnumName(SCR_EArsenalItemType, itemType);
+				Print(string.Format("TrainWreck: LootMap: Unable to load %1", name), LogLevel.ERROR);
+			}
+		}
 				
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.HEAL))
-			Print("TrainWreck: LootMap: unable to load HEAL", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.LEGS))
-			Print("TrainWreck: LootMap: unable to load LEGS", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.TORSO))
-			Print("TrainWreck: LootMap: unable to load TORSO", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.RIFLE))
-			Print("TrainWreck: LootMap: unable to load RIFLE", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.PISTOL))
-			Print("TrainWreck: LootMap: unable to load PISTOL", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.FOOTWEAR))
-			Print("TrainWreck: LootMap: unable to load FOOTWEAR", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.BACKPACK))
-			Print("TrainWreck: LootMap: unable to load BACKPACK", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.HEADWEAR))
-			Print("TrainWreck: LootMap: unable to load HEADWEAR", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.EQUIPMENT))
-			Print("TrainWreck: LootMap: unable to load EQUIPMENT", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.EXPLOSIVES))
-			Print("TrainWreck: LootMap: unable to load EXPLOSIVES", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.MACHINE_GUN))
-			Print("TrainWreck: LootMap: unable to load MACHINE_GUN", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.SNIPER_RIFLE))
-			Print("TrainWreck: LootMap: unable to load SNIPER_RIFLE", LogLevel.ERROR);		
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.RADIO_BACKPACK))
-			Print("TrainWreck: LootMap: unable to load RADIO_BACKPACK", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.VEST_AND_WAIST))
-			Print("TrainWreck: LootMap: unable to load VEST_AND_WAIST", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.ROCKET_LAUNCHER))
-			Print("TrainWreck: LootMap: unable to load ROCKET_LAUNCHER", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.LETHAL_THROWABLE))
-			Print("TrainWreck: LootMap: unable to load LETHAL_THROWABLE", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.WEAPON_ATTACHMENT))
-			Print("TrainWreck: LootMap: unable to load WEAPON_ATTACHMENT", LogLevel.ERROR);
-		
-		if(!LoadSection(loadContext, SCR_EArsenalItemType.NON_LETHAL_THROWABLE))
-			Print("TrainWreck: LootMap: unable to load NON_LETHAL_THROWABLE", LogLevel.ERROR);
-		
 		return true;
 	}
 	
@@ -224,6 +272,10 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		else
 			lootTable.Insert(type, {});
 		
+		foreach(TW_LootConfigItem item : items)
+			if(!globalItems.Contains(item.resourceName))
+				globalItems.Insert(item.resourceName);
+		
 		return success;
 	}
 	
@@ -234,7 +286,12 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		if(!rpl.IsMaster() && rpl.Role() != RplRole.Authority)
 			return;
 		
+		SCR_Enum.GetEnumValues(SCR_EArsenalItemType, arsenalItemTypes);
+		
 		GetGame().GetCallqueue().CallLater(InitializePlayerHub, SCR_TW_Util.FromSecondsToMilliseconds(1), false);
+		GetGame().GetCallqueue().CallLater(InitializeExtractionSites, SCR_TW_Util.FromSecondsToMilliseconds(1), false);
+		GetGame().GetCallqueue().CallLater(CheckPlayerWipe, SCR_TW_Util.FromSecondsToMilliseconds(15), true);
+		
 		InitializeLootMap();
 		
 		int globalCount = SCR_TW_InventoryLoot.GlobalLootContainers.Count();
@@ -259,24 +316,15 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			// How many different things are we going to try spawning?								
 			for(int i = 0; i < spawnCount; i++)
 			{	
-				string baseFormat = string.Format("%1\n\tFlags(%2)", format, container.GetTypeFlags());
 				auto arsenalItem = GetRandomItemByFlag(container.GetTypeFlags());
-				
-				baseFormat += string.Format("%1\n\tSelected: %2", format, arsenalItem.resourceName);
-				
+			
 				if(!arsenalItem)
-				{
-					Print(string.Format("%1\n\tSelected loot item is null", baseFormat), LogLevel.ERROR);		
 					break;
-				}				
 				
 				// Are we going to spawn the selected item?
 				float seedPercentage = Math.RandomFloat(0.001, 100);
 				if(arsenalItem.chanceToSpawn > seedPercentage)
-				{
-					Print(string.Format("%1: Skipping (no chance): %2", baseFormat, arsenalItem.resourceName), LogLevel.WARNING);
 					continue;
-				}
 				
 				// Add item a random amount of times to the container based on settings
 				int itemCount = Math.RandomIntInclusive(1, arsenalItem.randomSpawnCount);
@@ -300,12 +348,41 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	private void InitializeExtractionSites()
 	{
+		if(possibleExtractionSites.IsEmpty())
+			return;
+		
 		int randomCount = Math.RandomIntInclusive(1, numberOfExtractionSites);
 		randomCount = Math.Min(randomCount, possibleExtractionSites.Count());
 		
 		int exclude = possibleExtractionSites.Count() - randomCount;
 		for(int i = 0; i < exclude; i++)
-			possibleExtractionSites.Remove(possibleExtractionSites.GetRandomIndex());
+		{
+			int index = possibleExtractionSites.GetRandomIndex();
+			SCR_TW_ExtractionSite site = possibleExtractionSites.Get(index);
+			SCR_EntityHelper.DeleteEntityAndChildren(site);
+			possibleExtractionSites.Remove(index);
+		}
+			
+		foreach(SCR_TW_ExtractionSite site : possibleExtractionSites)
+			site.SpawnSite();
+	}
+	
+	private void CheckPlayerWipe()
+	{
+		// Players must have spawned in at least 1 time for things to be considered a wipe.
+		// Otherwise a fresh server may end up restarting infinitely while no one is on 
+		
+		if(!playersHaveSpawned && !m_MatchOver)
+			return;
+		
+		ref array<int> playerIds = {};
+		int playerCount = GetGame().GetPlayerManager().GetPlayers(playerIds);
+		
+		if(playerCount <= 0)
+		{
+			m_GameOverType = EGameOverTypes.SERVER_RESTART;
+			FinishGame();
+		}			
 	}
 	
 	private void InitializePlayerHub()
@@ -316,25 +393,29 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		SCR_SiteSlotEntity site = possibleSpawnAreas.GetRandomElement();
+		int randomCount = Math.RandomInt(1, Math.Min(numberOfInsertionPoints, possibleSpawnAreas.Count()));
 		
-		Resource hubResource = Resource.Load(playerHubPrefab);
-		
-		if(!hubResource.IsValid())
+		for(int i = 0; i < randomCount; i++)
 		{
-			Print(string.Format("TrainWreck: Unable to spawn %1, invalid resource", playerHubPrefab), LogLevel.ERROR);
-			return;
-		}
-		
-		IEntity spawnSiteEntity = site.SpawnEntityInSlot(hubResource);
-		
-		if(!spawnSiteEntity)
-		{
-			Print(string.Format("TrainWreck: Was unable to spawn player hub. %1", playerHubPrefab), LogLevel.ERROR);
-			return;
-		}
-		
-		//GetGame().GetCallqueue().CallLater(DespawnPlayerSpawn, 1000 * 60 * playerHubDespawnTimerInMinutes, false, spawnSiteEntity);		
+			int index = possibleSpawnAreas.GetRandomIndex();
+			SCR_SiteSlotEntity site = possibleSpawnAreas.Get(index);
+			possibleSpawnAreas.Remove(index);
+			
+			Resource hubResource = Resource.Load(playerHubPrefab);
+			if(!hubResource.IsValid())
+			{
+				Debug.Error(string.Format("TrainWreck: Unable to spawn %1, invalid resource", possibleSpawnAreas));
+				return;
+			}
+			
+			IEntity spawnSiteEntity = site.SpawnEntityInSlot(hubResource);
+			
+			if(!spawnSiteEntity)
+			{
+				Print(string.Format("TrainWreck: Was unable to spawn player hub. %1", playerHubPrefab), LogLevel.ERROR);
+				return;
+			}
+		}		
 	}
 	
 	private void DespawnPlayerSpawn(IEntity entity)
@@ -425,117 +506,132 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		
 		if(type > 0)
 		{
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.HEAL) && lootTable.Contains(SCR_EArsenalItemType.HEAL))
-				selectedItems.Insert(SCR_EArsenalItemType.HEAL);
-		
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.LEGS) && lootTable.Contains(SCR_EArsenalItemType.LEGS))
-				selectedItems.Insert(SCR_EArsenalItemType.LEGS);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.TORSO) && lootTable.Contains(SCR_EArsenalItemType.TORSO))
-				selectedItems.Insert(SCR_EArsenalItemType.TORSO);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.RIFLE) && lootTable.Contains(SCR_EArsenalItemType.RIFLE))
-				selectedItems.Insert(SCR_EArsenalItemType.RIFLE);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.PISTOL) && lootTable.Contains(SCR_EArsenalItemType.PISTOL))
-				selectedItems.Insert(SCR_EArsenalItemType.PISTOL);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.FOOTWEAR) && lootTable.Contains(SCR_EArsenalItemType.FOOTWEAR))
-				selectedItems.Insert(SCR_EArsenalItemType.FOOTWEAR);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.BACKPACK) && lootTable.Contains(SCR_EArsenalItemType.BACKPACK))
-				selectedItems.Insert(SCR_EArsenalItemType.BACKPACK);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.HEADWEAR) && lootTable.Contains(SCR_EArsenalItemType.HEADWEAR))
-				selectedItems.Insert(SCR_EArsenalItemType.HEADWEAR);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.EQUIPMENT) && lootTable.Contains(SCR_EArsenalItemType.EQUIPMENT))
-				selectedItems.Insert(SCR_EArsenalItemType.EQUIPMENT);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.EXPLOSIVES) && lootTable.Contains(SCR_EArsenalItemType.EXPLOSIVES))
-				selectedItems.Insert(SCR_EArsenalItemType.EXPLOSIVES);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.MACHINE_GUN) && lootTable.Contains(SCR_EArsenalItemType.MACHINE_GUN))
-				selectedItems.Insert(SCR_EArsenalItemType.MACHINE_GUN);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.SNIPER_RIFLE) && lootTable.Contains(SCR_EArsenalItemType.SNIPER_RIFLE))
-				selectedItems.Insert(SCR_EArsenalItemType.SNIPER_RIFLE);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.RADIO_BACKPACK) && lootTable.Contains(SCR_EArsenalItemType.RADIO_BACKPACK))
-				selectedItems.Insert(SCR_EArsenalItemType.RADIO_BACKPACK);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.VEST_AND_WAIST) && lootTable.Contains(SCR_EArsenalItemType.VEST_AND_WAIST))
-				selectedItems.Insert(SCR_EArsenalItemType.VEST_AND_WAIST);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.ROCKET_LAUNCHER) && lootTable.Contains(SCR_EArsenalItemType.ROCKET_LAUNCHER))
-				selectedItems.Insert(SCR_EArsenalItemType.ROCKET_LAUNCHER);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.LETHAL_THROWABLE) && lootTable.Contains(SCR_EArsenalItemType.LETHAL_THROWABLE))
-				selectedItems.Insert(SCR_EArsenalItemType.LETHAL_THROWABLE);
-					
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.WEAPON_ATTACHMENT) && lootTable.Contains(SCR_EArsenalItemType.WEAPON_ATTACHMENT))
-				selectedItems.Insert(SCR_EArsenalItemType.WEAPON_ATTACHMENT);
-			
-			if(SCR_Enum.HasFlag(type, SCR_EArsenalItemType.NON_LETHAL_THROWABLE) && lootTable.Contains(SCR_EArsenalItemType.NON_LETHAL_THROWABLE))
-				selectedItems.Insert(SCR_EArsenalItemType.NON_LETHAL_THROWABLE);			
+			foreach(SCR_EArsenalItemType itemType : arsenalItemTypes)
+			{
+				if(SCR_Enum.HasFlag(type, itemType) && lootTable.Contains(itemType))
+					selectedItems.Insert(itemType);
+			}			
 		}
+		else 
+			return null;
+		
+		/*
 		else
 		{
-			if(lootTable.Contains(SCR_EArsenalItemType.HEAL))
-				selectedItems.Insert(SCR_EArsenalItemType.HEAL);
-		
-			if(lootTable.Contains(SCR_EArsenalItemType.LEGS))
-				selectedItems.Insert(SCR_EArsenalItemType.LEGS);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.TORSO))
-				selectedItems.Insert(SCR_EArsenalItemType.TORSO);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.RIFLE))
-				selectedItems.Insert(SCR_EArsenalItemType.RIFLE);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.PISTOL))
-				selectedItems.Insert(SCR_EArsenalItemType.PISTOL);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.FOOTWEAR))
-				selectedItems.Insert(SCR_EArsenalItemType.FOOTWEAR);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.BACKPACK))
-				selectedItems.Insert(SCR_EArsenalItemType.BACKPACK);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.HEADWEAR))
-				selectedItems.Insert(SCR_EArsenalItemType.HEADWEAR);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.EQUIPMENT))
-				selectedItems.Insert(SCR_EArsenalItemType.EQUIPMENT);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.EXPLOSIVES))
-				selectedItems.Insert(SCR_EArsenalItemType.EXPLOSIVES);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.MACHINE_GUN))
-				selectedItems.Insert(SCR_EArsenalItemType.MACHINE_GUN);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.SNIPER_RIFLE))
-				selectedItems.Insert(SCR_EArsenalItemType.SNIPER_RIFLE);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.RADIO_BACKPACK))
-				selectedItems.Insert(SCR_EArsenalItemType.RADIO_BACKPACK);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.VEST_AND_WAIST))
-				selectedItems.Insert(SCR_EArsenalItemType.VEST_AND_WAIST);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.ROCKET_LAUNCHER))
-				selectedItems.Insert(SCR_EArsenalItemType.ROCKET_LAUNCHER);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.LETHAL_THROWABLE))
-				selectedItems.Insert(SCR_EArsenalItemType.LETHAL_THROWABLE);
-					
-			if(lootTable.Contains(SCR_EArsenalItemType.WEAPON_ATTACHMENT))
-				selectedItems.Insert(SCR_EArsenalItemType.WEAPON_ATTACHMENT);
-			
-			if(lootTable.Contains(SCR_EArsenalItemType.NON_LETHAL_THROWABLE))
-				selectedItems.Insert(SCR_EArsenalItemType.NON_LETHAL_THROWABLE);
+			foreach(SCR_EArsenalItemType itemType : arsenalItemTypes)
+			{
+				if(lootTable.Contains(itemType))
+					selectedItems.Insert(itemType);
+			}
 		}
+		*/
 		
-		return lootTable.Get(selectedItems.GetRandomElement()).GetRandomElement();
+		// Check if nothing was selected 
+		if(selectedItems.IsEmpty())
+			return null;
+		
+		auto items = lootTable.Get(selectedItems.GetRandomElement());
+		
+		// Check if nothing was available 
+		if(!items || items.IsEmpty())
+			return null;
+		
+		return items.GetRandomElement();
 	}		
+	
+	bool IsMaster() // IsServer 
+	{
+		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		
+		if(!rpl)
+			return false;
+		
+		return !rpl.IsProxy();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_PlaySoundOnEntity(EntityID entityID, string soundName)
+	{
+		if(!entityID)
+			return;
+		
+		IEntity entity = GetGame().GetWorld().FindEntityByID(entityID);
+		
+		if(!entity)
+			return;
+		
+		SCR_CommunicationSoundComponent soundComp = SCR_CommunicationSoundComponent.Cast(entity.FindComponent(SCR_CommunicationSoundComponent));
+		
+		if(!soundComp)
+			return;
+		
+		soundComp.PlayStr(soundName);
+	}
+	
+	void PlaySoundOnEntity(IEntity entity, string soundName)
+	{
+		if(!entity)
+			entity = GetOwner();
+		
+		if(!entity)
+			return;
+		
+		if(IsMaster())
+			Rpc(RpcDo_PlaySoundOnEntity, entity.GetID(), soundName);
+		RpcDo_PlaySoundOnEntity(entity.GetID(), soundName);
+	}
+	
+	void PlaySoundOnPlayer(string soundName)
+	{
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		
+		if(!pc)
+			return;
+		
+		IEntity player = pc.GetMainEntity();
+		if(!player)
+			return;
+		
+		PlaySoundOnEntity(player, soundName);
+	}
+	
+	void SetMissionEndScreen(EGameOverTypes gameOverType)
+	{
+		m_GameOverType = gameOverType;
+	}
+	
+	void EndGame()
+	{
+		SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple(m_GameOverType, 0, 0);
+		m_MatchOver = true;
+		SCR_BaseGameMode.Cast(GetOwner()).EndGameMode(endData);
+	}
+	
+	bool GetIsMatchOver()
+	{
+		return m_MatchOver;
+	}
+	
+	void PopUpMessage(string title, string subtitle)
+	{
+		// Ensure this gets broadcasted to all players on server
+		Rpc(RpcDo_PopUpMessage, title, subtitle);
+		
+		SCR_PopUpNotification.GetInstance().PopupMsg(title, text2: subtitle);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_PopUpMessage(string title, string subtitle)
+	{
+		SCR_PopUpNotification.GetInstance().PopupMsg(title, text2: subtitle);
+	}
+	
+	void FinishGame()
+	{
+		SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple(m_GameOverType, 0,0);
+		
+		m_MatchOver = true;
+		
+		SCR_BaseGameMode.Cast(GetOwner()).EndGameMode(endData);
+	}
 };

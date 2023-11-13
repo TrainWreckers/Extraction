@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{8244FA117BFE80F9}UI/layouts/Menus/DeployMenu/TW_RespawnMenu.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

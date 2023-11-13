@@ -9,6 +9,11 @@ class SCR_TW_Util
 		return world;
 	}
 	
+	static vector GetForwardVec(IEntity entity)
+	{
+		return entity.GetTransformAxis(0).Normalized();
+	}
+	
 	// Convert seconds to milliseconds
 	static int FromSecondsToMilliseconds(int seconds)
 	{

@@ -1,0 +1,41 @@
+ChimeraSunAndMoon {
+ coords 59.592 0.1 51.297
+}
+SCR_TW_ExtractionSite {
+ components {
+  RplComponent "{5ED8F1F28F501DBF}" {
+  }
+ }
+ coords 70.156 0.811 53.859
+ extractionSitePrefabs {
+  "{540ABA8EAC791800}Prefabs/TrainWreck/Compositions/TW_Comp_ExtractionSite_Bunkers.et"
+ }
+ {
+  SCR_TW_TriggerArea {
+   components {
+    RplComponent "{5ED8F1F7601914F7}" {
+    }
+   }
+   TriggerShapeType Sphere
+   SphereRadius 8.2
+   TriggerActivationType "All changes"
+   PeriodicQueries 1
+   UpdatePeriod 10
+   PrefabsFilter {
+    PrefabFilter "{5ED8F1F707234FB6}" {
+     Prefab "{5D86C8643E266A5E}Prefabs/Characters/Campaign/Final/TW_Extraction_US_Base.et"
+     CheckPrefabHierarchy 1
+    }
+   }
+  }
+ }
+}
+SCR_SiteSlotEntity : "{1DDA71FF79C8A59A}PrefabsEditable/Slots/Flat/TW_E_SmallArea_ExtractionSite.et" {
+ coords 66.147 -0.383 66.519
+ {
+  StaticModelEntity {
+   ID "52E8C3643526D54D"
+   coords 0 0.878 0
+  }
+ }
+}

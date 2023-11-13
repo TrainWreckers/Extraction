@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{FE73EF6830B22E0F}UI/layouts/TW_Layout_ExtractionHUD.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}
