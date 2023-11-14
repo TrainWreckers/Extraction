@@ -17,9 +17,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		
 		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
 		if (!(rpl && rpl.IsMaster() && rpl.Role() == RplRole.Authority))
-			return;
-		
-		SCR_TW_ExtractionHandler.GetInstance().RegisterPlayerLoadoutCrate(this);
+			return;				
 	}
 	
 	int GetPlayerId() { return playerId; }
@@ -88,18 +86,92 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		this.playerId = playerId;
 	}
 	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_UpdateCrateInfo(RplId id, int playerId)
+	{
+		UpdatePlayerCrateInformation(id, playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	IEntity GetProviderFromRplId(RplId rplProviderId)
+	{
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplProviderId));
+		if (!rplComp)
+			return null;
+
+		return rplComp.GetEntity();
+	}
+	
+	//! We want to grab the box across the network via same network ID 
+	private void UpdatePlayerCrateInformation(RplId id, int playerId)
+	{				
+		this.playerId = playerId;
+		
+		Print("TrainWreck: I AM RPC'ing", LogLevel.ERROR);	
+		IEntity box = GetProviderFromRplId(id);
+		
+		if(!box)
+		{
+			Print(string.Format("TrainWreck: LootBox RPC - unable to find box with ID: %1", playerId), LogLevel.ERROR);
+			return;
+		}
+		
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		string name = string.Format("%1's Crate", playerName);
+		string description = string.Format("This crate belongs to %1", playerName);
+		
+		SCR_TW_PlayerCrateComponent crate = SCR_TW_PlayerCrateComponent.Cast(box.FindComponent(SCR_TW_PlayerCrateComponent));
+		
+		if(!crate)
+		{
+			Print(string.Format("TrainWreck: LootBox RPC - unable to find SCR_TW_PlayerCrateComponent on ID %1", playerId), LogLevel.ERROR);			
+			return;
+		}
+		
+		SCR_UniversalInventoryStorageComponent universal = SCR_UniversalInventoryStorageComponent.Cast(crate.GetOwner().FindComponent(SCR_UniversalInventoryStorageComponent));
+		if(universal)
+		{			
+			
+			SCR_ItemAttributeCollection collection = SCR_ItemAttributeCollection.Cast(universal.GetAttributes());
+			
+			if(collection)
+			{
+				SCR_InventoryUIInfo ui = SCR_InventoryUIInfo.Cast(collection.GetUIInfo());
+				ui.SetName(string.Format("%1's Loot", name));
+				ui.SetDescription(string.Format("This crate belongs to %1", description));
+				
+				Print(string.Format("TrainWreck: CrateId(%1) has been updated to %2", playerId, name), LogLevel.WARNING);
+			}
+		}
+		else
+			Print(string.Format("TrainWreck: LootBox RPC - unable to find SCR_UniversalInventoryStorageComponent on ID: %1", playerId), LogLevel.ERROR);		
+	}
+	
+	protected void DelayedRpcCallToUpdate(RplId id, int playerId)
+	{
+		Rpc(RpcDo_UpdateCrateInfo, id, playerId);
+	}
+	
 	void InitializeForPlayer(int playerId)
 	{
 		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		UpdatePlayerCrateInformation(rpl.Id(), playerId);
+		GetGame().GetCallqueue().CallLater(DelayedRpcCallToUpdate, SCR_TW_Util.FromSecondsToMilliseconds(5), false, rpl.Id(), playerId);
+						
+		this.playerId = playerId;
+		GetGame().GetCallqueue().CallLater(UpdatePlayerIdServerLater, 1000, false);		
+		
 		if (!(rpl && rpl.Role() == RplRole.Authority))
 			return;
-		
-		this.playerId = playerId;
-		Rpc(RpcDo_UpdatePlayerId, playerId);
 		
 		ClearInventory();
 		InitializePlayerInventory();
 		GetGame().GetCallqueue().CallLater(SaveAndDeleteCrate, SCR_TW_Util.FromMinutesToMilliseconds(deleteTimer), false);
+	}
+	
+	private void UpdatePlayerIdServerLater()
+	{
+		Rpc(RpcDo_UpdatePlayerId, playerId);
 	}
 	
 	private void SaveAndDeleteCrate()
@@ -160,9 +232,37 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		{			
 			Print(string.Format("TrainWreck: Inserting %1 (%2)", name, amount), LogLevel.NORMAL);
 			
+			Resource itemResource = Resource.Load(name);
+			
+			if(!itemResource.IsValid())
+			{
+				Print(string.Format("TrainWreck: Invalid resource for player crate: %1", name), LogLevel.ERROR);
+				continue;
+			}
+			
 			for(int i = 0; i < amount; i++)
-			{				
-				bool success = manager.TrySpawnPrefabToStorage(name, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT);
+			{			
+				EntitySpawnParams params = EntitySpawnParams();
+				GetOwner().GetTransform(params.Transform);
+				
+				IEntity item = GetGame().SpawnEntityPrefab(itemResource, GetGame().GetWorld(), params);
+				
+				if(!item)
+					continue;
+				
+				BaseWeaponComponent weaponComponent = BaseWeaponComponent.Cast(item.FindComponent(BaseWeaponComponent));					
+				
+				if(weaponComponent)
+				{
+					BaseMagazineComponent magazine = weaponComponent.GetCurrentMagazine();
+					if(magazine)
+						SCR_EntityHelper.DeleteEntityAndChildren(magazine.GetOwner());
+				}
+				
+				bool success = manager.TryInsertItemInStorage(item, storage);
+				
+				if(!success)
+					SCR_EntityHelper.DeleteEntityAndChildren(item);
 			}
 		}
 			

@@ -64,6 +64,14 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("1", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Maximum percentage of ammo per weapon/mag")]
 	private float maximumAmmoPercent;
 	
+	[Attribute("0.5", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Chance a magazine won't spawn with a gun")]
+	private float chanceOfMagazine;
+	
+	float ShouldSpawnMagazine()
+	{
+		return Math.RandomFloat(0, 1) <= chanceOfMagazine;
+	}
+	
 	float GetRandomAmmoPercent()
 	{
 		return Math.RandomFloat(minimumAmmoPercent, maximumAmmoPercent);
@@ -116,6 +124,9 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
+		if(!IsMaster())
+			return;
+		
 		if(!crates.Contains(playerId))
 			return;
 		
@@ -124,10 +135,17 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
+		RplComponent myRpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		
+		// Should only be called on the server 
+		if(!(myRpl && myRpl.IsMaster() && myRpl.Role() == RplRole.Authority))
+			return;
+		
 		super.OnPlayerSpawned(playerId, controlledEntity);
+		
 		playersHaveSpawned = true;
 		
-		vector forwardDirection = SCR_TW_Util.GetForwardVec(controlledEntity) * (playerId * 3);
+		vector forwardDirection = SCR_TW_Util.GetForwardVec(controlledEntity) * (playerId * 3.5);
 		vector position = controlledEntity.GetOrigin() + forwardDirection;
 		
 		Resource crateResource = Resource.Load(playerCratePrefab);
@@ -144,6 +162,12 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		position[1] = GetGame().GetWorld().GetSurfaceY(position[0], position[2]);
 		params.Transform[3] = position;
 		
+		if(crates.Contains(playerId))
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(crates.Get(playerId).GetOwner());
+			crates.Remove(playerId);
+		}
+		
 		IEntity crateEntity = GetGame().SpawnEntityPrefab(crateResource, GetGame().GetWorld(), params);
 		
 		if(!crateEntity)
@@ -158,13 +182,14 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		{
 			Debug.Error("TrainWreck: Could not locate SCR_TW_PlayerCrateComponent");
 			return;
-		}
+		}		
 		
-		crate.InitializeForPlayer(playerId);
+		crate.InitializeForPlayer(playerId);		
+		crates.Insert(playerId, crate);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! RPC Call to server to ensure only the server udpates/saves inventory 
+	//! RPC Call to server to ensure only the server updates/saves inventory 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcUpdatePlayerCrate(int playerId)
 	{
@@ -176,6 +201,9 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	void SaveAndDeleteCrate(int playerId)
 	{
+		if(!IsMaster())
+			return;
+		
 		if(!crates.Contains(playerId))
 			return;
 		
@@ -352,7 +380,22 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		{
 			int index = possibleExtractionSites.GetRandomIndex();
 			SCR_TW_ExtractionSite site = possibleExtractionSites.Get(index);
+			
+			IEntity child = site.GetChildren();
+			
+			if(child)
+			{
+				SCR_TW_TriggerArea trigger = SCR_TW_TriggerArea.Cast(child);
+				if(trigger)
+				{
+					trigger.EnablePeriodicQueries(false);
+					trigger.SetSphereRadius(0);
+					SCR_EntityHelper.DeleteEntityAndChildren(trigger);			
+				}				
+			}			
+						
 			SCR_EntityHelper.DeleteEntityAndChildren(site);
+			
 			possibleExtractionSites.Remove(index);
 		}
 			
@@ -626,5 +669,41 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		m_MatchOver = true;
 		
 		SCR_BaseGameMode.Cast(GetOwner()).EndGameMode(endData);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_UpdateMagazineAmmoCount(RplId id, int ammoCount)
+	{
+		Print("Trying to repack magazine - broadcasting", LogLevel.WARNING);
+		IEntity entity = GetProviderFromRplId(id);
+		
+		if(!entity)
+		{
+			Print(string.Format("TrainWreck: Was unable to locate Magzine with ID: %1 for %2", id, ammoCount), LogLevel.ERROR);	
+			return;
+		}
+		
+		MagazineComponent magazineComponent = MagazineComponent.Cast(entity.FindComponent(MagazineComponent));
+		
+		if(!magazineComponent)
+			return;
+		
+		magazineComponent.SetAmmoCount(ammoCount);
+	}
+	
+	void UpdateMagazineAmmoCount_Global(RplId id, int ammoCount)
+	{		
+		Print("Calling RPC for server");
+		Rpc(RpcDo_UpdateMagazineAmmoCount, id, ammoCount);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	IEntity GetProviderFromRplId(RplId rplProviderId)
+	{
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplProviderId));
+		if (!rplComp)
+			return null;
+
+		return rplComp.GetEntity();
 	}
 };

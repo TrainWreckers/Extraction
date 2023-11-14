@@ -67,7 +67,13 @@ modded class SCR_InventoryMenuUI
 				break;
 	    	}				
 	    }
-	  }
+	}
+	
+	private void UpdateMag(RplComponent rpl, MagazineComponent mag, int amount)
+	{		
+		mag.SetAmmoCount(amount);		
+		SCR_TW_ExtractionHandler.GetInstance().UpdateMagazineAmmoCount_Global(rpl.Id(), amount);
+	}
 	
 	protected void Action_RepackMag()
 	{
@@ -86,9 +92,12 @@ modded class SCR_InventoryMenuUI
 		
 		array<MagazineComponent> mags = SCR_TW_Util.SortedMagazines(magEntities);
 		magEntities.Clear();
+		RplComponent targetMagRpl = RplComponent.Cast(m_MagComp.GetOwner().FindComponent(RplComponent));
 		
 		foreach(MagazineComponent comp : mags)
 		{
+			RplComponent currentMagRpl = RplComponent.Cast(comp.GetOwner().FindComponent(RplComponent));
+			
 			// If the mag we're trying to repack is at max capacity we can stop 
 			if(m_MagComp.GetAmmoCount() == maxAmmoCount)
 				break; // Can't return because we want to yeet any mags that need to be discarded
@@ -97,8 +106,9 @@ modded class SCR_InventoryMenuUI
 			// we can safely add the two together
 			if(m_MagComp.GetAmmoCount() + comp.GetAmmoCount() < maxAmmoCount)
 			{
-				m_MagComp.SetAmmoCount(m_MagComp.GetAmmoCount() + comp.GetAmmoCount());
-				
+				int newCount = m_MagComp.GetAmmoCount() + comp.GetAmmoCount();
+				UpdateMag(targetMagRpl, m_MagComp, newCount);
+								
 				// The mag we just added shall get deleted once complete
 				magEntities.Insert(comp.GetOwner());
 				continue;
@@ -108,11 +118,14 @@ modded class SCR_InventoryMenuUI
 				// What's left over after topping of target mag? 
 				int remainder = (m_MagComp.GetAmmoCount() + comp.GetAmmoCount()) % maxAmmoCount;
 				
+				UpdateMag(targetMagRpl, m_MagComp, maxAmmoCount);
+				
 				// Update target mag to be it's max 
-				m_MagComp.SetAmmoCount(maxAmmoCount);
+				// m_MagComp.SetAmmoCount(maxAmmoCount);
+				SCR_TW_ExtractionHandler.GetInstance().UpdateMagazineAmmoCount_Global(targetMagRpl.Id(), maxAmmoCount);
 				
 				if(remainder > 0)
-					comp.SetAmmoCount(remainder);
+					UpdateMag(currentMagRpl, comp, remainder);
 				else
 					// consumed mag gets deleted later 
 					magEntities.Insert(comp.GetOwner());
