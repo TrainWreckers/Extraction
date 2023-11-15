@@ -669,41 +669,5 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		m_MatchOver = true;
 		
 		SCR_BaseGameMode.Cast(GetOwner()).EndGameMode(endData);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void RpcDo_UpdateMagazineAmmoCount(RplId id, int ammoCount)
-	{
-		Print("Trying to repack magazine - broadcasting", LogLevel.WARNING);
-		IEntity entity = GetProviderFromRplId(id);
-		
-		if(!entity)
-		{
-			Print(string.Format("TrainWreck: Was unable to locate Magzine with ID: %1 for %2", id, ammoCount), LogLevel.ERROR);	
-			return;
-		}
-		
-		MagazineComponent magazineComponent = MagazineComponent.Cast(entity.FindComponent(MagazineComponent));
-		
-		if(!magazineComponent)
-			return;
-		
-		magazineComponent.SetAmmoCount(ammoCount);
-	}
-	
-	void UpdateMagazineAmmoCount_Global(RplId id, int ammoCount)
-	{		
-		Print("Calling RPC for server");
-		Rpc(RpcDo_UpdateMagazineAmmoCount, id, ammoCount);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	IEntity GetProviderFromRplId(RplId rplProviderId)
-	{
-		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplProviderId));
-		if (!rplComp)
-			return null;
-
-		return rplComp.GetEntity();
-	}
+	}	
 };

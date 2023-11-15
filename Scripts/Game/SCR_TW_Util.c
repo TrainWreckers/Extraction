@@ -1,5 +1,15 @@
 class SCR_TW_Util 
-{
+{	
+	IEntity GetProviderFromRplId(RplId rplProviderId)
+	{
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplProviderId));
+
+		if (!rplComp)
+			return null;
+
+		return rplComp.GetEntity();
+	}
+	
 	static ref RandomGenerator random = new RandomGenerator();
 	
 	static BaseWorld GetWorld()

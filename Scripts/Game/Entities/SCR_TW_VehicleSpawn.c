@@ -21,6 +21,9 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 	[Attribute("0.5", UIWidgets.Slider, category: "Fuel", desc: "Maximum amount of fuel to start with", params: "0.01 1 0.01")]
 	protected float m_MaximumFuel;
 	
+	[Attribute("0", UIWidgets.Auto, category: "Spawn", desc: "Should vehicle spawn at start, ignoring spawn system")]	
+	protected bool ignoreChanceSpawnAtStart;
+	
 	protected bool m_CanSpawn = true;
 	
 	private ref RandomGenerator random = new RandomGenerator();
@@ -30,7 +33,26 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 		if(!GetGame().InPlayMode())
 			return;
 		
-		GetGame().GetCallqueue().CallLater(Register, 100, false);
+		string name = owner.GetName();
+		if(!ignoreChanceSpawnAtStart)
+		{
+			Print("Registering Vehicle Spawn " + name);
+			GetGame().GetCallqueue().CallLater(Register, 100, false);
+		}			
+		else
+		{
+			Print("Spawning vehicle now " + name);
+			GetGame().GetCallqueue().CallLater(SpawnNow, 1000, false);
+		}			
+	}
+	
+	private void SpawnNow()
+	{
+		IEntity vehicle;
+		if(SpawnVehicle(vehicle))
+			Print("Vehicle spawned");
+		else
+			Print("Vehicle Failed");
 	}
 	
 	private void Register()
@@ -39,7 +61,7 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 		
 		if(spawnHandler)
 			spawnHandler.RegisterVehicleSpawnPoint(this);
-	}
+	}	
 	
 	bool SpawnVehicle(out IEntity vehicle)
 	{
@@ -55,7 +77,7 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 		if(!rpl.IsMaster() && rpl.Role() != RplRole.Authority)
 			return false;
 		
-		if(random.RandIntInclusive(0,100) >= m_ChanceToSpawn)
+		if(!ignoreChanceSpawnAtStart && random.RandIntInclusive(0,100) > m_ChanceToSpawn)
 			return false;
 
 		ResourceName prefabName = m_VehiclePrefabs.GetRandomElement();

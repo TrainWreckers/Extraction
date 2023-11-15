@@ -38,6 +38,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220
    m_GarbageCollectionTimer 80
+   m_MinimumVehicleSpawnDistance 0
   }
   SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
   }
@@ -71,43 +72,24 @@ SCR_TW_ExtractionSite {
  }
  coords 173.363 1 86.476
 }
-GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
- components {
-  SCR_TW_VehicleSpawn "{5ED64A40FDACDFCC}" {
-   m_ChanceToSpawn 100
-   m_VehiclePrefabs + {
-    "{4BFB3CA9E83385D2}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_base.et" "{33BC05D02006BE44}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_base.et"
-   }
-  }
-  RplComponent "{5ED6E0D4FB9DA034}" {
-  }
- }
- coords 211.049 1 37.272
- angleY 0
-}
 GenericEntity : "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et" {
  coords 205.853 1 43.945
 }
 GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench_base.et" {
- components {
-  SCR_RepairSupportStationComponent "{5DF4D9A1C2C8E9C8}" {
-   m_bUseSupplies 0
-   m_iSupplyCostDamageHealed 0
-   m_aDoTTypesHealed + {
-    5 7 4 3 2 1
-   }
-   m_iSuppliesPerDoTHealed 0
-  }
-  SCR_SupportStationGadgetComponent "{5DF4D9A1DBD1B5EF}" {
-   m_aSupportStationTypes + {
-    101 102
-   }
-  }
- }
- coords 205.574 1 43.457
+ coords 205.231 1 43.371
 }
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
  coords 116.216 1 126.552
+}
+GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
+ components {
+  SCR_TW_VehicleSpawn "{5ED715FC73F50321}" {
+   m_ChanceToSpawn 100
+   ignoreChanceSpawnAtStart 1
+  }
+ }
+ coords 210.245 1 40.435
+ angleY 0
 }
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
  coords 114.825 1 106.67
