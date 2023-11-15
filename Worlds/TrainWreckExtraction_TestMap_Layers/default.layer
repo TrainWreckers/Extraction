@@ -33,8 +33,8 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
-   m_DisableSpawns 1
    m_MaxAgents 30
+   m_SpawnTimerInMinutes 1
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220
    m_GarbageCollectionTimer 80
@@ -94,7 +94,15 @@ GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpa
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
  coords 114.825 1 106.67
 }
+SCR_DestructibleBuildingEntity : "{A4D0B331414901A5}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_tankpistol.et" {
+ coords 193.368 0 44.273
+}
 GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/ArsenalBox_USSR.et" {
+ components {
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   m_bUseSupplies 0
+  }
+ }
  coords 202.342 1 42.937
 }
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {

@@ -51,6 +51,8 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    m_MaxAgents 35
    m_MinimumAISpawnDistance 150
    m_GarbageCollectionTimer 80
+   m_AIWanderMinimumPercent 0.294
+   m_AIWanderMaximumPercent 0.762
   }
   SCR_TimeAndWeatherHandlerComponent "{5ED74C1C84F55A6E}" {
    m_bRandomStartingDaytime 1
