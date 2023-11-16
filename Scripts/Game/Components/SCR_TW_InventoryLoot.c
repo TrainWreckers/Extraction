@@ -35,8 +35,8 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		if(!GlobalLootContainers.Contains(this))
 			GlobalLootContainers.Insert(this);
 				
-		storageManager = InventoryStorageManagerComponent.Cast(owner.FindComponent(InventoryStorageManagerComponent));
-		storage = BaseUniversalInventoryStorageComponent.Cast(owner.FindComponent(BaseUniversalInventoryStorageComponent));				
+		storageManager = TW<InventoryStorageManagerComponent>.Find(owner);
+		storage = TW<BaseUniversalInventoryStorageComponent>.Find(owner);
 	}
 	
 	bool InsertItem(TW_LootConfigItem item)

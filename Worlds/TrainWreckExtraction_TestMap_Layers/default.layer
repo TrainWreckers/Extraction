@@ -33,7 +33,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
-   m_MaxAgents 30
+   m_MaxAgents 5
    m_SpawnTimerInMinutes 1
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220

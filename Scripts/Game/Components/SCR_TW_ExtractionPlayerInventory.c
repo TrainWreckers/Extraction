@@ -64,7 +64,7 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 		// We'll be using the player name to save loadouts because it's more reliable than player Id
 		// which could change between sessions. 
 		string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		SCR_InventoryStorageManagerComponent manager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		SCR_InventoryStorageManagerComponent manager = TW<SCR_InventoryStorageManagerComponent>.Find(entity);
 		
 		ref array<IEntity> allItems = {};
 		int count = manager.GetItems(allItems);
@@ -162,7 +162,7 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 			else
 				loadout.Set(resource, loadout.Get(resource) + 1);
 			
-			BaseInventoryStorageComponent substorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
+			BaseInventoryStorageComponent substorage = TW<BaseInventoryStorageComponent>.Find(attachedEntity);
 			
 			if(substorage)
 			{
@@ -173,11 +173,10 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 	
 	override void EOnInit(IEntity owner)
 	{
-		if(!GetGame().InPlayMode())
+		if(!TW_Global.IsInRuntime())
 			return;
 		
-		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		if (!(rpl && rpl.Role() == RplRole.Authority))
+		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
 		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());

@@ -33,7 +33,7 @@ class SCR_TW_ExtractionSite : SCR_SiteSlotEntity
 	{
 		super.EOnInit(owner);
 		
-		if(!GetGame().InPlayMode())
+		if(!TW_Global.IsInRuntime())
 			return;
 		
 		SCR_TW_ExtractionHandler.GetInstance().RegisterExtractionSite(this);				

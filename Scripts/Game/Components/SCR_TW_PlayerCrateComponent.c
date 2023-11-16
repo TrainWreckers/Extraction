@@ -8,20 +8,8 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	[Attribute("5", UIWidgets.Slider, params: "1 120 5", desc: "Timer (in minutes), crate will be deleted")]
 	private int deleteTimer;
 	
-	private bool initialized = false;
-	
-	override void OnPostInit(IEntity owner)
-	{
-		if(!GetGame().InPlayMode())
-			return;
-		
-		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
-		if (!(rpl && rpl.IsMaster() && rpl.Role() == RplRole.Authority))
-			return;				
-	}
-	
 	int GetPlayerId() { return playerId; }
-	bool CanOpen(int playerId) { return this.playerId == playerId; }
+	bool CanOpen(int id) { return this.playerId == id; }
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	private void RpcDo_SaveCrateContents()
@@ -45,7 +33,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
 		
 		ref array<IEntity> items = {};
-		InventoryStorageManagerComponent storageManager = InventoryStorageManagerComponent.Cast(GetOwner().FindComponent(InventoryStorageManagerComponent));		
+		InventoryStorageManagerComponent storageManager = TW<InventoryStorageManagerComponent>.Find(GetOwner());
 		int itemCount = storageManager.GetItems(items);
 		
 		Print(string.Format("TrainWreck: There are %1 items in %2's crate", itemCount, playerName), LogLevel.ERROR);
@@ -81,9 +69,9 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	private void RpcDo_UpdatePlayerId(int playerId)
+	private void RpcDo_UpdatePlayerId(int id)
 	{
-		this.playerId = playerId;
+		this.playerId = id;
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -120,7 +108,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		string name = string.Format("%1's Crate", playerName);
 		string description = string.Format("This crate belongs to %1", playerName);
 		
-		SCR_TW_PlayerCrateComponent crate = SCR_TW_PlayerCrateComponent.Cast(box.FindComponent(SCR_TW_PlayerCrateComponent));
+		SCR_TW_PlayerCrateComponent crate = TW<SCR_TW_PlayerCrateComponent>.Find(box);
 		
 		if(!crate)
 		{
@@ -128,7 +116,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		}
 		
-		SCR_UniversalInventoryStorageComponent universal = SCR_UniversalInventoryStorageComponent.Cast(crate.GetOwner().FindComponent(SCR_UniversalInventoryStorageComponent));
+		SCR_UniversalInventoryStorageComponent universal = TW<SCR_UniversalInventoryStorageComponent>.Find(crate.GetOwner());
 		if(universal)
 		{			
 			
@@ -181,8 +169,8 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	
 	private void ClearInventory()
 	{
-		InventoryStorageManagerComponent manager = InventoryStorageManagerComponent.Cast(GetOwner().FindComponent(InventoryStorageManagerComponent));
-		BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(GetOwner().FindComponent(BaseInventoryStorageComponent));
+		InventoryStorageManagerComponent manager = TW<InventoryStorageManagerComponent>.Find(GetOwner());
+		BaseInventoryStorageComponent storage = TW<BaseInventoryStorageComponent>.Find(GetOwner());
 		ref array<IEntity> items = {};
 		manager.GetItems(items);
 		
@@ -217,7 +205,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		}
 		
-		InventoryStorageManagerComponent manager = InventoryStorageManagerComponent.Cast(GetOwner().FindComponent(InventoryStorageManagerComponent));
+		InventoryStorageManagerComponent manager = TW<InventoryStorageManagerComponent>.Find(GetOwner());
 		
 		if(!manager)
 		{
@@ -225,7 +213,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		}
 		
-		BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(GetOwner().FindComponent(BaseInventoryStorageComponent));
+		BaseInventoryStorageComponent storage = TW<BaseInventoryStorageComponent>.Find(GetOwner());
 		
 		Print("TrainWreck: Populating Player Loot Box", LogLevel.NORMAL);
 		foreach(string name, int amount : items)

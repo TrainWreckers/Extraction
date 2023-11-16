@@ -68,10 +68,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	
 	override void OnGameModeStart()
 	{		
-		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		
-		if(!rpl.IsMaster())
-			return;		
+		if(!TW_Global.IsServer(GetOwner()))
+			return;
 		
 		if(m_DisableSpawns)
 			return;
@@ -140,7 +138,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		SCR_ChimeraAIAgent agent = m_Groups.Get(index);
 		m_Groups.Remove(index);
 		
-		SCR_AIInfoComponent aiInfo = SCR_AIInfoComponent.Cast(agent.FindComponent(SCR_AIInfoComponent));
+		SCR_AIInfoComponent aiInfo = TW<SCR_AIInfoComponent>.Find(agent);
 		
 		if(!aiInfo)
 			return;

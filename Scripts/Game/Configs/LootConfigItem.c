@@ -10,14 +10,14 @@ class TW_LootConfigItem
 	int randomSpawnCount;
 	ref array<string> tags;
 	
-	void SetData(ResourceName resource, int chance, int spawnCount, array<string> tags = null)
+	void SetData(ResourceName resource, int chance, int spawnCount, array<string> itemTags = null)
 	{
 		this.resourceName = resource;
 		this.chanceToSpawn = chance;
 		this.randomSpawnCount = spawnCount;
 		
-		if(tags)
-			this.tags = tags;
+		if(itemTags)
+			this.tags = itemTags;
 		else 
 			this.tags = {};
 	}

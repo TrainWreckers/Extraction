@@ -124,7 +124,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
-		if(!IsMaster())
+		if(!Replication.IsServer())
 			return;
 		
 		if(!crates.Contains(playerId))
@@ -135,10 +135,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
-		RplComponent myRpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		
-		// Should only be called on the server 
-		if(!(myRpl && myRpl.IsMaster() && myRpl.Role() == RplRole.Authority))
+		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
 		super.OnPlayerSpawned(playerId, controlledEntity);
@@ -201,7 +198,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	void SaveAndDeleteCrate(int playerId)
 	{
-		if(!IsMaster())
+		if(!Replication.IsServer())
 			return;
 		
 		if(!crates.Contains(playerId))
@@ -551,17 +548,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		else 
 			return null;
 		
-		/*
-		else
-		{
-			foreach(SCR_EArsenalItemType itemType : arsenalItemTypes)
-			{
-				if(lootTable.Contains(itemType))
-					selectedItems.Insert(itemType);
-			}
-		}
-		*/
-		
 		// Check if nothing was selected 
 		if(selectedItems.IsEmpty())
 			return null;
@@ -574,16 +560,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		
 		return items.GetRandomElement();
 	}		
-	
-	bool IsMaster() // IsServer 
-	{
-		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		
-		if(!rpl)
-			return false;
-		
-		return !rpl.IsProxy();
-	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_PlaySoundOnEntity(EntityID entityID, string soundName)
@@ -612,7 +588,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		if(!entity)
 			return;
 		
-		if(IsMaster())
+		if(Replication.IsServer())
 			Rpc(RpcDo_PlaySoundOnEntity, entity.GetID(), soundName);
 		RpcDo_PlaySoundOnEntity(entity.GetID(), soundName);
 	}
@@ -670,4 +646,34 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		
 		SCR_BaseGameMode.Cast(GetOwner()).EndGameMode(endData);
 	}	
+	
+	void RpcAsk_DeleteItem(IEntity item)
+	{
+		RplComponent rplComponent = TW<RplComponent>.Find(item);
+		
+		if(!rplComponent)
+		{
+			Print("TrainWreck: RpcAsk_DeleteItem -> Item does not have replication component", LogLevel.ERROR);
+			return;
+		}
+		
+		RplId id = rplComponent.Id();
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(item);
+		Rpc(RpcDo_DeleteItem, id);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	private void RpcDo_DeleteItem(RplId itemId)
+	{
+		IEntity item = TW_Global.GetEntityByRplId(itemId);
+		
+		if(!item)
+		{
+			Print(string.Format("TrainWreck: RpcDo_DeleteItem --> Unable to locate item with replication ID %1", itemId), LogLevel.ERROR);
+			return;
+		}
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(item);
+	}
 };
