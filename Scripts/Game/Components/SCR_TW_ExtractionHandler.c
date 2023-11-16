@@ -85,36 +85,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			possibleExtractionSites.Insert(site);				
 	}
 	
-	void RegisterPlayerLoadoutCrate(SCR_TW_PlayerCrateComponent crate)
-	{
-		int playerId = crate.GetPlayerId();
-		
-		if(playerId < 0)
-			return;
-		
-		if(crates.Contains(playerId))
-		{
-			Print(string.Format("TrainWreck: Crate for %1 has already been registered. Removing already registered crate", playerId), LogLevel.WARNING);
-			SaveAndDeleteCrate(playerId);
-			crates.Set(playerId, crate);
-		}
-		else
-			crates.Insert(playerId, crate);
-	}
-	
-	void UnregisterPlayerLoadoutCrate(SCR_TW_PlayerCrateComponent crate, int playerId)
-	{
-		if(!crates.Contains(playerId))
-			return;
-		
-		crates.Remove(playerId);
-	}
-	
-	private void DeleteCrateLater(IEntity owner)
-	{
-		SCR_EntityHelper.DeleteEntityAndChildren(owner);
-	}
-	
 	void RegisterSpawnArea(SCR_SiteSlotEntity spawnSlot)
 	{
 		possibleSpawnAreas.Insert(spawnSlot);
@@ -408,14 +378,14 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		if(!playersHaveSpawned && !m_MatchOver)
 			return;
 		
-		ref array<int> playerIds = {};
-		int playerCount = GetGame().GetPlayerManager().GetPlayers(playerIds);
+		// Total connected players
+		int playerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		if(playerCount <= 0)
 		{
 			m_GameOverType = EGameOverTypes.SERVER_RESTART;
 			FinishGame();
-		}			
+		}
 	}
 	
 	private void InitializePlayerHub()

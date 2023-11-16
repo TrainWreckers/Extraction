@@ -24,8 +24,6 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	
 	private void SaveCrateContents_L()
 	{
-		SCR_TW_ExtractionHandler.GetInstance().UnregisterPlayerLoadoutCrate(this, playerId);
-		
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		string filename = string.Format("$profile:%1.json", playerName);
 		
@@ -69,15 +67,15 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	private void RpcDo_UpdatePlayerId(int id)
+	private void RpcDo_UpdatePlayerId(RplId playerRplId)
 	{
-		this.playerId = id;
+		this.playerId = GetGame().GetPlayerManager().GetPlayerIdFromEntityRplId(playerRplId);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void RpcDo_UpdateCrateInfo(RplId id, int playerId)
+	protected void RpcDo_UpdateCrateInfo(RplId crateRplId, RplId playerRplId)
 	{
-		UpdatePlayerCrateInformation(id, playerId);
+		UpdatePlayerCrateInformation(crateRplId, playerRplId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -91,12 +89,12 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	}
 	
 	//! We want to grab the box across the network via same network ID 
-	private void UpdatePlayerCrateInformation(RplId id, int playerId)
+	private void UpdatePlayerCrateInformation(RplId crateRplId, RplId playerRplId)
 	{				
-		this.playerId = playerId;
+		IEntity playerEntity = TW_Global.GetEntityByRplId(playerRplId);
+		this.playerId = GetGame().GetPlayerManager().GetPlayerIdFromEntityRplId(playerRplId);
 		
-		Print("TrainWreck: I AM RPC'ing", LogLevel.ERROR);	
-		IEntity box = GetProviderFromRplId(id);
+		IEntity box = GetProviderFromRplId(crateRplId);
 		
 		if(!box)
 		{
@@ -135,16 +133,22 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			Print(string.Format("TrainWreck: LootBox RPC - unable to find SCR_UniversalInventoryStorageComponent on ID: %1", playerId), LogLevel.ERROR);		
 	}
 	
-	protected void DelayedRpcCallToUpdate(RplId id, int playerId)
+	protected void DelayedRpcCallToUpdate(RplId crateRplId, RplId playerRplId)
 	{
-		Rpc(RpcDo_UpdateCrateInfo, id, playerId);
+		Rpc(RpcDo_UpdateCrateInfo, crateRplId, playerRplId);
 	}
 	
 	void InitializeForPlayer(int playerId)
 	{
+		if(!TW_Global.IsServer(GetOwner()))
+			return;
+		
 		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		UpdatePlayerCrateInformation(rpl.Id(), playerId);
-		GetGame().GetCallqueue().CallLater(DelayedRpcCallToUpdate, SCR_TW_Util.FromSecondsToMilliseconds(5), false, rpl.Id(), playerId);
+		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		RplComponent playerRpl = TW<RplComponent>.Find(playerEntity);
+		
+		UpdatePlayerCrateInformation(rpl.Id(), playerRpl.Id());
+		GetGame().GetCallqueue().CallLater(DelayedRpcCallToUpdate, SCR_TW_Util.FromSecondsToMilliseconds(5), false, rpl.Id(), playerRpl.Id());
 						
 		this.playerId = playerId;
 		GetGame().GetCallqueue().CallLater(UpdatePlayerIdServerLater, 1000, false);		
@@ -159,7 +163,17 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	
 	private void UpdatePlayerIdServerLater()
 	{
-		Rpc(RpcDo_UpdatePlayerId, playerId);
+		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		
+		if(!playerEntity)
+			return;
+		
+		RplComponent playerRpl = TW<RplComponent>.Find(playerEntity);
+		
+		if(!playerRpl)
+			return;
+		
+		Rpc(RpcDo_UpdatePlayerId, playerRpl.Id());
 	}
 	
 	private void SaveAndDeleteCrate()

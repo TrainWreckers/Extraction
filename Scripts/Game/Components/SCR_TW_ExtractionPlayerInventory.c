@@ -29,7 +29,7 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! RPC Call to server to ensure only the server udpates/saves inventory 
+	//! RPC Call to server to ensure only the server updates/saves inventory 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcUpdatePlayerInventory(int playerId)
 	{
