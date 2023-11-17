@@ -83,7 +83,7 @@ class TW_InventoryConfig
 		if(!storageManager.TryInsertItem(weapon, EStoragePurpose.PURPOSE_WEAPON_PROXY))
 		{
 			Print(string.Format("TrainWreck: was unable to insert weapon: %1", weaponResourceName), LogLevel.ERROR);
-			SCR_TW_ExtractionHandler.GetInstance().RpcAsk_DeleteItem(weapon);
+			SCR_EntityHelper.DeleteEntityAndChildren(weapon);
 		}
 		
 		if(controller)
@@ -214,6 +214,13 @@ class SCR_TW_RandomInventoryComponent : ScriptComponent
 			return;
 		
 		SCR_InventoryStorageManagerComponent storageManager = TW<SCR_InventoryStorageManagerComponent>.Find(GetOwner());
+		RplComponent rplComp = TW<RplComponent>.Find(storageManager.GetOwner());
+		
+		if(!rplComp.IsMaster())
+		{
+			Print("TrainWreck: Unable to initialize AI inventory because I'm not the master", LogLevel.WARNING);
+			return;
+		}
 		
 		if(!storageManager)
 			return;
