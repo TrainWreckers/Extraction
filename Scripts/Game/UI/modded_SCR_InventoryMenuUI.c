@@ -1,41 +1,59 @@
 /* 
------------------------------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------- SESOF MagRepack -----------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
--	  When dragging and dropping items in the Inventory UI, the Action_Drop()-method is called upon drop. This mod patches in a repack-function there.	  -
+	Originally designed by SESOF MagRepack 
+	Helped make it MP compatible 
+
+-	  When dragging and dropping items in the Inventory UI, the Action_Drop()-method is called upon drop. This mod patches in a repack-function there.
 - 								If you know a better way of updatating the inventory UI, please DM me on Discord!									  -
------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 */
-modded class SCR_BaseGameMode
+modded class SCR_PlayerController
 {
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SetAmmoCount(RplId rplMagazineComponent, int newCount)
+	void CombineMags(MagazineComponent fromMag, MagazineComponent toMag)
 	{
-		Print("RPC is getting called");
+		if(!fromMag || !toMag)
+		{
+			Print("Could not locate magazine components", LogLevel.ERROR);
+			return;
+		}
 		
-		if(!rplMagazineComponent.IsValid())
+		int fromCount = fromMag.GetAmmoCount();
+		int toCount = toMag.GetAmmoCount();
+		int maxCount = toMag.GetMaxAmmoCount();
+		
+		if(fromCount + toCount <= maxCount)
 		{
-			Print("Invalid magazine component");
-			return;
-		}
+			toMag.SetAmmoCount(fromCount + toCount);
 			
-		MagazineComponent magComp = MagazineComponent.Cast(Replication.FindItem(rplMagazineComponent));
-			
-		if(!magComp)
-		{
-			Print("Invalid magazine component on the server");
-			return;
-		}
-			
-		if(newCount <= magComp.GetMaxAmmoCount())
-		{
-			Print(string.Format("Updating magazine %1 to have %2 ammo", rplMagazineComponent, newCount));
-			magComp.SetAmmoCount(newCount);
+			// From mag was fully exhausted 			
+			SCR_EntityHelper.DeleteEntityAndChildren(fromMag.GetOwner());
 		}
 		else
-			Print(string.Format("Failed to update magazine %1 to %2 ammo", rplMagazineComponent, newCount));
+		{
+			int remainder = (fromCount + toCount) % maxCount;
 			
+			toMag.SetAmmoCount(maxCount);
+			
+			if(remainder > 0)
+				fromMag.SetAmmoCount(remainder);
+			else 
+				SCR_EntityHelper.DeleteEntityAndChildren(fromMag.GetOwner());
+		}	
+	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_CombineMags(RplId fromMagazineComponent, RplId toMagazineComponent)
+	{
+		if(!fromMagazineComponent.IsValid() || 
+		   !toMagazineComponent.IsValid())
+		{
+			Print("Invalid magazine components");
+			return;
+		}
+		
+		MagazineComponent fromMag = MagazineComponent.Cast(Replication.FindItem(fromMagazineComponent));
+		MagazineComponent toMag = MagazineComponent.Cast(Replication.FindItem(toMagazineComponent));
+		
+		CombineMags(fromMag, toMag);		
 	}
 };
 
@@ -49,7 +67,7 @@ modded class SCR_InventoryMenuUI
 
 	}
 	
-	protected SCR_BaseGameMode m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+	protected SCR_PlayerController m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(TW_Global.GetPlayerId()));
 	
 	bool SESOF_MagRepack()
 	{
@@ -145,55 +163,17 @@ modded class SCR_InventoryMenuUI
 			return true;
 		}
 		
-		/*
-			IF SO, REPACK MAGAZINE COMPONENTS
-		*/		
-		int fromAmmo = fromMagazineComponent.GetAmmoCount();
-		int toAmmo = toMagazineComponent.GetAmmoCount();
-		int maxAmmo = toMagazineComponent.GetMaxAmmoCount();
+		RplComponent rpl = RplComponent.Cast(fromMagazineComponent.GetOwner().FindComponent(RplComponent));
 		
-		// Can we add the "from" mag completely into the destination?
-		if(fromAmmo + toAmmo <= maxAmmo)
-		{
-			int newCount = fromAmmo + toAmmo;
-			UpdateMagazine(toMagazineComponent, newCount);
-			
-			// This magazine has been exhausted 
-			SCR_EntityHelper.DeleteEntityAndChildren(fromItemEntity);
-		}
+		if(rpl.IsMaster())
+			m_PlayerController.CombineMags(fromMagazineComponent, toMagazineComponent);
 		else
-		{
-			int remainder = (fromAmmo + toAmmo) % maxAmmo;
-			UpdateMagazine(toMagazineComponent, maxAmmo);
-			
-			if(remainder > 0)
-				UpdateMagazine(fromMagazineComponent, remainder);
-			else
-				SCR_EntityHelper.DeleteEntityAndChildren(toItemEntity);
-		}
+			m_PlayerController.Rpc(m_PlayerController.RpcAsk_CombineMags, Replication.FindId(fromMagazineComponent), Replication.FindId(toMagazineComponent));
 		
-		if(m_pSelectedSlotUI)
-			m_pSelectedSlotUI.Refresh();
-		if(m_pFocusedSlotUI)
-			m_pFocusedSlotUI.Refresh();
+		RefreshUISlotStorages();
 				
 		m_InventoryManager.PlayItemSound(toItemEntity, SCR_SoundEvent.SOUND_PICK_UP);
 		
 		return true;
-	}
-	
-	protected void UpdateMagazine(MagazineComponent mag, int newCount)
-	{
-		RplComponent rpl = RplComponent.Cast(mag.GetOwner().FindComponent(RplComponent));
-		if(rpl.IsMaster())
-		{
-			Print("Updating mag repacking on master");
-			mag.SetAmmoCount(newCount);
-		}
-		else
-		{
-			Print("Calling RPC method for repacking mag");
-			m_GameMode.Rpc(m_GameMode.RpcAsk_SetAmmoCount, Replication.FindId(mag.GetOwner()), newCount);
-		}			
-	}
+	}	
 };
