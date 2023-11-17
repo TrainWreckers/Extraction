@@ -110,67 +110,6 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 		return success;		
 	}
 	
-	private void ProcessNode(ClothNodeStorageComponent node, out notnull map<string, int> loadout)
-	{
-		// This is an alice/vest item and contains multiple nodes/items within it 
-		int slotsCount = node.GetSlotsCount();
-		
-		for(int i = 0; i < slotsCount; i++)
-		{
-			InventoryStorageSlot slot = node.GetSlot(i);
-			
-			if(!slot) 
-				continue;
-			
-			IEntity entity = slot.GetAttachedEntity();
-			
-			if(!entity)
-				continue;
-			
-			BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(entity.FindComponent(BaseInventoryStorageComponent));
-			
-			if(!storage)
-				continue;
-			
-			ProcessStorage(storage, loadout);
-		}
-	}
-	
-	private void ProcessStorage(BaseInventoryStorageComponent storage, out notnull map<string, int> loadout)
-	{
-		int slotsCount = storage.GetSlotsCount();
-		
-		for(int i = 0; i < slotsCount; i++)
-		{
-			InventoryStorageSlot slot = storage.GetSlot(i);
-			
-			if(!slot) 
-				continue;
-			
-			IEntity attachedEntity = slot.GetAttachedEntity();
-			
-			if(!attachedEntity)
-				continue;
-			
-			ResourceName resource = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
-			
-			if(!resource || resource.IsEmpty())
-				continue;
-			
-			if(!loadout.Contains(resource))
-				loadout.Insert(resource, 1);
-			else
-				loadout.Set(resource, loadout.Get(resource) + 1);
-			
-			BaseInventoryStorageComponent substorage = TW<BaseInventoryStorageComponent>.Find(attachedEntity);
-			
-			if(substorage)
-			{
-				Print(string.Format("TrainWreck: %1: %2", substorage.ClassName(), attachedEntity.GetPrefabData().GetPrefabName()), LogLevel.DEBUG);
-			}
-		}
-	}
-	
 	override void EOnInit(IEntity owner)
 	{
 		if(!TW_Global.IsInRuntime())

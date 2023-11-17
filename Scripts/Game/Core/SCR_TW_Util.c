@@ -142,68 +142,6 @@ class SCR_TW_Util
 		return vector.One;
 	}
 	
-	/*Figure out a spawn area that's closest to players at least a minimum distance away*/
-	static SCR_CampaignMilitaryBaseComponent GetSpawnLocation(notnull array<SCR_CampaignMilitaryBaseComponent> areas, notnull array<IEntity> players, int nearestPositionCount = 1, int minimumSpawnDistance = 300)
-	{
-		if(nearestPositionCount <= 1)
-		{
-			return GetClosestLocationToPlayer(areas, players, minimumSpawnDistance);
-		}
-		
-		ref array<SCR_CampaignMilitaryBaseComponent> possibleLocations = new ref array<SCR_CampaignMilitaryBaseComponent>;
-		ref array<SCR_CampaignMilitaryBaseComponent> notSearched = new ref array<SCR_CampaignMilitaryBaseComponent>;
-		notSearched.Copy(areas);
-		
-		for(int i = 0; i < nearestPositionCount; i++)
-		{
-			SCR_CampaignMilitaryBaseComponent position = GetClosestLocationToPlayer(notSearched, players, minimumSpawnDistance);
-			if(!position)
-				continue;
-			
-			// Must add our result and then remove the one found so we don't search it again
-			possibleLocations.Insert(position);
-			notSearched.RemoveItem(position);
-		}
-		
-		if(possibleLocations.IsEmpty())
-			return null;
-		
-		return possibleLocations.GetRandomElement();
-	}
-	
-	/*Obtain the closest position to player*/
-	static SCR_CampaignMilitaryBaseComponent GetClosestLocationToPlayer(notnull array<SCR_CampaignMilitaryBaseComponent> areas, notnull array<IEntity> players, int minimumSpawnDistance)
-	{
-		SCR_CampaignMilitaryBaseComponent shortestArea = null;
-		float shortestDistance = float.MAX;
-		
-		foreach(IEntity player : players)
-		{
-			if(!player) 
-				continue;
-			
-			foreach(SCR_CampaignMilitaryBaseComponent area : areas)
-			{
-				float distance = vector.Distance(player.GetOrigin(), area.GetOwner().GetOrigin());
-				
-				if(!shortestArea && distance >= minimumSpawnDistance)
-				{
-					shortestArea = area;
-					shortestDistance = distance;
-				}
-				
-				if(distance < shortestDistance && distance > minimumSpawnDistance)
-				{
-					shortestArea = area;
-					shortestDistance = distance;
-				}
-			}
-		}
-		
-		if(shortestArea) return shortestArea;
-		return null;
-	}
-	
 	/*Provide a random position around a given point*/
 	static vector RandomPositionAroundPoint(vector position, int radius, int minimumDistance = 0)
 	{

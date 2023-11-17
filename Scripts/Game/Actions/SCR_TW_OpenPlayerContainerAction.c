@@ -21,7 +21,7 @@ class SCR_TW_OpenPlayerContainerAction : SCR_InventoryAction
 		if(!playerCrate)
 			return false;
 		
-		return playerCrate.CanOpen(currentPlayerId);
+		return playerCrate.CanOpen(GetGame().GetPlayerManager().GetPlayerName(currentPlayerId));
 	}
 	
 	override bool CanBeShownScript(IEntity user) 

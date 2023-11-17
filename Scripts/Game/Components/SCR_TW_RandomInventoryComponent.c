@@ -112,6 +112,8 @@ class TW_InventoryConfig
 		{
 			bool success = storageManager.TryInsertItem(item, EStoragePurpose.PURPOSE_ANY);		
 		
+			// The check for "can insert item" should alleviate the need for this 
+			// but just in case
 			if(!success)
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 			
@@ -208,6 +210,9 @@ class SCR_TW_RandomInventoryComponent : ScriptComponent
 	
 	private void InitializeLoadout()
 	{
+		if(!TW_Global.IsServer(GetOwner()))
+			return;
+		
 		SCR_InventoryStorageManagerComponent storageManager = TW<SCR_InventoryStorageManagerComponent>.Find(GetOwner());
 		
 		if(!storageManager)

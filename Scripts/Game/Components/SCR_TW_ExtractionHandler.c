@@ -105,13 +105,18 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
+		super.OnPlayerSpawned(playerId, controlledEntity);
+		
 		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
-		super.OnPlayerSpawned(playerId, controlledEntity);
-		
 		playersHaveSpawned = true;
 		
+		SpawnPlayerCrate(playerId, controlledEntity);
+	}
+	
+	private void SpawnPlayerCrate(int playerId, IEntity controlledEntity)
+	{
 		vector forwardDirection = SCR_TW_Util.GetForwardVec(controlledEntity) * (playerId * 3.5);
 		vector position = controlledEntity.GetOrigin() + forwardDirection;
 		
@@ -149,7 +154,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		{
 			Debug.Error("TrainWreck: Could not locate SCR_TW_PlayerCrateComponent");
 			return;
-		}		
+		}
 		
 		crate.InitializeForPlayer(playerId);		
 		crates.Insert(playerId, crate);
@@ -168,7 +173,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	void SaveAndDeleteCrate(int playerId)
 	{
-		if(!Replication.IsServer())
+		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
 		if(!crates.Contains(playerId))
@@ -392,7 +397,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	{
 		if(possibleSpawnAreas.IsEmpty())
 		{
-			Print("TrainWreck: No spawn points have been registered", LogLevel.ERROR);
+			Debug.Error("TrainWreck: No spawn points have been registered");
 			return;
 		}
 		
@@ -532,12 +537,12 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	}		
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_PlaySoundOnEntity(EntityID entityID, string soundName)
+	void RpcDo_PlaySoundOnEntity(RplId entityID, string soundName)
 	{
 		if(!entityID)
 			return;
 		
-		IEntity entity = GetGame().GetWorld().FindEntityByID(entityID);
+		IEntity entity = TW_Global.GetEntityByRplId(entityID);
 		
 		if(!entity)
 			return;
@@ -558,9 +563,11 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		if(!entity)
 			return;
 		
+		RplComponent rpl = TW<RplComponent>.Find(entity);
+		
 		if(Replication.IsServer())
-			Rpc(RpcDo_PlaySoundOnEntity, entity.GetID(), soundName);
-		RpcDo_PlaySoundOnEntity(entity.GetID(), soundName);
+			Rpc(RpcDo_PlaySoundOnEntity, rpl.Id(), soundName);
+		RpcDo_PlaySoundOnEntity(rpl.Id(), soundName);
 	}
 	
 	void PlaySoundOnPlayer(string soundName)

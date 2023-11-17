@@ -63,4 +63,10 @@ class TW_Global
 		return rpl.GetEntity();
 	}
 	
+	static RplId GetEntityRplId(IEntity entity)
+	{
+		RplComponent rpl = TW<RplComponent>.Find(entity);
+		return rpl.Id();
+	}
+	
 };
