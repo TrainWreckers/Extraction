@@ -1,61 +1,12 @@
 /* 
-	Originally designed by SESOF MagRepack 
-	Helped make it MP compatible 
-
--	  When dragging and dropping items in the Inventory UI, the Action_Drop()-method is called upon drop. This mod patches in a repack-function there.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------- SESOF MagRepack -----------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-	  When dragging and dropping items in the Inventory UI, the Action_Drop()-method is called upon drop. This mod patches in a repack-function there.	  -
 - 								If you know a better way of updatating the inventory UI, please DM me on Discord!									  -
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 */
-modded class SCR_PlayerController
-{
-	void CombineMags(MagazineComponent fromMag, MagazineComponent toMag)
-	{
-		if(!fromMag || !toMag)
-		{
-			Print("Could not locate magazine components", LogLevel.ERROR);
-			return;
-		}
-		
-		int fromCount = fromMag.GetAmmoCount();
-		int toCount = toMag.GetAmmoCount();
-		int maxCount = toMag.GetMaxAmmoCount();
-		
-		if(fromCount + toCount <= maxCount)
-		{
-			toMag.SetAmmoCount(fromCount + toCount);
-			
-			// From mag was fully exhausted 			
-			SCR_EntityHelper.DeleteEntityAndChildren(fromMag.GetOwner());
-		}
-		else
-		{
-			int remainder = (fromCount + toCount) % maxCount;
-			
-			toMag.SetAmmoCount(maxCount);
-			
-			if(remainder > 0)
-				fromMag.SetAmmoCount(remainder);
-			else 
-				SCR_EntityHelper.DeleteEntityAndChildren(fromMag.GetOwner());
-		}	
-	}	
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CombineMags(RplId fromMagazineComponent, RplId toMagazineComponent)
-	{
-		if(!fromMagazineComponent.IsValid() || 
-		   !toMagazineComponent.IsValid())
-		{
-			Print("Invalid magazine components");
-			return;
-		}
-		
-		MagazineComponent fromMag = MagazineComponent.Cast(Replication.FindItem(fromMagazineComponent));
-		MagazineComponent toMag = MagazineComponent.Cast(Replication.FindItem(toMagazineComponent));
-		
-		CombineMags(fromMag, toMag);		
-	}
-};
 
 modded class SCR_InventoryMenuUI
 {	
@@ -63,11 +14,25 @@ modded class SCR_InventoryMenuUI
 	{
 
 		if (!SESOF_MagRepack())
+			Print("Let's try to move it");
 			super.MoveItemToStorageSlot();
-
+		RefreshUISlotStorages();
 	}
 	
-	protected SCR_PlayerController m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(TW_Global.GetPlayerId()));
+	static int GetPlayerId()
+	{
+		IEntity playerEntity = SCR_PlayerController.GetLocalControlledEntity();
+		if(!playerEntity) return 0;
+		
+		return GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(playerEntity);		
+	}
+	
+	static void Reset()
+	{
+		MenuManager menuManager = GetGame().GetMenuManager();
+		menuManager.CloseAllMenus();
+		menuManager.OpenMenu(ChimeraMenuPreset.Inventory20Menu);
+	}
 	
 	bool SESOF_MagRepack()
 	{
@@ -84,7 +49,6 @@ modded class SCR_InventoryMenuUI
 		/*
 			CHECK IF TWO MAGS ARE INVOLVED
 		*/				
-		
 		// are we dragging a slot with an item that is a mag?
 		if (m_pSelectedSlotUI.GetSlotedItemFunction() != ESlotFunction.TYPE_MAGAZINE ||
 			m_pFocusedSlotUI.GetSlotedItemFunction() != ESlotFunction.TYPE_MAGAZINE)								
@@ -97,7 +61,9 @@ modded class SCR_InventoryMenuUI
 		IEntity fromItemEntity, toItemEntity
 		
 		// used later to return false when repacking on a stack, thus enabling the newly fulled mag to find a suitable slot
-		bool repackOnAStack = false;																					
+		bool repackOnAStack = false;	
+		bool repackFromAStack = m_pSelectedSlotUI.IsStacked();
+		bool isToSlotStacked = m_pFocusedSlotUI.IsStacked();
 		
 		fromItemEntityComponent = m_pSelectedSlotUI.GetInventoryItemComponent();
 		
@@ -121,10 +87,12 @@ modded class SCR_InventoryMenuUI
 			}			
 			
 			// not a stack. no repacking.
-			return false;																										
-		}
-		
-		if (m_pSelectedSlotUI != m_pFocusedSlotUI)
+			else
+			{
+				return true;																										
+			}																									
+		}		
+		else
 		{
 			toItemEntityComponent = m_pFocusedSlotUI.GetInventoryItemComponent();
 			fromItemEntity = fromItemEntityComponent.GetOwner();											
@@ -141,6 +109,8 @@ modded class SCR_InventoryMenuUI
 		MagazineComponent fromMagazineComponent = MagazineComponent.Cast(fromItemEntity.FindComponent(MagazineComponent));	
 		MagazineComponent toMagazineComponent = MagazineComponent.Cast(toItemEntity.FindComponent(MagazineComponent));
 		
+		Print(string.Format("From Mag has %1\nTo Mag Has %1", fromMagazineComponent.GetAmmoCount(), toMagazineComponent.GetAmmoCount()));
+		
 		IEntity character = SCR_EntityHelper.GetMainParent(fromItemEntity);
 			
 		if (fromMagazineComponent.GetMagazineWell().Type() != toMagazineComponent.GetMagazineWell().Type())							
@@ -156,24 +126,62 @@ modded class SCR_InventoryMenuUI
 			SCR_EntityHelper.DeleteEntityAndChildren(fromItemEntity);
 			return true;
 		}
+		
+		// These variables are used later, and must be created here and not later.
+		int fromCount = fromMagazineComponent.GetAmmoCount();
+		int toCount = toMagazineComponent.GetAmmoCount();
+		int maxCount = toMagazineComponent.GetMaxAmmoCount();
 				
-		if (toMagazineComponent.GetAmmoCount() == toMagazineComponent.GetMaxAmmoCount())											
-		{	
-			Print("The magazine in the slot you're dropping on is full.");
-			return true;
+		// If either mags are at max capacity just ignore
+		if(fromCount == maxCount || toCount == maxCount)
+		{				
+			Print("One or both magazines are full -- ignoring");
+			return false;
 		}
 		
+		protected SCR_PlayerController m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(GetPlayerId()));
 		RplComponent rpl = RplComponent.Cast(fromMagazineComponent.GetOwner().FindComponent(RplComponent));
 		
 		if(rpl.IsMaster())
-			m_PlayerController.CombineMags(fromMagazineComponent, toMagazineComponent);
+			m_PlayerController.CombineMags(fromMagazineComponent, toMagazineComponent, m_InventoryManager);
 		else
-			m_PlayerController.Rpc(m_PlayerController.RpcAsk_CombineMags, Replication.FindId(fromMagazineComponent), Replication.FindId(toMagazineComponent));
+			m_PlayerController.Rpc(m_PlayerController.RpcAsk_CombineMags, 
+				Replication.FindId(fromMagazineComponent), 
+				Replication.FindId(toMagazineComponent),
+				Replication.FindId(m_InventoryManager)
+			);
 		
 		RefreshUISlotStorages();
-				
+
 		m_InventoryManager.PlayItemSound(toItemEntity, SCR_SoundEvent.SOUND_PICK_UP);
 		
-		return true;
+		
+		/* At this point, it would be nice to just return true. However ... 
+		There are instances where the original method should run to move things and there are instances where it should not. A smooth experience depends upon getting that right.
+		Another problem occurs when repack is conducted across storages, and in particular when references get changed / destroyed along the way. This affects only the 
+		widget that shows the ammoCount of each mag, and that widget is refreshed in the SetSlotVisible()-method. Therefore, run that when there is indeed a widget to run it on.
+		*/
+		
+		if (m_pSelectedSlotUI)
+			m_pSelectedSlotUI.SetSlotVisible(true);
+		if (m_pFocusedSlotUI)
+			m_pFocusedSlotUI.SetSlotVisible(true);
+		
+		if((fromCount + toCount) <= maxCount)
+			return true;
+		
+		//when there is overfill, and you're dragging a mag from a stack of N-full ones to another in another storage, it will return to the stack with wrong ammo count on top.
+		if (repackFromAStack)
+		{
+			m_pCallBack.m_pStorageFrom = m_pSelectedSlotUI.GetStorageUI();
+			m_pCallBack.m_pStorageTo = m_pFocusedSlotUI.GetStorageUI();
+			BaseInventoryStorageComponent pStorageFromComponent = m_pCallBack.m_pStorageFrom.GetCurrentNavigationStorage();
+			BaseInventoryStorageComponent pStorageToComponent = m_pFocusedSlotUI.GetAsStorage();
+				
+			m_InventoryManager.InsertItem( fromItemEntity, pStorageToComponent, pStorageFromComponent, m_pCallBack );
+		}
+		
+		//Print("If you see this you're in trouble.");
+		return false;
 	}	
 };
