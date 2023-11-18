@@ -64,6 +64,14 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("1", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Maximum percentage of ammo per weapon/mag")]
 	private float maximumAmmoPercent;
 	
+	[Attribute("0.5", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Chance a magazine won't spawn with a gun")]
+	private float chanceOfMagazine;
+	
+	float ShouldSpawnMagazine()
+	{
+		return Math.RandomFloat(0, 1) <= chanceOfMagazine;
+	}
+	
 	float GetRandomAmmoPercent()
 	{
 		return Math.RandomFloat(minimumAmmoPercent, maximumAmmoPercent);
@@ -77,36 +85,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			possibleExtractionSites.Insert(site);				
 	}
 	
-	void RegisterPlayerLoadoutCrate(SCR_TW_PlayerCrateComponent crate)
-	{
-		int playerId = crate.GetPlayerId();
-		
-		if(playerId < 0)
-			return;
-		
-		if(crates.Contains(playerId))
-		{
-			Print(string.Format("TrainWreck: Crate for %1 has already been registered. Removing already registered crate", playerId), LogLevel.WARNING);
-			SaveAndDeleteCrate(playerId);
-			crates.Set(playerId, crate);
-		}
-		else
-			crates.Insert(playerId, crate);
-	}
-	
-	void UnregisterPlayerLoadoutCrate(SCR_TW_PlayerCrateComponent crate, int playerId)
-	{
-		if(!crates.Contains(playerId))
-			return;
-		
-		crates.Remove(playerId);
-	}
-	
-	private void DeleteCrateLater(IEntity owner)
-	{
-		SCR_EntityHelper.DeleteEntityAndChildren(owner);
-	}
-	
 	void RegisterSpawnArea(SCR_SiteSlotEntity spawnSlot)
 	{
 		possibleSpawnAreas.Insert(spawnSlot);
@@ -115,6 +93,9 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
+		
+		if(!Replication.IsServer())
+			return;
 		
 		if(!crates.Contains(playerId))
 			return;
@@ -125,9 +106,18 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
 		super.OnPlayerSpawned(playerId, controlledEntity);
+		
+		if(!TW_Global.IsServer(GetOwner()))
+			return;
+		
 		playersHaveSpawned = true;
 		
-		vector forwardDirection = SCR_TW_Util.GetForwardVec(controlledEntity) * (playerId * 3);
+		SpawnPlayerCrate(playerId, controlledEntity);
+	}
+	
+	private void SpawnPlayerCrate(int playerId, IEntity controlledEntity)
+	{
+		vector forwardDirection = SCR_TW_Util.GetForwardVec(controlledEntity) * (playerId * 3.5);
 		vector position = controlledEntity.GetOrigin() + forwardDirection;
 		
 		Resource crateResource = Resource.Load(playerCratePrefab);
@@ -143,6 +133,12 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		
 		position[1] = GetGame().GetWorld().GetSurfaceY(position[0], position[2]);
 		params.Transform[3] = position;
+		
+		if(crates.Contains(playerId))
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(crates.Get(playerId).GetOwner());
+			crates.Remove(playerId);
+		}
 		
 		IEntity crateEntity = GetGame().SpawnEntityPrefab(crateResource, GetGame().GetWorld(), params);
 		
@@ -160,11 +156,12 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		crate.InitializeForPlayer(playerId);
+		crate.InitializeForPlayer(playerId);		
+		crates.Insert(playerId, crate);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! RPC Call to server to ensure only the server udpates/saves inventory 
+	//! RPC Call to server to ensure only the server updates/saves inventory 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcUpdatePlayerCrate(int playerId)
 	{
@@ -176,6 +173,9 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	void SaveAndDeleteCrate(int playerId)
 	{
+		if(!TW_Global.IsServer(GetOwner()))
+			return;
+		
 		if(!crates.Contains(playerId))
 			return;
 		
@@ -352,7 +352,22 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		{
 			int index = possibleExtractionSites.GetRandomIndex();
 			SCR_TW_ExtractionSite site = possibleExtractionSites.Get(index);
+			
+			IEntity child = site.GetChildren();
+			
+			if(child)
+			{
+				SCR_TW_TriggerArea trigger = SCR_TW_TriggerArea.Cast(child);
+				if(trigger)
+				{
+					trigger.EnablePeriodicQueries(false);
+					trigger.SetSphereRadius(0);
+					SCR_EntityHelper.DeleteEntityAndChildren(trigger);			
+				}				
+			}			
+						
 			SCR_EntityHelper.DeleteEntityAndChildren(site);
+			
 			possibleExtractionSites.Remove(index);
 		}
 			
@@ -368,21 +383,21 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		if(!playersHaveSpawned && !m_MatchOver)
 			return;
 		
-		ref array<int> playerIds = {};
-		int playerCount = GetGame().GetPlayerManager().GetPlayers(playerIds);
+		// Total connected players
+		int playerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		if(playerCount <= 0)
 		{
 			m_GameOverType = EGameOverTypes.SERVER_RESTART;
 			FinishGame();
-		}			
+		}
 	}
 	
 	private void InitializePlayerHub()
 	{
 		if(possibleSpawnAreas.IsEmpty())
 		{
-			Print("TrainWreck: No spawn points have been registered", LogLevel.ERROR);
+			Debug.Error("TrainWreck: No spawn points have been registered");
 			return;
 		}
 		
@@ -508,17 +523,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		else 
 			return null;
 		
-		/*
-		else
-		{
-			foreach(SCR_EArsenalItemType itemType : arsenalItemTypes)
-			{
-				if(lootTable.Contains(itemType))
-					selectedItems.Insert(itemType);
-			}
-		}
-		*/
-		
 		// Check if nothing was selected 
 		if(selectedItems.IsEmpty())
 			return null;
@@ -532,23 +536,13 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		return items.GetRandomElement();
 	}		
 	
-	bool IsMaster() // IsServer 
-	{
-		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		
-		if(!rpl)
-			return false;
-		
-		return !rpl.IsProxy();
-	}
-	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_PlaySoundOnEntity(EntityID entityID, string soundName)
+	void RpcDo_PlaySoundOnEntity(RplId entityID, string soundName)
 	{
 		if(!entityID)
 			return;
 		
-		IEntity entity = GetGame().GetWorld().FindEntityByID(entityID);
+		IEntity entity = TW_Global.GetEntityByRplId(entityID);
 		
 		if(!entity)
 			return;
@@ -569,9 +563,11 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		if(!entity)
 			return;
 		
-		if(IsMaster())
-			Rpc(RpcDo_PlaySoundOnEntity, entity.GetID(), soundName);
-		RpcDo_PlaySoundOnEntity(entity.GetID(), soundName);
+		RplComponent rpl = TW<RplComponent>.Find(entity);
+		
+		if(Replication.IsServer())
+			Rpc(RpcDo_PlaySoundOnEntity, rpl.Id(), soundName);
+		RpcDo_PlaySoundOnEntity(rpl.Id(), soundName);
 	}
 	
 	void PlaySoundOnPlayer(string soundName)
@@ -626,5 +622,35 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		m_MatchOver = true;
 		
 		SCR_BaseGameMode.Cast(GetOwner()).EndGameMode(endData);
+	}	
+	
+	void RpcAsk_DeleteItem(IEntity item)
+	{
+		RplComponent rplComponent = TW<RplComponent>.Find(item);
+		
+		if(!rplComponent)
+		{
+			Print("TrainWreck: RpcAsk_DeleteItem -> Item does not have replication component", LogLevel.ERROR);
+			return;
+		}
+		
+		RplId id = rplComponent.Id();
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(item);
+		Rpc(RpcDo_DeleteItem, id);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	private void RpcDo_DeleteItem(RplId itemId)
+	{
+		IEntity item = TW_Global.GetEntityByRplId(itemId);
+		
+		if(!item)
+		{
+			Print(string.Format("TrainWreck: RpcDo_DeleteItem --> Unable to locate item with replication ID %1", itemId), LogLevel.ERROR);
+			return;
+		}
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(item);
 	}
 };

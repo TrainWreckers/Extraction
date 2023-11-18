@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{01BD51D9F9AF6EED}Configs/RandomLoadouts/Weapons/Rifles.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

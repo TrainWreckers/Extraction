@@ -29,7 +29,7 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! RPC Call to server to ensure only the server udpates/saves inventory 
+	//! RPC Call to server to ensure only the server updates/saves inventory 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcUpdatePlayerInventory(int playerId)
 	{
@@ -64,70 +64,29 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 		// We'll be using the player name to save loadouts because it's more reliable than player Id
 		// which could change between sessions. 
 		string name = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		SCR_InventoryStorageManagerComponent manager = TW<SCR_InventoryStorageManagerComponent>.Find(entity);
 		
-		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
+		ref array<IEntity> allItems = {};
+		int count = manager.GetItems(allItems);
 		
-		if(!inventory)
-		{
-			Print(string.Format("TrainWreck: %1 does not have a CharacterInventoryStorageCompnent", name), LogLevel.ERROR);
-			return false;
-		}
-		
-		ref array<SCR_UniversalInventoryStorageComponent> storages = {};
-		inventory.GetStorages(storages);
-		
-		Print(string.Format("TrainWreck: %1 has %2 storages", name, storages.Count()), LogLevel.DEBUG);
-		
-		ref array<InventoryItemComponent> items = {};
+		Print(string.Format("TrainWreck: %1 has %2 items", name, count), LogLevel.WARNING);
 		ref map<string, int> loadoutMap = new map<string, int>();
-		inventory.GetOwnedItems(items);
 		
-		ref array<BaseInventoryStorageComponent> storageQueue = {};
-		
-		// This will actually grab all equippable inventories
-		// Alice, backpack, clothing, etc 
-		foreach(InventoryItemComponent item : items)
+		foreach(IEntity item : allItems)
 		{
-			InventoryStorageSlot slot = item.GetParentSlot();
-			if(!slot) continue;
+			ResourceName resource = item.GetPrefabData().GetPrefab().GetResourceName();
 			
-			IEntity attachedEntity = slot.GetAttachedEntity();			
-			if(!attachedEntity) continue;
+			if(!SCR_TW_ExtractionHandler.GetInstance().IsValidItem(resource))
+				continue;
 			
-			ResourceName prefabName = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
-			
-			if(!loadoutMap.Contains(prefabName))
-				loadoutMap.Insert(prefabName, 1);
+			if(loadoutMap.Contains(resource))
+				loadoutMap.Set(resource, loadoutMap.Get(resource) + 1);
 			else
-				loadoutMap.Set(prefabName, loadoutMap.Get(prefabName) + 1);						
-			
-			ClothNodeStorageComponent clothNode = ClothNodeStorageComponent.Cast(attachedEntity.FindComponent(ClothNodeStorageComponent));
-			
-			if(clothNode)
-			{
-				ProcessNode(clothNode, loadoutMap);
-				continue;
-			}
-			
-			BaseInventoryStorageComponent substorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
-			
-			if(substorage)
-			{
-				ProcessStorage(substorage, loadoutMap);
-				continue;
-			}
-			
+				loadoutMap.Insert(resource, 1);
 		}
-		
-		BaseInventoryStorageComponent weaponStorage = inventory.GetWeaponStorage();
-		ProcessStorage(weaponStorage, loadoutMap);				
-		
-		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
-		saveContext.WriteValue("playerName", name);
 		
 		string filename = string.Format("$profile:%1.json", name);
 		
-		// Load anything that may have been saved prior 
 		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
 		bool priorLoad = loadContext.LoadFromFile(filename);
 		
@@ -143,80 +102,20 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 					loadoutMap.Insert(itemName, itemCount);
 		}
 		
+		
+		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
+		saveContext.WriteValue("playerName", name);
 		saveContext.WriteValue("items", loadoutMap);
-		
 		bool success = saveContext.SaveToFile(filename);
-		return success;
-	}
-	
-	private void ProcessNode(ClothNodeStorageComponent node, out notnull map<string, int> loadout)
-	{
-		// This is an alice/vest item and contains multiple nodes/items within it 
-		int slotsCount = node.GetSlotsCount();
-		
-		for(int i = 0; i < slotsCount; i++)
-		{
-			InventoryStorageSlot slot = node.GetSlot(i);
-			
-			if(!slot) 
-				continue;
-			
-			IEntity entity = slot.GetAttachedEntity();
-			
-			if(!entity)
-				continue;
-			
-			BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(entity.FindComponent(BaseInventoryStorageComponent));
-			
-			if(!storage)
-				continue;
-			
-			ProcessStorage(storage, loadout);
-		}
-	}
-	
-	private void ProcessStorage(BaseInventoryStorageComponent storage, out notnull map<string, int> loadout)
-	{
-		int slotsCount = storage.GetSlotsCount();
-		
-		for(int i = 0; i < slotsCount; i++)
-		{
-			InventoryStorageSlot slot = storage.GetSlot(i);
-			
-			if(!slot) 
-				continue;
-			
-			IEntity attachedEntity = slot.GetAttachedEntity();
-			
-			if(!attachedEntity)
-				continue;
-			
-			ResourceName resource = attachedEntity.GetPrefabData().GetPrefab().GetResourceName();
-			
-			if(!resource || resource.IsEmpty())
-				continue;
-			
-			if(!loadout.Contains(resource))
-				loadout.Insert(resource, 1);
-			else
-				loadout.Set(resource, loadout.Get(resource) + 1);
-			
-			BaseInventoryStorageComponent substorage = BaseInventoryStorageComponent.Cast(attachedEntity.FindComponent(BaseInventoryStorageComponent));
-			
-			if(substorage)
-			{
-				Print(string.Format("TrainWreck: %1: %2", substorage.ClassName(), attachedEntity.GetPrefabData().GetPrefabName()), LogLevel.DEBUG);
-			}
-		}
+		return success;		
 	}
 	
 	override void EOnInit(IEntity owner)
 	{
-		if(!GetGame().InPlayMode())
+		if(!TW_Global.IsInRuntime())
 			return;
 		
-		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		if (!(rpl && rpl.Role() == RplRole.Authority))
+		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
 		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());

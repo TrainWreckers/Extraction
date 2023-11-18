@@ -2,28 +2,13 @@ class SCR_TW_PlayerCrateComponentClass : ScriptComponentClass {};
 
 class SCR_TW_PlayerCrateComponent : ScriptComponent
 {
-	[Attribute("1", UIWidgets.Slider, params: "0 100, 1")]
-	private int playerId;
+	[RplProp(onRplName: "onPlayerNameChange")]
+	private string playerName;
 	
 	[Attribute("5", UIWidgets.Slider, params: "1 120 5", desc: "Timer (in minutes), crate will be deleted")]
 	private int deleteTimer;
 	
-	private bool initialized = false;
-	
-	override void OnPostInit(IEntity owner)
-	{
-		if(!GetGame().InPlayMode())
-			return;
-		
-		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
-		if (!(rpl && rpl.IsMaster() && rpl.Role() == RplRole.Authority))
-			return;
-		
-		SCR_TW_ExtractionHandler.GetInstance().RegisterPlayerLoadoutCrate(this);
-	}
-	
-	int GetPlayerId() { return playerId; }
-	bool CanOpen(int playerId) { return this.playerId == playerId; }
+	bool CanOpen(string name) { return playerName == name; }
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	private void RpcDo_SaveCrateContents()
@@ -38,16 +23,13 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	
 	private void SaveCrateContents_L()
 	{
-		SCR_TW_ExtractionHandler.GetInstance().UnregisterPlayerLoadoutCrate(this, playerId);
-		
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		string filename = string.Format("$profile:%1.json", playerName);
 		
 		ref map<string, int> inventory = new map<string, int>();		
 		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
 		
 		ref array<IEntity> items = {};
-		InventoryStorageManagerComponent storageManager = InventoryStorageManagerComponent.Cast(GetOwner().FindComponent(InventoryStorageManagerComponent));		
+		InventoryStorageManagerComponent storageManager = TW<InventoryStorageManagerComponent>.Find(GetOwner());
 		int itemCount = storageManager.GetItems(items);
 		
 		Print(string.Format("TrainWreck: There are %1 items in %2's crate", itemCount, playerName), LogLevel.ERROR);
@@ -78,25 +60,52 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			Print(string.Format("TrainWreck: Failed to save %1's crate to %2", playerName, filename), LogLevel.ERROR);
 			return;
 		}
+	}
+	
+	void onPlayerNameChange()
+	{
+		string name = string.Format("%1's Crate", playerName);
+		string description = string.Format("This crate belongs to %1", playerName);
 		
-		SCR_NotificationsComponent.SendToPlayer(playerId, ENotification.PLAYER_LOADOUT_SAVED);
+		SCR_TW_PlayerCrateComponent crate = TW<SCR_TW_PlayerCrateComponent>.Find(GetOwner());
+		
+		if(!crate)
+		{
+			Print(string.Format("TrainWreck: LootBox RPC - unable to find SCR_TW_PlayerCrateComponent on ID %1", playerName), LogLevel.ERROR);			
+			return;
+		}
+		
+		SCR_UniversalInventoryStorageComponent universal = TW<SCR_UniversalInventoryStorageComponent>.Find(crate.GetOwner());
+		if(universal)
+		{			
+			
+			SCR_ItemAttributeCollection collection = SCR_ItemAttributeCollection.Cast(universal.GetAttributes());
+			
+			if(collection)
+			{
+				SCR_InventoryUIInfo ui = SCR_InventoryUIInfo.Cast(collection.GetUIInfo());
+				ui.SetName(name);
+				ui.SetDescription(description);
+				
+				Print(string.Format("TrainWreck: CrateId(%1)", name), LogLevel.WARNING);
+			}
+		}
+		else
+			Print(string.Format("TrainWreck: LootBox RPC - unable to find SCR_UniversalInventoryStorageComponent: %1", playerName), LogLevel.ERROR);		
 	}
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	private void RpcDo_UpdatePlayerId(int playerId)
+	//------------------------------------------
+	// Called by server
+	void InitializeForPlayer(int newPlayerId)
 	{
-		this.playerId = playerId;
-	}
-	
-	void InitializeForPlayer(int playerId)
-	{
-		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		if (!(rpl && rpl.Role() == RplRole.Authority))
+		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
-		this.playerId = playerId;
-		Rpc(RpcDo_UpdatePlayerId, playerId);
+		playerName = GetGame().GetPlayerManager().GetPlayerName(newPlayerId);
+		//Replication.BumpMe();
 		
+		onPlayerNameChange();
+			
 		ClearInventory();
 		InitializePlayerInventory();
 		GetGame().GetCallqueue().CallLater(SaveAndDeleteCrate, SCR_TW_Util.FromMinutesToMilliseconds(deleteTimer), false);
@@ -104,29 +113,40 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 	
 	private void SaveAndDeleteCrate()
 	{
-		SCR_TW_ExtractionHandler.GetInstance().SaveAndDeleteCrate(GetPlayerId());
+		ref array<int> playerIds = {};		
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		
+		int useId = 0;
+		foreach(int playerId : playerIds)
+		{
+			if(playerName == GetGame().GetPlayerManager().GetPlayerName(playerId))
+			{
+				useId = playerId;
+				break;
+			}
+		}
+		
+		SCR_TW_ExtractionHandler.GetInstance().SaveAndDeleteCrate(useId);
 	}
 	
 	private void ClearInventory()
 	{
-		InventoryStorageManagerComponent manager = InventoryStorageManagerComponent.Cast(GetOwner().FindComponent(InventoryStorageManagerComponent));
-		BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(GetOwner().FindComponent(BaseInventoryStorageComponent));
+		InventoryStorageManagerComponent manager = TW<InventoryStorageManagerComponent>.Find(GetOwner());
+		BaseInventoryStorageComponent storage = TW<BaseInventoryStorageComponent>.Find(GetOwner());
 		ref array<IEntity> items = {};
 		manager.GetItems(items);
 		
 		foreach(IEntity item : items)
-		{
-			manager.TryRemoveItemFromStorage(item, storage);
 			SCR_EntityHelper.DeleteEntityAndChildren(item);
-		}
 	}
 	
+	// --------------------------------------
+	// Should be called via server 
 	private void InitializePlayerInventory()
 	{		
-		if(playerId < 0)
+		if(playerName == string.Empty)
 			return;
 		
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		string filename = string.Format("$profile:%1.json", playerName);
 		
 		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
@@ -145,7 +165,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		}
 		
-		InventoryStorageManagerComponent manager = InventoryStorageManagerComponent.Cast(GetOwner().FindComponent(InventoryStorageManagerComponent));
+		InventoryStorageManagerComponent manager = TW<InventoryStorageManagerComponent>.Find(GetOwner());
 		
 		if(!manager)
 		{
@@ -153,16 +173,44 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			return;
 		}
 		
-		BaseInventoryStorageComponent storage = BaseInventoryStorageComponent.Cast(GetOwner().FindComponent(BaseInventoryStorageComponent));
+		BaseInventoryStorageComponent storage = TW<BaseInventoryStorageComponent>.Find(GetOwner());
 		
 		Print("TrainWreck: Populating Player Loot Box", LogLevel.NORMAL);
 		foreach(string name, int amount : items)
 		{			
 			Print(string.Format("TrainWreck: Inserting %1 (%2)", name, amount), LogLevel.NORMAL);
 			
+			Resource itemResource = Resource.Load(name);
+			
+			if(!itemResource.IsValid())
+			{
+				Print(string.Format("TrainWreck: Invalid resource for player crate: %1", name), LogLevel.ERROR);
+				continue;
+			}
+			
 			for(int i = 0; i < amount; i++)
-			{				
-				bool success = manager.TrySpawnPrefabToStorage(name, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT);
+			{			
+				EntitySpawnParams params = EntitySpawnParams();
+				GetOwner().GetTransform(params.Transform);
+				
+				IEntity item = GetGame().SpawnEntityPrefab(itemResource, GetGame().GetWorld(), params);
+				
+				if(!item)
+					continue;
+				
+				BaseWeaponComponent weaponComponent = BaseWeaponComponent.Cast(item.FindComponent(BaseWeaponComponent));					
+				
+				if(weaponComponent)
+				{
+					BaseMagazineComponent magazine = weaponComponent.GetCurrentMagazine();
+					if(magazine)
+						SCR_EntityHelper.DeleteEntityAndChildren(magazine.GetOwner());
+				}
+				
+				bool success = manager.TryInsertItemInStorage(item, storage);
+				
+				if(!success)
+					SCR_EntityHelper.DeleteEntityAndChildren(item);
 			}
 		}
 			

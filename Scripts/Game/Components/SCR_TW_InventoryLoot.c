@@ -27,10 +27,7 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
 		
 		if(!rpl)
-		{
-			Print("TrainWreck: InventoryLoot Container requires a RPL Component in order to function property", LogLevel.ERROR);
 			return;
-		}
 		
 		if(!rpl.IsMaster())
 			return;
@@ -38,8 +35,8 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		if(!GlobalLootContainers.Contains(this))
 			GlobalLootContainers.Insert(this);
 				
-		storageManager = InventoryStorageManagerComponent.Cast(owner.FindComponent(InventoryStorageManagerComponent));
-		storage = BaseUniversalInventoryStorageComponent.Cast(owner.FindComponent(BaseUniversalInventoryStorageComponent));				
+		storageManager = TW<InventoryStorageManagerComponent>.Find(owner);
+		storage = TW<BaseUniversalInventoryStorageComponent>.Find(owner);
 	}
 	
 	bool InsertItem(TW_LootConfigItem item)
@@ -74,10 +71,17 @@ class SCR_TW_InventoryLoot : ScriptComponent
 			
 			if(magazine)
 			{
-				int maxAmmo = magazine.GetMaxAmmoCount();
-				int newCount = Math.RandomIntInclusive(0, maxAmmo);
-				magazine.SetAmmoCount(newCount);
-			}
+				if(!SCR_TW_ExtractionHandler.GetInstance().ShouldSpawnMagazine())
+				{
+					SCR_EntityHelper.DeleteEntityAndChildren(magazine.GetOwner());
+				}
+				else
+				{	
+					int maxAmmo = magazine.GetMaxAmmoCount();
+					int newCount = Math.RandomIntInclusive(0, maxAmmo);
+					magazine.SetAmmoCount(newCount);				
+				}			
+			}			
 		}
 		else
 		{
