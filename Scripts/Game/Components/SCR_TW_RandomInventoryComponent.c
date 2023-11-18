@@ -94,58 +94,81 @@ class TW_InventoryConfig
 		return comp.GetOwner().GetPrefabData().GetPrefab().GetResourceName();
 	}
 	
-	private bool SpawnItem(ResourceName resource, SCR_InventoryStorageManagerComponent storageManager)
+	private bool SpawnEquipment(ResourceName resource, SCR_InventoryStorageManagerComponent storageManager)
+	{
+		if(resource == ResourceName.Empty)
+			return false;
+				
+		return storageManager.TrySpawnPrefabToStorage(resource, purpose: EStoragePurpose.PURPOSE_LOADOUT_PROXY);
+	}
+	
+	private bool SpawnItem(ResourceName resource, SCR_InventoryStorageManagerComponent storageManager, BaseInventoryStorageComponent storage = null)
 	{
 		if(resource == ResourceName.Empty)
 			return false;
 		
-		Resource r = Resource.Load(resource);
-		if(!r.IsValid())
-			return false;
-		
-		EntitySpawnParams params = EntitySpawnParams();
-		storageManager.GetOwner().GetTransform(params.Transform);
-		
-		IEntity item = GetGame().SpawnEntityPrefab(r, GetGame().GetWorld(), params);
-		
-		if(storageManager.CanInsertItem(item, EStoragePurpose.PURPOSE_ANY))
-		{
-			bool success = storageManager.TryInsertItem(item, EStoragePurpose.PURPOSE_ANY);		
-		
-			// The check for "can insert item" should alleviate the need for this 
-			// but just in case
-			if(!success)
-				SCR_EntityHelper.DeleteEntityAndChildren(item);
-			
-			return success;
-		}
-		
-		return false;
+		return storageManager.TrySpawnPrefabToStorage(resource, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT);
 	}
 	
-	void ProvideInventory(SCR_InventoryStorageManagerComponent storageManager, SCR_CharacterControllerComponent controller)
-	{	
+	void SpawnBaseEquipment(SCR_InventoryStorageManagerComponent storageManager, SCR_CharacterControllerComponent controller)
+	{
 		// Equipment must spawn first because that'll be used for storing weapons and items / etc	
 		if(!m_EquipmentConfigs.IsEmpty())
 		{
 			foreach(TW_ProbabilityItem item : m_EquipmentConfigs)
 				if(!item.UseChance() || (item.UseChance() && item.RollChance()))
-					if(!SpawnItem(item.GetRandomPrefab(), storageManager))
+					if(!SpawnEquipment(item.GetRandomPrefab(), storageManager))
 						break;
 		}
 		
+		GetGame().GetCallqueue().CallLater(SpawnInventory, 2000, false, storageManager, controller);
+	}
+	
+	private BaseInventoryStorageComponent GetBestStorage(notnull array<BaseInventoryStorageComponent> storages)
+	{
+		BaseInventoryStorageComponent bestStorage;
+		int currentWeight = int.MAX;
+		
+		foreach(BaseInventoryStorageComponent storage : storages)
+		{
+			if(storage == null)
+			{
+				bestStorage = storage;
+				currentWeight = storage.GetTotalWeight();
+				continue;
+			}
+			
+			if(storage.GetTotalWeight() < currentWeight)
+			{
+				bestStorage = storage;
+				currentWeight = storage.GetTotalWeight();
+			}
+		}
+		
+		return bestStorage;
+	}
+	
+	private void SpawnInventory(SCR_InventoryStorageManagerComponent storageManager, SCR_CharacterControllerComponent controller)
+	{	
+
+		// Grab all storages 
+		ref array<BaseInventoryStorageComponent> storages = {};
+		int storageCount = storageManager.GetStorages(storages);
+		
 		// Primary weapon stuff 
 		ResourceName primaryWeaponMag = GetMagazineFromWeapon(m_PrimaryWeaponConfig, storageManager, controller);
+		BaseInventoryStorageComponent storage = GetBestStorage(storages);
 		
 		if(primaryWeaponMag != ResourceName.Empty)
 		{
 			int magCount = m_PrimaryWeaponConfig.GetRandomMagCount();
-			Print(string.Format("TrainWreck: %1 mags for %2", magCount, primaryWeaponMag), LogLevel.WARNING);
 			
 			for(int i = 0; i < magCount; i++)
-				if(!SpawnItem(primaryWeaponMag, storageManager))
+				if(!SpawnItem(primaryWeaponMag, storageManager, storage))
 					break;
 		}
+		
+		storage = GetBestStorage(storages);
 		
 		// Only work with secondary weapons if they are provided
 		if(m_SecondaryWeaponConfig)
@@ -157,11 +180,13 @@ class TW_InventoryConfig
 				{
 					int magCount = m_SecondaryWeaponConfig.GetRandomMagCount();
 					for(int i = 0; i < magCount; i++)
-						if(!SpawnItem(secondaryWeaponMag, storageManager))
+						if(!SpawnItem(secondaryWeaponMag, storageManager, storage))
 							break;
 				}
 			}
 		}		
+		
+		storage = GetBestStorage(storages);
 		
 		if(!m_ItemConfigs.IsEmpty())
 		{
@@ -171,11 +196,10 @@ class TW_InventoryConfig
 					int spawnCount = item.RandomCount();
 				
 					for(int i = 0; i < spawnCount; i++)
-						if(!SpawnItem(item.GetRandomPrefab(), storageManager))
+						if(!SpawnItem(item.GetRandomPrefab(), storageManager, storage))
 							break;
 				}
 		}
-		
 	}
 }
 
@@ -225,6 +249,6 @@ class SCR_TW_RandomInventoryComponent : ScriptComponent
 		if(!storageManager)
 			return;
 		
-		m_Config.ProvideInventory(storageManager, controller);						
+		m_Config.SpawnBaseEquipment(storageManager, controller);						
 	}
 };
