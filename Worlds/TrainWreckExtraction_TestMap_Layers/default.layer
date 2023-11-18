@@ -33,12 +33,14 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
-   m_MaxAgents 5
+   m_MaxAgents 20
    m_SpawnTimerInMinutes 1
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220
    m_GarbageCollectionTimer 80
    m_MinimumVehicleSpawnDistance 0
+   m_Config TW_InventoryConfig "{5EE414C3FB4C23E2}" : "{A264CF3B7AF6405D}Configs/RandomLoadouts/Default.conf" {
+   }
   }
   SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
   }
@@ -108,43 +110,14 @@ GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/Arse
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
  coords 114.616 1 106.678
 }
-$grp SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
+SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
+ coords 249.252 1.252 6.99
  {
-  coords 248.297 1.626 247.74
-  {
-   StaticModelEntity {
-    ID "52E8C3643526D54D"
-    coords 0 -0.626 0
-   }
-  }
- }
- {
-  coords 10.35 0.252 243.908
-  {
-   StaticModelEntity {
-    ID "52E8C3643526D54D"
-    coords 0 0.748 0
-   }
-  }
- }
- {
-  coords 10.336 1.252 10.433
-  {
-   StaticModelEntity {
-    ID "52E8C3643526D54D"
-    coords 0 -0.252 0
-   }
-  }
- }
- {
-  coords 249.252 1.252 6.99
-  {
-   StaticModelEntity {
-    ID "52E8C3643526D54D"
-    coords 0 -0.752 0
-    angleX 3.825
-    angleZ 3.825
-   }
+  StaticModelEntity {
+   ID "52E8C3643526D54D"
+   coords 0 -0.752 0
+   angleX 3.825
+   angleZ 3.825
   }
  }
 }
