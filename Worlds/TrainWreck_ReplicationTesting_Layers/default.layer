@@ -77,8 +77,10 @@ GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/Pl
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
  coords 112.713 1.608 108.119
 }
-GenericEntity TestBox : "{F7B5B2D189B95187}Prefabs/Props/Crates/CrateWooden_01_base2.et" {
+GenericEntity : "{F7B5B2D189B95187}Prefabs/Props/Crates/CrateWooden_01_base2.et" {
  components {
+  SCR_TW_RandomInventoryComponent "{5EE4FCE8697DF058}" {
+  }
   SCR_UniversalInventoryStorageComponent "{5EE4FCE78D43544F}" {
    Attributes SCR_ItemAttributeCollection "{5EE4FCE77335C2EA}" {
     ItemDisplayName SCR_InventoryUIInfo "{5EE4FCE770F6C7CD}" {

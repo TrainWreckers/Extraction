@@ -121,7 +121,7 @@ class TW_ReplicationTestingComponent : SCR_BaseGameModeComponent
 			
 			SCR_InventoryStorageManagerComponent storageManager = TW<SCR_InventoryStorageManagerComponent>.Find(controlledEntity);
 			SCR_CharacterControllerComponent controller = TW<SCR_CharacterControllerComponent>.Find(controlledEntity);
-			inventoryConfig.ProvideInventory(storageManager, controller);
+			inventoryConfig.SpawnBaseEquipment(storageManager, controller);
 		}
 	}
 };
