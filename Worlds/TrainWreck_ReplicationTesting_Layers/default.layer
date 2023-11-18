@@ -32,6 +32,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    locationNames {
     "One" "Two"
    }
+   boxName "TestBox"
   }
  }
  coords 212.973 1 33.96
@@ -75,4 +76,49 @@ GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/Pl
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
  coords 112.713 1.608 108.119
+}
+GenericEntity TestBox : "{F7B5B2D189B95187}Prefabs/Props/Crates/CrateWooden_01_base2.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5EE4FCE78D43544F}" {
+   Attributes SCR_ItemAttributeCollection "{5EE4FCE77335C2EA}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EE4FCE770F6C7CD}" {
+     Name "Loot"
+    }
+    CommonItemType "NONE"
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 50000
+   m_fMaxWeight 50000
+  }
+  SCR_InventoryStorageManagerComponent "{5EE4FCE762D4BDA5}" {
+  }
+  ActionsManagerComponent "{5EE4FCE7674E1F8B}" {
+   ActionContexts {
+    UserActionContext "{5EE4FCE764DC2643}" {
+     UIInfo UIInfo "{5EE4FCE76B1E8A2B}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EE4FCE768F27322}" {
+     }
+     Radius 1
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EE4FCE757470194}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EE4FCE755B6FAE5}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+  RplComponent "{5EE4FCE7887829E7}" {
+  }
+  Hierarchy "{5EE4FCE78A2497CC}" {
+  }
+ }
+ coords 236.35 1 9.712
 }

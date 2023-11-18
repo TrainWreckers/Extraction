@@ -24,7 +24,11 @@ class TW_ReplicationTestingComponent : SCR_BaseGameModeComponent
 	
 	[Attribute("", UIWidgets.Auto, category: "Spawn Location Names")]
 	private ref array<string> locationNames;
-		
+
+	[Attribute("", UIWidgets.EditBox, category: "Box Name")]
+	private string boxName;
+			
+	private IEntity box;
 	private ref array<IEntity> locations = {};
 		
 	override void OnGameModeStart()
@@ -36,6 +40,9 @@ class TW_ReplicationTestingComponent : SCR_BaseGameModeComponent
 		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
+		box = GetGame().FindEntity(boxName);
+		
+		
 		// Get locations for our spawn testing 
 		foreach(string locationName : locationNames)
 		{
@@ -44,13 +51,16 @@ class TW_ReplicationTestingComponent : SCR_BaseGameModeComponent
 			locations.Insert(location);
 		}
 		
-		GetGame().GetCallqueue().CallLater(Spawn, 10000, false);
+		GetGame().GetCallqueue().CallLater(Spawn, 20000, false);
 	}
 	
 	void Spawn()
 	{
 		SpawnGroup(groupPrefab, locations.Get(0), "Spawn_GroupWithSingleItem");
 		SpawnGroup(groupPrefab, locations.Get(1), "Spawn_GroupWithRandomItems");
+		
+		if(box)
+			Spawn_ItemsInBox();
 	}
 	
 	private SCR_AIGroup SpawnGroup(ResourceName groupResource, IEntity location, string nextCall, float delay = 1000)
@@ -63,6 +73,18 @@ class TW_ReplicationTestingComponent : SCR_BaseGameModeComponent
 		
 		GetGame().GetCallqueue().CallLaterByName(this, nextCall, delay, false, group);
 		return group;
+	}
+	
+	void Spawn_ItemsInBox()
+	{
+		SCR_InventoryStorageManagerComponent storageManager = TW<SCR_InventoryStorageManagerComponent>.Find(box);
+		BaseInventoryStorageComponent storage = TW<BaseInventoryStorageComponent>.Find(box);
+		
+		if(!storageManager.TrySpawnPrefabToStorage(equipmentPrefab, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT))
+			Print(string.Format("Was unable to add %1 equipment prefab into box", equipmentPrefab), LogLevel.ERROR);
+		
+		if(!storageManager.TrySpawnPrefabToStorage(itemPrefab, storage, purpose: EStoragePurpose.PURPOSE_DEPOSIT))
+			Print(string.Format("Was unable to add %1 item prefab into box", itemPrefab), LogLevel.ERROR);
 	}
 	
 	void Spawn_GroupWithSingleItem(SCR_AIGroup group)
