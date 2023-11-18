@@ -288,15 +288,18 @@ class SCR_TW_Util
 	{
 		foreach(IEntity entity : entities)
 		{
-			if(!entity) continue;
+			// Invalid entity to work with 
+			if(!entity) 
+				continue;
 			
 			float distance = Math.AbsFloat(vector.Distance(entity.GetOrigin(), position));
 			
-			if(distance < min || distance > max)
-				return false;		
+			// Is this point at least close to 1 player?
+			if(distance >= min && distance <= max)
+				return true;		
 		}
 		
-		return true;
+		return false;
 	}
 	
 	static string ArsenalTypeAsString(SCR_EArsenalItemType type)
