@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{36AB49E86A57AAA9}Prefabs/Groups/OPFOR/TW_OPFOR_1Random.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,18 @@
+GenericEntity : "{10C26F96EF7A8CF5}Prefabs/Props/Core/Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{CD1CAAD3EFC0BE21}Assets/Props/Crates/CrateWooden_01/CrateWooden_01.xob"
+   LODFactors {
+    80 40 2 1 1
+   }
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Mass 20
+   CenterOfMass 0 0.5 0
+   ModelGeometry 1
+   Static 1
+  }
+ }
+ coords 1262.716 32.001 2826.402
+}

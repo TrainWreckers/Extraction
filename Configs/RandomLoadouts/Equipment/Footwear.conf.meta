@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{6E8FED06E8933452}Configs/RandomLoadouts/Items/Footwear.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

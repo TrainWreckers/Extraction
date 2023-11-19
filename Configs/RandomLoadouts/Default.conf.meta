@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A264CF3B7AF6405D}Configs/RandomLoadouts/Rifleman.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

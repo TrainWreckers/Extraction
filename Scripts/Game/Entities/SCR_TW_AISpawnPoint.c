@@ -65,6 +65,9 @@ class SCR_TW_AISpawnPoint : GenericEntity
 	
 	SCR_AIGroup Spawn()
 	{
+		if(!TW_Global.IsServer(this))
+			return null;
+		
 		if(!ChanceToSpawn())
 			return null;
 				

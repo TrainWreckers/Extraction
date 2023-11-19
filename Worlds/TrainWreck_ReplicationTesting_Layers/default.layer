@@ -1,0 +1,126 @@
+SCR_AIWorld : "{10EF0F8A76B4929C}Reforger/Prefabs/Conflict/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5AF8B9A1D80D8DFA}" {
+     NavmeshFile "{2A0D9FE8B56183EE}NavMeshes/TestMapSoldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{2E83C6A6D2E015A0}NavMeshes/TestMapLowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 225.651 1.608 48.141
+}
+SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger/Prefabs/Conflict/CampaignFactionManager.et" {
+ coords 222.831 1.608 17.415
+}
+SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+ components {
+  TW_ReplicationTestingComponent "{5EE4FCE18F882AAD}" {
+   groupPrefab "{6A512F54470CA242}Prefabs/Groups/BLUFOR/Group_US_OneGuy.et"
+   equipmentPrefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+   itemPrefab "{BBB50A815A2F916B}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Ball.et"
+   storagePurpose PURPOSE_DEPOSIT
+   inventoryConfig TW_InventoryConfig "{5EE4FCE11FB60F96}" : "{A264CF3B7AF6405D}Configs/RandomLoadouts/Default.conf" {
+   }
+   locationNames {
+    "One" "Two"
+   }
+   boxName "TestBox"
+  }
+ }
+ coords 212.973 1 33.96
+}
+TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
+ coords 112.547 1.608 107.897
+}
+PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Conflict/PerceptionManager.et" {
+ coords 112.938 1.608 108.093
+}
+RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
+ coords 112.976 1.608 108.129
+}
+ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
+ coords 112.752 1.608 107.986
+ "Base style" BaseChatChannelStyle "{5ECF344074775EDF}" {
+ }
+}
+$grp GenericEntity {
+ One {
+  coords 238.452 1 18.061
+ }
+ Two {
+  coords 245.387 1 19.751
+ }
+}
+GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench_base.et" {
+ coords 203.359 1.608 44.774
+}
+SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
+ coords 114.344 1.608 127.955
+}
+SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
+ coords 112.953 1.608 108.073
+}
+ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
+ coords 112.744 1.608 108.081
+}
+GenericEntity : "{D32934F6DD8F0805}Prefabs/Compositions/Slotted/SlotFlatSmall/PlayerHub_S_US_01.et" {
+ coords 245.541 1 10.18
+}
+HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
+ coords 112.713 1.608 108.119
+}
+GenericEntity : "{F7B5B2D189B95187}Prefabs/Props/Crates/CrateWooden_01_base2.et" {
+ components {
+  SCR_TW_RandomInventoryComponent "{5EE4FCE8697DF058}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5EE4FCE78D43544F}" {
+   Attributes SCR_ItemAttributeCollection "{5EE4FCE77335C2EA}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5EE4FCE770F6C7CD}" {
+     Name "Loot"
+    }
+    CommonItemType "NONE"
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 50000
+   m_fMaxWeight 50000
+  }
+  SCR_InventoryStorageManagerComponent "{5EE4FCE762D4BDA5}" {
+  }
+  ActionsManagerComponent "{5EE4FCE7674E1F8B}" {
+   ActionContexts {
+    UserActionContext "{5EE4FCE764DC2643}" {
+     UIInfo UIInfo "{5EE4FCE76B1E8A2B}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{5EE4FCE768F27322}" {
+     }
+     Radius 1
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5EE4FCE757470194}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5EE4FCE755B6FAE5}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+  RplComponent "{5EE4FCE7887829E7}" {
+  }
+  Hierarchy "{5EE4FCE78A2497CC}" {
+  }
+ }
+ coords 236.35 1 9.712
+}

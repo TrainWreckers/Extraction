@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{1C0F8B468F6510D7}Configs/RandomLoadouts/Items/Pants.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
