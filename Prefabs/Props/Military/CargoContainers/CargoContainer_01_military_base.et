@@ -2,6 +2,7 @@ GenericEntity : "{42894F191BC9EDE1}Prefabs/Props/Core/AmmoBox_Base.et" {
  ID "F0DBA538AC2A0552"
  components {
   SCR_TW_InventoryLoot "{5EBCEAF072F0B945}" {
+   m_lootItemTypes 31872
   }
   SCR_UniversalInventoryStorageComponent "{5EBCEAF0522B4F09}" {
    Attributes SCR_ItemAttributeCollection "{5EBCEAF06C49786F}" {

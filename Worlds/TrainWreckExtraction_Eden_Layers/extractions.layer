@@ -1,18 +1,6 @@
 $grp SCR_TW_ExtractionSite : "{A46C2A6689C20BC9}Prefabs/TrainWreck/TW_ExtractionSite.et" {
  {
-  coords 9285.116 184.169 1087.98
- }
- {
-  coords 8678.75 312.024 1768.036
- }
- {
-  coords 9159.816 2.124 5364.428
- }
- {
-  coords 7660.816 284.117 3672.637
- }
- {
-  coords 7820.985 254.531 4023.824
+  coords 10107.095 2.51 1368.35
   {
    SCR_TW_TriggerArea {
     ID "5ED8F1F2425F9DBE"
@@ -21,25 +9,7 @@ $grp SCR_TW_ExtractionSite : "{A46C2A6689C20BC9}Prefabs/TrainWreck/TW_Extraction
   }
  }
  {
-  coords 8590.108 287.644 4308.68
- }
- {
-  coords 7263.717 117.526 5662.369
- }
- {
-  coords 6389.083 177.945 7499.266
- }
- {
-  coords 4954.08 149.727 7538.241
- }
- {
-  coords 4459.865 15.918 9189.614
- }
- {
-  coords 4256.831 36.179 10013.138
- }
- {
-  coords 4321.16 13.594 12154.103
+  coords 4959.202 2.203 3741.566
   {
    SCR_TW_TriggerArea {
     ID "5ED8F1F2425F9DBE"
@@ -48,12 +18,57 @@ $grp SCR_TW_ExtractionSite : "{A46C2A6689C20BC9}Prefabs/TrainWreck/TW_Extraction
   }
  }
  {
-  coords 5113.605 17.017 12373.822
+  coords 931.846 2.75 6056.964
  }
  {
-  coords 4813.052 28.329 11764.965
+  coords 4812.549 24.355 12011.464
+  {
+   SCR_TW_TriggerArea {
+    ID "5ED8F1F2425F9DBE"
+    coords 0 -9223372036854775808.000 0
+   }
+  }
  }
  {
-  coords 4547.078 18.27 11230.167
+  coords 7567.068 2.199 6708.833
+ }
+ {
+  coords 11642.054 1.292 2354.734
+  {
+   SCR_TW_TriggerArea {
+    ID "5ED8F1F2425F9DBE"
+    coords 0.002 0 0
+   }
+  }
+ }
+ {
+  coords 7392.455 0.694 1162.015
+ }
+ {
+  coords 9529.399 3.035 5347.338
+ }
+ {
+  coords 6476.823 0.513 9577.195
+  {
+   SCR_TW_TriggerArea {
+    ID "5ED8F1F2425F9DBE"
+    coords 0 -9223372036854775808.000 0
+   }
+  }
+ }
+ {
+  coords 2015.302 0.968 7413.486
+  {
+   SCR_TW_TriggerArea {
+    ID "5ED8F1F2425F9DBE"
+    coords 0 -9223372036854775808.000 0
+   }
+  }
+ }
+ {
+  coords 2638.267 5.372 4135.674
+ }
+ {
+  coords 6620.724 3.231 3170.124
  }
 }
