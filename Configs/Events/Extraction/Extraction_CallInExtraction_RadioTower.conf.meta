@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{DA79389932A2CD7F}Configs/Events/Extraction/Extraction_CallInExtraction_RadioTower.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -82,7 +82,7 @@ class SCR_TW_Util
 		EWaterSurfaceType waterSurfaceType;
 		
 		float waterSurfaceY = GetWaterSurfaceY(world, worldPosition, waterSurfaceType, lakeArea);
-		if(waterSurfaceType == EWaterSurfaceType.WST_OCEAN)
+		if(waterSurfaceType == EWaterSurfaceType.WST_OCEAN || waterSurfaceType == EWaterSurfaceType.WST_POND)
 			isWater = true;
 		
 		return isWater;
@@ -110,7 +110,7 @@ class SCR_TW_Util
 		while(IsWater(position))
 		{
 			Print("RandomPointAround: Attempting to find a land-based position...", LogLevel.DEBUG);
-			position = random.GenerateRandomPointInRadius(minimumDistance, radius, point.GetOrigin());						
+			position = RandomPositionAround(point, Math.Max(radius * 0.9, minimumDistance), minimumDistance);
 		}
 		
 		return position;
@@ -144,15 +144,25 @@ class SCR_TW_Util
 	
 	/*Provide a random position around a given point*/
 	static vector RandomPositionAroundPoint(vector position, int radius, int minimumDistance = 0)
-	{
+	{				
+		// TODO: Why does this method not work 
+		// IS it recursion? ... this works when called directly.
+		if(radius < minimumDistance)
+			radius = minimumDistance;
+				
 		vector center = random.GenerateRandomPointInRadius(minimumDistance, radius, position);
 		
 		while(IsWater(center))
 		{
+			float reducedRadius = radius * 0.95;
+			float newRadius = Math.Max(reducedRadius, minimumDistance);
+			if(newRadius < minimumDistance)
+				newRadius = minimumDistance;
 			Print("RandomPositionAroundPoint: Attempting to find a land-based position...", LogLevel.DEBUG);
-			center = random.GenerateRandomPointInRadius(minimumDistance, radius, position);
+			center = RandomPositionAroundPoint(position, newRadius, minimumDistance);
 		}
 		
+		Print(string.Format("Radius: %1 | Minimum: %2 | Pos: %3", radius, minimumDistance, center));
 		return position;
 	}
 	
@@ -161,6 +171,9 @@ class SCR_TW_Util
 	{
 		if(!groupPrefab || groupPrefab.IsEmpty()) 
 			return null;
+		
+		if(radius < minimumDistance)
+			radius = minimumDistance;
 		
 		Resource resource = Resource.Load(groupPrefab);
 		
@@ -174,9 +187,12 @@ class SCR_TW_Util
 		params.TransformMode = ETransformMode.WORLD;
 		
 		if(radius <= 4)
+		{
+			Print(string.Format("TrainWreck: Radius(%1) | Minimum Distance(%2)", radius, minimumDistance), LogLevel.WARNING);
 			params.Transform[3] = center;
+		}
 		else
-			params.Transform[3] = RandomPositionAroundPoint(center, radius, minimumDistance);
+			params.Transform[3] = random.GenerateRandomPointInRadius(minimumDistance, radius, center); //RandomPositionAroundPoint(center, radius, minimumDistance);
 		
 		return SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params));
 	}

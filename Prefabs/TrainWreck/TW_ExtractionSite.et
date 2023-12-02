@@ -1,11 +1,6 @@
 SCR_TW_ExtractionSite {
  ID "5ED8F1F2425F9DAB"
  components {
-  SCR_MapDescriptorComponent "{5ED8F1F0BFA9FBA2}" {
-   DisplayName "Extract"
-   MainType Waypoint
-   Scale 2
-  }
   RplComponent "{5ED8F1F28F501DBF}" {
   }
  }
@@ -13,24 +8,12 @@ SCR_TW_ExtractionSite {
  extractionSitePrefabs {
   "{540ABA8EAC791800}Prefabs/TrainWreck/Compositions/TW_Comp_ExtractionSite_Bunkers.et"
  }
- {
-  SCR_TW_TriggerArea {
-   ID "5ED8F1F2425F9DBE"
-   components {
-    RplComponent "{5ED8F1F7601914F7}" {
-    }
-   }
-   TriggerShapeType Sphere
-   SphereRadius 8.2
-   TriggerActivationType "All changes"
-   PeriodicQueries 1
-   UpdatePeriod 10
-   PrefabsFilter {
-    PrefabFilter "{5ED8F1F707234FB6}" {
-     Prefab "{5D86C8643E266A5E}Prefabs/Characters/Campaign/Final/TW_Extraction_US_Base.et"
-     CheckPrefabHierarchy 1
-    }
-   }
+ m_ExtractionStates {
+  TW_ExtractionType_Fortify "{5EED70888F33EA4A}" : "{939BB76390559948}Configs/Events/Extraction/Fortify_Standard.conf" {
+  }
+  TW_ExtractionType_Defend "{5EED7088733A4985}" : "{3C7E09EB92727311}Configs/Events/Extraction/Defend_Standard.conf" {
   }
  }
+ m_TaskPrefab "{A571DFFA17CD3779}Prefabs/Tasks/DefendTask.et"
+ m_TriggerPrefab "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et"
 }

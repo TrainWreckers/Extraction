@@ -41,9 +41,9 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    }
   }
   SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
+   numberOfExtractionSites 5
    extractionTimePeriod 15
-   numberOfInsertionPoints 4
-   minimumAmmoPercent 0.85
+   minimumAmmoPercent 0.75
   }
   SCR_TW_ExtractionPlayerInventoryComponent "{5EBF4A5F232BAFAE}" {
   }
@@ -77,6 +77,9 @@ RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.e
 }
 ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
  coords 6597.423 159.83 6413.302
+}
+SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
+ coords 10066.156 0 1424.222
 }
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
  coords 6838.284 125.351 6655.269
