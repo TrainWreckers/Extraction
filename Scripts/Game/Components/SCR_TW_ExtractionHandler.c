@@ -19,18 +19,33 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		return s_Instance;
 	}
 	
-	private ref map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>> lootMap = new map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>>();
-	private ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>> lootTable = new ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>>();	
+	private ref array<TW_RadioTower_Component> radioTowers = {};
 	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
 	private ref array<SCR_SiteSlotEntity> possibleSpawnAreas = {};
 	private ref array<SCR_TW_ExtractionSite> possibleExtractionSites = {};
-	private ref array<SCR_EArsenalItemType> arsenalItemTypes = {};
 	private bool playersHaveSpawned = false;
 	
 	protected bool m_MatchOver;
 	protected EGameOverTypes m_GameOverType = EGameOverTypes.NEUTRAL;
 	
 	private ref set<string> globalItems = new set<string>();
+	
+	void RegisterRadioTower(TW_RadioTower_Component tower)
+	{
+		if(!radioTowers.Contains(tower))
+			radioTowers.Insert(tower);
+	}
+	
+	void UnregisterRadioTower(TW_RadioTower_Component tower)
+	{
+		if(radioTowers.Contains(tower))
+			radioTowers.RemoveItem(tower);
+	}
+	
+	TW_RadioTower_Component GetRandomTower()
+	{
+		return radioTowers.GetRandomElement();
+	}
 	
 	bool IsValidItem(ResourceName resource)
 	{
@@ -46,16 +61,13 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.Slider, params: "3, 20, 1", category: "Player Spawn", desc: "After this timer elapses, the player spawn composition is deleted")]
 	private int playerHubDespawnTimerInMinutes;
 	
-	[Attribute("3", UIWidgets.Slider, params: "1, 5, 1", category: "Extraction", desc: "Number of potential extractions available at once")]
-	private int numberOfExtractionSites;	
-	
 	[Attribute("60", UIWidgets.Slider, params: "5 180 5", category: "Extraction", desc: "Time in minutes until Game Mode ends")]
 	private int gameModeDurationInMinutes;
 	
 	[Attribute("30", UIWidgets.Slider, params: "5, 500, 5", category: "Extraction", desc: "Time in seconds players must wait in extraction until they get extracted")]
 	private int extractionTimePeriod;
 	
-	[Attribute("3", UIWidgets.Slider, params: "1 50 1", category: "Insertion", desc: "Maximum number of insertion points that may appear")]
+	[Attribute("5", UIWidgets.Slider, params: "1 50 1", category: "Insertion", desc: "Maximum number of insertion points that may appear")]
 	private int numberOfInsertionPoints;
 	
 	[Attribute("0.25", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Minimum percentage of ammo per weapon/mag")]
@@ -79,10 +91,64 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	int GetExtractionTimePeriod() { return extractionTimePeriod; }
 	
+	//! Globally register extraction site for usage
 	void RegisterExtractionSite(SCR_TW_ExtractionSite site)
 	{
 		if(!possibleExtractionSites.Contains(site))
 			possibleExtractionSites.Insert(site);				
+	}
+	
+	//! Is provided site valid for use
+	private bool IsValidExtractionSite(SCR_TW_ExtractionSite site, bool isEmpty)
+	{
+		if(site == null)
+			return false;
+		
+		if(isEmpty && site.GetOccupant() != null)
+			return false;
+		
+		return true;
+	}
+	
+	//! Grab an extraction site from pool of registered sites.
+	SCR_TW_ExtractionSite GetRegisteredExtractionSite(bool isEmpty = true)
+	{
+		ref array<SCR_TW_ExtractionSite> sites = {};
+		sites.Copy(possibleExtractionSites);		
+		
+		SCR_TW_ExtractionSite site;
+				
+		while(IsValidExtractionSite(site, isEmpty))
+		{
+			int index = Math.RandomInt(0, sites.Count());
+			site = sites.Get(index);
+			sites.Remove(index);
+		}
+		
+		return site;
+	}
+	
+	//! Attempts to get a random extraction site that is not currently in use
+	SCR_TW_ExtractionSite GetRandomExtractionSite()
+	{
+		ref array<SCR_TW_ExtractionSite> queue = {};
+		queue.Copy(possibleExtractionSites);
+		
+		int index = queue.GetRandomIndex();		
+		SCR_TW_ExtractionSite site = queue.Get(index);
+		
+		while(site != null && site.GetOccupant() != null)
+		{
+			queue.Remove(index);
+			
+			if(queue.IsEmpty())
+				return null;
+			
+			index = queue.GetRandomIndex();
+			site = queue.Get(index);
+		}
+		
+		return site;
 	}
 	
 	void RegisterSpawnArea(SCR_SiteSlotEntity spawnSlot)
@@ -193,186 +259,33 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		Rpc(RpcUpdatePlayerCrate, playerId);
 	}
 	
-	private bool OutputLootTableFile()
-	{
-		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
-		
-		foreach(SCR_EArsenalItemType type, ref array<SCR_ArsenalItem> items : lootMap)
-		{
-			ref array<ref TW_LootConfigItem> typeLoot = {};
-			
-			foreach(SCR_ArsenalItem item : items)
-			{
-				ref TW_LootConfigItem lootItem = new TW_LootConfigItem();
-				ResourceName resourceName = item.GetItemResourceName();
-				float chance = item.GetItemChanceToSpawn();
-				int count = item.GetItemMaxSpawnCount();
-				lootItem.SetData(resourceName, chance, count);
-				
-				typeLoot.Insert(lootItem);
-			}
-			
-			saveContext.WriteValue(SCR_TW_Util.ArsenalTypeAsString(type), typeLoot);
-		}
-		
-		bool success = saveContext.SaveToFile("$profile:lootmap.json");
-		
-		return success;
-	}
-	
-	private bool HasLootTable()
-	{
-		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
-		return loadContext.LoadFromFile("$profile:lootmap.json");
-	}
-	
-	private bool IngestLootTableFromFile()
-	{
-		SCR_JsonLoadContext loadContext = new SCR_JsonLoadContext();
-		bool loadSuccess = loadContext.LoadFromFile("$profile:lootmap.json");
-		
-		if(!loadSuccess)
-		{
-			Print("TrainWreck: Was unable to load loot map. Please verify it exists, and has valid syntax");
-			return false;
-		}
-		
-		array<SCR_EArsenalItemType> itemTypes = {};
-		SCR_Enum.GetEnumValues(SCR_EArsenalItemType, itemTypes);		
-		string name = string.Empty;
-		
-		foreach(SCR_EArsenalItemType itemType : itemTypes)
-		{
-			if(!LoadSection(loadContext, itemType))
-			{
-				name = SCR_Enum.GetEnumName(SCR_EArsenalItemType, itemType);
-				Print(string.Format("TrainWreck: LootMap: Unable to load %1", name), LogLevel.ERROR);
-			}
-		}
-				
-		return true;
-	}
-	
-	private bool LoadSection(notnull SCR_JsonLoadContext context, SCR_EArsenalItemType type)
-	{		
-		array<ref TW_LootConfigItem> items = {};
-		string keyValue = SCR_TW_Util.ArsenalTypeAsString(type);
-		
-		bool success = context.ReadValue(keyValue, items);
-		
-		if(success)
-			lootTable.Insert(type, items);
-		else
-			lootTable.Insert(type, {});
-		
-		foreach(TW_LootConfigItem item : items)
-			if(!globalItems.Contains(item.resourceName))
-				globalItems.Insert(item.resourceName);
-		
-		return success;
-	}
-	
 	override void OnGameModeStart()
 	{
-		RplComponent rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
-		
-		if(!rpl.IsMaster() && rpl.Role() != RplRole.Authority)
+		if(!TW_Global.IsInRuntime())
 			return;
-		
-		SCR_Enum.GetEnumValues(SCR_EArsenalItemType, arsenalItemTypes);
+				
+		if(!TW_Global.IsServer(GetOwner()))
+			return;
 		
 		GetGame().GetCallqueue().CallLater(InitializePlayerHub, SCR_TW_Util.FromSecondsToMilliseconds(1), false);
-		GetGame().GetCallqueue().CallLater(InitializeExtractionSites, SCR_TW_Util.FromSecondsToMilliseconds(1), false);
 		GetGame().GetCallqueue().CallLater(CheckPlayerWipe, SCR_TW_Util.FromSecondsToMilliseconds(15), true);
 		
-		InitializeLootMap();
-		
-		int globalCount = SCR_TW_InventoryLoot.GlobalLootContainers.Count();
-		
-		Print(string.Format("TrainWreck: Loot Containers -> %1", globalCount), LogLevel.NORMAL);
-		
-		int validCount = 0;
-		foreach(auto container : SCR_TW_InventoryLoot.GlobalLootContainers)
-			if(container)
-				validCount++;
-		
-		Print(string.Format("TrainWreck: Valid(%1) Invalid(%2)", validCount, globalCount-validCount), LogLevel.WARNING);
-		
-		foreach(SCR_TW_InventoryLoot container : SCR_TW_InventoryLoot.GlobalLootContainers)
-		{					
-			if(!container) 
-				continue;
-			
-			string format = string.Format("TrainWreck: %1", container.GetOwner().GetPrefabData().GetPrefabName());
-			int spawnCount = Math.RandomIntInclusive(1, 6);
-			
-			// How many different things are we going to try spawning?								
-			for(int i = 0; i < spawnCount; i++)
-			{	
-				auto arsenalItem = GetRandomItemByFlag(container.GetTypeFlags());
-			
-				if(!arsenalItem)
-					break;
-				
-				// Are we going to spawn the selected item?
-				float seedPercentage = Math.RandomFloat(0.001, 100);
-				if(arsenalItem.chanceToSpawn > seedPercentage)
-					continue;
-				
-				// Add item a random amount of times to the container based on settings
-				int itemCount = Math.RandomIntInclusive(1, arsenalItem.randomSpawnCount);
-				bool tryAgain = false;
-				for(int x = 0; x < itemCount; x++)
-				{
-					bool success = container.InsertItem(arsenalItem);
-					
-					if(!success)
-					{
-						tryAgain = true;
-						break;
-					}
-				}
-				
-				if(tryAgain)
-					spawnCount--;
-			}
-		}
+		TW_LootManager.InitializeLootTable();
+		TW_LootManager.SpawnLoot();
 	}
 	
-	private void InitializeExtractionSites()
+	void SpawnNewExtractionSite()
 	{
-		if(possibleExtractionSites.IsEmpty())
-			return;
-		
-		int randomCount = Math.RandomIntInclusive(1, numberOfExtractionSites);
-		randomCount = Math.Min(randomCount, possibleExtractionSites.Count());
-		
-		int exclude = possibleExtractionSites.Count() - randomCount;
-		for(int i = 0; i < exclude; i++)
-		{
-			int index = possibleExtractionSites.GetRandomIndex();
-			SCR_TW_ExtractionSite site = possibleExtractionSites.Get(index);
-			
-			IEntity child = site.GetChildren();
-			
-			if(child)
-			{
-				SCR_TW_TriggerArea trigger = SCR_TW_TriggerArea.Cast(child);
-				if(trigger)
-				{
-					trigger.EnablePeriodicQueries(false);
-					trigger.SetSphereRadius(0);
-					SCR_EntityHelper.DeleteEntityAndChildren(trigger);			
-				}				
-			}			
-						
-			SCR_EntityHelper.DeleteEntityAndChildren(site);
-			
-			possibleExtractionSites.Remove(index);
-		}
-			
-		foreach(SCR_TW_ExtractionSite site : possibleExtractionSites)
-			site.SpawnSite();
+		/*if(!TW_Global.IsServer(GetOwner()))
+			Rpc(RpcAsk_SpawnExtractionSite);
+		else 
+			InitializeExtraction();*/
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SpawnExtractionSite()
+	{
+		//InitializeExtraction();
 	}
 	
 	private void CheckPlayerWipe()
@@ -401,9 +314,9 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		int randomCount = Math.RandomInt(1, Math.Min(numberOfInsertionPoints, possibleSpawnAreas.Count()));
+		int insertionSpawnPointCount = Math.Min(numberOfInsertionPoints, possibleSpawnAreas.Count());
 		
-		for(int i = 0; i < randomCount; i++)
+		for(int i = 0; i < insertionSpawnPointCount; i++)
 		{
 			int index = possibleSpawnAreas.GetRandomIndex();
 			SCR_SiteSlotEntity site = possibleSpawnAreas.Get(index);
@@ -430,111 +343,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	{
 		SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
-	
-	private void InitializeLootMap()
-	{
-		if(HasLootTable())
-		{
-			Print("TrainWreck: lootmap.json file discovered");
-			IngestLootTableFromFile();
-			return;
-		}
-		
-		ref array<Faction> allFactions = {};
-		GetGame().GetFactionManager().GetFactionsList(allFactions);
-		
-		SCR_EntityCatalog globalCatalog;
-		
-		foreach(auto currentFaction : allFactions)
-		{
-			auto faction = SCR_Faction.Cast(currentFaction);
-			
-			if(!faction)
-				continue;
-			
-			auto factionCatalog = faction.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM);
-			
-			if(!globalCatalog)
-				globalCatalog = factionCatalog;
-			else
-				globalCatalog.MergeCatalogs(factionCatalog);				
-		}
-		
-		// Process the global catalog of items now
-		ref array<SCR_EntityCatalogEntry> catalogItems = {};
-		int entityCount = globalCatalog.GetEntityList(catalogItems);
-		
-		foreach(auto entry : catalogItems)
-		{
-			ref array<SCR_BaseEntityCatalogData> itemData = {};
-			entry.GetEntityDataList(itemData);
-			
-			// We only care about fetching Arsenal Items
-			foreach(auto data : itemData)
-			{
-				auto arsenalItem = SCR_ArsenalItem.Cast(data);
-				
-				if(!arsenalItem)	
-					continue;
-				
-				if(!arsenalItem.IsEnabled())
-					break;
-				
-				auto itemType = arsenalItem.GetItemType();
-				auto itemMode = arsenalItem.GetItemMode();
-				auto prefab = entry.GetPrefab();
-				
-				arsenalItem.SetItemPrefab(prefab);
-				
-				if(!arsenalItem)
-				{
-					Print("TrainWreck: Failed to create LootItem during initialization");
-					break;	
-				}
-				
-				if(lootMap.Contains(itemType))
-					lootMap.Get(itemType).Insert(arsenalItem);
-				else
-				{
-					lootMap.Insert(itemType, {});					
-					lootMap.Get(itemType).Insert(arsenalItem);
-				}				
-			}
-		}
-		
-		// Finally, we can write to json file!
-		bool success = OutputLootTableFile();		
-		if(!success)
-			Print("TrainWreck: Failed to write lootmap.json", LogLevel.ERROR);
-	}
-	
-	TW_LootConfigItem GetRandomItemByFlag(int type)
-	{
-		array<SCR_EArsenalItemType> selectedItems = {};
-		
-		if(type > 0)
-		{
-			foreach(SCR_EArsenalItemType itemType : arsenalItemTypes)
-			{
-				if(SCR_Enum.HasFlag(type, itemType) && lootTable.Contains(itemType))
-					selectedItems.Insert(itemType);
-			}			
-		}
-		else 
-			return null;
-		
-		// Check if nothing was selected 
-		if(selectedItems.IsEmpty())
-			return null;
-		
-		auto items = lootTable.Get(selectedItems.GetRandomElement());
-		
-		// Check if nothing was available 
-		if(!items || items.IsEmpty())
-			return null;
-		
-		return items.GetRandomElement();
-	}		
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_PlaySoundOnEntity(RplId entityID, string soundName)
@@ -603,6 +411,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	void PopUpMessage(string title, string subtitle)
 	{
+		Print(string.Format("popup: %1 | %2", title, subtitle));
 		// Ensure this gets broadcasted to all players on server
 		Rpc(RpcDo_PopUpMessage, title, subtitle);
 		
@@ -652,5 +461,34 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		}
 		
 		SCR_EntityHelper.DeleteEntityAndChildren(item);
+	}
+	
+	void DeletePlayer(int playerId)
+	{
+		Rpc(RpcDo_DeletePlayerById, playerId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcDo_DeletePlayerById(int playerId)
+	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		
+		SCR_CharacterControllerComponent character = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		
+		if(!character)
+		{
+			Debug.Error("TrainWreck: Unable to find character controller on player");
+			return;
+		}
+		
+		character.ForceDeath();
+		
+		if(player)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(player);
+			delete player;
+			
+			SCR_TW_ExtractionHandler.GetInstance().SaveAndDeleteCrate(playerId);
+		}
 	}
 };

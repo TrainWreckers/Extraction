@@ -1,5 +1,79 @@
 class SCR_TW_Util 
 {	
+	private static ref map<FactionKey, ref array<ResourceName>> _factionGroups = new map<FactionKey, ref array<ResourceName>>();
+	
+	private void InitializeFactionGroups()
+	{
+		ref array<int> playerIds = {};
+		int playerCount = GetGame().GetPlayerManager().GetPlayers(playerIds);
+		
+		if(playerCount <= 0)
+		{
+			Print("TrainWreck: No players are available to grab enemy faction(s) for", LogLevel.ERROR);
+			return;
+		}
+		
+		int playerId = playerIds.Get(0);
+		
+		SCR_FactionManager manager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		Faction playerFaction = manager.GetPlayerFaction(playerId);		
+		FactionKey playerFactionKey = playerFaction.GetFactionKey();
+		
+		if(!manager)
+			Debug.Error("TrainWreck: Extraction requires a faction manager to be present");
+		
+		ref array<Faction> factions = {};
+		int count = manager.GetFactionsList(factions);
+		
+		for(int i = 0; i < count; i++)
+		{			
+			SCR_Faction faction = SCR_Faction.Cast(factions.Get(i));
+			if(faction.GetFactionKey() == playerFactionKey)
+				continue;
+						
+			ref array<SCR_EntityCatalog> catalogs = {};
+			int catalogCount = faction.GetAllFactionEntityCatalogs(catalogs);
+			
+			if(catalogCount <= 0)
+			{
+				Print(string.Format("TrainWreck: %1 does not have catalogs", faction.GetFactionKey()), LogLevel.WARNING);
+				continue;
+			}
+			
+			ref array<ResourceName> factionPrefabs = {};
+			
+			foreach(SCR_EntityCatalog catalog : catalogs)
+			{
+				if(catalog.GetCatalogType() != EEntityCatalogType.GROUP)
+					continue;
+				
+				ref array<SCR_EntityCatalogEntry> entries = {};
+				catalog.GetEntityList(entries);
+				
+				foreach(SCR_EntityCatalogEntry entry : entries)
+					factionPrefabs.Insert(entry.GetPrefab());
+			}
+			
+			_factionGroups.Insert(faction.GetFactionKey(), factionPrefabs);
+		}				
+	}
+	
+	//! Get any faction not the player --> grab the groups for it
+	void GetEnemyFactionGroups(out notnull array<ResourceName> prefabs)
+	{
+		if(_factionGroups.IsEmpty())
+			InitializeFactionGroups();
+		
+		if(_factionGroups.IsEmpty())
+			return;
+		
+		int count = _factionGroups.Count();
+		int index = Math.RandomInt(0, count);
+		
+		FactionKey randomKey = _factionGroups.GetKey(index);
+		prefabs.Copy(_factionGroups.Get(randomKey));
+	}
+	
 	IEntity GetProviderFromRplId(RplId rplProviderId)
 	{
 		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplProviderId));
@@ -82,7 +156,7 @@ class SCR_TW_Util
 		EWaterSurfaceType waterSurfaceType;
 		
 		float waterSurfaceY = GetWaterSurfaceY(world, worldPosition, waterSurfaceType, lakeArea);
-		if(waterSurfaceType == EWaterSurfaceType.WST_OCEAN)
+		if(waterSurfaceType == EWaterSurfaceType.WST_OCEAN || waterSurfaceType == EWaterSurfaceType.WST_POND)
 			isWater = true;
 		
 		return isWater;
@@ -110,7 +184,7 @@ class SCR_TW_Util
 		while(IsWater(position))
 		{
 			Print("RandomPointAround: Attempting to find a land-based position...", LogLevel.DEBUG);
-			position = random.GenerateRandomPointInRadius(minimumDistance, radius, point.GetOrigin());						
+			position = RandomPositionAround(point, Math.Max(radius * 0.9, minimumDistance), minimumDistance);
 		}
 		
 		return position;
@@ -144,15 +218,25 @@ class SCR_TW_Util
 	
 	/*Provide a random position around a given point*/
 	static vector RandomPositionAroundPoint(vector position, int radius, int minimumDistance = 0)
-	{
+	{				
+		// TODO: Why does this method not work 
+		// IS it recursion? ... this works when called directly.
+		if(radius < minimumDistance)
+			radius = minimumDistance;
+				
 		vector center = random.GenerateRandomPointInRadius(minimumDistance, radius, position);
 		
 		while(IsWater(center))
 		{
+			float reducedRadius = radius * 0.95;
+			float newRadius = Math.Max(reducedRadius, minimumDistance);
+			if(newRadius < minimumDistance)
+				newRadius = minimumDistance;
 			Print("RandomPositionAroundPoint: Attempting to find a land-based position...", LogLevel.DEBUG);
-			center = random.GenerateRandomPointInRadius(minimumDistance, radius, position);
+			center = RandomPositionAroundPoint(position, newRadius, minimumDistance);
 		}
 		
+		Print(string.Format("Radius: %1 | Minimum: %2 | Pos: %3", radius, minimumDistance, center));
 		return position;
 	}
 	
@@ -161,6 +245,9 @@ class SCR_TW_Util
 	{
 		if(!groupPrefab || groupPrefab.IsEmpty()) 
 			return null;
+		
+		if(radius < minimumDistance)
+			radius = minimumDistance;
 		
 		Resource resource = Resource.Load(groupPrefab);
 		
@@ -174,9 +261,12 @@ class SCR_TW_Util
 		params.TransformMode = ETransformMode.WORLD;
 		
 		if(radius <= 4)
+		{
+			Print(string.Format("TrainWreck: Radius(%1) | Minimum Distance(%2)", radius, minimumDistance), LogLevel.WARNING);
 			params.Transform[3] = center;
+		}
 		else
-			params.Transform[3] = RandomPositionAroundPoint(center, radius, minimumDistance);
+			params.Transform[3] = random.GenerateRandomPointInRadius(minimumDistance, radius, center); //RandomPositionAroundPoint(center, radius, minimumDistance);
 		
 		return SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params));
 	}

@@ -1,4 +1,4 @@
-// Inspiration/Source from Sypke 
+// Inspiration/Source from Spyke 
 
 class TW<Class T>
 {

@@ -33,14 +33,13 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
+   m_DisableSpawns 1
    m_MaxAgents 20
    m_SpawnTimerInMinutes 1
    m_MinimumAISpawnDistance 30
    m_MaximumAIDistance 220
    m_GarbageCollectionTimer 80
    m_MinimumVehicleSpawnDistance 0
-   m_Config TW_InventoryConfig "{5EE414C3FB4C23E2}" : "{A264CF3B7AF6405D}Configs/RandomLoadouts/Default.conf" {
-   }
   }
   SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
   }
@@ -72,10 +71,27 @@ SCR_TW_ExtractionSite {
   RplComponent "{5ED8F1AA76BD5BAF}" {
   }
  }
- coords 173.363 1 86.476
+ coords 173.363 1 87.192
+ extractionSitePrefabs {
+  "{540ABA8EAC791800}Prefabs/TrainWreck/Compositions/TW_Comp_ExtractionSite_Bunkers.et"
+ }
+ m_ExtractionStates {
+  TW_ExtractionType_Fortify "{5EED7083CC26740F}" : "{939BB76390559948}Configs/Events/Extraction/Fortify_Standard.conf" {
+   m_NotifyTimerInterval 5
+   m_FortifyLength 10
+  }
+  TW_ExtractionType_Defend "{5EED7083CD5608D0}" : "{3C7E09EB92727311}Configs/Events/Extraction/Defend_Standard.conf" {
+   m_MinimumDistanceToSpawn 40
+  }
+ }
+ m_TaskPrefab "{A571DFFA17CD3779}Prefabs/Tasks/DefendTask.et"
+ m_TriggerPrefab "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et"
 }
 GenericEntity : "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et" {
  coords 205.853 1 43.945
+}
+SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
+ coords 187.476 1 83.216
 }
 GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench_base.et" {
  coords 205.231 1 43.371

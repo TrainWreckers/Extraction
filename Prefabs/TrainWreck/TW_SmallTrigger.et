@@ -1,0 +1,24 @@
+SCR_TW_TriggerArea {
+ ID "5EED708F5E584990"
+ components {
+  SCR_MapDescriptorComponent "{5EED70806A854278}" {
+   DisplayName "Extract"
+   MainType Task
+   Scale 10
+  }
+  RplComponent "{5EED7080661FED56}" {
+  }
+ }
+ coords 2.37 0 -3.893
+ TriggerShapeType Sphere
+ SphereRadius 10
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ UpdatePeriod 10
+ PrefabsFilter {
+  PrefabFilter "{5EEB1622FF4D7DD7}" {
+   Prefab "{5D86C8643E266A5E}Prefabs/Characters/Campaign/Final/TW_Extraction_US_Base.et"
+   CheckPrefabHierarchy 1
+  }
+ }
+}
