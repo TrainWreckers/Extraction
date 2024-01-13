@@ -61,9 +61,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.Slider, params: "3, 20, 1", category: "Player Spawn", desc: "After this timer elapses, the player spawn composition is deleted")]
 	private int playerHubDespawnTimerInMinutes;
 	
-	[Attribute("3", UIWidgets.Slider, params: "1, 20, 1", category: "Extraction", desc: "Number of potential extractions available at once")]
-	private int numberOfExtractionSites;	
-	
 	[Attribute("60", UIWidgets.Slider, params: "5 180 5", category: "Extraction", desc: "Time in minutes until Game Mode ends")]
 	private int gameModeDurationInMinutes;
 	
@@ -94,10 +91,64 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	int GetExtractionTimePeriod() { return extractionTimePeriod; }
 	
+	//! Globally register extraction site for usage
 	void RegisterExtractionSite(SCR_TW_ExtractionSite site)
 	{
 		if(!possibleExtractionSites.Contains(site))
 			possibleExtractionSites.Insert(site);				
+	}
+	
+	//! Is provided site valid for use
+	private bool IsValidExtractionSite(SCR_TW_ExtractionSite site, bool isEmpty)
+	{
+		if(site == null)
+			return false;
+		
+		if(isEmpty && site.GetOccupant() != null)
+			return false;
+		
+		return true;
+	}
+	
+	//! Grab an extraction site from pool of registered sites.
+	SCR_TW_ExtractionSite GetRegisteredExtractionSite(bool isEmpty = true)
+	{
+		ref array<SCR_TW_ExtractionSite> sites = {};
+		sites.Copy(possibleExtractionSites);		
+		
+		SCR_TW_ExtractionSite site;
+				
+		while(IsValidExtractionSite(site, isEmpty))
+		{
+			int index = Math.RandomInt(0, sites.Count());
+			site = sites.Get(index);
+			sites.Remove(index);
+		}
+		
+		return site;
+	}
+	
+	//! Attempts to get a random extraction site that is not currently in use
+	SCR_TW_ExtractionSite GetRandomExtractionSite()
+	{
+		ref array<SCR_TW_ExtractionSite> queue = {};
+		queue.Copy(possibleExtractionSites);
+		
+		int index = queue.GetRandomIndex();		
+		SCR_TW_ExtractionSite site = queue.Get(index);
+		
+		while(site != null && site.GetOccupant() != null)
+		{
+			queue.Remove(index);
+			
+			if(queue.IsEmpty())
+				return null;
+			
+			index = queue.GetRandomIndex();
+			site = queue.Get(index);
+		}
+		
+		return site;
 	}
 	
 	void RegisterSpawnArea(SCR_SiteSlotEntity spawnSlot)
@@ -218,45 +269,23 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		
 		GetGame().GetCallqueue().CallLater(InitializePlayerHub, SCR_TW_Util.FromSecondsToMilliseconds(1), false);
 		GetGame().GetCallqueue().CallLater(CheckPlayerWipe, SCR_TW_Util.FromSecondsToMilliseconds(15), true);
-		GetGame().GetCallqueue().CallLater(InitializeExtraction, SCR_TW_Util.FromSecondsToMilliseconds(1), false);
 		
 		TW_LootManager.InitializeLootTable();
 		TW_LootManager.SpawnLoot();
 	}
 	
-	private bool _initial = true;
-	private void InitializeExtraction()
-	{
-		if(_initial)
-		{
-			for(int i = 0; i < numberOfExtractionSites; i++)
-			{
-				SCR_TW_ExtractionSite site = possibleExtractionSites.GetRandomElement();		
-				site.SpawnSite();
-			}
-			
-			_initial = false;
-		}
-		else
-		{
-			SCR_TW_ExtractionSite site = possibleExtractionSites.GetRandomElement();		
-			site.SpawnSite();
-		}
-		
-	}
-	
 	void SpawnNewExtractionSite()
 	{
-		if(!TW_Global.IsServer(GetOwner()))
+		/*if(!TW_Global.IsServer(GetOwner()))
 			Rpc(RpcAsk_SpawnExtractionSite);
 		else 
-			InitializeExtraction();		
+			InitializeExtraction();*/
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_SpawnExtractionSite()
 	{
-		InitializeExtraction();
+		//InitializeExtraction();
 	}
 	
 	private void CheckPlayerWipe()

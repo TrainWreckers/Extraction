@@ -1,5 +1,79 @@
 class SCR_TW_Util 
 {	
+	private static ref map<FactionKey, ref array<ResourceName>> _factionGroups = new map<FactionKey, ref array<ResourceName>>();
+	
+	private void InitializeFactionGroups()
+	{
+		ref array<int> playerIds = {};
+		int playerCount = GetGame().GetPlayerManager().GetPlayers(playerIds);
+		
+		if(playerCount <= 0)
+		{
+			Print("TrainWreck: No players are available to grab enemy faction(s) for", LogLevel.ERROR);
+			return;
+		}
+		
+		int playerId = playerIds.Get(0);
+		
+		SCR_FactionManager manager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		Faction playerFaction = manager.GetPlayerFaction(playerId);		
+		FactionKey playerFactionKey = playerFaction.GetFactionKey();
+		
+		if(!manager)
+			Debug.Error("TrainWreck: Extraction requires a faction manager to be present");
+		
+		ref array<Faction> factions = {};
+		int count = manager.GetFactionsList(factions);
+		
+		for(int i = 0; i < count; i++)
+		{			
+			SCR_Faction faction = SCR_Faction.Cast(factions.Get(i));
+			if(faction.GetFactionKey() == playerFactionKey)
+				continue;
+						
+			ref array<SCR_EntityCatalog> catalogs = {};
+			int catalogCount = faction.GetAllFactionEntityCatalogs(catalogs);
+			
+			if(catalogCount <= 0)
+			{
+				Print(string.Format("TrainWreck: %1 does not have catalogs", faction.GetFactionKey()), LogLevel.WARNING);
+				continue;
+			}
+			
+			ref array<ResourceName> factionPrefabs = {};
+			
+			foreach(SCR_EntityCatalog catalog : catalogs)
+			{
+				if(catalog.GetCatalogType() != EEntityCatalogType.GROUP)
+					continue;
+				
+				ref array<SCR_EntityCatalogEntry> entries = {};
+				catalog.GetEntityList(entries);
+				
+				foreach(SCR_EntityCatalogEntry entry : entries)
+					factionPrefabs.Insert(entry.GetPrefab());
+			}
+			
+			_factionGroups.Insert(faction.GetFactionKey(), factionPrefabs);
+		}				
+	}
+	
+	//! Get any faction not the player --> grab the groups for it
+	void GetEnemyFactionGroups(out notnull array<ResourceName> prefabs)
+	{
+		if(_factionGroups.IsEmpty())
+			InitializeFactionGroups();
+		
+		if(_factionGroups.IsEmpty())
+			return;
+		
+		int count = _factionGroups.Count();
+		int index = Math.RandomInt(0, count);
+		
+		FactionKey randomKey = _factionGroups.GetKey(index);
+		prefabs.Copy(_factionGroups.Get(randomKey));
+	}
+	
 	IEntity GetProviderFromRplId(RplId rplProviderId)
 	{
 		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplProviderId));

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DA79389932A2CD7F}Configs/Events/Extraction/Extraction_CallInExtraction_RadioTower.conf"
+ Name "{55FDC76A634DDD70}Configs/test.conf"
  Configurations {
   CONFResourceClass PC {
   }
