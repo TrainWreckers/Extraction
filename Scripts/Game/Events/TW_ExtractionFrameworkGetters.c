@@ -55,12 +55,45 @@ class TW_GetExtractionPointAction : TW_ExtractionFrameworkStepAction
 [BaseContainerProps(configRoot: true)]
 class TW_GetRandomPositionAroundPlayer : TW_ExtractionFrameworkStepAction
 {
+	[Attribute("100", UIWidgets.Slider, params: "0 2000 25", category: "Distance")]
+	private int m_MinDistance;
+	
+	
+	[Attribute("300", UIWidgets.Slider, params: "0 2000 25", category: "Distance")]
+	private int m_MaxDistance;
+	
 	override void Evaluate(TW_ExtractionFrameworkOutputBase input)
 	{
 		ref array<int> playerIds = {};
 		int playerCount = GetGame().GetPlayerManager().GetPlayers(playerIds);
 		
+		vector playerPosition;
 		
+		while(!playerIds.IsEmpty())
+		{
+			int playerIndex = playerIds.GetRandomIndex();
+			int playerId = playerIds.Get(playerIndex);
+			playerIds.Remove(playerIndex);
+			
+			IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			
+			if(player)
+			{
+				SetPosition(player.GetOrigin());
+				return;					
+			}
+		}
+		
+		SetPosition(vector.Zero);
+	}
+	
+	private void SetPosition(vector position)
+	{
+		vector around = SCR_TW_Util.RandomPositionAroundPoint(position, m_MaxDistance, m_MinDistance);
+		
+		PositionAroundStruct struct = new PositionAroundStruct(around);
+		TW_ExtractionFrameworkOutput<PositionAroundStruct> output = new TW_ExtractionFrameworkOutput<PositionAroundStruct>(struct);
+		m_Output = output;
 	}
 };
 
@@ -84,6 +117,18 @@ class EntitiesNearStruct
 		Position = position;
 	}
 };
+
+class PositionAroundStruct
+{
+	vector PositionAround;
+	
+	void PositionAroundStruct(vector position)
+	{
+		PositionAround = position;
+	}
+	
+	vector GetPosition() { return PositionAround; }
+}
 
 [BaseContainerProps(configRoot: true), SCR_ContainerActionTitle()]
 class TW_GetEntitiesNearAction : TW_ExtractionFrameworkStepAction 
@@ -196,19 +241,28 @@ class TW_GetEntitiesNearAction : TW_ExtractionFrameworkStepAction
 		TW_ExtractionFrameworkOutput<ExtractionPointStruct> eps = TW_ExtractionFrameworkOutput<ExtractionPointStruct>.Cast(input);
 		
 		if(eps)
-			ProcessExtractionPosition(eps.GetValue());
+		{
+			ProcessVector(eps.GetValue().Site.GetOrigin());
+			return;
+		}
+		
+		TW_ExtractionFrameworkOutput<PositionAroundStruct> pas = TW_ExtractionFrameworkOutput<PositionAroundStruct>.Cast(input);
+		if(pas)
+		{
+			ProcessVector(pas.GetValue().GetPosition());
+			return;
+		}
 		else
 			Print("TW_GetEntitiesNearAction expected a position based input", LogLevel.WARNING);
 	}
 	
-	private void ProcessExtractionPosition(ExtractionPointStruct point)
+	private void ProcessVector(vector position)
 	{
-		vector origin = point.Site.GetOrigin();
 		ref array<IEntity> entities = {};
-		int count = GetEntities(origin, entities);
+		int count = GetEntities(position, entities);
 		bool valid = EvaluateCount(count);
 		
-		EntitiesNearStruct struct = new EntitiesNearStruct(valid, count, origin);
+		EntitiesNearStruct struct = new EntitiesNearStruct(valid, count, position);
 		TW_ExtractionFrameworkOutput<EntitiesNearStruct> output = new TW_ExtractionFrameworkOutput<EntitiesNearStruct>(struct);
 		m_Output = output;
 	}
