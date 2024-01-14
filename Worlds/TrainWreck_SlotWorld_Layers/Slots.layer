@@ -1,12 +1,20 @@
 TimeAndWeatherManagerEntity : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
  coords 4.634 0 116.786
+ "Internal variant transition" 0
+ "Internal subvariant 0" 0
+ "Internal subvariant 1" 0
 }
 SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
- coords 41.393 0 71.109
+ coords 41.393 -0.054 71.109
  {
   StaticModelEntity {
    ID "52E8C3643526D54D"
-   coords 0 0 0
+   components {
+    MeshObject "{52E8CACFF071F9EC}" {
+     Object "{00F93DED0E59DDBE}Assets/Editor/CompositionSlot/SlotFlatLarge_01_Empty.xob"
+    }
+   }
+   coords 0 0.054 0
   }
  }
 }
@@ -15,6 +23,11 @@ SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMed
  {
   StaticModelEntity {
    ID "52E8C3643526D54D"
+   components {
+    MeshObject "{52E8CACFF071F9EC}" {
+     Object "{46D4DEB30F3982A7}Assets/Editor/CompositionSlot/SlotFlatMedium_01_Empty.xob"
+    }
+   }
    coords 0 0 0
   }
  }
@@ -24,6 +37,11 @@ SCR_SiteSlotEntity : "{588A3DAF0296B0C1}PrefabsEditable/Slots/Flat/E_SlotFlatSma
  {
   StaticModelEntity {
    ID "52E8C3643526D54D"
+   components {
+    MeshObject "{52E8CACFF071F9EC}" {
+     Object "{79E5F02B9B332304}Assets/Editor/CompositionSlot/SlotFlatSmall_01_Empty.xob"
+    }
+   }
    coords 0 0 0
   }
  }

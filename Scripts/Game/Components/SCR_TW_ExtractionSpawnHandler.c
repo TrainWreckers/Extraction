@@ -101,9 +101,9 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			return;
 		
 		if(players.IsEmpty())
-			return;
+			return;				
 		
-		Print("TrainWreck: Checking Event Areas...");
+		Print(string.Format("TrainWreck: Checking Event Areas...\n\tTotal: %1", eventSites.Count()));
 		foreach(SCR_TW_EventSite site : eventSites)
 		{
 			if(site.HasBeenLoaded())
@@ -117,12 +117,13 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			}
 			else
 			{
-				bool shouldSpawn = SCR_TW_Util.IsWithinRange(site.GetOrigin(), players, m_EventSiteActivationDistance, m_EventSiteActivationDistance);
+				bool shouldSpawn = SCR_TW_Util.IsWithinRange(site.GetOrigin(), players, 0, m_EventSiteActivationDistance);
 				if(shouldSpawn)
 				{
 					site.SpawnSite();
 					Print("TrainWreck: Spawning event site", LogLevel.WARNING);
 				}					
+				else Print("TrainWreck: Players are not within activation range", LogLevel.WARNING);
 			}
 		}
 	}

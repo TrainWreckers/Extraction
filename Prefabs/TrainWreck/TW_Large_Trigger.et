@@ -1,0 +1,5 @@
+SCR_TW_TriggerArea : "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et" {
+ ID "5EED708F5E584990"
+ coords 5467.322 96.223 6218.372
+ SphereRadius 23
+}

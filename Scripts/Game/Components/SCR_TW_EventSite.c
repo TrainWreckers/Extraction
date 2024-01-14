@@ -29,7 +29,11 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 	
 	override void EOnInit(IEntity owner)
 	{
-		if(!TW_Global.IsInRuntime()) return;
+		super.EOnInit(owner);
+		
+		if(!TW_Global.IsInRuntime())
+			return;
+		
 		SCR_TW_ExtractionSpawnHandler.GetInstance().RegisterEventSite(this);
 	}
 
@@ -57,6 +61,19 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 	
 	private void Scan()
 	{
+		ref array<IEntity> hierarchy = {};
+		SCR_EntityHelper.GetHierarchyEntityList(m_SpawnedEntity, hierarchy);
+		vector transform[4];
+		
+		foreach(IEntity entity : hierarchy)
+		{
+			entity.GetWorldTransform(transform);
+			SCR_TerrainHelper.SnapAndOrientToTerrain(transform, GetWorld());
+			entity.SetTransform(transform);
+			
+			//SCR_EntityHelper.SnapToGround(entity);
+		}
+				
 		// We have to scan this entity regardless because it's new, the old references won't work
 		ProcessEntity(m_SpawnedEntity);
 		
@@ -101,7 +118,7 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 		
 		IEntity child = entity.GetChildren();
 		if(child)
-			ProcessEntity(entity);
+			ProcessEntity(child);
 		
 		IEntity sibling = entity.GetSibling();
 		if(sibling)

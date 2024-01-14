@@ -43,12 +43,6 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
    extractionTimePeriod 15
    minimumAmmoPercent 0.75
-   workflows {
-    TW_ActionWorkflow "{5F122EAA7FBC3F35}" : "{516BA41F60634C36}Configs/Events/Workflows/Fortify_Defend_Standard.conf" {
-    }
-   }
-   minimumExtractionShow 1
-   maximumExtractionShow 2
   }
   SCR_TW_ExtractionPlayerInventoryComponent "{5EBF4A5F232BAFAE}" {
   }
@@ -58,6 +52,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    m_GarbageCollectionTimer 80
    m_AIWanderMinimumPercent 0.294
    m_AIWanderMaximumPercent 0.762
+   m_EventCheckTimer 1
   }
   SCR_TimeAndWeatherHandlerComponent "{5ED74C1C84F55A6E}" {
    m_bRandomStartingDaytime 1

@@ -1,0 +1,53 @@
+SCR_TW_EventSite : "{1E7405BA857B3A87}Prefabs/TrainWreck/TW_EventSite.et" {
+ ID "605C017C5A2AE774"
+ components {
+  SCR_EditableEntityComponent "{605C01712ADDD100}" {
+   m_EntityType SLOT
+   m_UIInfo SCR_EditableLinkedContentBrowserUIInfo "{605C0172DF2AD81F}" {
+    Name "#AR-EditableEntity_SlotFlatLarge_Name"
+    Description "#AR-EditableEntity_Slot_Description"
+    Icon "{15720BCE34C65454}UI/Textures/Editor/EditableEntities/Slots/EditableEntity_Slot_FlatLarge.edds"
+    m_aAuthoredLabels {
+     92
+    }
+    m_ContentBrowserLabelConfig SCR_EditorContentBrowserDisplayConfig "{59ACB625C200BB5E}" {
+     m_sContentBrowserHeader "#AR-EditableEntity_SlotFlatLarge_Name"
+     m_aWhiteListLabelGroups {
+      SCR_EditorContentBrowserDisplayGroupLabel "{59A89087BE8446D4}" {
+      }
+      SCR_EditorContentBrowserDisplayGroupLabel "{59A89087BDE278F8}" {
+      }
+      SCR_EditorContentBrowserDisplayGroupLabel "{59ACB31ED7A85663}" {
+      }
+     }
+     m_aAlwaysActiveLabels {
+      SCR_EditorContentBrowserActiveDisplayLabel "{59A89087A08102A8}" {
+      }
+     }
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_bStatic 1
+   m_fMaxDrawDistance 375
+   m_Flags 4154
+  }
+  SCR_EditableEntityVisibilityChildComponent "{605C01710097CD0B}" {
+   m_State 514
+  }
+ }
+ coords 32.477 0.046 24.976
+ {
+  StaticModelEntity SlotMesh {
+   ID "605C0176AE10086C"
+   components {
+    MeshObject "{52E8CACFF071F9EC}" {
+     Object "{0B6FDCDB4823ABB6}Assets/Editor/CompositionSlot/SlotFlatSmall_01.xob"
+     CastFarShadow 0
+    }
+    Hierarchy "{52E8C3643D84A6A5}" {
+    }
+   }
+   coords 0 -0.046 0
+  }
+ }
+}

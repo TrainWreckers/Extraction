@@ -27,6 +27,8 @@ GenericEntity {
   }
   RplComponent "{54AC8D6E673199EE}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
   }
+  Hierarchy "{605C016E125D267C}" {
+  }
  }
  coords 64 0 64
  Flags 1027

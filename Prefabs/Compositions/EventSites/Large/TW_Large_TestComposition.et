@@ -1,0 +1,229 @@
+GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBase.et" {
+ ID "605C017C86C39F73"
+ coords 41.393 -0.054 71.109
+ {
+  $grp StaticModelEntity : "{01AE5FD77A9A4C21}Prefabs/Structures/Military/Camps/TentSmallUS_01/TentSmallUS_01.et" {
+   {
+    ID "605C0148A5F91720"
+    components {
+     Hierarchy "{605C016D5CC60974}" {
+     }
+    }
+    coords -3.672 0.054 -12.826
+   }
+   {
+    ID "605C0148A5F91721"
+    components {
+     Hierarchy "{605C016D5AE6A4F9}" {
+     }
+    }
+    coords -7.804 0.054 -11.429
+    angleY 24.102
+   }
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "605C0148A5F9173D"
+    coords -7.559 0.125 -1.745
+   }
+   {
+    ID "605C0148A5FA6875"
+    coords 19.175 0.173 5.097
+    angleY -27.176
+   }
+   {
+    ID "605C0148A5FA6876"
+    coords 19.575 0.202 3.689
+    angleY 7.696
+   }
+   {
+    ID "605C0148A5FAFDDA"
+    coords -6.223 0.132 0.6
+    angleY 67.534
+   }
+   {
+    ID "605C0148A5FAFDDC"
+    coords -3.648 0.129 -3.102
+   }
+   {
+    ID "605C0148A5FB05A5"
+    coords 1.161 0.054 -7.83
+   }
+   {
+    ID "605C0148A5FB96CE"
+    coords -6.932 0.054 -13.692
+   }
+   {
+    ID "605C0148A5FB96CF"
+    coords 16.439 0.054 6.809
+    angleY -65.42
+   }
+   {
+    ID "605C0148A5FBE1BD"
+    coords 15.918 0.054 -1.409
+    angleY 23.843
+   }
+  }
+  DecalEntity : "{25AB7FF81B8EDEF9}Prefabs/Decals/Dirt/Decal_Dirt_Tracks_01.et" {
+   ID "605C0148A5FB05A9"
+   components {
+    Hierarchy "{605C0155D234966F}" {
+    }
+   }
+   coords 4.361 0.054 -6.256
+   angleX -90
+   scale 10
+  }
+  DecalEntity : "{28DBB1C4928B9FB6}Prefabs/Decals/Dirt/Decal_Dirt_Tracks_03.et" {
+   ID "605C0148A5FB05AC"
+   components {
+    Hierarchy "{605C0155D2341F0D}" {
+    }
+   }
+   coords 8.325 0.054 -3.728
+   angleX -90
+   scale 5
+  }
+  GenericEntity : "{4B5D1DDB2B7C36E0}Prefabs/Props/Military/Sandbags/Sandbag_01_round_base.et" {
+   ID "605C0148A5FB0591"
+   components {
+    Hierarchy "{605C016E181274C3}" {
+    }
+   }
+   coords 17.26 0.054 7.458
+   angleY 43.193
+  }
+  SCR_DestructibleBuildingEntity : "{4E331E7D8DAD1EAD}Prefabs/Structures/Military/Camps/TentUSSR_01/TentUSSR_01.et" {
+   ID "605C0148A5FB0597"
+   coords -6.105 0.054 -1.223
+   angleY 119.38
+  }
+  GameEntity : "{616F4E93658E5A3A}Prefabs/Props/Military/Generators/GeneratorFloodlight_USSR_01.et" {
+   ID "605C0148A5FB0598"
+   components {
+    Hierarchy "{605C016E1D1F2A51}" {
+    }
+   }
+   coords 13.06 0.054 -1.923
+   angleY 93.372
+  }
+  GameEntity : "{6597847D2AC253F5}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01.et" {
+   ID "605C0148A5FB0599"
+   components {
+    Hierarchy "{605C016E031D0B92}" {
+    }
+   }
+   coords 7.876 0.054 8.379
+   angleY 158.718
+  }
+  GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
+   ID "605C0148A5FB059C"
+   components {
+    Hierarchy "{605C016E062068BB}" {
+    }
+   }
+   coords 18.049 0.054 0.988
+   angleY -90.567
+  }
+  DecalEntity : "{9EE74738BD9E8CDB}Prefabs/Decals/Dirt/Decal_Dirt_Tracks_02.et" {
+   ID "605C0148A5FB0582"
+   components {
+    Hierarchy "{605C0155D237FD10}" {
+    }
+   }
+   coords 3.102 0.054 -3.281
+   angleX -90
+   scale 5
+  }
+  $grp GenericEntity : "{A48EDE9CBA71B5A3}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Ammunition_01_USSR.et" {
+   {
+    ID "605C0148A5FB0587"
+    components {
+     SCR_TW_InventoryLoot "{5EBCEAF229F016A1}" {
+      m_lootItemTypes RIFLE
+     }
+     Hierarchy "{605C016E04E16D65}" {
+     }
+    }
+    coords -5.364 0.124 -3.932
+    angleY 34.809
+   }
+   {
+    ID "605C0148A5FB0AEA"
+    components {
+     SCR_TW_IntelligenceSpawnerComponent "{605C0168F8C344C1}" {
+      m_IntelligenceCount 2
+     }
+     SCR_TW_InventoryLoot "{5EBCEAF229F016A1}" {
+      m_lootItemTypes RIFLE
+     }
+     Hierarchy "{605C016E0AC47B34}" {
+     }
+    }
+    coords -6.205 0.201 -3.278
+    angleY 34.809
+   }
+  }
+  $grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+   {
+    ID "605C0148A5FB0AE6"
+    components {
+     Hierarchy "{605C016E0D31137A}" {
+     }
+    }
+    coords 16.006 0.054 -3.84
+    angleY -52.887
+   }
+   {
+    ID "605C0148A5FB0AE7"
+    components {
+     Hierarchy "{605C016E0E879F88}" {
+     }
+    }
+    coords 17.493 0.054 -1.217
+    angleY -69.27
+   }
+  }
+  StaticModelEntity : "{C2ACB740ED1CEB46}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap_foundation_camonet.et" {
+   ID "605C0148A5FB0AE4"
+   coords 18.653 0.054 4.149
+   angleY 73.69
+  }
+  $grp DecalEntity : "{D0ADBF5A3B6783C0}Prefabs/Decals/Dirt/Decal_Dirt_Crossroad_01.et" {
+   {
+    ID "605C0148A5FB0A9F"
+    components {
+     Hierarchy "{605C0155D2376641}" {
+     }
+    }
+    coords 12.591 0.054 4.967
+    angleX -90
+    scale 4.8
+   }
+   {
+    ID "605C0148A5FCE582"
+    components {
+     Hierarchy "{605C0155D2372092}" {
+     }
+    }
+    coords 7.138 0.054 0.315
+    angleX -90
+    scale 4.8
+   }
+  }
+  StaticModelEntity : "{E34FFA7EC13C10DA}Prefabs/Structures/Military/Camps/TentUSSR_01/TentUSSR_01_foundation.et" {
+   ID "605C0148A5FCE580"
+   coords 2.676 0.054 12.387
+   angleY -154.026
+  }
+  GenericEntity : "{FCBEDECB2A39B6BC}Prefabs/Props/Military/Generators/GeneratorPortable_USSR_01.et" {
+   ID "605C0148A5FCE587"
+   components {
+    Hierarchy "{605C016D8898BDF7}" {
+    }
+   }
+   coords -3.61 0.054 -5.234
+   angleY 59.587
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A00DFAE622F8C32F}Prefabs/Compositions/EventSites/Large/TW_Large_TestComposition.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
