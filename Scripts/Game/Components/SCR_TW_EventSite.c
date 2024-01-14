@@ -60,20 +60,7 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 	}		
 	
 	private void Scan()
-	{
-		ref array<IEntity> hierarchy = {};
-		SCR_EntityHelper.GetHierarchyEntityList(m_SpawnedEntity, hierarchy);
-		vector transform[4];
-		
-		foreach(IEntity entity : hierarchy)
-		{
-			entity.GetWorldTransform(transform);
-			SCR_TerrainHelper.SnapAndOrientToTerrain(transform, GetWorld());
-			entity.SetTransform(transform);
-			
-			//SCR_EntityHelper.SnapToGround(entity);
-		}
-				
+	{				
 		// We have to scan this entity regardless because it's new, the old references won't work
 		ProcessEntity(m_SpawnedEntity);
 		

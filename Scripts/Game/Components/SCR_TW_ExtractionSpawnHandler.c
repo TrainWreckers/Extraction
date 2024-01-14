@@ -125,7 +125,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 				}					
 				else Print("TrainWreck: Players are not within activation range", LogLevel.WARNING);
 			}
-		}
+		}			
 	}
 	
 	void RegisterEventSite(SCR_TW_EventSite site)

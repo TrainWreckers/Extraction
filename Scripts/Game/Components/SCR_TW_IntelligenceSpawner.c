@@ -10,7 +10,7 @@ class SCR_TW_IntelligenceSpawnerComponent : ScriptComponent
 	
 	void SpawnIntelligence()
 	{
-		InventoryStorageManagerComponent manager = InventoryStorageManagerComponent.Cast(FindComponent(InventoryStorageManagerComponent));
+		InventoryStorageManagerComponent manager = InventoryStorageManagerComponent.Cast(GetOwner().FindComponent(InventoryStorageManagerComponent));
 		
 		for(int i = 0; i < m_IntelligenceCount; i++)
 		{
