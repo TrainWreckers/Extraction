@@ -1,0 +1,77 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{8C8D2EF181A72B14}Assets/Props/Civilian/Suitcase_01/Suitcase_01.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Mass 10
+   ResponseIndex "SmallDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   Enabled 1
+   m_fBaseHealth 300
+   m_fDamageThresholdMaximum 10000
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{605D018748F29867}" {
+     m_ModelPrefabs {
+      "{8C8D2EF181A72B14}Assets/Props/Civilian/Suitcase_01/Suitcase_01.xob"
+     }
+     m_fMass 5
+     m_eMaterialSoundType PLASTIC_SOLID
+    }
+    SCR_ParticleSpawnable "{605D018748F29892}" {
+     m_Particle "{63D673751320F318}Particles/Props/Dest_Prop_Wood_Medium.ptc"
+    }
+   }
+   m_eMaterialSoundType BREAK_PLASTIC
+  }
+  SCR_TW_IntelligenceSpawnerComponent "{605D0186354E543D}" {
+  }
+  SCR_TW_InventoryLoot "{605D018756249078}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{605D0187667A0D45}" {
+   Attributes SCR_ItemAttributeCollection "{605D01878FE5B07B}" {
+    ItemDisplayName SCR_InventoryUIInfo "{605D0187A507C614}" {
+     Name "Loot"
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 10000
+  }
+  SCR_InventoryStorageManagerComponent "{605D0187CCA6D647}" {
+  }
+  ActionsManagerComponent "{605D0187C7862146}" {
+   ActionContexts {
+    UserActionContext "{605D0187C3145E71}" {
+     UIInfo UIInfo "{605D0187DF053B93}" {
+      Name "Loot"
+     }
+     ContextName "default"
+     Position PointInfo "{605D0187ECF09DA2}" {
+      Offset 0 0.3086 0
+     }
+     Radius 0.8
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{605D0187E27F7525}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{605D0187F2025EA9}" {
+      Name "Loot"
+     }
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 1333.602 32.001 2181.522
+ angleY 68
+}
