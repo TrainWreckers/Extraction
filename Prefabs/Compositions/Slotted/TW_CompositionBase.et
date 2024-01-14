@@ -1,0 +1,33 @@
+GenericEntity {
+ ID "605C017C86C39F73"
+ components {
+  SCR_SlotCompositionComponent "{605C017C86C39F6C}" {
+  }
+  ActionsManagerComponent "{605C017C86C39F59}" {
+   ActionContexts {
+    UserActionContext "{605C017C86C39F5D}" {
+     ContextName "Disassembly"
+     Position PointInfo "{605C017C86C39F50}" {
+      Offset 0 0.5 0
+     }
+     Radius 5
+    }
+   }
+   additionalActions {
+    SCR_CampaignBuildingDisassemblyUserAction "{605C017C86C39F54}" {
+     ParentContextList {
+      "Disassembly"
+     }
+     UIInfo UIInfo "{605C017C86C39F56}" {
+      Name "#AR-FreeRoamBuilding_Action_Disassembly-UC"
+     }
+     Duration 20
+    }
+   }
+  }
+  RplComponent "{54AC8D6E673199EE}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+  }
+ }
+ coords 64 0 64
+ Flags 1027
+}

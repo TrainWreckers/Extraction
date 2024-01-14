@@ -22,13 +22,13 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	private ref array<TW_RadioTower_Component> radioTowers = {};
 	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
 	private ref array<SCR_SiteSlotEntity> possibleSpawnAreas = {};
-	private ref array<SCR_TW_ExtractionSite> possibleExtractionSites = {};
+	private ref array<SCR_TW_ExtractionSite> possibleExtractionSites = {};	
 	private bool playersHaveSpawned = false;
 	
 	protected bool m_MatchOver;
 	protected EGameOverTypes m_GameOverType = EGameOverTypes.NEUTRAL;
 	
-	private ref set<string> globalItems = new set<string>();
+	private ref set<string> globalItems = new set<string>();	
 	
 	void RegisterRadioTower(TW_RadioTower_Component tower)
 	{
@@ -78,6 +78,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	[Attribute("0.5", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Chance a magazine won't spawn with a gun")]
 	private float chanceOfMagazine;
+	
 	
 	float ShouldSpawnMagazine()
 	{

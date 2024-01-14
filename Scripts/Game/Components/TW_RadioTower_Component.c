@@ -9,7 +9,7 @@ class TW_RadioTower_Component : ScriptComponent
 	private bool _isPoweredOn = false;
 	
 	//! Indicates this tower can be turned on
-	private bool _isActive = false;
+	private bool _isActive = true;
 	
 	bool IsPoweredOn() { return _isPoweredOn; }
 	bool IsTowerActive() { return _isActive; }

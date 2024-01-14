@@ -75,16 +75,6 @@ SCR_TW_ExtractionSite {
  extractionSitePrefabs {
   "{540ABA8EAC791800}Prefabs/TrainWreck/Compositions/TW_Comp_ExtractionSite_Bunkers.et"
  }
- m_ExtractionStates {
-  TW_ExtractionType_Fortify "{5EED7083CC26740F}" : "{939BB76390559948}Configs/Events/Extraction/Fortify_Standard.conf" {
-   m_NotifyTimerInterval 5
-   m_FortifyLength 10
-  }
-  TW_ExtractionType_Defend "{5EED7083CD5608D0}" : "{3C7E09EB92727311}Configs/Events/Extraction/Defend_Standard.conf" {
-   m_MinimumDistanceToSpawn 40
-  }
- }
- m_TaskPrefab "{A571DFFA17CD3779}Prefabs/Tasks/DefendTask.et"
  m_TriggerPrefab "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et"
 }
 GenericEntity : "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et" {

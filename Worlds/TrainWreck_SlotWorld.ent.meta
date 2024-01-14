@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{F823DCB03A7C2E8E}Worlds/TrainWreck_SlotWorld.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+ }
+}

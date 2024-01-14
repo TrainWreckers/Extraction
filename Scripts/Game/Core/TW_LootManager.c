@@ -109,43 +109,46 @@ sealed class TW_LootManager
 		Print(string.Format("TrainWreck: Valid(%1) Invalid(%2)", validCount, globalCount-validCount), LogLevel.WARNING);
 		
 		foreach(SCR_TW_InventoryLoot container : SCR_TW_InventoryLoot.GlobalLootContainers)
-		{					
-			if(!container) 
+			SpawnLootInContainer(container);	
+	}
+	
+	static void SpawnLootInContainer(SCR_TW_InventoryLoot container)
+	{
+		if(!container) 
+			return;
+			
+		string format = string.Format("TrainWreck: %1", container.GetOwner().GetPrefabData().GetPrefabName());
+		int spawnCount = Math.RandomIntInclusive(1, 6);
+			
+		// How many different things are we going to try spawning?								
+		for(int i = 0; i < spawnCount; i++)
+		{	
+			auto arsenalItem = TW_LootManager.GetRandomByFlag(container.GetTypeFlags());
+			
+			if(!arsenalItem)
+				break;
+				
+			// Are we going to spawn the selected item?
+			float seedPercentage = Math.RandomFloat(0.001, 100);
+			if(arsenalItem.chanceToSpawn > seedPercentage)
 				continue;
-			
-			string format = string.Format("TrainWreck: %1", container.GetOwner().GetPrefabData().GetPrefabName());
-			int spawnCount = Math.RandomIntInclusive(1, 6);
-			
-			// How many different things are we going to try spawning?								
-			for(int i = 0; i < spawnCount; i++)
-			{	
-				auto arsenalItem = TW_LootManager.GetRandomByFlag(container.GetTypeFlags());
-			
-				if(!arsenalItem)
-					break;
 				
-				// Are we going to spawn the selected item?
-				float seedPercentage = Math.RandomFloat(0.001, 100);
-				if(arsenalItem.chanceToSpawn > seedPercentage)
-					continue;
-				
-				// Add item a random amount of times to the container based on settings
-				int itemCount = Math.RandomIntInclusive(1, arsenalItem.randomSpawnCount);
-				bool tryAgain = false;
-				for(int x = 0; x < itemCount; x++)
-				{
-					bool success = container.InsertItem(arsenalItem);
+			// Add item a random amount of times to the container based on settings
+			int itemCount = Math.RandomIntInclusive(1, arsenalItem.randomSpawnCount);
+			bool tryAgain = false;
+			for(int x = 0; x < itemCount; x++)
+			{
+				bool success = container.InsertItem(arsenalItem);
 					
-					if(!success)
-					{
-						tryAgain = true;
-						break;
-					}
+				if(!success)
+				{
+					tryAgain = true;
+					break;
 				}
-				
-				if(tryAgain)
-					spawnCount--;
 			}
+				
+			if(tryAgain)
+				spawnCount--;
 		}
 	}
 	

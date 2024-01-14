@@ -1,0 +1,30 @@
+TimeAndWeatherManagerEntity : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
+ coords 4.634 0 116.786
+}
+SCR_SiteSlotEntity : "{055DDE93F47A6A1D}PrefabsEditable/Slots/Flat/E_SlotFlatLarge.et" {
+ coords 41.393 0 71.109
+ {
+  StaticModelEntity {
+   ID "52E8C3643526D54D"
+   coords 0 0 0
+  }
+ }
+}
+SCR_SiteSlotEntity : "{4B1C4BDDF6683101}PrefabsEditable/Slots/Flat/E_SlotFlatMedium.et" {
+ coords 95.247 0 76.228
+ {
+  StaticModelEntity {
+   ID "52E8C3643526D54D"
+   coords 0 0 0
+  }
+ }
+}
+SCR_SiteSlotEntity : "{588A3DAF0296B0C1}PrefabsEditable/Slots/Flat/E_SlotFlatSmall.et" {
+ coords 78.653 0 40.976
+ {
+  StaticModelEntity {
+   ID "52E8C3643526D54D"
+   coords 0 0 0
+  }
+ }
+}

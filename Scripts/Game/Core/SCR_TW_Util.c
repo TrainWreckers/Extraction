@@ -2,6 +2,22 @@ class SCR_TW_Util
 {	
 	private static ref map<FactionKey, ref array<ResourceName>> _factionGroups = new map<FactionKey, ref array<ResourceName>>();
 	
+	static bool IsValidWanderer_Agent(SCR_ChimeraAIAgent agent)
+	{
+		if(!agent) return false;
+		
+		AIGroup aiGroup = agent.GetParentGroup();
+		
+		if(!aiGroup) return false;
+		
+		SCR_AIGroup group = SCR_AIGroup.Cast(aiGroup);
+		
+		if(group && group.IgnoreWanderingSystem())
+			return false;
+		
+		return true;
+	}
+	
 	private void InitializeFactionGroups()
 	{
 		ref array<int> playerIds = {};

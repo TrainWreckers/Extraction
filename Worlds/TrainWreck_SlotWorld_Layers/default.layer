@@ -1,0 +1,34 @@
+SCR_TW_EventAISpawner {
+ components {
+  RplComponent "{605C017B91BC2642}" {
+  }
+  Hierarchy "{605C017B92917E8B}" {
+  }
+ }
+ coords 91.909 0 75.882
+ m_ScavengerPrefabs {
+  "{36AB49E86A57AAA9}Prefabs/Groups/OPFOR/TW_OPFOR_1Random.et"
+ }
+ m_MilitaryPrefabs {
+  "{A914A9FF67CA2AF3}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman.et" "{5417A56C4E66F48A}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman2.et" "{B18BE995428363E1}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman3.et" "{8CBFCCAD37EFEAD6}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman4.et"
+ }
+ m_WaypointPrefabs {
+  "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+ }
+}
+SCR_TW_EventSite {
+ components {
+  RplComponent "{605C017C6D4533B9}" {
+  }
+  Hierarchy "{605C017C6F8CD7C0}" {
+  }
+ }
+ coords 92.388 0.5 67.357
+}
+GenericEntity : "{70837F44CD03FD05}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Medical_01_USSR.et" {
+ components {
+  SCR_TW_IntelligenceSpawnerComponent "{605C017A7A2D71AD}" {
+  }
+ }
+ coords 95.243 0.5 80.818
+}

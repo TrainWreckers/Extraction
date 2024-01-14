@@ -40,6 +40,16 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("0.5", UIWidgets.Slider, params: "0.01 1 0.01", category: "AI", desc: "Maximum percentage of AI to wander")]
 	protected float m_AIWanderMaximumPercent;
 	
+	[Attribute("750", UIWidgets.Slider, params: "100 2000 25", category: "Events", desc: "Distance players must be within for event sites to activate")]
+	private int m_EventSiteActivationDistance;
+	
+	[Attribute("800", UIWidgets.Slider, params: "100 2000 25", category: "Events", desc: "Distance players must be out of for event sites to despawn")]
+	private int m_EventSiteDespawnDistance;
+	
+	[Attribute("2", UIWidgets.Slider, params: "1 30 1", category: "Events", desc: "Time in minutes for checking event areas")]
+	private int m_EventCheckTimer;
+	
+	private ref array<SCR_TW_EventSite> eventSites = {};
 	protected ref array<SCR_AIGroup> m_CurrentGroups = {};
 	protected ref array<SCR_TW_AISpawnPoint> m_AISpawnPoints = {};
 	protected ref array<IEntity> players;
@@ -80,8 +90,51 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(ReinitializePlayers, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
 		GetGame().GetCallqueue().CallLater(GarbageCollection, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
 		GetGame().GetCallqueue().CallLater(SpawnLoop, SCR_TW_Util.FromMinutesToMilliseconds(m_SpawnTimerInMinutes), true);
+		GetGame().GetCallqueue().CallLater(CheckEventAreas, SCR_TW_Util.FromMinutesToMilliseconds(m_EventCheckTimer), true);
 		
 		Print(string.Format("TrainWreck: Registered Vehicle Spawn Points: %1", m_VehicleSpawnPoints.Count()), LogLevel.WARNING);
+	}
+	
+	private void CheckEventAreas()
+	{
+		if(!players)
+			return;
+		
+		if(players.IsEmpty())
+			return;
+		
+		Print("TrainWreck: Checking Event Areas...");
+		foreach(SCR_TW_EventSite site : eventSites)
+		{
+			if(site.HasBeenLoaded())
+			{
+				bool shouldDespawn = SCR_TW_Util.IsOutsideOfPlayers(site.GetOrigin(), players, m_EventSiteDespawnDistance);
+				if(shouldDespawn)
+				{
+					site.Despawn();
+					Print(string.Format("TrainWreck: Despawning event site. Players exceed despawn distance %1", m_EventSiteDespawnDistance), LogLevel.WARNING);					
+				}
+			}
+			else
+			{
+				bool shouldSpawn = SCR_TW_Util.IsWithinRange(site.GetOrigin(), players, m_EventSiteActivationDistance, m_EventSiteActivationDistance);
+				if(shouldSpawn)
+				{
+					site.SpawnSite();
+					Print("TrainWreck: Spawning event site", LogLevel.WARNING);
+				}					
+			}
+		}
+	}
+	
+	void RegisterEventSite(SCR_TW_EventSite site)
+	{
+		eventSites.Insert(site);
+	}
+	
+	void UnregisterEventSite(SCR_TW_EventSite site)
+	{
+		eventSites.RemoveItem(site);
 	}
 	
 	void FirstPass()
@@ -132,11 +185,15 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	private void WanderRandomGroups(notnull array<SCR_TW_AISpawnPoint> points)
 	{		
 		if(m_Groups.IsEmpty())
-			return;
+			return;				
 		
 		int index = m_Groups.GetRandomIndex();
 		SCR_ChimeraAIAgent agent = m_Groups.Get(index);
 		m_Groups.Remove(index);
+		
+		// Only wander if they aren't flagged to ignore wandering system.
+		if(!SCR_TW_Util.IsValidWanderer_Agent(agent))
+			return;
 		
 		SCR_AIInfoComponent aiInfo = TW<SCR_AIInfoComponent>.Find(agent);
 		

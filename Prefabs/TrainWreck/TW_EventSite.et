@@ -1,0 +1,11 @@
+SCR_TW_EventSite {
+ ID "605C017C5A2AE774"
+ components {
+  RplComponent "{605C017C6D4533B9}" {
+  }
+  Hierarchy "{605C017C6F8CD7C0}" {
+  }
+ }
+ coords 92.388 0.5 67.357
+ m_TriggerPrefab "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et"
+}
