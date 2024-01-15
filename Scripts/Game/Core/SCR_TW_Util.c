@@ -2,6 +2,23 @@ class SCR_TW_Util
 {	
 	private static ref map<FactionKey, ref array<ResourceName>> _factionGroups = new map<FactionKey, ref array<ResourceName>>();
 	
+	static void ToGrid(vector position, out int x, out int y)
+	{
+		x = (int)(position[0] / 1000);
+		y = (int)(position[2] / 1000);
+	}
+	
+	static void FromGridString(string grid, out int x, out int y)
+	{
+		ref array<int> nums = SCR_StringHelper.GetIntsFromString(grid);
+		
+		if(nums.Count() >= 2)
+		{
+			x = nums[0];
+			y = nums[1];
+		}
+	}
+	
 	static bool IsValidWanderer_Agent(SCR_ChimeraAIAgent agent)
 	{
 		if(!agent) return false;
