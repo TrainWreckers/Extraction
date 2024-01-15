@@ -34,6 +34,9 @@ class SCR_TW_EventAISpawner : GenericEntity
 			return;
 		}
 		
+		group.SetIgnoreWandering(!spawnScavs);
+		group.SetIgnoreGlobalCount(!spawnScavs);
+		
 		if(m_WaypointPrefabs.IsEmpty())
 			return;
 		

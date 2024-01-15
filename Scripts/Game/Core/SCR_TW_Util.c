@@ -132,7 +132,7 @@ class SCR_TW_Util
 	}
 	
 	// Convert seconds to milliseconds
-	static int FromSecondsToMilliseconds(int seconds)
+	static int FromSecondsToMilliseconds(float seconds)
 	{
 		return seconds * 1000;
 	}
@@ -294,10 +294,7 @@ class SCR_TW_Util
 		params.TransformMode = ETransformMode.WORLD;
 		
 		if(radius <= 4)
-		{
-			Print(string.Format("TrainWreck: Radius(%1) | Minimum Distance(%2)", radius, minimumDistance), LogLevel.WARNING);
 			params.Transform[3] = center;
-		}
 		else
 			params.Transform[3] = random.GenerateRandomPointInRadius(minimumDistance, radius, center); //RandomPositionAroundPoint(center, radius, minimumDistance);
 		

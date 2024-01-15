@@ -1,3 +1,59 @@
+$grp SCR_TW_EventSite : "{5D802471111F5FB0}Prefabs/TestEvent.et" {
+ {
+  coords 5387.411 82.784 5238.185
+ }
+ {
+  coords 4356.542 66.557 5010.087
+ }
+ {
+  coords 4901.427 15.927 4034.381
+  {
+   StaticModelEntity {
+    ID "605C0176B4543B3B"
+    coords 0 0.479 0
+    angleX 3.523
+    angleZ -0.737
+   }
+  }
+ }
+ {
+  coords 6210.376 102.819 4946.992
+ }
+ {
+  coords 7639.286 148.351 4660.27
+ }
+ {
+  coords 8399.007 147.292 3504.29
+  {
+   StaticModelEntity {
+    ID "605C0176B4543B3B"
+    coords 0 -0.208 0
+    angleX 2.462
+    angleZ 7.282
+   }
+  }
+ }
+ {
+  coords 9319.698 51.398 1851.472
+ }
+ {
+  coords 9485.75 258.575 3360.75
+ }
+ {
+  coords 7703.141 63.004 5514.923
+ }
+ {
+  coords 6546.644 159.34 6432.137
+  {
+   StaticModelEntity {
+    ID "605C0176B4543B3B"
+    coords 0 0.578 0
+    angleX -0.287
+    angleZ 0.889
+   }
+  }
+ }
+}
 SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
  coords 5466.748 94.263 6217.13
  m_EventPrefabs {

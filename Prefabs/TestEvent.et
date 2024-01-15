@@ -1,0 +1,16 @@
+SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
+ ID "605C017C5A2AE774"
+ coords 5466.748 94.263 6217.13
+ m_EventPrefabs {
+  "{A00DFAE622F8C32F}Prefabs/Compositions/EventSites/Large/TW_Large_TestComposition.et"
+ }
+ m_TriggerPrefab "{B21918AEF8EB4279}Prefabs/TrainWreck/TW_Large_Trigger.et"
+ {
+  StaticModelEntity {
+   ID "605C0176B4543B3B"
+   coords 0 1.828 0
+   angleX -0.216
+   angleZ -6.657
+  }
+ }
+}

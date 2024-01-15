@@ -14,6 +14,11 @@ class TW_GridCoord<Class T>
 	void Add(T item) { data.Insert(item); }
 	void RemoveItem(T item) { data.RemoveItem(item); }
 	
+	T GetRandomElement()
+	{
+		return data.GetRandomElement();
+	}
+	
 	int GetData(notnull out array<T> items)
 	{
 		int count = data.Count();
@@ -28,7 +33,41 @@ class TW_GridCoord<Class T>
 class TW_GridCoordManager<Class T>
 {
 	private ref map<int, ref map<int, ref TW_GridCoord<T>>> grid = new map<int, ref map<int, ref TW_GridCoord<T>>>();
+
 	const int GridSize = 1000;
+	
+	private ref set<string> activeCoords = new set<string>();
+	
+	private int pointerIndex = -1;
+	private int activeCoordsCount = 0;
+	
+	//! Round robin through grid, return random item.
+	T GetNextItemFromPointer(notnull set<string> incomingCoords)
+	{
+		if(incomingCoords != activeCoords || incomingCoords.Count() != activeCoords.Count())
+		{
+			Print(string.Format("TrainWreck: Updating active coords %1", activeCoords));
+			activeCoords = incomingCoords;
+			activeCoordsCount = activeCoords.Count();	
+			pointerIndex = -1; // Reset to beginning
+		}
+		
+		// Increment, round robin style
+		pointerIndex++;
+		
+		// Clamp
+		if(pointerIndex >= activeCoordsCount)
+			pointerIndex = 0;
+		
+		// Convert text coords into something we can grab		
+		string textCoord = activeCoords.Get(pointerIndex);
+		int x, y;
+		SCR_TW_Util.FromGridString(textCoord, x, y);
+		ref TW_GridCoord<T> coord = GetCoord(x,y);
+		
+		// Grab random item from coord
+		return coord.GetRandomElement();
+	}
 	
 	int GetCoordCount(out int emptyValues)
 	{
@@ -131,6 +170,55 @@ class TW_GridCoordManager<Class T>
 		}
 		
 		return count;
+	}
+	
+	//! Get all chunks around player positions
+	int GetChunksAround(notnull out array<ref TW_GridCoord<T>> chunks, notnull set<string> textCoords, int radius = 1, bool includeCenter = true)
+	{
+		ref set<string> completedCoords = new set<string>();
+		
+		int x;
+		int y;
+		int totalCount = 0;
+		
+		foreach(string textCoord : textCoords)
+		{
+			if(completedCoords.Contains(textCoord))
+				continue;
+			
+			SCR_TW_Util.FromGridString(textCoord, x, y);
+			
+			int leftBounds = x - radius;
+			int rightBounds = x + radius;
+			int upperBounds = y + radius;
+			int lowerBounds = y - radius;
+			
+			for(int gridX = leftBounds; gridX < rightBounds; gridX++)
+			{
+				for(int gridY = lowerBounds; gridY < upperBounds; gridY++)
+				{
+					if(gridX == x && gridY == y && !includeCenter)
+						continue;
+					
+					string currentTextCoord = string.Format("%1 %2", gridX, gridY);
+					
+					// If this coordinate has already been checked -- continue
+					if(completedCoords.Contains(currentTextCoord))
+						continue;
+					
+					completedCoords.Insert(currentTextCoord);
+					
+					if(HasCoord(gridX, gridY))
+					{
+						ref TW_GridCoord<T> chunk = GetCoord(gridX, gridY);
+						chunks.Insert(chunk);
+						totalCount++;
+					}
+				}
+			}
+		}
+		
+		return totalCount;
 	}
 	
 	int GetNeighborsAround(notnull out array<T> data, notnull set<string> textCoords, int radius = 1, bool includeCenter = true)

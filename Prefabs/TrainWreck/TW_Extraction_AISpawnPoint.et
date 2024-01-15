@@ -6,7 +6,7 @@ SCR_TW_AISpawnPoint {
  }
  coords 1.381 -1.019 1.8
  m_EntityPrefabs {
-  "{36AB49E86A57AAA9}Prefabs/Groups/OPFOR/TW_OPFOR_1Random.et"
+  "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{36AB49E86A57AAA9}Prefabs/Groups/OPFOR/TW_OPFOR_1Random.et"
  }
  m_ChanceToSpawn 10
  m_CanRespawn 1
