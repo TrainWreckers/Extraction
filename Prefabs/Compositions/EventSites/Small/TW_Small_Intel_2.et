@@ -1,0 +1,191 @@
+GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBase.et" {
+ ID "605C017C86C39F73"
+ coords 78.627 0 40.945
+ {
+  GenericEntity : "{01E0B52B5BA2EF72}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_04.et" {
+   ID "606118CE8755504A"
+   components {
+    Hierarchy "{606118CE7376957B}" {
+    }
+   }
+   coords 5.449 0 -1.614
+   angleY 97.182
+   {
+    GenericEntity {
+     ID "59D87A54778D00C9"
+     coords 2.216 1.198 -0.391
+     angleY -121.25
+    }
+    GenericEntity {
+     ID "59D87A54778D1555"
+     coords 2.16 2.293 -0.293
+     angleY -120.647
+    }
+   }
+  }
+  GenericEntity : "{090D7DB1C25C9D43}Prefabs/Props/Civilian/IntelligenceCase.et" {
+   ID "606118CE8755505C"
+   components {
+    Hierarchy "{606118CE7376FCF3}" {
+    }
+   }
+   coords 4.623 0 -3.189
+   angleY -30.822
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "606118CE8754680D"
+    coords -0.135 0 3.647
+   }
+   {
+    ID "606118CE8754C431"
+    coords -3.465 0 1.462
+   }
+   {
+    ID "606118CE8754FEE8"
+    coords 3.801 0 -1.593
+   }
+   {
+    ID "606118CE8754FEE9"
+    coords -2.526 0 -1.964
+   }
+   {
+    ID "606118CE875500A2"
+    coords 3.242 0 1.733
+   }
+  }
+  $grp GenericEntity : "{25861AD07CEE719A}Prefabs/Compositions/Misc/SubCompositions/Sandbag_MG_USSR_01_PKM.et" {
+   {
+    ID "606118CE87555075"
+    coords 5.516 0 2.935
+    angleY 61.986
+   }
+   {
+    ID "606118CE87555077"
+    coords 2.537 0 -5.497
+    angleY 155.357
+   }
+   {
+    ID "606118CE8755507B"
+    coords -2.911 0 5.326
+    angleY -27.621
+   }
+   {
+    ID "606118CE8755507E"
+    coords -5.382 0 -3.045
+    angleY -115.349
+   }
+  }
+  GenericEntity : "{3B2D8CB93F906062}Prefabs/Compositions/Misc/SubCompositions/Sandbag_round_Cluttered_USSR_01.et" {
+   ID "606118CE87555046"
+   coords 1.696 0 4.893
+   angleY 13.644
+  }
+  GenericEntity : "{3CD490132ECE6645}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_03.et" {
+   ID "606118CE8755504D"
+   components {
+    Hierarchy "{606118CE7376B110}" {
+    }
+   }
+   coords -1.91 0 -5.703
+   angleY -104.401
+  }
+  $grp DecalEntity : "{4AD6EB80A8B1FA3A}Prefabs/Decals/Dirt/Decal_Dirt_Patch_03.et" {
+   {
+    ID "606118CE875500DF"
+    components {
+     Hierarchy "{606118CE7374B010}" {
+     }
+    }
+    coords 1.104 -0.001 1.102
+    angleX -89.96
+    angleZ 43.529
+    scale 10
+   }
+   {
+    ID "606118CE87555050"
+    components {
+     Hierarchy "{606118CE73767A13}" {
+     }
+    }
+    coords -1.539 0 -0.242
+    angleX -89.972
+    angleY 180
+    angleZ -149.011
+    scale 10
+   }
+   {
+    ID "606118CE87555051"
+    components {
+     Hierarchy "{606118CE7377C1B9}" {
+     }
+    }
+    coords 0.159 0 -1.85
+    angleX -89.98
+    angleZ 117.299
+    scale 10
+   }
+  }
+  GenericEntity : "{8C7C140EEB0ECF36}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Weapon_01_USSR.et" {
+   ID "606118CE87555055"
+   components {
+    Hierarchy "{606118CE737603EE}" {
+    }
+   }
+   coords 4.495 -0.024 0.265
+   angleY -120.399
+  }
+  GenericEntity : "{92F3D49676C8CB61}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Launcher_01_USSR.et" {
+   ID "606118CE8755505B"
+   components {
+    Hierarchy "{606118CE73762A53}" {
+    }
+   }
+   coords -5.002 0 0.435
+   angleY 42.134
+  }
+  GenericEntity : "{A48EDE9CBA71B5A3}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Ammunition_01_USSR.et" {
+   ID "606118CE8755505E"
+   components {
+    Hierarchy "{606118CE7376D49E}" {
+    }
+   }
+   coords -0.936 0 -5.118
+  }
+  GenericEntity : "{B51CE80A9EEF7E00}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Barricade_USSR_01.et" {
+   ID "606118CE87555072"
+   components {
+    Hierarchy "{606118CE736964B2}" {
+    }
+   }
+   coords -5.083 0 1.762
+   angleY -74.501
+   {
+    GenericEntity {
+     ID "58ECA7C4B7DDA475"
+     coords -2.673 -0.1 0.351
+     angleY 162.288
+    }
+    GenericEntity {
+     ID "58ECA7C4B7DDA477"
+     coords -1.581 -0.1 0.676
+     angleY 165.5
+    }
+    StaticModelEntity {
+     ID "58ECA7C4B7DDA476"
+     coords -1.918 -0.1 0.984
+     angleY 163.665
+    }
+   }
+  }
+  GenericEntity : "{CD62E36CFDCB8FD8}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Equipment_01_USSR.et" {
+   ID "606118CE87555058"
+   components {
+    Hierarchy "{606118CE73763066}" {
+    }
+   }
+   coords -1.963 0 -4.888
+   angleY 37.99
+  }
+ }
+}

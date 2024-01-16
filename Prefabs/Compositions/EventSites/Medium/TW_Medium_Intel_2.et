@@ -1,0 +1,510 @@
+GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBase.et" {
+ ID "605C017C86C39F73"
+ coords 95.255 0 76.234
+ {
+  GenericEntity : "{01969A28078FCA69}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_02.et" {
+   ID "606118D3438EF1C7"
+   components {
+    Hierarchy "{606118D34ED2A5E7}" {
+    }
+   }
+   coords 1.678 0 -0.486
+  }
+  $grp GenericEntity : "{04E378640D28B236}Prefabs/Compositions/Misc/SubCompositions/PalletFuel_Cluttered_01.et" {
+   {
+    ID "606118D3438EF125"
+    coords 5.811 0 -3.25
+    angleY 0
+    {
+     GenericEntity {
+      ID "570481CE8EF37A42"
+      coords -3.571 0.951 0.83
+     }
+     GenericEntity {
+      ID "570481CE8EF37A45"
+      coords -3.604 -0.029 0.856
+     }
+    }
+   }
+   {
+    ID "606118D3438EF127"
+    coords 4.433 0 -3.244
+    angleY 0
+   }
+  }
+  GenericEntity : "{090D7DB1C25C9D43}Prefabs/Props/Civilian/IntelligenceCase.et" {
+   ID "606118D3438EF1CB"
+   components {
+    Hierarchy "{606118D34ED5404E}" {
+    }
+   }
+   coords 3.586 0.185 0.273
+   angleX 88.131
+   angleY 176.654
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "606118D3438AAB4B"
+    coords -9.2 0 4.473
+   }
+   {
+    ID "606118D3438AD4B7"
+    coords -0.747 0.059 5.854
+   }
+   {
+    ID "606118D3438B4253"
+    coords 3.887 0.128 1.355
+   }
+   {
+    ID "606118D3438B425C"
+    coords 4.873 0.131 4.25
+   }
+   {
+    ID "606118D3438B745F"
+    coords 0.723 0 -3.36
+   }
+  }
+  $grp DecalEntity : "{28DBB1C4928B9FB6}Prefabs/Decals/Dirt/Decal_Dirt_Tracks_03.et" {
+   {
+    ID "606118D3438C1A71"
+    components {
+     Hierarchy "{606118D34EE9E949}" {
+     }
+    }
+    coords -4.858 0 3.417
+    angleX -90
+    angleY 180
+    angleZ -103.645
+    scale 5
+   }
+   {
+    ID "606118D3438C1BE5"
+    components {
+     Hierarchy "{606118D34EE87364}" {
+     }
+    }
+    coords -3.987 0 -3.067
+    angleX -90
+    angleY 180
+    angleZ 99.824
+    scale 5
+   }
+   {
+    ID "606118D3438C90E7"
+    components {
+     Hierarchy "{606118D34ED4A98E}" {
+     }
+    }
+    coords -6.46 0 8.129
+    angleX -90
+    angleZ -117.893
+    scale 5
+   }
+   {
+    ID "606118D3438CB9D6"
+    components {
+     Hierarchy "{606118D34ED4D889}" {
+     }
+    }
+    coords -5.863 0 -7.415
+    angleX -90
+    angleY 180
+    angleZ -74.833
+    scale 5
+   }
+   {
+    ID "606118D3438D08AD"
+    components {
+     Hierarchy "{606118D34ED461F7}" {
+     }
+    }
+    coords -4.846 -0.001 0.507
+    angleX -90
+    angleZ 81.869
+    scale 5
+   }
+  }
+  $grp DecalEntity : "{4AD6EB80A8B1FA3A}Prefabs/Decals/Dirt/Decal_Dirt_Patch_03.et" {
+   {
+    ID "606118D3438BBC19"
+    components {
+     Hierarchy "{606118D34EEB0481}" {
+     }
+    }
+    coords -0.726 0 3.286
+    angleX -90
+    scale 10
+   }
+   {
+    ID "606118D3438C1BE7"
+    components {
+     Hierarchy "{606118D34EE8E84B}" {
+     }
+    }
+    coords 0.747 0 -4.372
+    angleX -90
+    scale 10
+   }
+  }
+  GenericEntity : "{4EF68238FE2FC26B}Prefabs/Compositions/Misc/SubCompositions/CanvasCover_Cluttered_USSR_04.et" {
+   ID "606118D3438B745B"
+   coords 1.163 0 -3.985
+   angleY -101.589
+  }
+  GenericEntity : "{9C29AB1512EB4F65}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Sign_USSR_01.et" {
+   ID "606118D3438EF13F"
+   coords 4.091 0 -9.059
+   angleY 172.773
+  }
+  $grp DecalEntity : "{9EE74738BD9E8CDB}Prefabs/Decals/Dirt/Decal_Dirt_Tracks_02.et" {
+   {
+    ID "606118D3438C1A70"
+    components {
+     Hierarchy "{606118D34EE911D7}" {
+     }
+    }
+    coords -5.49 0 9.308
+    angleX -89.972
+    angleZ -77.306
+    scale 5
+   }
+   {
+    ID "606118D3438C2BD7"
+    components {
+     Hierarchy "{606118D34ED68EF8}" {
+     }
+    }
+    coords -6.672 0 -7.702
+    angleX -90
+    angleY 180
+    angleZ -59.031
+    scale 5
+   }
+   {
+    ID "606118D3438C90E5"
+    components {
+     Hierarchy "{606118D34ED733BB}" {
+     }
+    }
+    coords -5.746 0.001 5.408
+    angleX -89.98
+    angleZ 74.666
+    scale 5
+   }
+   {
+    ID "606118D3438CFE04"
+    components {
+     Hierarchy "{606118D34ED61F9E}" {
+     }
+    }
+    coords -4.539 0 -10.38
+    angleX -90
+    angleZ -101.778
+    scale 5
+   }
+   {
+    ID "606118D3438CFE0B"
+    components {
+     Hierarchy "{606118D34ED78D41}" {
+     }
+    }
+    coords -5.235 0 -3.289
+    angleX -90
+    angleY 180
+    angleZ -79.281
+    scale 5
+   }
+  }
+  $grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification/CzechHedgehog_01_painted.et" {
+   {
+    ID "606118D3438D08A9"
+    components {
+     Hierarchy "{606118D34ED4487A}" {
+     }
+    }
+    coords 10.325 0 3.038
+    angleY -100.307
+   }
+   {
+    ID "606118D3438D08AA"
+    components {
+     Hierarchy "{606118D34ED45C8B}" {
+     }
+    }
+    coords 6.651 0 8.606
+    angleY -11.707
+   }
+   {
+    ID "606118D3438D99B4"
+    components {
+     Hierarchy "{606118D34ED5C13A}" {
+     }
+    }
+    coords -0.56 0 -8.864
+    angleY 19.341
+   }
+   {
+    ID "606118D3438D99B7"
+    components {
+     Hierarchy "{606118D34ED5D79B}" {
+     }
+    }
+    coords 8.603 0 -7.973
+    angleY -91.793
+   }
+   {
+    ID "606118D3438DAE32"
+    components {
+     Hierarchy "{606118D34ED53C2A}" {
+     }
+    }
+    coords -10.968 0 6.003
+    angleY -46.946
+   }
+   {
+    ID "606118D3438DFCA9"
+    components {
+     Hierarchy "{606118D34ED5E429}" {
+     }
+    }
+    coords 10.017 0 -2.694
+   }
+   {
+    ID "606118D3438E07A1"
+    components {
+     Hierarchy "{606118D34ED528E7}" {
+     }
+    }
+    coords -8.898 0 2.545
+    angleY -94.877
+   }
+   {
+    ID "606118D3438EE4BC"
+    components {
+     Hierarchy "{606118D34ED57156}" {
+     }
+    }
+    coords -9.438 0 -4.868
+    angleY -173.163
+   }
+   {
+    ID "606118D3438EE4BD"
+    components {
+     Hierarchy "{606118D34ED51B5E}" {
+     }
+    }
+    coords -8.785 0 -1.301
+    angleY 46.889
+   }
+   {
+    ID "606118D3438EF1CE"
+    components {
+     Hierarchy "{606118D34ED56E34}" {
+     }
+    }
+    coords -10.528 0 -8.176
+   }
+  }
+  DecalEntity : "{ACAEDB73441F87DB}Prefabs/Decals/Dirt/Decal_Dirt_Patch_04.et" {
+   ID "606118D3438C1BE0"
+   components {
+    Hierarchy "{606118D34EE8B502}" {
+    }
+   }
+   coords -0.87 0 2.506
+   angleX -90
+   scale 4
+  }
+  $grp DecalEntity : "{AF4AA779A4546D51}Prefabs/Decals/Dirt/Decal_Dirt_Patch_02.et" {
+   {
+    ID "606118D3438B7458"
+    components {
+     Hierarchy "{606118D34EEACCD7}" {
+     }
+    }
+    coords -2.42 0 -6.708
+    angleX -90
+    scale 5
+   }
+   {
+    ID "606118D3438B9012"
+    components {
+     Hierarchy "{606118D34EEA4ED4}" {
+     }
+    }
+    coords -0.382 -0 3.781
+    angleX -90
+    scale 5
+   }
+   {
+    ID "606118D3438BBC25"
+    components {
+     Hierarchy "{606118D34EEBE1A7}" {
+     }
+    }
+    coords -3.236 0 9.277
+    angleX -90
+    scale 5
+   }
+   {
+    ID "606118D3438BE97F"
+    components {
+     Hierarchy "{606118D34EEA7D6D}" {
+     }
+    }
+    coords 0.359 0 -2.801
+    angleX -90
+    scale 5
+   }
+  }
+  GenericEntity : "{B6F0B7461EDFD186}Prefabs/Compositions/Misc/FreeRoamBuilding/FloodlightGenerator_S_USSR_01.et" {
+   ID "606118D3438EF133"
+   coords 0.132 0 7.961
+   angleY -138.007
+   {
+    GenericEntity {
+     ID "5E6911EB352E7A99"
+     coords 2.478 0 0.151
+     angleY -62.923
+    }
+    GenericEntity {
+     ID "5E6911EB352E7C7A"
+     coords -0.199 0 0.934
+     angleY 14.079
+     {
+      DecalEntity {
+       ID "56DEFDB4A9499F9B"
+       coords 0 0 0
+       angleX -89.972
+       angleY 180
+       angleZ -180
+      }
+     }
+    }
+    GenericEntity {
+     ID "5E6911EB352E7D28"
+     coords -1.267 0 -1.187
+     angleY 0.028
+    }
+    GenericEntity {
+     ID "5E6911EB352E7D36"
+     coords 0.186 0 -1.242
+     angleY 2.996
+    }
+    GenericEntity {
+     ID "5E6911EB352E7D5D"
+     coords -1.813 0 -0.234
+     angleY -88.612
+    }
+    GenericEntity {
+     ID "5E6911EB352E7D7A"
+     coords -2.8 0 -0.402
+     angleY -177.349
+    }
+    GenericEntity {
+     ID "5E6911EB352E7DB1"
+     coords -1.196 0.058 0.958
+     angleY -48.708
+    }
+    StaticModelEntity {
+     ID "5E6911EB352E7D10"
+     coords -0.007 0 1.031
+     angleY 2.573
+    }
+    StaticModelEntity {
+     ID "5E6911EB352E7D82"
+     coords -1.456 0.054 1.288
+     angleY 41.042
+    }
+    StaticModelEntity {
+     ID "5E6911EB352E7DA8"
+     coords 1.746 0 1.474
+     angleY 2.876
+    }
+    StaticModelEntity {
+     ID "5E6911EB352E7DCC"
+     coords -1.763 0 1.594
+    }
+    StaticModelEntity {
+     ID "5E6911EB352E7DDF"
+     coords 0.012 0 1.56
+     angleY 2.876
+    }
+    StaticModelEntity {
+     ID "5E6911EB352E7DE0"
+     coords 0.04 0 2.064
+     angleY 2.573
+    }
+   }
+  }
+  GenericEntity : "{D93EF3E97E06D435}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_04.et" {
+   ID "606118D3438EF1C0"
+   components {
+    Hierarchy "{606118D34ED28CC1}" {
+    }
+   }
+   coords 2.145 0 -5.739
+  }
+  $grp GenericEntity : "{DDF59362051B28BC}Prefabs/Props/Military/Fortification/BarbedTape_KnifeRest.et" {
+   {
+    ID "606118D3438DD421"
+    components {
+     Hierarchy "{606118D34ED5A488}" {
+     }
+    }
+    coords 9.726 0 6.115
+    angleY -14.411
+   }
+   {
+    ID "606118D3438DFCB6"
+    components {
+     Hierarchy "{606118D34ED59171}" {
+     }
+    }
+    coords 10.622 0 0.272
+   }
+   {
+    ID "606118D3438DFCB7"
+    components {
+     Hierarchy "{606118D34ED58890}" {
+     }
+    }
+    coords 9.721 0 -5.54
+    angleY 18.25
+   }
+  }
+  StaticModelEntity : "{E8697D4489516AE0}Prefabs/Compositions/Misc/SubCompositions/Tent_Barrack_Cluttered_USSR_03.et" {
+   ID "606118D3438EF134"
+   coords 5.518 -0.051 2.924
+   angleY -99.44
+  }
+  GenericEntity : "{F39BC00F1D5823C4}Prefabs/Compositions/Misc/SubCompositions/Sandbag_end_high_Cluttered_USSR_01.et" {
+   ID "606118D3438EF128"
+   coords -0.605 0 10.341
+   angleY -138.263
+   {
+    GenericEntity {
+     ID "5704E20146BE3219"
+     coords 0.943 0.973 0.917
+     angleX -60
+     angleY 38.271
+     angleZ 180
+    }
+    GenericEntity {
+     ID "5704E20146BE321D"
+     coords 0.425 0.865 -0.183
+     angleX -8.868
+     angleY 141.03
+     angleZ -20.017
+    }
+    GenericEntity {
+     ID "5704E20146BE321F"
+     coords 0.276 1.115 -0.146
+     angleX 22.368
+     angleY -30.496
+     angleZ -0.901
+    }
+   }
+  }
+ }
+}
