@@ -62,9 +62,11 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	
 	protected ref TW_GridCoordManager<SCR_TW_AISpawnPoint> spawnGrid = new TW_GridCoordManager<SCR_TW_AISpawnPoint>();
 	protected ref TW_GridCoordManager<SCR_TW_EventSite> eventGrid = new TW_GridCoordManager<SCR_TW_EventSite>();
+	protected ref TW_GridCoordManager<SCR_TW_VehicleSpawn> vehicleGrid = new TW_GridCoordManager<SCR_TW_VehicleSpawn>();
 	
 	protected ref array<ref TW_GridCoord<SCR_TW_AISpawnPoint>> spawnPointsNearPlayers = {};
 	protected ref array<SCR_TW_EventSite> eventSitesNearPlayers = {};
+	protected ref array<SCR_TW_VehicleSpawn> vehicleSpawnsNearPlayers = {};
 	protected int playerChunkCount = 0;
 	protected ref set<string> playerChunks = new set<string>();
 	
@@ -215,8 +217,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		if(players.Count() <= 0)
 			return;
 		
-		HandleVehicleSpawning();
-		
 		ref array<SCR_AIGroup> agents = {};		
 		currentAgents = GetAgentCount(agents);
 		
@@ -269,31 +269,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		}
 	}
 	
-	private void HandleVehicleSpawning()
-	{
-		ref array<SCR_TW_VehicleSpawn> nearbyPoints = {};
-		int nearbyCount = GetVehiclePointsInPlayerVicinity(nearbyPoints);
-		
-		if(nearbyCount == 0)
-		{
-			Print("TrainWreck: No vehicle spawn points nearby", LogLevel.WARNING);
-			return;
-		}
-		else
-			Print(string.Format("TrainWreck: Nearby Vehicle Spawns: %1", nearbyCount), LogLevel.WARNING);
-		
-		int max = Math.Min(6, nearbyCount);
-		int spawnCount = Math.RandomIntInclusive(1, max);
-		
-		int i = 0;
-		foreach(SCR_TW_VehicleSpawn point : nearbyPoints)			
-		{
-			UnregisterVehicleSpawnPoint(point);
-			GetGame().GetCallqueue().CallLater(InvokeSpawnOnVehicle, SCR_TW_Util.FromSecondsToMilliseconds(i * 1), false, point);
-			i++;
-		}
-	}
-	
 	private void InvokeSpawnOnVehicle(SCR_TW_VehicleSpawn spawnPoint)
 	{
 		IEntity vehicle;
@@ -322,22 +297,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		Print(string.Format("TrainWreck: Spawn Coord(%1)", spawnPoint.GetOrigin()));		
 		SCR_AIGroup group = spawnPoint.Spawn();				
-	}
-	
-	int GetVehiclePointsInPlayerVicinity(notnull array<SCR_TW_VehicleSpawn> points)
-	{
-		int count = 0;
-		foreach(SCR_TW_VehicleSpawn point : m_VehicleSpawnPoints)
-		{
-			if(!point) continue;
-			if(!SCR_TW_Util.IsWithinRange(point.GetOwner().GetOrigin(), players, m_MinimumVehicleSpawnDistance, m_MaximumVehicleSpawnDistance))
-				continue;
-			
-			points.Insert(point);
-			count++;
-		}
-		
-		return count;
 	}
 	
 	void GarbageCollection()
@@ -427,21 +386,35 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		playerChunkCount = playerChunks.Count();
 		
-		int gridCount, invalidGridCount;
-		gridCount = spawnGrid.GetCoordCount(invalidGridCount);
-		
-		Print(string.Format("TrainWreck: GridCount(%1), Invalid(%2)", gridCount, invalidGridCount), LogLevel.WARNING);
-		
 		// If positions have changed we need to regrab all nearby spawn positions
 		if(positionsHaveChanged)
 		{
 			Print("TrainWreck: Player Grid Squares changed since last check. Updating spawn areas");
 			spawnPointsNearPlayers.Clear();
 			eventSitesNearPlayers.Clear();
+			vehicleSpawnsNearPlayers.Clear();
 			
-			Print("TrainWreck: Before chunks");
 			int spawnPointCount = spawnGrid.GetChunksAround(spawnPointsNearPlayers, playerChunks, m_SpawnGridRadius);
-			int eventPointCount = eventGrid.GetNeighborsAround(eventSitesNearPlayers, playerChunks, m_SpawnGridRadius);
+			int eventPointCount = eventGrid.GetNeighborsAround(eventSitesNearPlayers, playerChunks, m_SpawnGridRadius);			
+			int vehiclePointCount = vehicleGrid.GetNeighborsAround(vehicleSpawnsNearPlayers, playerChunks, m_SpawnGridRadius);
+			
+			// Spawn vehicles in loaded chunks
+			IEntity vehicle;
+			int vehicleSpawnCount = Math.RandomIntInclusive(1, vehiclePointCount);
+			
+			for(int i = 0; i < vehicleSpawnCount; i++)
+			{
+				int vehicleIndex = vehicleSpawnsNearPlayers.GetRandomIndex();
+				SCR_TW_VehicleSpawn vehicleSpawn = vehicleSpawnsNearPlayers.Get(vehicleIndex);				
+				GetGame().GetCallqueue().CallLater(InvokeSpawnOnVehicle, SCR_TW_Util.FromSecondsToMilliseconds(i * 1), false, vehicleSpawn);	
+				vehicleSpawnsNearPlayers.Remove(vehicleIndex);
+			}
+			
+			// Cleanup vehicle spawns
+			vehicleSpawnsNearPlayers.Clear();
+			
+			// Vehicles only spawn once, no respawn. So we can clean up as we spawn
+			vehicleGrid.RemoveCoords(playerChunks);
 			
 			foreach(SCR_TW_EventSite site : eventSitesNearPlayers)
 				if(!site.IsOccupied())	
@@ -450,7 +423,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			Print(string.Format("TrainWreck: found %1 spawn points in player vicinity. %2 Event sites nearby", spawnPointCount, eventPointCount));			
 		}
 		
-		Print(string.Format("TrainWreck: Players: %1", players.Count()));
 		this.players = players;
 	}
 	
@@ -462,15 +434,14 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		m_VehicleSpawnPoints.Insert(point);
+		vehicleGrid.InsertByWorld(point.GetOwner().GetOrigin(), point);
 	}
 	
 	void UnregisterVehicleSpawnPoint(SCR_TW_VehicleSpawn point)
 	{
 		if(!point)
 			return;
-		
-		m_VehicleSpawnPoints.RemoveItem(point);
+		Debug.Error("Implement");		
 	}
 	
 	void RegisterAISpawnPoint(SCR_TW_AISpawnPoint point)

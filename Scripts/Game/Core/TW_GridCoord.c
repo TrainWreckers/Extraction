@@ -33,13 +33,66 @@ class TW_GridCoord<Class T>
 class TW_GridCoordManager<Class T>
 {
 	private ref map<int, ref map<int, ref TW_GridCoord<T>>> grid = new map<int, ref map<int, ref TW_GridCoord<T>>>();
-
-	const int GridSize = 1000;
+	private int GridSize = 1000;
 	
 	private ref set<string> activeCoords = new set<string>();
 	
 	private int pointerIndex = -1;
 	private int activeCoordsCount = 0;
+	
+	void TW_GridCoordManager(int gridSize = 1000)
+	{
+		GridSize = gridSize;
+	}
+	
+	//! Remove multiple chunks
+	void RemoveCoords(notnull set<string> coords)
+	{
+		int x, y;
+		foreach(string coord : coords)
+		{
+			SCR_TW_Util.FromGridString(coord, x, y);
+			
+			if(!HasCoord(x, y))
+				continue;
+			
+			ref map<int, ref TW_GridCoord<T>> sub = grid.Get(x);
+			sub.Remove(y);
+			
+			if(sub.Count() <= 0)
+				sub.Remove(x);
+		}
+	}
+	
+	//! Remove sector from grid
+	void RemoveCoord(vector position)
+	{
+		int x = (int)(position[0] / GridSize);
+		int y = (int)(position[2] / GridSize);
+		
+		if(!HasCoord(x,y))
+			return;
+		
+		ref map<int, ref TW_GridCoord<T>> sub = grid.Get(x);
+		sub.Remove(y);
+		
+		// If nothing is left --> delete the X as well
+		if(sub.Count() <= 0)
+			grid.Remove(x);
+	}
+	
+	//! Remove item from its sector
+	void RemoveItem(vector position, T item)
+	{
+		int x = (int)(position[0] / GridSize);
+		int y = (int)(position[2] / GridSize);
+		
+		if(!HasCoord(x,y))
+			return;
+		
+		ref TW_GridCoord<T> coord = GetCoord(x, y);
+		coord.RemoveItem(item);
+	}	
 	
 	//! Round robin through grid, return random item.
 	T GetNextItemFromPointer(notnull set<string> incomingCoords)
