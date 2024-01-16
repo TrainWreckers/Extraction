@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A3057017F574212F}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_3.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
