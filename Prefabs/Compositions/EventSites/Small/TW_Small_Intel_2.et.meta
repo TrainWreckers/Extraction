@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{2AB8A8D6945F120D}Prefabs/Compositions/EventSites/Small/TW_Small_Intel_2.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

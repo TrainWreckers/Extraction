@@ -1,0 +1,1002 @@
+GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBase.et" {
+ ID "605C017C86C39F73"
+ coords 41.392 0 71.156
+ {
+  GenericEntity : "{07D5C7C755C719BE}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_pile_medium.et" {
+   ID "606118CCB62E04F9"
+   components {
+    Hierarchy "{606118CC7049C32F}" {
+    }
+   }
+   coords 1.651 0 3.907
+  }
+  GenericEntity : "{090D7DB1C25C9D43}Prefabs/Props/Civilian/IntelligenceCase.et" {
+   ID "606118CCB62E04D1"
+   components {
+    Hierarchy "{606118CC7048CBF1}" {
+    }
+   }
+   coords 8.272 -0.012 2.14
+   angleY 87.238
+  }
+  DecalEntity : "{091747817467C504}Prefabs/Decals/Fluids/Decal_OilStain_01_medium.et" {
+   ID "606118CCB6299348"
+   components {
+    Hierarchy "{606118CC70734DA5}" {
+    }
+   }
+   coords -3.102 0 0.603
+   angleX -90
+  }
+  StaticModelEntity : "{0A130384571F865A}Prefabs/Structures/Walls/Concrete/SilageWall_01/SilageWall_01_Pole.et" {
+   ID "606118CCB6104C2D"
+   components {
+    Hierarchy "{606118CC704BE68A}" {
+    }
+   }
+   coords 16.793 0 -5.084
+   angleY 86.491
+  }
+  Tree : "{1244D02EB99D4756}Prefabs/Vegetation/Tree/t_carpinus_betulus_branch_01.et" {
+   ID "606118CCB62FFFF9"
+   components {
+    Hierarchy "{606118CC704AA3C9}" {
+    }
+   }
+   coords 9.887 -0.051 14.087
+  }
+  DecalEntity : "{15749F6DEE797FC5}Prefabs/Decals/Fluids/Decal_PetrolStain_01_V4.et" {
+   ID "606118CCB629934F"
+   components {
+    Hierarchy "{606118CC707313F0}" {
+    }
+   }
+   coords 6.076 0 4.429
+   angleX -90
+   scale 4
+  }
+  GenericEntity : "{19A3C48FC2665A3F}Prefabs/Props/Construction/GravelPile_01/GravelPile_01_large.et" {
+   ID "606118CCB6104C57"
+   components {
+    Hierarchy "{606118CC704C6B7C}" {
+    }
+   }
+   coords 4.872 0 -11.231
+  }
+  GenericEntity : "{1A1CE09F7BCA6650}Prefabs/Props/Wrecks/S105_wreck_static.et" {
+   ID "606118CCB6104C27"
+   components {
+    Hierarchy "{606118CC704B88EE}" {
+    }
+   }
+   coords 8.085 -0.237 6.623
+   angleY -122.984
+  }
+  GenericEntity : "{1D21753C484817D1}Prefabs/Compositions/Misc/SubCompositions/Tire_M151A2_stack_01.et" {
+   ID "606118CCB62E04CE"
+   coords 11.573 0 -0.63
+  }
+  SCR_DestructibleBuildingEntity : "{22759E6CD7F7BFF8}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Corner_Stairs.et" {
+   ID "606118CCB6104C35"
+   coords 1.833 0 15.26
+   angleY -90.131
+  }
+  GenericEntity : "{22E2462FA3AE0849}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Long_Pile.et" {
+   ID "606118CCB6104C5A"
+   components {
+    Hierarchy "{606118CC704C7B41}" {
+    }
+   }
+   coords 2.77 0 -19.016
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "606118CCB6294387"
+    coords -8.688 0 -13.821
+   }
+   {
+    ID "606118CCB6295430"
+    coords 13.272 0 -6.958
+   }
+   {
+    ID "606118CCB6295431"
+    coords -3.998 0 4.651
+   }
+   {
+    ID "606118CCB6299340"
+    coords -11.094 0 -1.995
+   }
+  }
+  $grp GenericEntity : "{25C8B889A777399D}Prefabs/Props/Infrastructure/ConeTraffic/ConeTraffic_01_red.et" {
+   {
+    ID "606118CCB62E696F"
+    components {
+     Hierarchy "{606118CC7049AD50}" {
+     }
+    }
+    coords 11.518 0 -15.059
+   }
+   {
+    ID "606118CCB62E8385"
+    components {
+     Hierarchy "{606118CC704A5D1B}" {
+     }
+    }
+    coords 10.098 0 -14.993
+   }
+   {
+    ID "606118CCB62F08CA"
+    components {
+     Hierarchy "{606118CC704A4E4A}" {
+     }
+    }
+    coords 14.832 1.201 -9.682
+   }
+  }
+  DecalEntity : "{2840BA559B15F6F2}Prefabs/Decals/Fluids/Decal_PetrolStain_01_V3.et" {
+   ID "606118CCB629934E"
+   components {
+    Hierarchy "{606118CC7073FF95}" {
+    }
+   }
+   coords 10.631 0 2.349
+   angleX -90
+   scale 3
+  }
+  StaticModelEntity : "{2B404C42FBDAD44A}Prefabs/Structures/Walls/Concrete/SilageWall_01/SilageWall_01_5m_D.et" {
+   ID "606118CCB6104C2B"
+   components {
+    Hierarchy "{606118CC704B99B8}" {
+    }
+   }
+   coords 16.556 0 4.966
+   angleY 90.097
+  }
+  Tree : "{3470A1B83A51196A}Prefabs/Vegetation/Tree/t_betula_pendula_stump_01.et" {
+   ID "606118CCB62FFFE7"
+   components {
+    Hierarchy "{606118CC704B40E7}" {
+    }
+   }
+   coords 7.908 0 16.434
+  }
+  GenericEntity : "{361EEFE7B91BF9E8}Prefabs/Compositions/Misc/SubCompositions/BarrelMetalGroup_01.et" {
+   ID "606118CCB62E04C5"
+   components {
+    Hierarchy "{606118CC7048B9FB}" {
+    }
+   }
+   coords -3.748 0 -3.182
+   angleY -20.498
+  }
+  StaticModelEntity : "{39F7EE885940DC8F}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v1.et" {
+   ID "606118CCB62FFFF2"
+   components {
+    Hierarchy "{606118CC704A9AEB}" {
+    }
+   }
+   coords -4.862 0.379 7.756
+  }
+  SCR_DestructibleBuildingEntity : "{3E7CF4C5E180F5D1}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Windows.et" {
+   ID "606118CCB6104C30"
+   coords -4.765 0 -10.771
+   angleY -90.123
+  }
+  GenericEntity : "{3F0D0593590519DA}Prefabs/Props/Garbage/Tires/TirePile_01_medium.et" {
+   ID "606118CCB62E04FE"
+   components {
+    Hierarchy "{606118CC70491D91}" {
+    }
+   }
+   coords 13.27 0 -3.038
+  }
+  GenericEntity : "{4911553FA8356302}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_single_bricks.et" {
+   ID "606118CCB62E04E5"
+   components {
+    Hierarchy "{606118CC7049E6AF}" {
+    }
+   }
+   coords 2.017 0 8.756
+  }
+  $grp DecalEntity : "{4932978A48FA10B0}Prefabs/Decals/Dirt/Decal_Dirt_Patch_05.et" {
+   {
+    ID "606118CCB629E9F6"
+    components {
+     Hierarchy "{606118CC70755A8C}" {
+     }
+    }
+    coords 13.41 0 -6.943
+    angleX -90
+    scale 2
+   }
+   {
+    ID "606118CCB62A2D02"
+    components {
+     Hierarchy "{606118CC70757A77}" {
+     }
+    }
+    coords 13.201 0 -8.451
+    angleX -90
+    scale 2
+   }
+   {
+    ID "606118CCB62A2D03"
+    components {
+     Hierarchy "{606118CC70753B1C}" {
+     }
+    }
+    coords 14.361 0 -6.068
+    angleX -90
+    scale 2
+   }
+   {
+    ID "606118CCB62A9AF8"
+    components {
+     Hierarchy "{606118CC7075DFB4}" {
+     }
+    }
+    coords 10.488 0 -6.751
+    angleX -90
+    scale 2
+   }
+   {
+    ID "606118CCB62AE2DC"
+    components {
+     Hierarchy "{606118CC70762011}" {
+     }
+    }
+    coords 6.553 0 7.434
+    angleX -90
+    scale 2
+   }
+   {
+    ID "606118CCB62BAD99"
+    components {
+     Hierarchy "{606118CC7077C579}" {
+     }
+    }
+    coords -4.501 0 5.662
+    angleX -89.972
+    angleZ 118.501
+    scale 2
+   }
+  }
+  $grp GenericEntity : "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT.et" {
+   {
+    ID "606118CCB62C0E1C"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -6.369 0 19.422
+   }
+   {
+    ID "606118CCB62C664D"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -0.527 0 20.838
+   }
+   {
+    ID "606118CCB62CD129"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -14.239 0 14.555
+   }
+   {
+    ID "606118CCB62CD12A"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -8.589 0 17.15
+   }
+   {
+    ID "606118CCB62D36D2"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -10.256 0 10.489
+   }
+   {
+    ID "606118CCB62D401E"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -5.677 0 11.056
+   }
+   {
+    ID "606118CCB62D401F"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -1.029 0 11.305
+   }
+   {
+    ID "606118CCB62D9A81"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -5.741 0 15.512
+   }
+   {
+    ID "606118CCB62DB1B8"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -11.616 0 16.377
+   }
+   {
+    ID "606118CCB62DB1C7"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -9.183 0 12.885
+   }
+   {
+    ID "606118CCB62DF062"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -2.401 0 13.501
+   }
+   {
+    ID "606118CCB62DF063"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -14.766 0 11.422
+   }
+   {
+    ID "606118CCB62E04D7"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -3.543 0 18.766
+   }
+  }
+  $grp DecalEntity : "{4AD6EB80A8B1FA3A}Prefabs/Decals/Dirt/Decal_Dirt_Patch_03.et" {
+   {
+    ID "606118CCB62B237D"
+    components {
+     Hierarchy "{606118CC7076AE5D}" {
+     }
+    }
+    coords 14.356 0 2.136
+    angleX -90
+    scale 10
+   }
+   {
+    ID "606118CCB62BAD9A"
+    components {
+     Hierarchy "{606118CC707703F7}" {
+     }
+    }
+    coords 5.276 0 0
+    angleX -90
+    scale 10
+   }
+  }
+  DecalEntity : "{4E2502622DA0DB28}Prefabs/Decals/Miscellaneous/Decal_Damage_Burnt_01.et" {
+   ID "606118CCB6299344"
+   coords -7.946 0 -10.448
+   angleX -90
+   angleY 0
+   angleZ 0
+   scale 10
+  }
+  GenericEntity : "{547A7CACBC8B0865}Prefabs/Structures/Signs/Military/Sign_Warning_USSR_01.et" {
+   ID "606118CCB62FFFFC"
+   components {
+    Hierarchy "{606118CC704AB507}" {
+    }
+   }
+   coords -6.409 0 18.46
+  }
+  StaticModelEntity : "{55A3DA68E58453A1}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v2.et" {
+   ID "606118CCB62FFFF0"
+   components {
+    Hierarchy "{606118CC704AE701}" {
+    }
+   }
+   coords -8.791 0.593 -16.607
+  }
+  GenericEntity : "{58F0C4BE4655101A}Prefabs/Compositions/Misc/SubCompositions/VehicleGarbage_TireStack_02.et" {
+   ID "606118CCB62E04C8"
+   coords 9.439 0 4.805
+   angleY -103.446
+  }
+  SCR_DestructibleBuildingEntity : "{5A81BD9171FC3B07}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_BrickPile_Big.et" {
+   ID "606118CCB62FF55F"
+   coords -13.768 0 7.819
+  }
+  $grp SCR_DestructibleEntity : "{5C83038A1CEB6407}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_C.et" {
+   {
+    ID "606118CCB62E04E3"
+    components {
+     Hierarchy "{606118CC7049972D}" {
+     }
+    }
+    coords -2.134 -0.191 7.94
+    angleY 35.435
+   }
+   {
+    ID "606118CCB62E6960"
+    components {
+     Hierarchy "{606118CC704984A9}" {
+     }
+    }
+    coords -5.352 -0.21 8.224
+   }
+  }
+  SCR_DestructibleBuildingEntity : "{5CDDDFB2D698DCC3}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_WoodPile.et" {
+   ID "606118CCB62FFFEE"
+   coords -15.342 0 -4.986
+  }
+  $grp GenericEntity : "{5E249786B7A6896D}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Large.et" {
+   {
+    ID "606118CCB6100A11"
+    components {
+     Hierarchy "{606118CC704BC6B5}" {
+     }
+    }
+    coords 7.053 -0.512 -15.37
+   }
+   {
+    ID "606118CCB6100A16"
+    components {
+     Hierarchy "{606118CC704BD4AD}" {
+     }
+    }
+    coords 6.969 -0.24 -12.746
+   }
+   {
+    ID "606118CCB6104C58"
+    components {
+     Hierarchy "{606118CC704C4A00}" {
+     }
+    }
+    coords 7.379 -0.328 -17.71
+   }
+  }
+  GenericEntity : "{630C2872BB87F44F}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Short_Pile.et" {
+   ID "606118CCB6100A14"
+   components {
+    Hierarchy "{606118CC704B2292}" {
+    }
+   }
+   coords -2.766 0.632 -19.16
+   angleX 86.707
+  }
+  GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/RoadBlock_01.et" {
+   ID "606118CCB62E6962"
+   components {
+    Hierarchy "{606118CC7049B12C}" {
+    }
+   }
+   coords -8.561 0.817 -16.521
+   angleX -14.904
+   angleZ -3.003
+  }
+  GenericEntity : "{6720CD0D5B7B7768}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Long.et" {
+   ID "606118CCB6104C59"
+   components {
+    Hierarchy "{606118CC704C47FA}" {
+    }
+   }
+   coords 5.967 2.466 -10.851
+   angleZ -48.61
+  }
+  GenericEntity : "{6BE5C753730DBFED}Prefabs/Props/Wrecks/M923A1_wreck_static.et" {
+   ID "606118CCB6104C5C"
+   components {
+    Hierarchy "{606118CC704C5642}" {
+    }
+   }
+   coords 9.27 -0.39 -0.791
+  }
+  GenericEntity : "{74D1DB7828061BD7}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_pile_small.et" {
+   ID "606118CCB62E04E7"
+   components {
+    Hierarchy "{606118CC7049F4F9}" {
+    }
+   }
+   coords -10.498 0 6.024
+  }
+  $grp StaticModelEntity : "{75A7C06222E6218B}Prefabs/Structures/Military/Camps/TentSmallUSSR_01/TentSmallUSSR_01.et" {
+   {
+    ID "606118CCB62E04DA"
+    components {
+     Hierarchy "{606118CC7048ED45}" {
+     }
+    }
+    coords -7.718 0 -1.801
+    angleY 59.009
+   }
+   {
+    ID "606118CCB62E04DD"
+    components {
+     Hierarchy "{606118CC7048FCD7}" {
+     }
+    }
+    coords -7.736 0 2.35
+    angleY 129.485
+   }
+  }
+  GenericEntity : "{7AD92B2ABCE09B5F}Prefabs/Structures/Military/CamoNets/CamoNet_AssemblyKit_Base.et" {
+   ID "606118CCB62E04D8"
+   components {
+    Hierarchy "{606118CC70489E2B}" {
+    }
+   }
+   coords -2.91 0 2.134
+   angleY 37.261
+  }
+  GenericEntity : "{7C42934FDC952EDF}Prefabs/Compositions/Misc/SubCompositions/VehicleGarbagePile_03.et" {
+   ID "606118CCB62E04CA"
+   components {
+    Hierarchy "{606118CC704946B5}" {
+    }
+   }
+   coords 12.274 0 3.189
+  }
+  GenericEntity : "{986F38072A8DD563}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_single_planks.et" {
+   ID "606118CCB62E04FF"
+   components {
+    Hierarchy "{606118CC70490ED7}" {
+    }
+   }
+   coords -12.226 0 -10.794
+  }
+  SCR_DestructibleBuildingEntity : "{9CFA6E8952B4E00D}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Wall.et" {
+   ID "606118CCB6104C36"
+   coords -13.614 0 -9.136
+   angleY -90.472
+  }
+  GenericEntity : "{A240B5FCD17D5686}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Medium.et" {
+   ID "606118CCB6299345"
+   components {
+    Hierarchy "{606118CC704C0516}" {
+    }
+   }
+   coords -5.816 0 -16.749
+   angleY 97.394
+  }
+  GenericEntity : "{A446CB3C732A360D}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_pile_long.et" {
+   ID "606118CCB62E04F8"
+   components {
+    Hierarchy "{606118CC7049D131}" {
+    }
+   }
+   coords 2.893 0 -2.137
+   angleY 80.898
+  }
+  GenericEntity : "{A8D8015D0E2B600A}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_single_mattress.et" {
+   ID "606118CCB62E04FA"
+   components {
+    Hierarchy "{606118CC70492F2F}" {
+    }
+   }
+   coords -11.3 0 3.162
+   angleY -4.647
+  }
+  GenericEntity : "{AA3F295D8E086A6D}Prefabs/Compositions/Misc/SubCompositions/TireStack_M939A1_02.et" {
+   ID "606118CCB62E04F4"
+   components {
+    Hierarchy "{606118CC7049726C}" {
+    }
+   }
+   coords 8.751 0 3.311
+  }
+  $grp SCR_DestructibleBuildingEntity : "{AAB9EC1130878E02}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Corner.et" {
+   {
+    ID "606118CCB6104C3B"
+    coords -10.905 0 5.767
+    angleY -179.832
+   }
+   {
+    ID "606118CCB62FF561"
+    coords 1.281 0 8.771
+   }
+  }
+  $grp DecalEntity : "{ACAEDB73441F87DB}Prefabs/Decals/Dirt/Decal_Dirt_Patch_04.et" {
+   {
+    ID "606118CCB62A94FB"
+    components {
+     Hierarchy "{606118CC70760E38}" {
+     }
+    }
+    coords 8.024 0 4.469
+    angleX -90
+    scale 4
+   }
+   {
+    ID "606118CCB62A966A"
+    components {
+     Hierarchy "{606118CC70764071}" {
+     }
+    }
+    coords 5.086 0 5.279
+    angleX -90
+    scale 4
+   }
+   {
+    ID "606118CCB62AE2DD"
+    components {
+     Hierarchy "{606118CC7076C962}" {
+     }
+    }
+    coords 11.65 0 -4.182
+    angleX -90
+    scale 4
+   }
+   {
+    ID "606118CCB62BAD97"
+    components {
+     Hierarchy "{606118CC704845BB}" {
+     }
+    }
+    coords -7.892 0 0.21
+    angleX -90
+    scale 4
+   }
+   {
+    ID "606118CCB62BAD98"
+    components {
+     Hierarchy "{606118CC70778513}" {
+     }
+    }
+    coords -5.727 0 -3.129
+    angleX -90
+    scale 4
+   }
+   {
+    ID "606118CCB62C0E19"
+    components {
+     Hierarchy "{606118CC7048059C}" {
+     }
+    }
+    coords -4.817 0 3.182
+    angleX -90
+    scale 4
+   }
+  }
+  $grp StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+   {
+    ID "606118CCB62F08CD"
+    components {
+     Hierarchy "{606118CC704A7F75}" {
+     }
+    }
+    coords 8.175 0 11.502
+    angleY -23.588
+   }
+   {
+    ID "606118CCB62F0D40"
+    components {
+     Hierarchy "{606118CC704A608D}" {
+     }
+    }
+    coords -16.634 0 -10.87
+    angleY -19.109
+   }
+   {
+    ID "606118CCB62F0D43"
+    components {
+     Hierarchy "{606118CC704A11DE}" {
+     }
+    }
+    coords -20.284 0 0.516
+    angleY -47.638
+   }
+   {
+    ID "606118CCB62F4CB0"
+    components {
+     Hierarchy "{606118CC704A0315}" {
+     }
+    }
+    coords -17.753 0 5.502
+    angleY 36.127
+   }
+   {
+    ID "606118CCB62F4CB1"
+    components {
+     Hierarchy "{606118CC704A33E4}" {
+     }
+    }
+    coords -18.805 0 -4.832
+   }
+  }
+  GenericEntity : "{AE300E34EA8FF40C}Prefabs/Props/Wrecks/Ural4320_wreck_static.et" {
+   ID "606118CCB6104C22"
+   components {
+    Hierarchy "{606118CC704BB8BD}" {
+    }
+   }
+   coords 6.52 -0.833 0.71
+   angleY -3.461
+  }
+  $grp DecalEntity : "{AF4AA779A4546D51}Prefabs/Decals/Dirt/Decal_Dirt_Patch_02.et" {
+   {
+    ID "606118CCB6299352"
+    components {
+     Hierarchy "{606118CC70745BDF}" {
+     }
+    }
+    coords -6.382 0.001 8.017
+    angleX -89.966
+    angleZ -84.915
+    scale 5
+   }
+   {
+    ID "606118CCB629C625"
+    components {
+     Hierarchy "{606118CC7074919C}" {
+     }
+    }
+    coords -8.943 0 -16.359
+    angleX -90
+    scale 5
+   }
+   {
+    ID "606118CCB629C626"
+    components {
+     Hierarchy "{606118CC7074C88F}" {
+     }
+    }
+    coords -15.026 0 -5.323
+    angleX -90
+    scale 5
+   }
+   {
+    ID "606118CCB629D4A9"
+    components {
+     Hierarchy "{606118CC7074006A}" {
+     }
+    }
+    coords -2.51 0 7.709
+    angleX -90
+    scale 5
+   }
+   {
+    ID "606118CCB62A966D"
+    components {
+     Hierarchy "{606118CC707582AA}" {
+     }
+    }
+    coords 7.762 0 -3.106
+    angleX -90
+    scale 5
+   }
+   {
+    ID "606118CCB62C0E18"
+    components {
+     Hierarchy "{606118CC70482078}" {
+     }
+    }
+    coords -4.875 0 0.058
+    angleX -90
+    scale 5
+   }
+  }
+  Tree : "{B5D57F1F1C796A66}Prefabs/Vegetation/Tree/t_carpinus_betulus_3d.et" {
+   ID "606118CCB62FFFE5"
+   components {
+    Hierarchy "{606118CC704B52B8}" {
+    }
+   }
+   coords 12.162 0 9.402
+  }
+  GenericEntity : "{B92E4F98231937C0}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_single_carpet.et" {
+   ID "606118CCB62E04FD"
+   components {
+    Hierarchy "{606118CC70493ECA}" {
+    }
+   }
+   coords -11.763 0 1.349
+   angleY 149.801
+  }
+  $grp GenericEntity : "{BB9DFC7232860128}Prefabs/Props/Construction/BrickPile/BrickPileOld_01_Large.et" {
+   {
+    ID "606118CCB62FFFEC"
+    components {
+     Hierarchy "{606118CC704B0F03}" {
+     }
+    }
+    coords 16.38 0 -6.588
+    angleY -62.466
+   }
+   {
+    ID "606118CCB62FFFED"
+    components {
+     Hierarchy "{606118CC704B1CA2}" {
+     }
+    }
+    coords 15.02 0 -9.083
+    angleY -61.359
+   }
+  }
+  StaticModelEntity : "{C1576E5555582214}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_short.et" {
+   ID "606118CCB62FFFF3"
+   components {
+    Hierarchy "{606118CC704AE933}" {
+    }
+   }
+   coords -2.291 0.393 7.185
+   angleY 36.199
+  }
+  DecalEntity : "{CA8AB522F7C90A28}Prefabs/Decals/Miscellaneous/CigarButts_01.et" {
+   ID "606118CCB629934B"
+   coords -5.062 -0.046 -1.497
+   angleX -90
+   angleY 0
+   angleZ 0
+  }
+  DecalEntity : "{CDDCF6AC97F06199}Prefabs/Decals/Fluids/Decal_PetrolStain_01_V2.et" {
+   ID "606118CCB629934D"
+   components {
+    Hierarchy "{606118CC707395A6}" {
+    }
+   }
+   coords 5.126 -0.114 2.917
+   angleX -90
+   scale 2
+  }
+  GenericEntity : "{CEA239D9E1899899}Prefabs/Props/Garbage/Tires/TirePile_01_small.et" {
+   ID "606118CCB62E04F1"
+   components {
+    Hierarchy "{606118CC704960B9}" {
+    }
+   }
+   coords 7.714 0 9.484
+  }
+  GenericEntity : "{D5062960B7211EB4}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Long.et" {
+   ID "606118CCB6104C39"
+   components {
+    Hierarchy "{606118CC704BC824}" {
+    }
+   }
+   coords -13.938 0 0.707
+   angleY 90.253
+  }
+  GenericEntity : "{D93A7286584E122C}Prefabs/Props/Construction/GravelPile_01/GravelPile_01_base.et" {
+   ID "606118CCB62FFFE0"
+   components {
+    Hierarchy "{606118CC704B7EDE}" {
+    }
+   }
+   coords 10.307 0 -10.878
+   angleY 24.263
+  }
+  GenericEntity : "{D93EF3E97E06D435}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_04.et" {
+   ID "606118CCB62E04C7"
+   components {
+    Hierarchy "{606118CC70488D8B}" {
+    }
+   }
+   coords -2.337 0 -0.143
+  }
+  GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+   ID "606118CCB62E04D2"
+   components {
+    Hierarchy "{606118CC7048DD34}" {
+    }
+   }
+   coords -4.918 0 0.1
+  }
+  $grp GenericEntity : "{DDF59362051B28BC}Prefabs/Props/Military/Fortification/BarbedTape_KnifeRest.et" {
+   {
+    ID "606118CCB62F4C4E"
+    components {
+     Hierarchy "{606118CC704A2326}" {
+     }
+    }
+    coords 11.339 -0.134 7.904
+    angleY -53.671
+   }
+   {
+    ID "606118CCB62F4C4F"
+    components {
+     Hierarchy "{606118CC704AD40B}" {
+     }
+    }
+    coords 14.85 -0.123 6.396
+    angleY -60.865
+   }
+   {
+    ID "606118CCB62F7276"
+    components {
+     Hierarchy "{606118CC704AC504}" {
+     }
+    }
+    coords 17.28 -0.259 2.41
+    angleX -6.21
+   }
+   {
+    ID "606118CCB62FFFF4"
+    components {
+     Hierarchy "{606118CC704AF503}" {
+     }
+    }
+    coords 11.622 0.027 -12.744
+    angleX 12.928
+    angleY 40.996
+   }
+  }
+  GenericEntity : "{DE658AC78172D02E}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Short.et" {
+   ID "606118CCB62FFFEF"
+   components {
+    Hierarchy "{606118CC704B3176}" {
+    }
+   }
+   coords -12.066 0 -15.337
+   angleY -153.73
+  }
+  StaticModelEntity : "{E2971F2C529A6F83}Prefabs/Structures/Walls/Concrete/SilageWall_01/SilageWall_01_5m_M1.et" {
+   ID "606118CCB6104C2E"
+   components {
+    Hierarchy "{606118CC704B97DD}" {
+    }
+   }
+   coords 16.564 0 -0.09
+   angleY 87.5
+  }
+  GenericEntity : "{E432A2B14E69DA5E}Prefabs/Compositions/Misc/SubCompositions/CableReelWooden_Cluttered_01.et" {
+   ID "606118CCB62E04C3"
+   coords -2.365 0 -1.579
+   angleY 0
+  }
+  GenericEntity : "{E64A1F4EC46ADBF4}Prefabs/Props/Construction/BrickPile/BrickPileOld_01_Small.et" {
+   ID "606118CCB62FFFE2"
+   components {
+    Hierarchy "{606118CC704B6C07}" {
+    }
+   }
+   coords 13.921 0 -11.013
+   angleY -61.492
+  }
+  GenericEntity : "{F58AEB566CB4369A}Prefabs/Compositions/Misc/SubCompositions/VehicleGarbagePile_01.et" {
+   ID "606118CCB62E04CC"
+   components {
+    Hierarchy "{606118CC7048A93A}" {
+    }
+   }
+   coords 11.547 0 5.19
+  }
+  $grp SCR_DestructibleBuildingEntity : "{F7919E01B9B17B3E}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_BrickPile_Small.et" {
+   {
+    ID "606118CCB6100A15"
+    coords -7.565 0 8.178
+   }
+   {
+    ID "606118CCB62FFFEB"
+    coords -14.196 -0.262 4.491
+   }
+  }
+ }
+}
