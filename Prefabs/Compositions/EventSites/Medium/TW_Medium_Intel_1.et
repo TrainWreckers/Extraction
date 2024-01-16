@@ -762,11 +762,6 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords 6.491 0.077 10.242
    angleY 35.776
   }
-  StaticModelEntity : "{E34FFA7EC13C10DA}Prefabs/Structures/Military/Camps/TentUSSR_01/TentUSSR_01_foundation.et" {
-   ID "605D5320D4D1CC03"
-   coords 0.686 0 9.112
-   angleY -173.183
-  }
   GenericEntity : "{ECC4315520263256}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_dark.et" {
    ID "605D5320D4D1CC06"
    components {
