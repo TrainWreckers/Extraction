@@ -13,11 +13,11 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("1", UIWidgets.Slider, params: "1 10 1", category: "Spawn Details", desc: "Chunks around players (1000m) that should be active")]
 	protected int m_SpawnGridRadius;
 	
-	[Attribute("300", UIWidgets.Slider, params: "0 1000 10", category: "Spawn Details", desc: "Distance in meters in which AI cannot be spawned")]
-	protected int m_MinimumAISpawnDistance;
+	[Attribute("1", UIWidgets.Slider, params: "1 20 1", category: "Spawn Details", desc: "Chunks around players (AntiSpawnGridSize) where AI cannot spawn")]
+	protected int m_AntiSpawnGridRadius;
 	
-	[Attribute("500", UIWidgets.Slider, params: "0 3000 10", category: "Garbage Collection", desc: "If this distance is exceeded, units will be queued for removal")]
-	protected int m_MaximumAIDistance;
+	[Attribute("100", UIWidgets.Slider, params: "25 1000 25", category: "Spawn Details", desc: "Grid size to use for Anti Spawn System")]
+	protected int m_AntiSpawnGridSize;
 	
 	[Attribute("15", UIWidgets.Slider, params: "0 500 1", category: "Garbage Collection", desc: "Time in seconds. If AI exceed max distance for this time they'll be cleaned up")]
 	protected float m_ExceedDistanceGarbageTimerInSeconds;
@@ -70,6 +70,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	protected ref array<SCR_TW_VehicleSpawn> vehicleSpawnsNearPlayers = {};
 	protected int playerChunkCount = 0;
 	protected ref set<string> playerChunks = new set<string>();
+	protected ref set<string> antiSpawnChunks = new set<string>();
 	
 	static SCR_TW_ExtractionSpawnHandler sInstance;
 	
@@ -262,17 +263,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(InvokeSpawnOn, 0.15, false, spawnCount);
 	}
 	
-	
-	// ! Attempt to grab AI Spawn point near a player that fits min/max criteria
-	private SCR_TW_AISpawnPoint GetSpawnPointWithinRange()
-	{		
-		SCR_TW_AISpawnPoint point = aiSpawnPointsNearPlayers.GetRandomElement();
-		while(!point || !SCR_TW_Util.IsWithinRange(point.GetOrigin(), players, m_MinimumAISpawnDistance, m_MaximumAIDistance))
-			point = aiSpawnPointsNearPlayers.GetRandomElement();
-		
-		return point;
-	}
-	
 	private void InvokeSpawnOnVehicle(SCR_TW_VehicleSpawn spawnPoint)
 	{
 		IEntity vehicle;
@@ -288,6 +278,14 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	}
 	
 	private bool isTrickleSpawning = false;
+	
+	//! Is the spawn point too close to a player?
+	private bool IsValidSpawn(SCR_TW_AISpawnPoint spawnPoint)
+	{
+		if(!spawnPoint) return false;
+		string position = SCR_TW_Util.ToGridText(spawnPoint.GetOrigin(), m_AntiSpawnGridSize);
+		return !antiSpawnChunks.Contains(position);
+	}
 	
 	// This is purely to enable delayed/staggered spawning
 	private void InvokeSpawnOn(int remainingCount)
@@ -305,13 +303,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		SCR_TW_AISpawnPoint spawnPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
 		
-		bool success = false;
-		
-		if(spawnPoint)
-		{
+		if(IsValidSpawn(spawnPoint))
 			SCR_AIGroup group = spawnPoint.Spawn();
-			success = group != null;
-		}
 		
 		// Recurse
 		if(remainingCount > 0)
@@ -363,6 +356,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		bool positionsHaveChanged = false;
 		
+		antiSpawnChunks.Clear();
+		
 		ref set<string> chunksAroundPlayer = new set<string>();
 		// Where are players at currently?
 		foreach(int playerId : playerIds)
@@ -373,6 +368,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 				continue;
 						
 			chunksAroundPlayer.Clear();
+			SCR_TW_Util.AddSurroundingGridSquares(antiSpawnChunks, player.GetOrigin(), m_AntiSpawnGridRadius, m_AntiSpawnGridSize);
 			SCR_TW_Util.AddSurroundingGridSquares(chunksAroundPlayer, player.GetOrigin(), m_SpawnGridRadius);			
 			
 			foreach(string chunk : chunksAroundPlayer)
