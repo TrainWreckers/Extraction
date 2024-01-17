@@ -19,6 +19,8 @@ class TW_GridCoord<Class T>
 		return data.GetRandomElement();
 	}
 	
+	array<T> GetAll() { return data; }
+	
 	int GetData(notnull out array<T> items)
 	{
 		int count = data.Count();
@@ -116,11 +118,19 @@ class TW_GridCoordManager<Class T>
 		string textCoord = activeCoords.Get(pointerIndex);
 		int x, y;
 		SCR_TW_Util.FromGridString(textCoord, x, y);
+		
+		if(!HasCoord(x,y))
+			return null;
+		
 		ref TW_GridCoord<T> coord = GetCoord(x,y);
+		
+		// Failsafe in the event the value is null
+		if(!coord) 
+			return null;
 		
 		// Grab random item from coord
 		return coord.GetRandomElement();
-	}
+	}		
 	
 	int GetCoordCount(out int emptyValues)
 	{
@@ -207,9 +217,9 @@ class TW_GridCoordManager<Class T>
 		int lowerBounds = y - radius;
 		int count = 0;
 		
-		for(int gridX = leftBounds; gridX < rightBounds; gridX++)
+		for(int gridX = leftBounds; gridX <= rightBounds; gridX++)
 		{
-			for(int gridY = lowerBounds; gridY < upperBounds; gridY++)
+			for(int gridY = lowerBounds; gridY <= upperBounds; gridY++)
 			{
 				if(gridX == x && gridY == y && !includeCenter)
 					continue;
@@ -226,7 +236,7 @@ class TW_GridCoordManager<Class T>
 	}
 	
 	//! Get all chunks around player positions
-	int GetChunksAround(notnull out array<ref TW_GridCoord<T>> chunks, notnull set<string> textCoords, int radius = 1, bool includeCenter = true)
+	int GetChunksAround(notnull out array<ref TW_GridCoord<T>> chunks, notnull set<string> textCoords, int radius = 1)
 	{
 		ref set<string> completedCoords = new set<string>();
 		
@@ -240,41 +250,25 @@ class TW_GridCoordManager<Class T>
 				continue;
 			
 			SCR_TW_Util.FromGridString(textCoord, x, y);
-			
-			int leftBounds = x - radius;
-			int rightBounds = x + radius;
-			int upperBounds = y + radius;
-			int lowerBounds = y - radius;
-			
-			for(int gridX = leftBounds; gridX < rightBounds; gridX++)
+					
+			// If this coordinate has already been checked -- continue
+			if(completedCoords.Contains(textCoord))
+				continue;
+					
+			completedCoords.Insert(textCoord);
+				
+			if(HasCoord(x, y))
 			{
-				for(int gridY = lowerBounds; gridY < upperBounds; gridY++)
-				{
-					if(gridX == x && gridY == y && !includeCenter)
-						continue;
-					
-					string currentTextCoord = string.Format("%1 %2", gridX, gridY);
-					
-					// If this coordinate has already been checked -- continue
-					if(completedCoords.Contains(currentTextCoord))
-						continue;
-					
-					completedCoords.Insert(currentTextCoord);
-					
-					if(HasCoord(gridX, gridY))
-					{
-						ref TW_GridCoord<T> chunk = GetCoord(gridX, gridY);
-						chunks.Insert(chunk);
-						totalCount++;
-					}
-				}
-			}
+				ref TW_GridCoord<T> chunk = GetCoord(x, y);
+				chunks.Insert(chunk);
+				totalCount++;
+			}			
 		}
 		
 		return totalCount;
 	}
 	
-	int GetNeighborsAround(notnull out array<T> data, notnull set<string> textCoords, int radius = 1, bool includeCenter = true)
+	int GetNeighborsAround(notnull out array<T> data, notnull set<string> textCoords, int radius = 1)
 	{
 		ref set<string> completedCoords = new set<string>();
 		
@@ -289,32 +283,16 @@ class TW_GridCoordManager<Class T>
 			
 			SCR_TW_Util.FromGridString(textCoord, x, y);
 			
-			int leftBounds = x - radius;
-			int rightBounds = x + radius;
-			int upperBounds = y + radius;
-			int lowerBounds = y - radius;
-			
-			for(int gridX = leftBounds; gridX < rightBounds; gridX++)
+			// If this coordinate has already been checked -- continue
+			if(completedCoords.Contains(textCoord))
+				continue;
+					
+			completedCoords.Insert(textCoord);
+					
+			if(HasCoord(x, y))
 			{
-				for(int gridY = lowerBounds; gridY < upperBounds; gridY++)
-				{
-					if(gridX == x && gridY == y && !includeCenter)
-						continue;
-					
-					string currentTextCoord = string.Format("%1 %2", gridX, gridY);
-					
-					// If this coordinate has already been checked -- continue
-					if(completedCoords.Contains(currentTextCoord))
-						continue;
-					
-					completedCoords.Insert(currentTextCoord);
-					
-					if(HasCoord(gridX, gridY))
-					{
-						ref TW_GridCoord<T> chunk = GetCoord(gridX, gridY);
-						totalCount += chunk.GetData(data);
-					}
-				}
+				ref TW_GridCoord<T> chunk = GetCoord(x, y);
+				totalCount += chunk.GetData(data);
 			}
 		}
 		
@@ -336,5 +314,5 @@ class TW_GridCoordManager<Class T>
 		}
 		
 		return count;
-	}
+	}	
 }

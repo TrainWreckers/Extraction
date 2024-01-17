@@ -2,6 +2,39 @@ class SCR_TW_Util
 {	
 	private static ref map<FactionKey, ref array<ResourceName>> _factionGroups = new map<FactionKey, ref array<ResourceName>>();
 	
+	static void AddSurroundingGridSquares(notnull inout set<string> chunks, vector position, int radius = 1, int gridSize = 1000)
+	{
+		int x = (int)(position[0] / gridSize);
+		int y = (int)(position[2] / gridSize);
+		
+		int xStart = x - radius;
+		int xEnd = x + radius;
+		int yStart = y - radius;
+		int yEnd = y + radius;
+		
+		string text = "";
+		string combined = "";
+		for(int gx = xStart; gx <= xEnd; gx++)
+		{
+			for(int gy = yStart; gy <= yEnd; gy++)
+			{
+				text = string.Format("%1 %2", gx, gy);
+				combined += string.Format("(%1) ", text);
+				if(!chunks.Contains(text))
+					chunks.Insert(text);
+			}
+		}
+		
+		Print(string.Format("TrainWreck: Grid Squares: %1", combined));
+	}
+	
+	static string ToGridText(vector position, int gridSize = 1000)
+	{
+		int x = (int)(position[0] / gridSize);
+		int y = (int)(position[2] / gridSize);
+		return string.Format("%1 %2", x, y);
+	}
+	
 	static void ToGrid(vector position, out int x, out int y)
 	{
 		x = (int)(position[0] / 1000);

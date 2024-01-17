@@ -65,6 +65,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	protected ref TW_GridCoordManager<SCR_TW_VehicleSpawn> vehicleGrid = new TW_GridCoordManager<SCR_TW_VehicleSpawn>();
 	
 	protected ref array<ref TW_GridCoord<SCR_TW_AISpawnPoint>> spawnPointsNearPlayers = {};
+	protected ref array<SCR_TW_AISpawnPoint> aiSpawnPointsNearPlayers = {};
 	protected ref array<SCR_TW_EventSite> eventSitesNearPlayers = {};
 	protected ref array<SCR_TW_VehicleSpawn> vehicleSpawnsNearPlayers = {};
 	protected int playerChunkCount = 0;
@@ -125,12 +126,9 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	
 	void ProcessForGC(AIAgent agent)
 	{
-		if(!agent) return;
-		
-		if(!SCR_TW_Util.IsOutsideOfPlayers(agent.GetOrigin(), players, m_MaximumAIDistance))
+		if(!agent) 
 			return;
 		
-		Print(string.Format("TrainWreck: %1 For GC", agent.ClassName()), LogLevel.WARNING);
 		SCR_AIGroup group = SCR_AIGroup.Cast(agent);
 		
 		if(group)
@@ -190,6 +188,10 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 				return;
 			
 			SCR_TW_AISpawnPoint moveToPoint = spawnGrid.GetNextItemFromPointer(playerChunks); // spawnPointsNearPlayers.GetRandomElement(); points.GetRandomElement();
+			
+			if(!moveToPoint)
+				return;
+			
 			ResourceName randomWaypointType = moveToPoint.GetRandomWaypoint();
 			AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(randomWaypointType, moveToPoint.GetOrigin());
 			
@@ -235,9 +237,9 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			}
 		}
 		
-		if(spawnQueueCount > 0)
+		if(isTrickleSpawning)
 		{
-			Print(string.Format("TrainWreck: Skipping spawn. %1 are scheduled for spawning", spawnQueueCount), LogLevel.WARNING);
+			Print("TrainWreck: Skipping spawn. Units are still trickle spawning", LogLevel.WARNING);
 			return;
 		}
 		
@@ -254,19 +256,21 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		Print(string.Format("TrainWreck: SpawnLoop(SC: %1, Queued: %2) - Agents: %3", spawnCount, spawnQueueCount, currentAgents), LogLevel.ERROR); 
 		
-		for(int i = 0; i < spawnCount; i++)
-		{
-			if(currentAgents >= m_MaxAgents) 
-				break;
-			
-			SCR_TW_AISpawnPoint currentPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
-			
-			if(!currentPoint.CanSpawn())
-				continue;
-			
-			// Stagger spawns to prevent lag spike each spawn iteration 
-			GetGame().GetCallqueue().CallLater(InvokeSpawnOn, SCR_TW_Util.FromSecondsToMilliseconds(0.15 * i), false, currentPoint);
-		}
+		if(spawnCount > 0)
+			isTrickleSpawning = true;
+		
+		GetGame().GetCallqueue().CallLater(InvokeSpawnOn, 0.15, false, spawnCount);
+	}
+	
+	
+	// ! Attempt to grab AI Spawn point near a player that fits min/max criteria
+	private SCR_TW_AISpawnPoint GetSpawnPointWithinRange()
+	{		
+		SCR_TW_AISpawnPoint point = aiSpawnPointsNearPlayers.GetRandomElement();
+		while(!point || !SCR_TW_Util.IsWithinRange(point.GetOrigin(), players, m_MinimumAISpawnDistance, m_MaximumAIDistance))
+			point = aiSpawnPointsNearPlayers.GetRandomElement();
+		
+		return point;
 	}
 	
 	private void InvokeSpawnOnVehicle(SCR_TW_VehicleSpawn spawnPoint)
@@ -283,20 +287,37 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			Print("TrainWreck: Vehicle did not spawn", LogLevel.DEBUG);
 	}
 	
+	private bool isTrickleSpawning = false;
+	
 	// This is purely to enable delayed/staggered spawning
-	private void InvokeSpawnOn(SCR_TW_AISpawnPoint spawnPoint)
+	private void InvokeSpawnOn(int remainingCount)
 	{
-		if(currentAgents > m_MaxAgents || !spawnPoint.CanSpawn())
+		if(remainingCount <= 0)
+		{
+			isTrickleSpawning = false;
+			return;
+		}
+		else 
+			remainingCount -= 1;
+		
+		if(currentAgents > m_MaxAgents)
 			return;
 		
-		spawnQueueCount = Math.ClampInt(spawnQueueCount - 1, 0, int.MAX);
+		SCR_TW_AISpawnPoint spawnPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
 		
-		// Don't bother spawning if this isn't within acceptable range
-		if(!SCR_TW_Util.IsWithinRange(spawnPoint.GetOrigin(), players, m_MinimumAISpawnDistance, m_MaximumAIDistance))
-			return;
+		bool success = false;
 		
-		Print(string.Format("TrainWreck: Spawn Coord(%1)", spawnPoint.GetOrigin()));		
-		SCR_AIGroup group = spawnPoint.Spawn();				
+		if(spawnPoint)
+		{
+			SCR_AIGroup group = spawnPoint.Spawn();
+			success = group != null;
+		}
+		
+		// Recurse
+		if(remainingCount > 0)
+			GetGame().GetCallqueue().CallLater(InvokeSpawnOn, 150, false, remainingCount);
+		else 
+			isTrickleSpawning = false;
 	}
 	
 	void GarbageCollection()
@@ -312,13 +333,16 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		Print("TrainWreck: GarbageCollection Pass");
 		
 		int x, y;
+		string positionText;
 		foreach(SCR_AIGroup agent : agents)
 		{
 			if(!agent)
 				continue;
 			
+			positionText = SCR_TW_Util.ToGridText(agent.GetOrigin());
+						
 			// If the chunk is not loaded --> delete 
-			if(SCR_TW_Util.IsOutsideOfPlayers(agent.GetOrigin(), players, m_MaximumAIDistance))
+			if(!playerChunks.Contains(positionText))
 			{
 				GetGame().GetCallqueue().CallLater(ProcessForGC, SCR_TW_Util.FromSecondsToMilliseconds(m_ExceedDistanceGarbageTimerInSeconds), false, agent);
 				queuedForGC++;
@@ -332,57 +356,76 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	{
 		ref array<int> playerIds = {};
 		ref array<IEntity> players = {};
-		GetGame().GetPlayerManager().GetPlayers(playerIds);				
+		GetGame().GetPlayerManager().GetPlayers(playerIds);	
+		
+		ref set<string> currentPositions = new set<string>();
+		ref set<string> unloaded = new set<string>();
 		
 		bool positionsHaveChanged = false;
-		ref set<string> currentPositions = new set<string>();
 		
+		ref set<string> chunksAroundPlayer = new set<string>();
+		// Where are players at currently?
 		foreach(int playerId : playerIds)
 		{
 			auto player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 			
 			if(!player)
 				continue;
+						
+			chunksAroundPlayer.Clear();
+			SCR_TW_Util.AddSurroundingGridSquares(chunksAroundPlayer, player.GetOrigin(), m_SpawnGridRadius);			
 			
-			int x, y;
-			SCR_TW_Util.ToGrid(player.GetOrigin(), x, y);
-			string position = string.Format("%1 %2", x, y);
-			
-			if(!currentPositions.Contains(position))
-				currentPositions.Insert(position);
-			
+			foreach(string chunk : chunksAroundPlayer)
+			{
+				if(!playerChunks.Contains(chunk))
+				{
+					positionsHaveChanged = true;
+					playerChunks.Insert(chunk);
+				}
+				
+				if(!currentPositions.Contains(chunk))
+					currentPositions.Insert(chunk);
+			}
+				
 			players.Insert(player);
 		}
 		
-		ref set<string> unloaded = new set<string>();
-		
 		// are previous positions still valid?
-		foreach(string previous : playerChunks)
-			if(!currentPositions.Contains(previous))
-			{
-				positionsHaveChanged = true;
-				playerChunks.RemoveItem(previous);
-				unloaded.Insert(previous);
-				
-				// We will need to despawn sites in these unloaded chunks
-				foreach(SCR_TW_EventSite site : eventSitesNearPlayers)
-				{
-					int sx, sy;
-					SCR_TW_Util.ToGrid(site.GetOrigin(), sx, sy);
-					string sp = string.Format("%1 %2", sx, sy);
-					
-					if(unloaded.Contains(sp))
-						site.Despawn();
-				}
-			}
+		int ex, ey;
+		ref array<SCR_TW_EventSite> coordSites = {};
 		
-		// are any current positions new?
-		foreach(string current : currentPositions)
-			if(!playerChunks.Contains(current))
+		playerChunkCount = playerChunks.Count();
+		
+		for(int i = 0; i < playerChunkCount; i++)
+		{
+			string playerCoord = playerChunks.Get(i);
+			
+			if(!currentPositions.Contains(playerCoord))
 			{
-				playerChunks.Insert(current);
-				positionsHaveChanged = true;		
+				unloaded.Insert(playerCoord);
+				playerChunks.Remove(i);
+				
+				// Must remember to decrement, otherwise we skip an item
+				i -= 1;
+				playerChunkCount -= 1;
+				
+				positionsHaveChanged = true;
+				
+				coordSites.Clear();
+				SCR_TW_Util.FromGridString(playerCoord, ex, ey);
+				
+				if(eventGrid.HasCoord(ex, ey))
+				{
+					TW_GridCoord<SCR_TW_EventSite> grid = eventGrid.GetCoord(ex, ey);
+					
+					if(!grid) continue;
+					
+					int siteCount = grid.GetData(coordSites);
+					foreach(SCR_TW_EventSite site : coordSites)
+						site.Despawn();
+				}				
 			}
+		}
 		
 		playerChunkCount = playerChunks.Count();
 		
@@ -393,10 +436,14 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			spawnPointsNearPlayers.Clear();
 			eventSitesNearPlayers.Clear();
 			vehicleSpawnsNearPlayers.Clear();
+			aiSpawnPointsNearPlayers.Clear();
 			
 			int spawnPointCount = spawnGrid.GetChunksAround(spawnPointsNearPlayers, playerChunks, m_SpawnGridRadius);
 			int eventPointCount = eventGrid.GetNeighborsAround(eventSitesNearPlayers, playerChunks, m_SpawnGridRadius);			
 			int vehiclePointCount = vehicleGrid.GetNeighborsAround(vehicleSpawnsNearPlayers, playerChunks, m_SpawnGridRadius);
+			
+			foreach(ref TW_GridCoord<SCR_TW_AISpawnPoint> coord : spawnPointsNearPlayers)
+				aiSpawnPointsNearPlayers.InsertAll(coord.GetAll());
 			
 			// Spawn vehicles in loaded chunks
 			IEntity vehicle;

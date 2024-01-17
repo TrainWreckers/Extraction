@@ -39,6 +39,11 @@ class SCR_TW_InventoryLoot : ScriptComponent
 		storage = TW<BaseUniversalInventoryStorageComponent>.Find(owner);
 	}
 	
+	event override protected void OnDelete(IEntity owner)
+	{
+		GlobalLootContainers.RemoveItem(this);
+	}
+	
 	bool InsertItem(TW_LootConfigItem item)
 	{
 		if(!item)		
@@ -97,6 +102,8 @@ class SCR_TW_InventoryLoot : ScriptComponent
 			}
 		}
 		
+		if(!storageManager || !spawnedItem || !storage)
+			return false;
 		
 		bool success = storageManager.TryInsertItemInStorage(spawnedItem, storage);
 		
