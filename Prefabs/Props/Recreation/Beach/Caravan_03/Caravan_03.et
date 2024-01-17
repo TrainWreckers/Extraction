@@ -1,3 +1,14 @@
 SCR_DestructibleBuildingEntity : "{E85EAE86987FD3CC}Prefabs/Props/Recreation/Beach/Caravan_03/Caravan_03_base.et" {
  ID "F0DBA538AC2A0552"
+ components {
+  ActionsManagerComponent "{5EBCEAF659440AAC}" {
+   ActionContexts {
+    UserActionContext "{5EBCEAF65B8B59C6}" {
+     Position PointInfo "{5EBCEAF6517020E8}" {
+      Offset -0.5999 1.3516 -0.6326
+     }
+    }
+   }
+  }
+ }
 }
