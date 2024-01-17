@@ -1,0 +1,847 @@
+GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBase.et" {
+ ID "605C017C86C39F73"
+ coords 41.39 0 71.102
+ {
+  GenericEntity : "{090D7DB1C25C9D43}Prefabs/Props/Civilian/IntelligenceCase.et" {
+   ID "606205E055DE620D"
+   components {
+    Hierarchy "{606205E049434974}" {
+    }
+   }
+   coords -4.851 0.108 0.645
+   angleX 89.464
+   angleY 88.94
+   angleZ 161.624
+  }
+  $grp DecalEntity : "{2566A36AF43E9F9E}Prefabs/Decals/Dirt/Decal_Dirt_Patch_06.et" {
+   {
+    ID "606205E055C40444"
+    components {
+     Hierarchy "{606205E00AFF851D}" {
+     }
+    }
+    coords 11.615 0 5.556
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C404A9"
+    components {
+     Hierarchy "{606205E00AFF3AA4}" {
+     }
+    }
+    coords 12.664 0 6.607
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C443C9"
+    components {
+     Hierarchy "{606205E00AF0FF2A}" {
+     }
+    }
+    coords 14.036 0 5.096
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C443D6"
+    components {
+     Hierarchy "{606205E00AF0C38E}" {
+     }
+    }
+    coords -13.344 0 6.013
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C4BAF3"
+    components {
+     Hierarchy "{606205E00AFE2F43}" {
+     }
+    }
+    coords 1.825 0 0.177
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C4C6FA"
+    components {
+     Hierarchy "{606205E00AFFCE9E}" {
+     }
+    }
+    coords 6.489 0 10.814
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C4C6FB"
+    components {
+     Hierarchy "{606205E00AFFEF15}" {
+     }
+    }
+    coords 3.674 0 9.247
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C53062"
+    components {
+     Hierarchy "{606205E00AFEAAEA}" {
+     }
+    }
+    coords -0.546 0 -17.951
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C54DB0"
+    components {
+     Hierarchy "{606205E00AFEB098}" {
+     }
+    }
+    coords -0.755 0 -17.033
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C54DB3"
+    components {
+     Hierarchy "{606205E00AFE4E91}" {
+     }
+    }
+    coords 1.423 0 -17.306
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055C58F99"
+    components {
+     Hierarchy "{606205E00AFEC6C1}" {
+     }
+    }
+    coords 14.928 0 -11.364
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DAAE7B"
+    components {
+     Hierarchy "{606205E00AF161C8}" {
+     }
+    }
+    coords 3.602 0 19.548
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DB0E9A"
+    components {
+     Hierarchy "{606205E00AF1F557}" {
+     }
+    }
+    coords 4.615 0 18.96
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DB204A"
+    components {
+     Hierarchy "{606205E00AF00AD8}" {
+     }
+    }
+    coords 2.791 0 18.333
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DB204B"
+    components {
+     Hierarchy "{606205E00AF1EFFB}" {
+     }
+    }
+    coords 4.803 0 17.417
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DB4F8D"
+    components {
+     Hierarchy "{606205E00AF1B788}" {
+     }
+    }
+    coords 3.828 0 17.896
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DB4F8E"
+    components {
+     Hierarchy "{606205E00AF198AC}" {
+     }
+    }
+    coords 2.254 0 16.788
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DBA49E"
+    components {
+     Hierarchy "{606205E00AF06061}" {
+     }
+    }
+    coords -12.497 0 14.788
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+   {
+    ID "606205E055DBEDB8"
+    components {
+     Hierarchy "{606205E00AF046A0}" {
+     }
+    }
+    coords -14.252 0 13.764
+    angleX -90
+    angleY 180
+    angleZ -137.14
+    scale 2
+   }
+  }
+  GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et" {
+   ID "606205E055C35EFB"
+   components {
+    Hierarchy "{606205E00AFB1C36}" {
+    }
+   }
+   coords -2.032 -0.125 -9.39
+   angleZ 0.725
+  }
+  $grp GenericEntity : "{3386EAA823BE462E}Prefabs/Props/Wrecks/UAZ469_wreck_static.et" {
+   {
+    ID "606205E055C27E71"
+    components {
+     Hierarchy "{606205E00AFCB1BF}" {
+     }
+    }
+    coords -6.308 0.018 15.594
+    angleX -20.722
+   }
+   {
+    ID "606205E055C2C0E5"
+    components {
+     Hierarchy "{606205E00AFCA5A5}" {
+     }
+    }
+    coords -6.201 -0.665 13.467
+   }
+   {
+    ID "606205E055C2E8AA"
+    components {
+     Hierarchy "{606205E00AFCDB41}" {
+     }
+    }
+    coords 9.995 1.03 9.974
+    angleZ 167.26
+   }
+  }
+  GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
+   ID "606205E055C35EFC"
+   components {
+    Hierarchy "{606205E00AFCE3B8}" {
+    }
+   }
+   coords -6.338 0 -0.989
+   angleY 16.912
+  }
+  $grp GenericEntity : "{40EB9EC77389727C}Prefabs/Props/Wrecks/BMP1_door.et" {
+   {
+    ID "606205E055C2E8AF"
+    coords -1.072 0.164 0.801
+    angleX -60.833
+    angleY -152.304
+    angleZ 68.312
+   }
+   {
+    ID "606205E055C2F279"
+    coords -2.395 0 0.867
+    angleX -65.217
+    angleY 180
+    angleZ 180
+   }
+  }
+  $grp GenericEntity : "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT.et" {
+   {
+    ID "606205E055D86473"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -9.716 0 9.888
+   }
+   {
+    ID "606205E055D88E32"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -12.541 0 6.541
+   }
+   {
+    ID "606205E055D89E44"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -18.652 0 3.965
+   }
+   {
+    ID "606205E055D89E47"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -10.516 0 -3.837
+   }
+   {
+    ID "606205E055D8D032"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -15.983 0 12.282
+   }
+   {
+    ID "606205E055D8D033"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -10.211 0 16.148
+   }
+   {
+    ID "606205E055D9198A"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -9.431 0 -9.051
+   }
+   {
+    ID "606205E055D92C0A"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -4.147 0 -17.615
+   }
+   {
+    ID "606205E055D92C0B"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -14.126 0 -13.053
+   }
+   {
+    ID "606205E055D9682F"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -18.248 0 -5.175
+   }
+   {
+    ID "606205E055D9AEC3"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 7.825 0 -7.91
+   }
+   {
+    ID "606205E055DA04B6"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 13.605 0 -13.878
+   }
+   {
+    ID "606205E055DA3060"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 18.804 0 -2.484
+   }
+   {
+    ID "606205E055DA5F00"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 3.305 0 -11.746
+   }
+   {
+    ID "606205E055DA5F0F"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 6.592 0 -18.85
+   }
+   {
+    ID "606205E055DA9C0F"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 3.518 0 5.331
+   }
+   {
+    ID "606205E055DAAE7F"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 15.584 0 10.471
+   }
+   {
+    ID "606205E055DAF8DE"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 0.951 0 -1.948
+   }
+   {
+    ID "606205E055DAF8DF"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 14.663 0 -5.599
+   }
+   {
+    ID "606205E055DE2198"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 7.51 0 0.801
+   }
+   {
+    ID "606205E055DE2199"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -6.056 0 20.03
+   }
+   {
+    ID "606205E055DE8656"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 15.163 0 13.648
+   }
+   {
+    ID "606205E055DF32BB"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -2.276 0 12.184
+   }
+   {
+    ID "606205E055DF32BC"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -4.288 0 17.946
+   }
+   {
+    ID "606205E055DF6B0C"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords 1.848 0 17.882
+   }
+   {
+    ID "606205E055DF91ED"
+    components {
+     SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+      m_bLive 1
+     }
+    }
+    coords -5.1 0 7.536
+   }
+  }
+  $grp DecalEntity : "{4E2502622DA0DB28}Prefabs/Decals/Miscellaneous/Decal_Damage_Burnt_01.et" {
+   {
+    ID "606205E055C00DFB"
+    coords -8.974 0 16.635
+    angleX -89.972
+    angleY 0
+    angleZ -30.276
+    scale 10
+   }
+   {
+    ID "606205E055C03B90"
+    coords 7.894 0 -7.256
+    angleX -89.966
+    angleY -180
+    angleZ 133.736
+    scale 10
+   }
+   {
+    ID "606205E055C03B91"
+    coords 4.96 0 -11.871
+    angleX -90
+    angleY 180
+    angleZ 160.844
+    scale 10
+   }
+   {
+    ID "606205E055C084C0"
+    coords -1.579 0 8.524
+    angleX -90
+    angleY 0
+    angleZ -3.767
+    scale 10
+   }
+   {
+    ID "606205E055C084C7"
+    coords 10.218 0 15.333
+    angleX -90
+    angleY 180
+    angleZ 160.844
+    scale 10
+   }
+   {
+    ID "606205E055C0EC69"
+    coords -18.903 0 0.197
+    angleX -89.972
+    angleY 0
+    angleZ -30.83
+    scale 10
+   }
+   {
+    ID "606205E055C73ACA"
+    coords -7.985 0 5.414
+    angleX -89.98
+    angleY -180
+    angleZ 153.574
+    scale 10
+   }
+   {
+    ID "606205E055C73ACB"
+    coords -2.386 0 18.772
+    angleX -89.98
+    angleY -180
+    angleZ 145.695
+    scale 10
+   }
+   {
+    ID "606205E055C74CDF"
+    coords -3.559 0 -3.251
+    angleX -90
+    angleY 0
+    angleZ -22.605
+    scale 10
+   }
+   {
+    ID "606205E055C74F8E"
+    coords 8.863 0 3.606
+    angleX -89.972
+    angleY 0
+    angleZ -25.884
+    scale 10
+   }
+   {
+    ID "606205E055C79FE6"
+    coords -7.212 0 -12.947
+    angleX -90
+    angleY 0
+    angleZ -10.617
+    scale 10
+   }
+  }
+  $grp DecalEntity : "{80B1153302345834}Prefabs/Decals/Miscellaneous/Decal_Damage_Burnt_03.et" {
+   {
+    ID "606205E055C084C5"
+    coords -12.844 0 -9.728
+    angleX -90
+    angleY 180
+    angleZ 147.751
+    scale 5
+   }
+   {
+    ID "606205E055C084C6"
+    coords 3.958 0 -3.249
+    angleX -89.98
+    angleY 0
+    angleZ -15.278
+    scale 5
+   }
+   {
+    ID "606205E055C0B444"
+    coords -15.12 0 9.04
+    angleX -89.972
+    angleY 180
+    angleZ -115.171
+    scale 5
+   }
+   {
+    ID "606205E055C1186E"
+    coords 2.879 0 13.855
+    angleX -90
+    angleY 0
+    angleZ 0
+    scale 5
+   }
+  }
+  $grp GenericEntity : "{90299A76FC1AE10F}Prefabs/Props/Wrecks/T62_wreck_turret.et" {
+   {
+    ID "606205E055C2F27B"
+    coords -13.065 -0.526 -0.222
+    angleX 9.454
+    angleY 32.123
+    angleZ 11.796
+   }
+   {
+    ID "606205E055C35EF0"
+    coords -10.482 0 -0.476
+   }
+  }
+  GenericEntity : "{A1AA6AAF5F88D859}Prefabs/Compositions/Misc/SubCompositions/Garbage/Garbage_Vehicle_01.et" {
+   ID "606205E055C27E66"
+   coords 12.397 0 9.462
+   angleY -155.588
+  }
+  $grp DecalEntity : "{ACAEDB73441F87DB}Prefabs/Decals/Dirt/Decal_Dirt_Patch_04.et" {
+   {
+    ID "606205E055C58F98"
+    components {
+     Hierarchy "{606205E00AFD1290}" {
+     }
+    }
+    coords -12.391 0 -6.024
+    angleX -89.972
+    angleZ 8.255
+    scale 4
+   }
+   {
+    ID "606205E055C59960"
+    components {
+     Hierarchy "{606205E00AFD2574}" {
+     }
+    }
+    coords -13.092 0 -3.579
+    angleX -90
+    angleY 180
+    angleZ 167.925
+    scale 4
+   }
+   {
+    ID "606205E055C59967"
+    components {
+     Hierarchy "{606205E00AFD4E84}" {
+     }
+    }
+    coords -8.519 0 14.103
+    angleX -89.96
+    angleZ 5.826
+    scale 4
+   }
+   {
+    ID "606205E055C61300"
+    components {
+     Hierarchy "{606205E00AFC03B7}" {
+     }
+    }
+    coords 0.612 0 3.911
+    angleX -90
+    scale 4
+   }
+   {
+    ID "606205E055C61301"
+    components {
+     Hierarchy "{606205E00AFDFC33}" {
+     }
+    }
+    coords -14.788 0 4.828
+    angleX -90
+    angleY 180
+    angleZ -163.517
+    scale 4
+   }
+   {
+    ID "606205E055C66FC7"
+    components {
+     Hierarchy "{606205E00AFDD659}" {
+     }
+    }
+    coords -14.089 0 11.694
+    angleX -90
+    angleY 180
+    angleZ 175.798
+    scale 4
+   }
+   {
+    ID "606205E055C694F3"
+    components {
+     Hierarchy "{606205E00AFC4C88}" {
+     }
+    }
+    coords 2.778 0 1.913
+    angleX -90
+    angleY 180
+    angleZ 156.6
+    scale 4
+   }
+   {
+    ID "606205E055C74F83"
+    components {
+     Hierarchy "{606205E00AFC9487}" {
+     }
+    }
+    coords 5.018 0 9.212
+    angleX -90
+    scale 4
+   }
+  }
+  $grp GenericEntity : "{B90E5414AB7C325B}Prefabs/Props/Wrecks/BTR70_wreck_static.et" {
+   {
+    ID "606205E055C35EF8"
+    components {
+     Hierarchy "{606205E00AFB3436}" {
+     }
+    }
+    coords 14.868 -0.331 0.909
+    angleX 7.233
+    angleY 0.714
+    angleZ -2.486
+   }
+   {
+    ID "606205E055DE620F"
+    components {
+     Hierarchy "{606205E00AFB5827}" {
+     }
+    }
+    coords 10.58 -0.557 0.612
+    angleZ 10.031
+   }
+  }
+  $grp GenericEntity : "{CDFE5E4FE34C5777}Prefabs/Compositions/Misc/SubCompositions/Garbage/Garbage_Vehicle_02.et" {
+   {
+    ID "606205E055C27E6B"
+    coords -4.754 -0 -0.409
+   }
+   {
+    ID "606205E055C27E6D"
+    coords 6.584 0 5.795
+   }
+  }
+  $grp GenericEntity : "{D0E4F05E07E40B24}Prefabs/Structures/Signs/Military/SignMinefield_01/SignMinefield_01.et" {
+   {
+    ID "606205E055C11852"
+    coords -16.836 0 -10.593
+    angleX -22.31
+    angleY -72.567
+    angleZ 23.879
+   }
+   {
+    ID "606205E055C1F39F"
+    coords 19.211 -0.508 -8.555
+    angleY 128.309
+   }
+   {
+    ID "606205E055C27E63"
+    coords 1.25 0 19.985
+   }
+  }
+  DecalEntity : "{D1D104EBCB9C5E2D}Prefabs/Decals/Miscellaneous/Decal_Damage_Burnt_02.et" {
+   ID "606205E055C00DF8"
+   coords 18.383 0 4.517
+   angleX -89.966
+   angleY 0
+   angleZ -10.681
+   scale 10
+  }
+  GenericEntity : "{D99955DFCF7D3962}Prefabs/Props/Wrecks/CannonWreck_01.et" {
+   ID "606205E055C2E8A8"
+   components {
+    Hierarchy "{606205E00AFCCDA3}" {
+    }
+   }
+   coords 10.704 -0.356 -7.397
+   angleY -167.053
+   angleZ -11.095
+  }
+ }
+}
