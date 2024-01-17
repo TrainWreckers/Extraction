@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{9097B34A2D878993}Prefabs/Compositions/EventSites/Medium/TW_Medium_Intel_3.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
