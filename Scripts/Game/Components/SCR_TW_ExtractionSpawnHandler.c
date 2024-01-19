@@ -13,26 +13,17 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("1", UIWidgets.Slider, params: "1 10 1", category: "Spawn Details", desc: "Chunks around players (1000m) that should be active")]
 	protected int m_SpawnGridRadius;
 	
+	[Attribute("500", UIWidgets.Slider, params: "100 5000 100", category: "Spawn Details", desc: "Size of grid for spawning AI")]
+	protected int m_SpawnGridSize;
+	
 	[Attribute("1", UIWidgets.Slider, params: "1 20 1", category: "Spawn Details", desc: "Chunks around players (AntiSpawnGridSize) where AI cannot spawn")]
 	protected int m_AntiSpawnGridRadius;
 	
 	[Attribute("100", UIWidgets.Slider, params: "25 1000 25", category: "Spawn Details", desc: "Grid size to use for Anti Spawn System")]
 	protected int m_AntiSpawnGridSize;
 	
-	[Attribute("15", UIWidgets.Slider, params: "0 500 1", category: "Garbage Collection", desc: "Time in seconds. If AI exceed max distance for this time they'll be cleaned up")]
-	protected float m_ExceedDistanceGarbageTimerInSeconds;
-	
 	[Attribute("120", UIWidgets.Slider, params: "0 500 1", category: "Garbage Collection", desc: "Time in seconds. Interval GC is checked (nothing happens)")]
 	protected float m_GarbageCollectionTimer;
-	
-	[Attribute("120", UIWidgets.Slider, params: "0 500 1", category: "Vehicle Spawn", desc: "Minimum distance vehicles may spawn")]
-	protected int m_MinimumVehicleSpawnDistance;
-	
-	[Attribute("500", UIWidgets.Slider, params: "0 1500 1", category: "Vehicle Spawn", desc: "Maximum distance vehicles may spawn")]
-	protected int m_MaximumVehicleSpawnDistance;	
-	
-	[Attribute("800", UIWidgets.Slider, params: "0 5000 10", category: "Garbage Collection", desc: "Vehicles exceeding this distance shall get removed")]
-	protected int m_VehicleGarbageCollectionDistance;
 	
 	[Attribute("0.6", UIWidgets.Slider, params: "0.01 1 0.01", category: "AI", desc: "Chance for AI to wander per spawn iteration")]
 	protected float m_AIWanderChance;
@@ -43,15 +34,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("0.5", UIWidgets.Slider, params: "0.01 1 0.01", category: "AI", desc: "Maximum percentage of AI to wander")]
 	protected float m_AIWanderMaximumPercent;
 	
-	[Attribute("750", UIWidgets.Slider, params: "100 2000 25", category: "Events", desc: "Distance players must be within for event sites to activate")]
-	private int m_EventSiteActivationDistance;
-	
-	[Attribute("800", UIWidgets.Slider, params: "100 2000 25", category: "Events", desc: "Distance players must be out of for event sites to despawn")]
-	private int m_EventSiteDespawnDistance;
-	
-	[Attribute("10", UIWidgets.Slider, params: "1 300 1", category: "Events", desc: "Time in seconds for checking event areas")]
-	private int m_EventCheckTimer;
-	
 	private ref array<SCR_TW_EventSite> eventSites = {};
 	protected ref array<SCR_AIGroup> m_CurrentGroups = {};
 	protected ref array<SCR_TW_AISpawnPoint> m_AISpawnPoints = {};
@@ -60,7 +42,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	protected ref array<IEntity> m_SpawnedVehicles = {};
 	protected ref array<SCR_ChimeraAIAgent> m_Groups = {};
 	
-	protected ref TW_GridCoordManager<SCR_TW_AISpawnPoint> spawnGrid = new TW_GridCoordManager<SCR_TW_AISpawnPoint>();
+	protected ref TW_GridCoordManager<SCR_TW_AISpawnPoint> spawnGrid = new TW_GridCoordManager<SCR_TW_AISpawnPoint>(m_SpawnGridSize);
 	protected ref TW_GridCoordManager<SCR_TW_EventSite> eventGrid = new TW_GridCoordManager<SCR_TW_EventSite>();
 	protected ref TW_GridCoordManager<SCR_TW_VehicleSpawn> vehicleGrid = new TW_GridCoordManager<SCR_TW_VehicleSpawn>();
 	
@@ -151,16 +133,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		}
 	}
 	
-	void ProcessVehicleForGC(IEntity vehicle)
-	{
-		if(!vehicle) return;
-		
-		if(!SCR_TW_Util.IsOutsideOfPlayers(vehicle.GetOrigin(), players, m_VehicleGarbageCollectionDistance))
-			return;
-		
-		SCR_EntityHelper.DeleteEntityAndChildren(vehicle);
-	}
-		
 	private void WanderRandomGroups()
 	{		
 		if(m_Groups.IsEmpty())
@@ -327,17 +299,17 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		int x, y;
 		string positionText;
-		foreach(SCR_AIGroup agent : agents)
+		foreach(int agentN, SCR_AIGroup agent : agents)
 		{
 			if(!agent)
 				continue;
 			
-			positionText = SCR_TW_Util.ToGridText(agent.GetOrigin());
-						
+			positionText = SCR_TW_Util.ToGridText(agent.GetOrigin(), m_SpawnGridSize);
+			
 			// If the chunk is not loaded --> delete 
 			if(!playerChunks.Contains(positionText))
 			{
-				GetGame().GetCallqueue().CallLater(ProcessForGC, SCR_TW_Util.FromSecondsToMilliseconds(m_ExceedDistanceGarbageTimerInSeconds), false, agent);
+				GetGame().GetCallqueue().CallLater(ProcessForGC, agentN * 150, false, agent);
 				queuedForGC++;
 			}
 		}
@@ -369,7 +341,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 						
 			chunksAroundPlayer.Clear();
 			SCR_TW_Util.AddSurroundingGridSquares(antiSpawnChunks, player.GetOrigin(), m_AntiSpawnGridRadius, m_AntiSpawnGridSize);
-			SCR_TW_Util.AddSurroundingGridSquares(chunksAroundPlayer, player.GetOrigin(), m_SpawnGridRadius);			
+			SCR_TW_Util.AddSurroundingGridSquares(chunksAroundPlayer, player.GetOrigin(), m_SpawnGridRadius, m_SpawnGridSize);			
 			
 			foreach(string chunk : chunksAroundPlayer)
 			{
@@ -441,16 +413,22 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			foreach(ref TW_GridCoord<SCR_TW_AISpawnPoint> coord : spawnPointsNearPlayers)
 				aiSpawnPointsNearPlayers.InsertAll(coord.GetAll());
 			
-			// Spawn vehicles in loaded chunks
-			IEntity vehicle;
-			int vehicleSpawnCount = Math.RandomIntInclusive(1, vehiclePointCount);
-			
-			for(int i = 0; i < vehicleSpawnCount; i++)
+			if(vehiclePointCount > 0)
 			{
-				int vehicleIndex = vehicleSpawnsNearPlayers.GetRandomIndex();
-				SCR_TW_VehicleSpawn vehicleSpawn = vehicleSpawnsNearPlayers.Get(vehicleIndex);				
-				GetGame().GetCallqueue().CallLater(InvokeSpawnOnVehicle, SCR_TW_Util.FromSecondsToMilliseconds(i * 1), false, vehicleSpawn);	
-				vehicleSpawnsNearPlayers.Remove(vehicleIndex);
+				// Spawn vehicles in loaded chunks
+				IEntity vehicle;
+				int vehicleSpawnCount = Math.RandomIntInclusive(1, vehiclePointCount);
+				
+				for(int i = 0; i < vehicleSpawnCount; i++)
+				{
+					if(vehicleSpawnsNearPlayers.IsEmpty())
+						break;
+					
+					int vehicleIndex = vehicleSpawnsNearPlayers.GetRandomIndex();				
+					SCR_TW_VehicleSpawn vehicleSpawn = vehicleSpawnsNearPlayers.Get(vehicleIndex);				
+					GetGame().GetCallqueue().CallLater(InvokeSpawnOnVehicle, SCR_TW_Util.FromSecondsToMilliseconds(i * 1), false, vehicleSpawn);	
+					vehicleSpawnsNearPlayers.Remove(vehicleIndex);
+				}
 			}
 			
 			// Cleanup vehicle spawns
@@ -516,8 +494,11 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		{
 			SCR_AIGroup group = SCR_AIGroup.Cast(agent);
 			
-			if(group)
+			if(group)			
 			{
+				if(group.GetPlayerCount() > 0)
+					continue;
+
 				if(includeAll || !group.IgnoreGlobalCount())
 					agents.Insert(group);
 			}
@@ -533,4 +514,104 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		return agents.Count();
 	}
 	
+	#ifdef WORKBENCH
+	
+	[Attribute(defvalue: "1", desc: "Show the debug shapes in Workbench", category: "Debug")]
+	protected bool m_ShowDebugShapesInWorkbench;
+	protected WorldEditorAPI m_API;
+	
+	protected IEntity m_PreviewEntity;
+	
+	protected ref Shape m_DebugAISpawnArea;
+	protected ref Shape m_DebugAntiSpawnArea;
+	
+	protected int m_DebugAISpawnAreaColor = Color.GREEN;
+	protected int m_DebugAntiSpawnAreaColor = Color.RED;	
+	
+	protected int previousAntiSpawnRadius, previousAISpawnRadius, previousAIGridSize, previousAntiSpawnGridSize;
+	int shapeFlags = ShapeFlags.WIREFRAME | ShapeFlags.VISIBLE;
+	
+	protected vector GetMinsFor(vector center, int gridSize, int gridRadius)
+	{	
+		int length = gridSize * (gridRadius * 2);
+		return Vector(center[0] - length, 0, center[2] - length);
+	}
+	
+	protected vector GetMaxsFor(vector center, int gridSize, int gridRadius)
+	{
+		int length = gridSize * (gridRadius * 2);
+		return Vector(center[0] + length, center[1] + 100, center[2] + length);
+	}
+	
+	private void CreateAISpawnArea()
+	{
+		vector origin = GetOwner().GetOrigin();
+		m_DebugAISpawnArea = Shape.Create(ShapeType.BBOX, m_DebugAISpawnAreaColor, shapeFlags, 			
+			GetMinsFor(origin, m_SpawnGridSize, m_SpawnGridRadius),
+			GetMaxsFor(origin, m_SpawnGridSize, m_SpawnGridRadius)
+		);
+		
+		previousAISpawnRadius = m_SpawnGridRadius;
+		previousAIGridSize = m_SpawnGridSize;
+	}
+	
+	private void CreateAntiSpawnArea()
+	{
+		vector origin = GetOwner().GetOrigin();
+		
+		m_DebugAntiSpawnArea = Shape.Create(ShapeType.BBOX, m_DebugAntiSpawnAreaColor, shapeFlags,
+			GetMinsFor(origin, m_AntiSpawnGridSize, m_AntiSpawnGridRadius),
+			GetMaxsFor(origin, m_AntiSpawnGridSize, m_AntiSpawnGridRadius)
+		);		
+		
+		previousAntiSpawnRadius = m_AntiSpawnGridRadius;
+		previousAntiSpawnGridSize = m_AntiSpawnGridSize;
+	}
+	
+	protected void DrawDebugShape()
+	{
+		if(!m_ShowDebugShapesInWorkbench)
+			return;
+		
+		CreateAISpawnArea();
+		CreateAntiSpawnArea();
+		
+		/*vector globalTransform[4];
+		GetOwner().GetTransform(globalTransform);
+		m_DebugShape.SetMatrix(globalTransform);*/
+	}
+	
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		if(m_ShowDebugShapesInWorkbench)
+		{
+			if(previousAIGridSize != m_SpawnGridSize ||
+				previousAISpawnRadius != m_SpawnGridRadius)
+				CreateAISpawnArea();
+			
+			if(previousAntiSpawnRadius != m_AntiSpawnGridRadius || 
+				previousAntiSpawnGridSize != m_AntiSpawnGridSize)
+				CreateAntiSpawnArea();
+			
+			vector transform[4];
+		    GetOwner().GetTransform(transform);
+		    m_DebugAISpawnArea.SetMatrix(transform);
+			m_DebugAntiSpawnArea.SetMatrix(transform);	
+		}
+	}
+	
+	override void _WB_AfterWorldUpdate(IEntity owner, float timeSlice)
+	{
+		DrawDebugShape();
+	}
+	
+	override bool _WB_OnKeyChanged(IEntity owner, BaseContainer src, string key, BaseContainerList ownerContainers, IEntity parent)
+	{
+		if(key == "m_ShowDebugShapesInWorkbench")
+			DrawDebugShape();
+		
+		return true;
+	}
+	
+	#endif	
 };

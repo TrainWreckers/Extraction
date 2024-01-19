@@ -564,4 +564,133 @@ class SCR_TW_Util
 		menuManager.CloseAllMenus();
 		SCR_InventoryMenuUI inventoryMenu = SCR_InventoryMenuUI.Cast(menuManager.OpenMenu(ChimeraMenuPreset.Inventory20Menu));
 	}
+	
+	protected static ref map<ResourceName, ref UIInfo> s_ItemUIInfo = new map<ResourceName, ref UIInfo>();
+	protected static ref map<ResourceName, ref SCR_EditableVehicleUIInfo> s_VehicleUIInfo = new map<ResourceName, ref SCR_EditableVehicleUIInfo>();
+	
+	static UIInfo GetItemUIInfo(ResourceName prefab)
+	{
+		UIInfo resultInfo = s_ItemUIInfo.Get(prefab);
+		
+		if(!resultInfo)
+		{
+			IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Resource.Load(prefab));
+			
+			if(entitySource)
+			{
+				for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+				{
+					IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+					
+					if(componentSource.GetClassName().ToType().IsInherited(InventoryItemComponent))
+					{
+						BaseContainer attributesContainer = componentSource.GetObject("Attributes");
+						if(attributesContainer)
+						{
+							BaseContainer itemDisplayNameContainer = attributesContainer.GetObject("ItemDisplayName");
+							if(itemDisplayNameContainer)
+							{
+								resultInfo = UIInfo.Cast(BaseContainerTools.CreateInstanceFromContainer(itemDisplayNameContainer));
+								break;
+							}
+						}
+					}
+				}
+			}
+			
+			s_ItemUIInfo.Set(prefab, resultInfo);
+		}
+		
+		return resultInfo;
+	}
+	
+	static SCR_EditableVehicleUIInfo GetVehicleUIInfo(ResourceName prefab)
+	{
+		SCR_EditableVehicleUIInfo resultInfo = s_VehicleUIInfo.Get(prefab);
+		
+		if(!resultInfo)
+		{
+			IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Resource.Load(prefab));
+			
+			if(entitySource)
+			{
+				for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+				{
+					IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+					
+					if(componentSource.GetClassName().ToType().IsInherited(SCR_EditableVehicleComponent))
+					{
+						BaseContainer baseUIInfo = componentSource.GetObject("m_UIInfo");
+						if(baseUIInfo)
+						{
+							resultInfo = SCR_EditableVehicleUIInfo.Cast(BaseContainerTools.CreateInstanceFromContainer(baseUIInfo));
+							break;
+						}
+					}
+				}
+			}
+			
+			s_VehicleUIInfo.Set(prefab, resultInfo);
+		}
+		
+		return resultInfo;
+	}
+	
+	static string GetPrefabDisplayName(ResourceName prefab)
+	{
+		SCR_EditableVehicleUIInfo uiInfo = GetVehicleUIInfo(prefab);
+		
+		if(uiInfo)
+			return uiInfo.GetName();
+		
+		UIInfo itemUIInfo = GetItemUIInfo(prefab);
+		if(itemUIInfo)
+			return itemUIInfo.GetName();
+		
+		return prefab;
+	}
+	
+	static string GetPrefabDescription(ResourceName prefab)
+	{
+		SCR_EditableVehicleUIInfo uiInfo = GetVehicleUIInfo(prefab);
+		
+		if(uiInfo)
+			return uiInfo.GetDescription();
+		
+		UIInfo itemInfo = GetItemUIInfo(prefab);
+		
+		if(itemInfo)
+			return itemInfo.GetDescription();
+				
+		return prefab;
+	}
+	
+	static ResourceName GetPrefabDisplayIcon(ResourceName prefab)
+	{
+		SCR_EditableVehicleUIInfo uiInfo = GetVehicleUIInfo(prefab);
+		
+		if(uiInfo)
+			return uiInfo.GetIconPath();
+		
+		UIInfo itemInfo = GetItemUIInfo(prefab);
+		if(itemInfo)
+			return itemInfo.GetIconPath();
+		
+		return string.Empty;
+	}
+	
+	static bool InsertAutoEquipItem(SCR_InventoryStorageManagerComponent inventory, IEntity item)
+	{
+		EStoragePurpose purpose = EStoragePurpose.PURPOSE_ANY;
+		if(item.FindComponent(WeaponComponent)) purpose = EStoragePurpose.PURPOSE_WEAPON_PROXY;
+		if(item.FindComponent(BaseLoadoutClothComponent)) purpose = EStoragePurpose.PURPOSE_LOADOUT_PROXY;
+		if(item.FindComponent(SCR_GadgetComponent)) purpose = EStoragePurpose.PURPOSE_GADGET_PROXY;
+		
+		bool insertedItem = inventory.TryInsertItem(item, purpose, null);
+		
+		if(!insertedItem)
+			insertedItem = inventory.TryInsertItem(item, EStoragePurpose.PURPOSE_ANY, null);
+		
+		return insertedItem;
+	}
 };

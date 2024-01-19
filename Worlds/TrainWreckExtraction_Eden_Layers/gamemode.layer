@@ -48,8 +48,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   }
   SCR_TW_ExtractionSpawnHandler "{5EBF0B14A6CAF6AB}" {
    m_MaxAgents 35
-   m_SpawnTimerInSeconds 5
-   m_GarbageCollectionTimer 5
+   m_GarbageCollectionTimer 1
    m_AIWanderChance 0.2
    m_AIWanderMinimumPercent 0.1
    m_AIWanderMaximumPercent 0.25
@@ -64,7 +63,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SerializerInventoryStorageManagerComponent "{5EBF4A5F293DC235}" {
   }
  }
- coords 6841.766 125.285 6661.594
+ coords 6454.624 125.285 6437.566
 }
 TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
  coords 6841.94 125.282 6661.059
