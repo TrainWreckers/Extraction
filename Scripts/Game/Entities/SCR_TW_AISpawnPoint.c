@@ -68,9 +68,6 @@ class SCR_TW_AISpawnPoint : GenericEntity
 		if(!TW_Global.IsServer(this))
 			return null;
 		
-		if(!ChanceToSpawn())
-			return null;
-				
 		vector spawnPosition;
 		
 		if(CanSpawnInRadius())
@@ -91,7 +88,6 @@ class SCR_TW_AISpawnPoint : GenericEntity
 			return null;
 		}
 		
-		m_HasSpawned = true;
 		auto waypointPrefab = GetRandomWaypoint();
 		AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointPrefab, spawnPosition);
 		

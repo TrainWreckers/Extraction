@@ -43,7 +43,7 @@ class SCR_TW_EventAISpawner : GenericEntity
 		ResourceName waypointPrefab = m_WaypointPrefabs.GetRandomElement();
 		AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointPrefab, GetOrigin());
 		
-		if(!waypoint)
+		if(waypoint)
 			group.AddWaypoint(waypoint);
 	}
 };
