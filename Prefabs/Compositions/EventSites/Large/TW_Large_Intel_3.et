@@ -8,7 +8,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     Hierarchy "{606118D0F2ECF8DB}" {
     }
    }
-   coords 9.796 0.184 5.633
+   coords -5.612 -0.017 -1.981
    angleY 0
   }
   $grp Tree : "{1244D02EB99D4756}Prefabs/Vegetation/Tree/t_carpinus_betulus_branch_01.et" {
@@ -393,7 +393,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    }
    {
     ID "606118D114A5481B"
-    coords 4.778 -0 -3.027
+    coords 4.778 0 -3.027
    }
    {
     ID "606118D114A5A7D4"
@@ -2100,11 +2100,6 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     coords -6.64 0 -2.286
     angleY 79.713
    }
-  }
-  StaticModelEntity : "{DA822ADE75D09EB0}Prefabs/Compositions/Misc/SubCompositions/Tent_Barrack_Camo_Cluttered_USSR_02.et" {
-   ID "606118D115523EB8"
-   coords 8.264 0.019 7.588
-   angleY -127.299
   }
   GenericEntity : "{EECE34969CD3405F}Prefabs/Compositions/Misc/SubCompositions/PalletFuel_Camo_USSR_01.et" {
    ID "606118D115523E80"

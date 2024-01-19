@@ -1,0 +1,39 @@
+GenericEntity : "{2ACD080E4555396A}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_1.et" {
+ ID "605C017C86C39F73"
+ coords 40.611 -0.116 71.153
+ {
+  SCR_TW_EventAISpawner {
+   ID "6060D81D9F9154D0"
+   coords -3.612 0.48 -6.646
+  }
+  GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_ammo.et" {
+   ID "6066EAF9D2029775"
+   components {
+    Hierarchy "{6066EAF9DE0243EA}" {
+    }
+   }
+   coords -4.329 0.116 -12.568
+   angleY 30.753
+  }
+  $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_supplies.et" {
+   {
+    ID "6066EAF9D2029771"
+    components {
+     Hierarchy "{6066EAF9DE12FA10}" {
+     }
+    }
+    coords -6.755 0.116 -11.067
+    angleY 32.191
+   }
+   {
+    ID "6066EAF9D2029776"
+    components {
+     Hierarchy "{6066EAF9DE1A8421}" {
+     }
+    }
+    coords -9.34 0.116 -9.096
+    angleY 41.261
+   }
+  }
+ }
+}

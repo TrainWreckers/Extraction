@@ -1012,11 +1012,6 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleZ 0
    }
   }
-  StaticModelEntity : "{D1ECC477FA3BEC42}Prefabs/Compositions/Misc/SubCompositions/Tent_Medical_Cluttered_USSR_03.et" {
-   ID "6060D81D9F93E72B"
-   coords -7.362 0.286 -10.272
-   angleY 60.209
-  }
   GenericEntity : "{D7B21E69929A0546}Prefabs/Structures/Military/Camps/Shelters/ShelterStorageUSSR_01.et" {
    ID "6060D81D9F9737A2"
    components {

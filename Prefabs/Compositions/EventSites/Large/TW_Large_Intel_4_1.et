@@ -1,0 +1,1297 @@
+GenericEntity : "{9E31552F8018A818}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_4.et" {
+ ID "605C017C86C39F73"
+ coords 65.026 0 105.905
+ {
+  GenericEntity {
+   ID "606118D6046AE1C4"
+   {
+    GenericEntity {
+     ID "5706819A36EF5C4D"
+     {
+      GenericEntity {
+       ID "5706818670C4360C"
+       coords -0.003 0.056 0.015
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "606118D60472D383"
+   coords 2.371 0.042 -9.426
+  }
+  SCR_TW_EventAISpawner {
+   ID "606118D604718DE5"
+   coords -1.068 0.125 7.323
+  }
+  SCR_TW_EventAISpawner {
+   ID "606118D60472D387"
+   coords -7.827 0.126 -4.345
+  }
+  GenericEntity : "{03DE957D8161212B}Prefabs/Props/Civilian/Notebook_01_Open.et" {
+   ID "6066DD2FFC9A5A9A"
+   components {
+    Hierarchy "{6066DD2FDAA26B8E}" {
+    }
+   }
+   coords 5.322 0.481 13.499
+   angleY -46.491
+  }
+  $grp StaticModelEntity : "{095874B519DCF161}Prefabs/Structures/Military/Camps/TentUS_01/TentUS_01_Assembled.et" {
+   {
+    ID "6066DD2FFC95828B"
+    coords -8.249 0 8.064
+   }
+   {
+    ID "6066DD2FFC9582B5"
+    coords -0.266 0 8.13
+   }
+   {
+    ID "6066DD2FFC9582B8"
+    coords 7.546 0 8.347
+   }
+   {
+    ID "6066DD2FFC9582BB"
+    coords 0.144 0 -3.646
+    angleY 179.604
+    {
+     StaticModelEntity {
+      ID "5D466416286F4114"
+      coords -0.01 0 -0.064
+     }
+    }
+   }
+   {
+    ID "6066DD2FFC9582BF"
+    coords -8.163 0 -3.46
+    angleY 179.579
+   }
+  }
+  GenericEntity : "{0981611AA1D64EA4}Prefabs/Props/Civilian/Dartboard_01/Dartboard_01_base.et" {
+   ID "6066DD2FFC9610B5"
+   components {
+    Hierarchy "{6066DD2FDABBB102}" {
+    }
+   }
+   coords 0.621 1.705 14.247
+   angleY 179.592
+  }
+  $grp GenericEntity : "{10BC0DF4C149DECC}Prefabs/Compositions/Misc/SubCompositions/Decorations/PalletPile_Stacked_01.et" {
+   {
+    ID "6066DD2FFC92B73D"
+    coords -6.218 0.032 -5.668
+    angleY -173.765
+   }
+   {
+    ID "6066DD2FFC92B73E"
+    coords -6.266 0.114 -4.04
+    angleY -8.033
+   }
+   {
+    ID "6066DD2FFC936DB6"
+    coords -6.16 0.033 -8.6
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC936DB7"
+    coords -6.136 0.044 -7.148
+    angleY 15.102
+   }
+  }
+  $grp GenericEntity : "{13B4C532861B9DE2}Prefabs/Props/Commercial/BeerKegMetal_01_big.et" {
+   {
+    ID "6066DD2FFC920869"
+    components {
+     Hierarchy "{6066DD2FDABED2E9}" {
+     }
+    }
+    coords -10.694 0.026 -8.707
+   }
+   {
+    ID "6066DD2FFC92086A"
+    components {
+     Hierarchy "{6066DD2FDABEFF17}" {
+     }
+    }
+    coords -9.376 0.042 -9.238
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC92B720"
+    components {
+     Hierarchy "{6066DD2FDABE8BA0}" {
+     }
+    }
+    coords -10.736 0.024 -9.263
+   }
+   {
+    ID "6066DD2FFC92B721"
+    components {
+     Hierarchy "{6066DD2FDABEB7FC}" {
+     }
+    }
+    coords -10.109 0.028 -9.278
+   }
+   {
+    ID "6066DD2FFC92E3D8"
+    components {
+     Hierarchy "{6066DD2FDABEA08F}" {
+     }
+    }
+    coords -10.067 0.03 -8.722
+   }
+   {
+    ID "6066DD2FFC9C69D5"
+    components {
+     Hierarchy "{6066DD2FDABF7A6E}" {
+     }
+    }
+    coords -8.816 0.032 -7.442
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC9CEAF5"
+    components {
+     Hierarchy "{6066DD2FDABF5358}" {
+     }
+    }
+    coords -9.435 0.028 -7.543
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC9D76A8"
+    components {
+     Hierarchy "{6066DD2FDABF28F6}" {
+     }
+    }
+    coords -10.691 0.01 -7.566
+   }
+   {
+    ID "6066DD2FFC9D76A9"
+    components {
+     Hierarchy "{6066DD2FDABF3F5A}" {
+     }
+    }
+    coords -8.757 0.046 -9.137
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC9DAC4A"
+    components {
+     Hierarchy "{6066DD2FDABEEEEB}" {
+     }
+    }
+    coords -9.438 0.044 -8.684
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC9DFB2E"
+    components {
+     Hierarchy "{6066DD2FDABF17E6}" {
+     }
+    }
+    coords -8.819 0.048 -8.583
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC9F0B3C"
+    components {
+     Hierarchy "{6066DD2FDABFD073}" {
+     }
+    }
+    coords -10.733 0.008 -8.122
+   }
+   {
+    ID "6066DD2FFC9F0B3D"
+    components {
+     Hierarchy "{6066DD2FDABFAA1C}" {
+     }
+    }
+    coords -10.106 0.012 -8.137
+   }
+   {
+    ID "6066DD2FFC9F9118"
+    components {
+     Hierarchy "{6066DD2FDABF606D}" {
+     }
+    }
+    coords -8.754 0.03 -7.996
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC9F911F"
+    components {
+     Hierarchy "{6066DD2FDABF8C0B}" {
+     }
+    }
+    coords -9.373 0.026 -8.097
+    angleY -10.656
+   }
+   {
+    ID "6066DD2FFC9FED17"
+    components {
+     Hierarchy "{6066DD2FDABFBEB5}" {
+     }
+    }
+    coords -10.064 0.014 -7.581
+   }
+  }
+  $grp StaticModelEntity : "{1A1020205E2B1710}Prefabs/Props/Military/Furniture/TableMilitary_USSR_01.et" {
+   {
+    ID "6066DD2FFC90C0B4"
+    components {
+     Hierarchy "{6066DD2FDABD8C4E}" {
+     }
+    }
+    coords -10.587 0.157 6.774
+    angleY 86.06
+   }
+   {
+    ID "6066DD2FFC90C0B5"
+    components {
+     Hierarchy "{6066DD2FDABD6BD2}" {
+     }
+    }
+    coords -10.481 0.128 5.198
+    angleY 86.886
+   }
+  }
+  GenericEntity : "{1BE2B6FF4806EB3E}Prefabs/Props/Civilian/Guitar_01/Guitar_01.et" {
+   ID "6066DD2FFC9A5A98"
+   components {
+    Hierarchy "{6066DD2FDAA2965A}" {
+    }
+   }
+   coords 5.513 0.564 8.524
+   angleY 80.784
+  }
+  GenericEntity : "{20759E1CA7F808BE}Prefabs/Props/Garbage/Military/Food/GarbageFoodMilitaryUS_01.et" {
+   ID "6066DD2FFC962F47"
+   components {
+    Hierarchy "{6066DD2FDABC5F88}" {
+    }
+   }
+   coords -16.546 0.897 7.366
+   angleY 24.136
+  }
+  GenericEntity : "{23D3EABAC9780A1F}Prefabs/Props/Civilian/Photos/CombatOps_Polaroid_04.et" {
+   ID "6066DD2FFC9610B9"
+   components {
+    Hierarchy "{6066DD2FDABBC8FA}" {
+    }
+   }
+   coords -2.66 0.954 9.963
+   angleY -117.245
+   angleZ -2.284
+  }
+  $grp GenericEntity : "{24F9FA667DE0B56E}Prefabs/Props/Military/Camps/BoxMRE_01.et" {
+   {
+    ID "6066DD2FFC936DBE"
+    components {
+     Hierarchy "{6066DD2FDABE9DA4}" {
+     }
+    }
+    coords -5.817 1.04 11.543
+    angleY 57.075
+   }
+   {
+    ID "6066DD2FFC96B0F2"
+    components {
+     Hierarchy "{6066DD2FDABB45E6}" {
+     }
+    }
+    coords -2.737 1.029 12.483
+   }
+  }
+  $grp GenericEntity : "{2B1D0128ED660BE9}Prefabs/Props/Crates/BoxWooden_01.et" {
+   {
+    ID "6066DD2FFC904D6C"
+    components {
+     Hierarchy "{6066DD2FDABDE997}" {
+     }
+    }
+    coords -10.689 0.132 4.905
+    angleY 15.288
+   }
+   {
+    ID "6066DD2FFC904D6F"
+    components {
+     Hierarchy "{6066DD2FDABE1BE2}" {
+     }
+    }
+    coords -10.309 0.123 5.214
+    angleY 11.352
+   }
+  }
+  StaticModelEntity : "{31939BB93F704D2A}Prefabs/Compositions/Misc/SubCompositions/Furniture/Cabinet_Folders_US_01.et" {
+   ID "6066DD2FFC95A758"
+   coords -2.037 0.122 -0.2
+   angleY 90.504
+  }
+  $grp GenericEntity : "{31E97EEAE2DA9C8F}Prefabs/Structures/Military/Camps/Canvas_Covers/US/CanvasCover_Folded_US.et" {
+   {
+    ID "6066DD2FFC93F2DE"
+    components {
+     Hierarchy "{5CCCBEF36F6CB8A9}" {
+      Enabled 1
+     }
+    }
+    coords -6.841 0.506 12.82
+    angleY -138.391
+   }
+   {
+    ID "6066DD2FFC9A33A5"
+    components {
+     Hierarchy "{5CCCBEF36F6CB8A9}" {
+      Enabled 1
+     }
+    }
+    coords 6.137 0.478 13.511
+    angleY -88.989
+   }
+   {
+    ID "6066DD2FFC9A5A90"
+    components {
+     Hierarchy "{5CCCBEF36F6CB8A9}" {
+      Enabled 1
+     }
+    }
+    coords 5.284 0.584 6.038
+    angleY -94.545
+   }
+   {
+    ID "6066DD2FFC9AD8EA"
+    components {
+     Hierarchy "{5CCCBEF36F6CB8A9}" {
+      Enabled 1
+     }
+    }
+    coords 9.911 0.49 10.406
+    angleY -138.391
+   }
+  }
+  StaticModelEntity : "{31F69EA0C0143F1D}Prefabs/Compositions/Misc/SubCompositions/Furniture/Bed_Notebook_US_01.et" {
+   ID "6066DD2FFC9582AE"
+   coords -1.373 0.044 -6.894
+   angleY 0
+  }
+  $grp StaticModelEntity : "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et" {
+   {
+    ID "6066DD2FFC9582C1"
+    components {
+     Hierarchy "{6066DD2FDAB97479}" {
+     }
+    }
+    coords 2.042 0.064 -7.139
+    angleY 62.928
+   }
+   {
+    ID "6066DD2FFC9582C2"
+    components {
+     Hierarchy "{6066DD2FDAB99271}" {
+     }
+    }
+    coords 2.018 0.035 -5.851
+    angleY 90.367
+   }
+   {
+    ID "6066DD2FFC95A75E"
+    components {
+     Hierarchy "{6066DD2FDAB9B7B3}" {
+     }
+    }
+    coords 2.001 0.117 -4.458
+    angleY 90.164
+   }
+  }
+  StaticModelEntity : "{3C36D379516A6314}Prefabs/Compositions/Misc/SubCompositions/Furniture/Table_FurnitureStorage_US_01.et" {
+   ID "6066DD2FFC9582D1"
+   coords 0.694 0.044 -8.916
+   angleY 0
+  }
+  $grp GenericEntity : "{3CA97284021FFEF0}Prefabs/Props/Civilian/AlarmClock_01/AlarmClock_01_green_V1.et" {
+   {
+    ID "6066DD2FFC93F2D9"
+    components {
+     Hierarchy "{6066DD2FDABE76BD}" {
+     }
+    }
+    coords -10.702 0.949 10.378
+    angleY 75.05
+   }
+   {
+    ID "6066DD2FFC9610B0"
+    components {
+     Hierarchy "{6066DD2FDABB8AE2}" {
+     }
+    }
+    coords 2.296 1.045 6.09
+    angleY -134.281
+   }
+  }
+  StaticModelEntity : "{43FA6039187AAC8B}Prefabs/Compositions/Misc/SubCompositions/Furniture/Table_Radio_US_01.et" {
+   ID "6066DD2FFC9582D3"
+   coords 2.401 0.033 -7.194
+   angleY 93.528
+  }
+  StaticModelEntity : "{44D06BE47D7E15C8}Prefabs/Compositions/Misc/SubCompositions/Furniture/Cabinet_Ashtray_US_01.et" {
+   ID "6066DD2FFC95D0C4"
+   coords -1.736 0.122 -4.54
+   angleY 127.633
+  }
+  GenericEntity : "{4DBA189750F6F017}Prefabs/Props/Civilian/Typewriter_01/Typewriter_01_grey.et" {
+   ID "6066DD2FFC904D66"
+   components {
+    Hierarchy "{6066DD2FDABDFDDE}" {
+    }
+   }
+   coords -10.501 1.056 6.706
+   angleY 75.418
+  }
+  $grp GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
+   {
+    ID "6066DD2FFC9610AD"
+    components {
+     Hierarchy "{6066DD2FDABB9F1C}" {
+     }
+    }
+    coords -1.093 0.609 5.842
+   }
+   {
+    ID "6066DD2FFC96B0F3"
+    components {
+     Hierarchy "{6066DD2FDABB71A3}" {
+     }
+    }
+    coords 2.33 0.949 11.378
+   }
+   {
+    ID "6066DD2FFC9B5DD8"
+    components {
+     Hierarchy "{5706F8D0F2AA6086}" {
+     }
+    }
+    coords 9.942 1.02 6.305
+    angleY 60.844
+   }
+  }
+  GenericEntity : "{530705FBB61026D2}Prefabs/Props/Garbage/Cardboard/Cardboard_Pile_03.et" {
+   ID "6066DD2FFC962F49"
+   components {
+    Hierarchy "{6066DD2FDABC8BCF}" {
+    }
+   }
+   coords -3.695 0 1.465
+  }
+  $grp StaticModelEntity : "{55973C5B0950D4AB}Prefabs/Props/Military/Furniture/ChairMilitary_US_01.et" {
+   {
+    ID "6066DD2FFC93F2D8"
+    components {
+     Hierarchy "{6066DD2FDABE4A45}" {
+     }
+    }
+    coords -9.876 0.141 6.774
+    angleY -83.474
+   }
+   {
+    ID "6066DD2FFC969EDC"
+    components {
+     Hierarchy "{6066DD2FDABB3DCC}" {
+     }
+    }
+    coords 2.234 0.112 9.48
+    angleY 58.101
+   }
+   {
+    ID "6066DD2FFC969EDF"
+    components {
+     Hierarchy "{6066DD2FDABB10D0}" {
+     }
+    }
+    coords 1.027 0.033 13.663
+    angleY 24.571
+   }
+  }
+  $grp GenericEntity : "{590D0CC992E8AC25}Prefabs/Compositions/Misc/SubCompositions/Decorations/Crate_Bottles_01.et" {
+   {
+    ID "6066DD2FFC936DB2"
+    coords -10.632 0.132 -0.99
+    angleY -2.894
+    {
+     GenericEntity {
+      ID "5CB0D990B6C742CA"
+      coords 0.36 0.039 0.093
+     }
+    }
+   }
+   {
+    ID "6066DD2FFC936DBC"
+    coords -10.551 0.118 -0.111
+   }
+   {
+    ID "6066DD2FFC936DBD"
+    coords -10.648 0.114 -0.553
+    {
+     GenericEntity {
+      ID "5CB0D990B6C742CA"
+      coords 0.342 0.039 -0.094
+      angleX 90
+      angleY -162.544
+      angleZ -65.151
+     }
+     GenericEntity {
+      ID "5CB0D990B6D8C896"
+      coords 0.353 0 -0.196
+      angleY 131.563
+     }
+    }
+   }
+  }
+  $grp GenericEntity : "{642101F827FFA52D}Prefabs/Props/Military/Manuals/Manual_Soviet_01.et" {
+   {
+    ID "6066DD2FFC901158"
+    components {
+     Hierarchy "{6066DD2FDABDBB6A}" {
+     }
+    }
+    coords -10.591 1.056 6.225
+    angleY 52.388
+   }
+   {
+    ID "6066DD2FFC904D64"
+    components {
+     Hierarchy "{6066DD2FDABDA75B}" {
+     }
+    }
+    coords -10.479 1.054 6.272
+    angleX -9.69
+    angleY 52.528
+   }
+   {
+    ID "6066DD2FFC969ED2"
+    components {
+     Hierarchy "{6066DD2FDABB29FE}" {
+     }
+    }
+    coords 2.321 1.016 8.75
+    angleY -126.344
+   }
+   {
+    ID "6066DD2FFC96B0F4"
+    components {
+     Hierarchy "{6066DD2FDABB5BDA}" {
+     }
+    }
+    coords 0.874 0.505 12.631
+    angleY 34.79
+   }
+  }
+  GenericEntity : "{660BD816AA043589}Prefabs/Props/Furniture/Piano_01_Base.et" {
+   ID "6066DD2FFC9E3A4B"
+   components {
+    Hierarchy "{6066DD2FDAA06B6B}" {
+    }
+   }
+   coords -8.197 0.026 -8.333
+   angleY 87.316
+  }
+  $grp StaticModelEntity : "{6FFD54071AD89DAC}Prefabs/Props/Military/Furniture/TableMilitary_US_02_cabinet.et" {
+   {
+    ID "6066DD2FFC91242C"
+    components {
+     Hierarchy "{6066DD2FDABD346D}" {
+     }
+    }
+    coords -10.631 0.032 12.973
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC915538"
+    components {
+     Hierarchy "{6066DD2FDABD5E83}" {
+     }
+    }
+    coords -10.629 0.041 10.633
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC91D910"
+    components {
+     Hierarchy "{6066DD2FDABD1223}" {
+     }
+    }
+    coords -5.793 0.03 13.409
+    angleY -95.129
+   }
+   {
+    ID "6066DD2FFC942C04"
+    components {
+     Hierarchy "{6066DD2FDABA62B3}" {
+     }
+    }
+    coords 2.105 0.137 5.812
+    angleY -90.675
+   }
+   {
+    ID "6066DD2FFC948BBF"
+    components {
+     Hierarchy "{6066DD2FDABA1EFA}" {
+     }
+    }
+    coords -2.555 0.04 10.494
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC94B17D"
+    components {
+     Hierarchy "{6066DD2FDABA3347}" {
+     }
+    }
+    coords -2.463 0.12 7.965
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC94ED7F"
+    components {
+     Hierarchy "{6066DD2FDABA4A11}" {
+     }
+    }
+    coords -2.479 0.134 5.486
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC95280E"
+    components {
+     Hierarchy "{6066DD2FDAB9CB0B}" {
+     }
+    }
+    coords -2.683 0.031 12.969
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC962F4C"
+    components {
+     Hierarchy "{6066DD2FDABCA2A1}" {
+     }
+    }
+    coords -5.814 0.042 11.08
+    angleY -96.701
+   }
+   {
+    ID "6066DD2FFC969EDE"
+    components {
+     Hierarchy "{6066DD2FDABAE5CA}" {
+     }
+    }
+    coords 2.132 0.029 13.257
+    angleY -95.129
+   }
+   {
+    ID "6066DD2FFC971B94"
+    components {
+     Hierarchy "{6066DD2FDABACD98}" {
+     }
+    }
+    coords 2.134 0.041 10.926
+    angleY -96.701
+   }
+   {
+    ID "6066DD2FFC97EE98"
+    components {
+     Hierarchy "{6066DD2FDABAB528}" {
+     }
+    }
+    coords 2.23 0.108 8.312
+    angleY -90.675
+   }
+   {
+    ID "6066DD2FFC980DD1"
+    components {
+     Hierarchy "{6066DD2FDAA1B0E2}" {
+     }
+    }
+    coords 9.962 0.003 13.297
+    angleY -95.129
+   }
+   {
+    ID "6066DD2FFC98D823"
+    components {
+     Hierarchy "{6066DD2FDAA161F3}" {
+     }
+    }
+    coords 9.964 0.015 10.966
+    angleY -87.24
+   }
+   {
+    ID "6066DD2FFC999D76"
+    components {
+     Hierarchy "{6066DD2FDAA0E110}" {
+     }
+    }
+    coords 5.147 0.005 13.009
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC99F5C1"
+    components {
+     Hierarchy "{6066DD2FDAA1309D}" {
+     }
+    }
+    coords 5.275 0.014 10.534
+    angleY 86.382
+   }
+   {
+    ID "6066DD2FFC9B3CFE"
+    components {
+     Hierarchy "{6066DD2FDAA1E851}" {
+     }
+    }
+    coords 9.935 0.111 5.852
+    angleY -90.675
+   }
+   {
+    ID "6066DD2FFC9BBDD6"
+    components {
+     Hierarchy "{6066DD2FDAA1D534}" {
+     }
+    }
+    coords 10.06 0.082 8.352
+    angleY -90.675
+   }
+   {
+    ID "6066DD2FFC9E588D"
+    components {
+     Hierarchy "{6066DD2FDAA0D200}" {
+     }
+    }
+    coords 5.351 0.108 5.526
+    angleY 86.382
+   }
+  }
+  $grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
+   {
+    ID "6066DD2FFC904D51"
+    components {
+     Hierarchy "{6066DD2FDABE3391}" {
+     }
+    }
+    coords -10.312 0.122 8.989
+    angleY 91.148
+   }
+   {
+    ID "6066DD2FFC904D6E"
+    components {
+     Hierarchy "{6066DD2FDABE0722}" {
+     }
+    }
+    coords -10.29 0.105 8.087
+    angleY 89.63
+   }
+  }
+  GenericEntity : "{77D49455528ED5E6}Prefabs/Props/Military/MilitaryCrates/ShellContainerstack_01/ShellContainerstack_01_pile_small.et" {
+   ID "6066DD2FFC9E3A4C"
+   components {
+    Hierarchy "{6066DD2FDAA0A41F}" {
+    }
+   }
+   coords -9.892 0.109 -2.885
+  }
+  StaticModelEntity : "{785F322AC3DFD4B9}Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_Light_US_01.et" {
+   ID "6066DD2FFC90C0B2"
+   coords -7.592 0.032 13.8
+   angleY 47.234
+  }
+  GenericEntity : "{7A93743E525734C5}Prefabs/Props/Recreation/Beach/BlanketFolded_01/BlanketFolded_01_green.et" {
+   ID "6066DD2FFC962F4F"
+   components {
+    Hierarchy "{6066DD2FDABCB404}" {
+    }
+   }
+   coords 0.76 0.583 7.813
+  }
+  $grp GenericEntity : "{811C18BEC8B8B245}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_green.et" {
+   {
+    ID "6066DD2FFC9E3A4A"
+    components {
+     Hierarchy "{6066DD2FDAA0418C}" {
+     }
+    }
+    coords -10.506 0.122 -3.885
+    angleY 87.926
+   }
+   {
+    ID "6066DD2FFC9EC925"
+    components {
+     Hierarchy "{6066DD2FDAA05518}" {
+     }
+    }
+    coords -10.422 0.13 -4.457
+    angleY 88.781
+   }
+   {
+    ID "6066DD2FFC9EC92A"
+    components {
+     Hierarchy "{6066DD2FDAA02CF4}" {
+     }
+    }
+    coords -10.379 0.067 -5.025
+    angleY 90.739
+   }
+   {
+    ID "6066DD2FFC9F0B3E"
+    components {
+     Hierarchy "{6066DD2FDAA01C83}" {
+     }
+    }
+    coords -10.575 0.029 -6.151
+    angleY 84.984
+   }
+   {
+    ID "6066DD2FFC9F0B3F"
+    components {
+     Hierarchy "{6066DD2FDABFF57C}" {
+     }
+    }
+    coords -10.445 0.039 -6.704
+    angleY 88.781
+   }
+   {
+    ID "6066DD2FFC9F4CF4"
+    components {
+     Hierarchy "{6066DD2FDAA00509}" {
+     }
+    }
+    coords -10.591 0.025 -5.606
+    angleY 88.781
+   }
+  }
+  StaticModelEntity : "{893935FCF38F4B20}Prefabs/Compositions/Misc/SubCompositions/Furniture/Table_Typewriter_US_01.et" {
+   ID "6066DD2FFC9582D8"
+   coords 2.478 0.04 -5.81
+   angleY -90.408
+  }
+  GenericEntity : "{8FE6D62204173656}Prefabs/Props/Civilian/BeerBottle_01_group.et" {
+   ID "6066DD2FFC9A5A96"
+   components {
+    Hierarchy "{6066DD2FDAA22A48}" {
+    }
+   }
+   coords 10.097 0.99 8.738
+  }
+  $grp StaticModelEntity : "{9325E5C905CC0768}Prefabs/Compositions/Misc/SubCompositions/Furniture/Bed_Blankets_US_01.et" {
+   {
+    ID "6066DD2FFC9081D3"
+    coords -6.708 0.111 7.585
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC9582AA"
+    coords -1.501 0.016 -7.987
+    angleY 9.026
+   }
+  }
+  GenericEntity : "{9641BF196556466E}Prefabs/Compositions/Misc/SubCompositions/Decorations/CardboardBox_Ashtray_01.et" {
+   ID "6066DD2FFC936DB0"
+   coords -10.507 0.132 -1.602
+  }
+  GenericEntity : "{985C3871D40C7F7B}Prefabs/Props/Garbage/Generic/Litter_01_small.et" {
+   ID "6066DD2FFC962F45"
+   components {
+    Hierarchy "{6066DD2FDABC48BE}" {
+    }
+   }
+   coords -16.368 0 6.13
+  }
+  $grp StaticModelEntity : "{A17D1BF9C5D9F31E}Prefabs/Compositions/Misc/SubCompositions/Furniture/Cabinet_Stack_US_01.et" {
+   {
+    ID "6066DD2FFC95280B"
+    coords 2.094 0.107 -3.705
+    angleY -88.678
+   }
+   {
+    ID "6066DD2FFC952A3C"
+    coords 2.036 0.138 -1.937
+    angleY -89.802
+   }
+   {
+    ID "6066DD2FFC952A3F"
+    coords 2.07 0.113 -2.736
+    angleY -87.672
+   }
+   {
+    ID "6066DD2FFC9582A5"
+    coords 2.433 0.035 -9.244
+    angleY -91.498
+   }
+   {
+    ID "6066DD2FFC95A75A"
+    coords -1.99 0.118 -2.258
+    angleY 90.249
+   }
+   {
+    ID "6066DD2FFC95D0C5"
+    coords 1.993 0.144 -0.968
+    angleY -88.796
+   }
+   {
+    ID "6066DD2FFC95D0CA"
+    coords -1.948 0.124 -3.227
+    angleY 91.255
+   }
+  }
+  GenericEntity : "{AA1B92A37959125A}Prefabs/Props/Civilian/Photos/CombatOps_Polaroid_06.et" {
+   ID "6066DD2FFC9610BE"
+   components {
+    Hierarchy "{6066DD2FDABBF1D4}" {
+    }
+   }
+   coords -2.701 0.948 10.035
+   angleY -110.416
+  }
+  GenericEntity : "{AAE17F175108482B}Prefabs/Props/Civilian/Heater_01/Heater_01_green.et" {
+   ID "6066DD2FFC9610BB"
+   components {
+    Hierarchy "{6066DD2FDABBDCE6}" {
+    }
+   }
+   coords -2.503 0.119 9.308
+   angleY 99.799
+  }
+  $grp GenericEntity : "{AE0FFC699F429214}Prefabs/Props/Military/Camps/PalletAmmo_01_US.et" {
+   {
+    ID "6066DD2FFC9E3A49"
+    components {
+     Hierarchy "{6066DD2FDAA093B9}" {
+     }
+    }
+    coords -9.328 0.028 -6.231
+    angleY -8.756
+   }
+   {
+    ID "6066DD2FFC9E3A4E"
+    components {
+     Hierarchy "{6066DD2FDAA0B922}" {
+     }
+    }
+    coords -9.277 0.118 -4.694
+   }
+  }
+  GenericEntity : "{B30BECFFF41ECF2A}Prefabs/Compositions/Misc/SubCompositions/Decorations/Workbench_Notebook_USSR_01.et" {
+   ID "6066DD2FFC92B73F"
+   coords -6.052 0.142 -1.427
+   angleY -88.907
+   {
+    GenericEntity {
+     ID "5CB0D99763351AD7"
+     coords 5.99 -0.179 -1.777
+    }
+    GenericEntity {
+     ID "5CB0D99763351AD9"
+     coords 5.919 -0.18 -1.835
+    }
+   }
+  }
+  GenericEntity : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
+   ID "6066DD2FFC904D53"
+   components {
+    Hierarchy "{6066DD2FDABE5E77}" {
+    }
+   }
+   coords -10.282 0.947 8.567
+  }
+  GenericEntity : "{B5F4EDE258B8D946}Prefabs/Props/Civilian/FileOffice_01_Single.et" {
+   ID "6066DD2FFC9A5A9B"
+   components {
+    Hierarchy "{6066DD2FDAA27E1D}" {
+    }
+   }
+   coords 10.216 0.955 11.44
+   angleX 4.838
+   angleY -0.075
+   angleZ -90.886
+  }
+  $grp GenericEntity : "{B898D2A1F45058F6}Prefabs/Props/Garbage/Military/Food/GarbageFoodMilitaryUSSR_01.et" {
+   {
+    ID "6066DD2FFC904D67"
+    components {
+     Hierarchy "{6066DD2FDABDD1E5}" {
+     }
+    }
+    coords -10.497 1.056 7.178
+   }
+   {
+    ID "6066DD2FFC962F41"
+    components {
+     Hierarchy "{6066DD2FDABC34C9}" {
+     }
+    }
+    coords -16.419 0.897 6.393
+   }
+  }
+  StaticModelEntity : "{BAAEB8CBA64C9CF6}Prefabs/Compositions/Misc/SubCompositions/Furniture/Cabinet_MRE_US_01.et" {
+   ID "6066DD2FFC95A759"
+   coords -2.098 0.128 -1.104
+   angleY 87.12
+  }
+  StaticModelEntity : "{C02107463294142B}Prefabs/Compositions/Misc/SubCompositions/Furniture/Table_RadioStation_US_01.et" {
+   ID "6066DD2FFC9582DB"
+   coords 2.432 0.116 -4.394
+   angleY -88.967
+  }
+  SCR_DestructibleEntity : "{C8A5C92E74ABB5EA}Prefabs/Props/Civilian/PicnicTable/PicnicTable_01.et" {
+   ID "6066DD2FFC962F42"
+   components {
+    Hierarchy "{6066DD2FDABC0B8F}" {
+    }
+   }
+   coords -16.307 0 7.251
+  }
+  $grp StaticModelEntity : "{C9CFDED29542A968}Prefabs/Props/Military/Furniture/CotMilitary_US_01.et" {
+   {
+    ID "6066DD2FFC915527"
+    components {
+     Hierarchy "{6066DD2FDABD414D}" {
+     }
+    }
+    coords -6.563 0.039 10.492
+    angleY 176.917
+   }
+   {
+    ID "6066DD2FFC91AD90"
+    components {
+     Hierarchy "{6066DD2FDABCF578}" {
+     }
+    }
+    coords -10.12 0.038 11.156
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC91AD91"
+    components {
+     Hierarchy "{6066DD2FDABCE69E}" {
+     }
+    }
+    coords -6.558 0.027 12.842
+    angleY 178.489
+   }
+   {
+    ID "6066DD2FFC94B17C"
+    components {
+     Hierarchy "{6066DD2FDABA0729}" {
+     }
+    }
+    coords -2.047 0.117 8.513
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC94ED7C"
+    components {
+     Hierarchy "{6066DD2FDABA76AD}" {
+     }
+    }
+    coords 1.299 0.134 5.306
+    angleY -177.058
+   }
+   {
+    ID "6066DD2FFC94EE19"
+    components {
+     Hierarchy "{6066DD2FDABA5E50}" {
+     }
+    }
+    coords -1.954 0.131 5.948
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC95280C"
+    components {
+     Hierarchy "{6066DD2FDAB9DD15}" {
+     }
+    }
+    coords -1.903 0.028 13.515
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC952831"
+    components {
+     Hierarchy "{6066DD2FDAB9F0C5}" {
+     }
+    }
+    coords -2.046 0.037 11.017
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC9634E8"
+    components {
+     Hierarchy "{6066DD2FDABCC9E6}" {
+     }
+    }
+    coords -9.977 0.029 13.654
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC969ED9"
+    components {
+     Hierarchy "{6066DD2FDABAF88C}" {
+     }
+    }
+    coords 1.516 0.026 12.703
+    angleY 178.489
+   }
+   {
+    ID "6066DD2FFC97BD99"
+    components {
+     Hierarchy "{6066DD2FDABA8952}" {
+     }
+    }
+    coords 1.424 0.105 7.806
+    angleY -177.058
+   }
+   {
+    ID "6066DD2FFC97EE99"
+    components {
+     Hierarchy "{6066DD2FDABAA019}" {
+     }
+    }
+    coords 1.511 0.038 10.353
+    angleY 176.917
+   }
+   {
+    ID "6066DD2FFC989543"
+    components {
+     Hierarchy "{6066DD2FDAA17E64}" {
+     }
+    }
+    coords 9.341 0.012 10.393
+    angleY 176.917
+   }
+   {
+    ID "6066DD2FFC98D822"
+    components {
+     Hierarchy "{6066DD2FDAA18EF7}" {
+     }
+    }
+    coords 9.346 0 12.743
+    angleY 178.489
+   }
+   {
+    ID "6066DD2FFC991564"
+    components {
+     Hierarchy "{6066DD2FDAA154BF}" {
+     }
+    }
+    coords 5.783 0.091 8.553
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC99F5BE"
+    components {
+     Hierarchy "{6066DD2FDAA10E3C}" {
+     }
+    }
+    coords 5.784 0.011 11.057
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC9B3CFD"
+    components {
+     Hierarchy "{6066DD2FDAA1FCCD}" {
+     }
+    }
+    coords 9.254 0.079 7.846
+    angleY -177.058
+   }
+   {
+    ID "6066DD2FFC9B3E77"
+    components {
+     Hierarchy "{6066DD2FDAA217F1}" {
+     }
+    }
+    coords 9.129 0.108 5.346
+    angleY -177.058
+   }
+   {
+    ID "6066DD2FFC9B5DD9"
+    components {
+     Hierarchy "{6066DD2FDAA20353}" {
+     }
+    }
+    coords 5.876 0.105 5.988
+    angleY 0
+   }
+   {
+    ID "6066DD2FFC9E588C"
+    components {
+     Hierarchy "{6066DD2FDAA0FB27}" {
+     }
+    }
+    coords 5.927 0.002 13.555
+    angleY 0
+   }
+  }
+  GenericEntity : "{D073D8D393800034}Prefabs/Props/Civilian/Photos/CombatOps_Polaroid_08.et" {
+   ID "6066DD2FFC9610BC"
+   components {
+    Hierarchy "{6066DD2FDABC1E93}" {
+    }
+   }
+   coords -2.536 0.949 10.17
+   angleY -70.496
+  }
+  GenericEntity : "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et" {
+   ID "6066DD2FFC9A5A94"
+   components {
+    Hierarchy "{6066DD2FDAA257E1}" {
+    }
+   }
+   coords 9.342 0.119 6.682
+  }
+  GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBase.et" {
+   ID "6066DD2FFC958288"
+   coords 7.163 0 -36.067
+  }
+  GenericEntity : "{DACF7DE206313E97}Prefabs/Props/Garbage/Cardboard/Cardboard_Pile_01.et" {
+   ID "6066DD2FFC962F48"
+   components {
+    Hierarchy "{6066DD2FDABC9E26}" {
+    }
+   }
+   coords -4.245 0 3.957
+  }
+  GenericEntity : "{EF49B1F62D20ABD1}Prefabs/Props/Garbage/Cardboard/Cardboard_05.et" {
+   ID "6066DD2FFC962F4B"
+   components {
+    Hierarchy "{6066DD2FDABC71FD}" {
+    }
+   }
+   coords 1.656 0 3.519
+  }
+  $grp StaticModelEntity : "{FF71D129B9088846}Prefabs/Compositions/Misc/SubCompositions/Furniture/Bed_Blankets_US_02.et" {
+   {
+    ID "6066DD2FFC9081D2"
+    coords -6.108 0.146 5.943
+    angleY 90.63
+   }
+   {
+    ID "6066DD2FFC90C0B0"
+    coords -6.996 0.147 5.865
+    angleY 92.102
+    {
+     GenericEntity {
+      ID "5CC2D59813FDA583"
+      coords 1.108 -0.028 -2.573
+     }
+     GenericEntity {
+      ID "5CC2D59813FDA59F"
+      coords -0.525 0.513 0.012
+      angleY -48.011
+     }
+    }
+   }
+   {
+    ID "6066DD2FFC9582A7"
+    coords -1.337 0.027 -9.023
+    angleY 0
+   }
+  }
+ }
+}

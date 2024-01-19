@@ -332,7 +332,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
      Hierarchy "{606118D34EEA4ED4}" {
      }
     }
-    coords -0.382 -0 3.781
+    coords -0.382 0 3.781
     angleX -90
     scale 5
    }
@@ -472,11 +472,6 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     coords 9.721 0 -5.54
     angleY 18.25
    }
-  }
-  StaticModelEntity : "{E8697D4489516AE0}Prefabs/Compositions/Misc/SubCompositions/Tent_Barrack_Cluttered_USSR_03.et" {
-   ID "606118D3438EF134"
-   coords 5.518 -0.051 2.924
-   angleY -99.44
   }
   GenericEntity : "{F39BC00F1D5823C4}Prefabs/Compositions/Misc/SubCompositions/Sandbag_end_high_Cluttered_USSR_01.et" {
    ID "606118D3438EF128"
