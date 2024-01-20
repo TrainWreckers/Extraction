@@ -72,12 +72,17 @@ class SCR_TW_ExtractionPlayerInventoryComponent : SCR_BaseGameModeComponent
 		Print(string.Format("TrainWreck: %1 has %2 items", name, count), LogLevel.WARNING);
 		ref map<string, int> loadoutMap = new map<string, int>();
 		
+		PrintFormat("TrainWreck: Global Catalog is tracking %1 items", SCR_TW_ExtractionHandler.GetInstance().GetCatalogCount());
+		
 		foreach(IEntity item : allItems)
 		{
 			ResourceName resource = item.GetPrefabData().GetPrefab().GetResourceName();
 			
 			if(!SCR_TW_ExtractionHandler.GetInstance().IsValidItem(resource))
+			{
+				PrintFormat("TrainWreck: %1 is not a valid item for saving", resource);
 				continue;
+			}
 			
 			if(loadoutMap.Contains(resource))
 				loadoutMap.Set(resource, loadoutMap.Get(resource) + 1);

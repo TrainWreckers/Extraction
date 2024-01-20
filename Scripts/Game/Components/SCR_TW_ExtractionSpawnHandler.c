@@ -73,6 +73,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		return sInstance;
 	}
 	
+	array<IEntity> GetPlayers() { return players; }
+	
 	override void OnGameModeStart()
 	{		
 		if(!TW_Global.IsServer(GetOwner()))
@@ -99,7 +101,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	void UnregisterEventSite(SCR_TW_EventSite site)
 	{
 		Debug.Error("Implement this");
-		// eventSites.RemoveItem(site);
 	}
 	
 	void FirstPass()
@@ -445,7 +446,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		}
 		
 		this.players = players;
-	}
+	}	
 	
 	void RegisterVehicleSpawnPoint(SCR_TW_VehicleSpawn point)
 	{

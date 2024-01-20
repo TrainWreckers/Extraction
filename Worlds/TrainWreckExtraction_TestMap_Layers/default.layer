@@ -29,16 +29,23 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    }
   }
   SCR_TW_ExtractionHandler "{5ECF3441B37ADCAE}" {
+   catalogConfigs {
+    SCR_EntityCatalogMultiList "{606838461AB80BF4}" : "{E908001749419691}Configs/EntityCatalog/FIA/FIA_InventoryItems.conf" {
+    }
+    SCR_EntityCatalogMultiList "{606838461F588879}" : "{5F7EC52FC40A03E2}Configs/EntityCatalog/US/US_InventoryItems.conf" {
+    }
+    SCR_EntityCatalogMultiList "{606838461D1ED4D7}" : "{C53421647C3D0D2E}Configs/EntityCatalog/USSR/USSR_InventoryItems.conf" {
+    }
+   }
+   extractionTimePeriod 10
   }
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
+   m_DisableSpawns 1
    m_MaxAgents 20
    m_SpawnTimerInSeconds 1
-   m_MinimumAISpawnDistance 30
-   m_MaximumAIDistance 220
    m_GarbageCollectionTimer 80
-   m_MinimumVehicleSpawnDistance 0
   }
   SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
   }
@@ -88,6 +95,12 @@ GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/Rep
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
  coords 116.216 1 126.552
 }
+GenericEntity : "{4181B1C8B5E56392}Prefabs/Items/Equipment/Radios/Radio_R107M_FIA.et" {
+ coords 239.192 1 30.564
+}
+GenericEntity : "{54C68E438DD34265}Prefabs/Items/Equipment/Radios/Radio_R107M.et" {
+ coords 238.671 1 30.521
+}
 GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
  components {
   SCR_TW_VehicleSpawn "{5ED715FC73F50321}" {
@@ -100,6 +113,41 @@ GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpa
 }
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
  coords 114.825 1 106.67
+}
+GenericEntity : "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" {
+ coords 239.43 1 30.963
+}
+GenericEntity : "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et" {
+ components {
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   ActionContexts {
+    UserActionContext "{60674EF2607A01C0}" {
+     UIInfo SCR_ItemHintUIInfo "{60674EF128C82799}" {
+      m_bShowIconInInventory 1
+      m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+      m_sImageTileName "ambush"
+     }
+     Position InventoryStorageSlot FromInventory {
+     }
+    }
+   }
+  }
+ }
+ coords 239.932 1 30.944
+}
+$grp SCR_TW_ExtractionSite : "{A46C2A6689C20BC9}Prefabs/TrainWreck/TW_ExtractionSite.et" {
+ {
+  coords 109.219 1 166.091
+ }
+ {
+  coords 88.424 1 118.443
+ }
+ {
+  coords 149.995 1 129.272
+ }
+ {
+  coords 106.61 1 84.096
+ }
 }
 SCR_DestructibleBuildingEntity : "{A4D0B331414901A5}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_tankpistol.et" {
  coords 193.368 0 44.273
@@ -114,6 +162,34 @@ GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/Arse
 }
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
  coords 114.616 1 106.678
+}
+GenericEntity : "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" {
+ components {
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   ActionContexts {
+    UserActionContext "{60674EF2607A01C0}" {
+     UIInfo SCR_ItemHintUIInfo "{60674EF128C82799}" {
+      m_bShowIconInInventory 1
+      m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+      m_sImageTileName "ambush"
+     }
+     Position InventoryStorageSlot FromInventory {
+     }
+     Radius 0
+    }
+   }
+   additionalActions {
+    TW_OpenExtractionMenuAction "{60674EF6F9355C48}" {
+     UIInfo SCR_ItemHintUIInfo "{60674EF6E192D1E8}" {
+      m_bShowIconInInventory 1
+      m_sImageSet "{C3F217CA9CF060B4}UI/Imagesets/Conflict/ConflictIconsSet.imageset"
+      m_sImageTileName "SupplyDepot"
+     }
+    }
+   }
+  }
+ }
+ coords 240.023 1 29.608
 }
 SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
  coords 249.252 1.252 6.99

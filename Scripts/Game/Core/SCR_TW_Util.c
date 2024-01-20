@@ -324,12 +324,19 @@ class SCR_TW_Util
 		}
 		
 		EntitySpawnParams params = EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
+		params.TransformMode = ETransformMode.WORLD;				
 		
 		if(radius <= 4)
 			params.Transform[3] = center;
 		else
 			params.Transform[3] = random.GenerateRandomPointInRadius(minimumDistance, radius, center); //RandomPositionAroundPoint(center, radius, minimumDistance);
+		
+		int attempts = 0;
+		while(IsWater(params.Transform[3]) && attempts < 30)
+		{
+			params.Transform[3] = random.GenerateRandomPointInRadius(minimumDistance, Math.ClampInt(radius-(attempts*25), minimumDistance, int.MAX), center);
+			attempts++;
+		}
 		
 		return SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params));
 	}
