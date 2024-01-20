@@ -74,6 +74,8 @@ class TW_ExtractionConfig
 		
 		GetTaskManager().CreateTaskExecutors();
 		
+		playerIds.Clear();
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
 		foreach(int playerId: playerIds)
 		{
 			SCR_BaseTaskExecutor executor = SCR_BaseTaskExecutor.GetTaskExecutorByID(playerId);

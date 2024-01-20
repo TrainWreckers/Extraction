@@ -1,5 +1,13 @@
 modded class SCR_PlayerController
 {
+	void CallForExtraction(TW_ExtractionType type)
+	{
+		if(!TW_Global.IsServer(this))
+			Rpc(RpcAsk_CallForExtraction, type);
+		else 
+			RpcAsk_CallForExtraction(type);
+	}
+	
 	void CombineMags(MagazineComponent fromMag, MagazineComponent toMag, SCR_InventoryStorageManagerComponent managerComp)
 	{
 		if(!fromMag || !toMag)
@@ -66,6 +74,12 @@ modded class SCR_PlayerController
 				SCR_EntityHelper.DeleteEntityAndChildren(fromMag.GetOwner());
 		}	
 	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_CallForExtraction(TW_ExtractionType type)
+	{
+		SCR_TW_ExtractionHandler.GetInstance().CallExtraction(type);
+	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_CombineMags(RplId fromMagazineComponent, RplId toMagazineComponent, RplId storageManagerComponent)

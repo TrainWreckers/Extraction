@@ -66,6 +66,31 @@ class SCR_TW_ExtractionSite : SCR_SiteSlotEntity
 		m_Trigger = SCR_TW_TriggerArea.Cast(GetGame().SpawnEntityPrefab(triggerResource, GetGame().GetWorld(), params));
 		if(m_Trigger)
 			m_Trigger.OnTriggered.Insert(Start);
+		
+		ResourceName taskPrefab = SCR_TW_ExtractionHandler.GetInstance().GetExtractionTaskPrefab();
+		if(taskPrefab)
+		{
+			int taskX, taskY;
+			SCR_TW_Util.GetCenterOfGridSquare(GetOrigin(), taskX, taskY);
+			
+			string description = SCR_TW_ExtractionHandler.GetInstance().GetExtractionDescription(GetOrigin());
+			SCR_BaseTask task = SCR_BaseTask.Cast(GetTaskManager().SpawnTask(taskPrefab));
+			task.SetTitle("Extract");
+			task.SetDescription(description);
+			vector center = GetOrigin();
+			center[0] = taskX;
+			center[2] = taskY;
+			task.SetOrigin(center);
+			
+			ref array<int> playerIds = {};
+			GetGame().GetPlayerManager().GetPlayers(playerIds);
+			GetTaskManager().CreateTaskExecutors();
+			foreach(int playerId: playerIds)
+			{
+				SCR_BaseTaskExecutor executor = SCR_BaseTaskExecutor.GetTaskExecutorByID(playerId);
+				executor.AssignNewTask(task);
+			}			
+		}
 	}
 	
 	override void EOnInit(IEntity owner)

@@ -51,6 +51,8 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    }
    extractionTimePeriod 15
    minimumAmmoPercent 0.75
+   m_ExtractionTaskPrefab "{7259F0B101761BD5}Prefabs/Tasks/MoveTask.et"
+   m_ExtractionTaskDescriptionFormat "We'll pick you up at (%1, %2)"
   }
   SCR_TW_ExtractionPlayerInventoryComponent "{5EBF4A5F232BAFAE}" {
   }

@@ -97,7 +97,7 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 		m_ButtonClose.m_OnClicked.Clear();
 		m_ButtonClose.m_OnClicked.Insert(Close);
 		
-		m_HighTierRadios.Insert(ERadioType.R148);
+		m_HighTierRadios.Insert(ERadioType.ANPRC77);
 		m_HighTierRadios.Insert(ERadioType.R107M);
 		
 		types.Insert(TW_ExtractionType.STANDARD, "Standard");
@@ -122,7 +122,16 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 	{
 		TW_ExtractionType calledType = button.GetExtractionType();
 		PrintFormat("TrainWreck: User clicked on %1", calledType);
-		SCR_TW_ExtractionHandler.GetInstance().CallExtraction(calledType);
+		
+		SCR_PlayerController controller = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		
+		if(!controller)
+		{
+			Print("TrainWreck: No Player Controller was found on local player entity", LogLevel.ERROR);
+			return;
+		}
+		
+		controller.CallForExtraction(calledType);		
 		Close();
 	}
 	

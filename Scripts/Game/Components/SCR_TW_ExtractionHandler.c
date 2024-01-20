@@ -84,6 +84,23 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("0.5", UIWidgets.Slider, params: "0.01 1 0.01", category: "Loot Ammo Spawn", desc: "Chance a magazine won't spawn with a gun")]
 	private float chanceOfMagazine;
 	
+	[Attribute("", UIWidgets.ResourceNamePicker, params: "et", category: "Extraction", desc: "Task prefab to inform players where extraction points are")]
+	private ResourceName m_ExtractionTaskPrefab;
+	
+	[Attribute("", UIWidgets.EditBox, category: "Extraction", desc: "Text format to use for extraction description")]
+	private string m_ExtractionTaskDescriptionFormat;
+	
+	ResourceName GetExtractionTaskPrefab() { return m_ExtractionTaskPrefab; }
+	string GetExtractionDescription(vector position)
+	{
+		if(m_ExtractionTaskDescriptionFormat == string.Empty)
+			return string.Empty;
+		
+		int x = (int)(position[0] / 1000);
+		int y = (int)(position[2] / 1000);
+		
+		return string.Format(m_ExtractionTaskDescriptionFormat, x, y);
+	}
 	
 	float ShouldSpawnMagazine()
 	{
@@ -283,20 +300,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	}
 	
 	void CallExtraction(TW_ExtractionType type)
-	{
-		if(!TW_Global.IsServer(GetOwner()))
-			Rpc(RpcAsk_CallExtraction, type);
-		else 
-			Do_CallExtraction(type);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CallExtraction(TW_ExtractionType type)
-	{
-		Do_CallExtraction(type);
-	}
-	
-	private void Do_CallExtraction(TW_ExtractionType type)
 	{
 		ref array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);

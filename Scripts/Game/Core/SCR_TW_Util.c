@@ -2,6 +2,15 @@ class SCR_TW_Util
 {	
 	private static ref map<FactionKey, ref array<ResourceName>> _factionGroups = new map<FactionKey, ref array<ResourceName>>();
 	
+	static void GetCenterOfGridSquare(vector position, out int x, out int y, int gridSize = 1000)
+	{
+		x = (int)(position[0] / gridSize);
+		y = (int)(position[2] / gridSize);
+		
+		x = (x * gridSize) + (gridSize / 2);
+		y = (y * gridSize) + (gridSize / 2);
+	}
+	
 	static void AddSurroundingGridSquares(notnull inout set<string> chunks, vector position, int radius = 1, int gridSize = 1000)
 	{
 		int x = (int)(position[0] / gridSize);
