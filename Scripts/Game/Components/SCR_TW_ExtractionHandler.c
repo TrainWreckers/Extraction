@@ -22,7 +22,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	private ref array<TW_RadioTower_Component> radioTowers = {};
 	private ref map<int, SCR_TW_PlayerCrateComponent> crates = new map<int, SCR_TW_PlayerCrateComponent>();
 	private ref array<SCR_SiteSlotEntity> possibleSpawnAreas = {};
-	private ref array<SCR_TW_ExtractionSite> possibleExtractionSites = {};	
+	private ref array<SCR_TW_ExtractionSite> possibleExtractionSites = {};		
 	private bool playersHaveSpawned = false;
 	
 	protected bool m_MatchOver;
@@ -49,14 +49,19 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	bool IsValidItem(ResourceName resource)
 	{
-		return globalItems.Contains(resource);
+		return TW_LootManager.IsValidItem(resource);
 	}
+	
+	int GetCatalogCount() { return globalItems.Count(); }
 	
 	[Attribute("{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et", UIWidgets.ResourcePickerThumbnail, category: "Player Spawn", desc: "Player loadout crate prefab", params: "et")]
 	private ResourceName playerCratePrefab;
 		
 	[Attribute("{5A52168A894DDB7E}Prefabs/Compositions/Slotted/SlotFlatSmall/TW_US_PlayerHub_Extraction.et", UIWidgets.ResourcePickerThumbnail, params: "et", category: "Player Spawn", desc: "Composition to spawn as a player starting area")]
 	private ResourceName playerHubPrefab;
+	
+	[Attribute("", UIWidgets.Auto, params: "conf SCR_EntityCatalogMultiList", desc: "Catalogs of items that are lootable")]
+	private ref array<ref SCR_EntityCatalogMultiList> catalogConfigs;
 	
 	[Attribute("", UIWidgets.Slider, params: "3, 20, 1", category: "Player Spawn", desc: "After this timer elapses, the player spawn composition is deleted")]
 	private int playerHubDespawnTimerInMinutes;
@@ -89,6 +94,8 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	{
 		return Math.RandomFloat(minimumAmmoPercent, maximumAmmoPercent);
 	}
+	
+	array<ref SCR_EntityCatalogMultiList> GetCatalogConfigs() { return catalogConfigs; }
 	
 	int GetExtractionTimePeriod() { return extractionTimePeriod; }
 	
@@ -275,18 +282,85 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		TW_LootManager.SpawnLoot();
 	}
 	
-	void SpawnNewExtractionSite()
+	void CallExtraction(TW_ExtractionType type)
 	{
-		/*if(!TW_Global.IsServer(GetOwner()))
-			Rpc(RpcAsk_SpawnExtractionSite);
+		if(!TW_Global.IsServer(GetOwner()))
+			Rpc(RpcAsk_CallExtraction, type);
 		else 
-			InitializeExtraction();*/
+			Do_CallExtraction(type);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SpawnExtractionSite()
+	void RpcAsk_CallExtraction(TW_ExtractionType type)
 	{
-		//InitializeExtraction();
+		Do_CallExtraction(type);
+	}
+	
+	private void Do_CallExtraction(TW_ExtractionType type)
+	{
+		ref array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		ref array<IEntity> players = {};
+		foreach(int playerId : playerIds)
+		{
+			IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			if(player)
+				players.Insert(player);
+		}
+		
+		switch(type)
+		{
+			case TW_ExtractionType.STANDARD:
+			{
+				if(possibleExtractionSites.IsEmpty())
+				{
+					PrintFormat("TrainWreck: There are no standard spawn sites", LogLevel.ERROR);
+					return;					
+				}
+				
+				SCR_TW_ExtractionSite site = GetFurthestSpawnPointFrom(players);
+				
+				if(!site)
+				{
+					PrintFormat("TrainWreck: No standard extraction sites were found", LogLevel.ERROR);
+					return;
+				}	
+				
+				site.SpawnSite();
+				PopUpMessage("Extraction", "A new extraction point is now available");
+				break;
+			}
+		}
+	}
+	
+	//! Get the furthest extraction site from list of players
+	private SCR_TW_ExtractionSite GetFurthestSpawnPointFrom(notnull array<IEntity> players)
+	{
+		SCR_TW_ExtractionSite nearest;
+		float distance = -1;
+		
+		foreach(IEntity player : players)
+		foreach(SCR_TW_ExtractionSite site : possibleExtractionSites)
+		{	
+			if(site.IsOccupied())
+				continue;
+					
+			if(!nearest)
+			{
+				nearest = site;
+				continue;
+			}						
+			
+			float span = vector.Distance(player.GetOrigin(), site.GetOrigin());
+			
+			if(span < distance)
+				continue;
+						
+			distance = span;
+			nearest = site;
+		}
+		
+		return nearest;
 	}
 	
 	private void CheckPlayerWipe()

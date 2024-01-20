@@ -1,0 +1,83 @@
+FrameWidgetClass {
+ Name "Root"
+ Slot AlignableSlot "{606730A0F149472A}" {
+ }
+ {
+  ButtonWidgetClass "{606808EE612C8F87}" {
+   Name "ButtonExit"
+   Slot FrameWidgetSlot "{606808EE612C8F6F}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 216.259
+    OffsetLeft 216.259
+    PositionY -249.948
+    OffsetTop -249.948
+    SizeX 32
+    OffsetRight -248.259
+    SizeY 32
+    OffsetBottom 217.948
+   }
+   Color 0.025 0.025 0.025 1
+   components {
+    SCR_ButtonComponent "{606808EE35BF9B1E}" {
+    }
+   }
+   {
+    ImageWidgetClass "{60681123FEA4B6E6}" {
+     Name "ButtonExitIcon"
+     Slot ButtonWidgetSlot {
+     }
+     Color 0.761 0.386 0.078 1
+     Texture "{D17288006833490F}UI/Textures/Icons/icons_wrapperUI-32.imageset"
+     Image "cancel"
+     Size 32 32
+    }
+   }
+  }
+  TextWidgetClass "{606730A0A6568D6A}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{606730A0A6568D0F}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -93.584
+    OffsetLeft -93.584
+    PositionY -273.954
+    OffsetTop -273.954
+    SizeX 100
+    OffsetRight -6.416
+    SizeY 30
+    OffsetBottom 243.954
+    SizeToContent 1
+   }
+   Text "Radio in Extraction"
+  }
+  PanelWidgetClass "{60681123D82AEB97}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{60681123C403C426}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -250
+    OffsetLeft -250
+    PositionY -250
+    OffsetTop -250
+    SizeX 500
+    OffsetRight -250
+    SizeY 500
+    OffsetBottom -250
+   }
+   {
+    VerticalLayoutWidgetClass "{606730A53E8528D1}" {
+     Name "m_Extractions"
+     Slot FrameWidgetSlot "{606730A53E8528B1}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX -250
+      OffsetLeft -250
+      PositionY -250
+      OffsetTop -250
+      SizeX 500
+      OffsetRight -250
+      SizeY 500
+      OffsetBottom -250
+     }
+    }
+   }
+  }
+ }
+}

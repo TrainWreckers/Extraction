@@ -8,12 +8,9 @@ SCR_TW_ExtractionSite {
  extractionSitePrefabs {
   "{540ABA8EAC791800}Prefabs/TrainWreck/Compositions/TW_Comp_ExtractionSite_Bunkers.et"
  }
- m_ExtractionStates {
-  TW_ExtractionType_Fortify "{5EED70888F33EA4A}" : "{939BB76390559948}Configs/Events/Extraction/Fortify_Standard.conf" {
-  }
-  TW_ExtractionType_Defend "{5EED7088733A4985}" : "{3C7E09EB92727311}Configs/Events/Extraction/Defend_Standard.conf" {
+ m_TriggerPrefab "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et"
+ m_ExtractionWorkflows {
+  TW_ExtractionWorkflow "{606811328223CEA1}" : "{6FE6309CB36FE724}Configs/Extraction/StandardWorkflow.conf" {
   }
  }
- m_TaskPrefab "{A571DFFA17CD3779}Prefabs/Tasks/DefendTask.et"
- m_TriggerPrefab "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et"
 }

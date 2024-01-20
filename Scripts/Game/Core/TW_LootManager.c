@@ -28,26 +28,18 @@ sealed class TW_LootManager
 		}
 		
 		ref map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>> lootMap = new map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>>();
-		
-		ref array<Faction> allFactions = {};
-		GetGame().GetFactionManager().GetFactionsList(allFactions);
+		ref array<ref SCR_EntityCatalogMultiList> catalogConfigs = SCR_TW_ExtractionHandler.GetInstance().GetCatalogConfigs();
 		
 		SCR_EntityCatalog globalCatalog;
-		
-		foreach(auto currentFaction : allFactions)
+		foreach(SCR_EntityCatalogMultiList catalogList : catalogConfigs)
 		{
-			auto faction = SCR_Faction.Cast(currentFaction);
-			
-			if(!faction)
-				continue;
-			
-			auto factionCatalog = faction.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM);
-			
 			if(!globalCatalog)
-				globalCatalog = factionCatalog;
-			else
-				globalCatalog.MergeCatalogs(factionCatalog);
-		}				
+			{
+				globalCatalog = catalogList;
+				continue;
+			}
+			globalCatalog.MergeCatalogs(catalogList);
+		}
 		
 		ref array<SCR_EntityCatalogEntry> catalogItems = {};
 		int entityCount = globalCatalog.GetEntityList(catalogItems);
@@ -93,6 +85,7 @@ sealed class TW_LootManager
 		bool success = OutputLootTableFile(lootMap);
 		if(!success)
 			Print(string.Format("TrainWreck: Failed to write %1", LootFileName), LogLevel.ERROR);
+		IngestLootTableFromFile();
 	}		
 		
 	static void SpawnLoot()
@@ -247,9 +240,18 @@ sealed class TW_LootManager
 			s_LootTable.Insert(type, {});
 		
 		// Ensure we're tracking the resource names for everything 
-		foreach(TW_LootConfigItem item : items)
+		foreach(ref TW_LootConfigItem item : items)
+		{
+			
+			if(!item)
+			{
+				Print("TrainWreck: Failed item", LogLevel.ERROR);
+				continue;
+			}
+			
 			if(!s_GlobalItems.Contains(item.resourceName))
 				s_GlobalItems.Insert(item.resourceName);
+		}
 		
 		return true;
 	}
