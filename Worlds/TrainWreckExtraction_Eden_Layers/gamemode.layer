@@ -41,6 +41,14 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    }
   }
   SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
+   catalogConfigs {
+    SCR_EntityCatalogMultiList "{60685695D6A71BD8}" : "{E908001749419691}Configs/EntityCatalog/FIA/FIA_InventoryItems.conf" {
+    }
+    SCR_EntityCatalogMultiList "{60685695D52132FF}" : "{5F7EC52FC40A03E2}Configs/EntityCatalog/US/US_InventoryItems.conf" {
+    }
+    SCR_EntityCatalogMultiList "{60685695DB770A15}" : "{C53421647C3D0D2E}Configs/EntityCatalog/USSR/USSR_InventoryItems.conf" {
+    }
+   }
    extractionTimePeriod 15
    minimumAmmoPercent 0.75
   }
