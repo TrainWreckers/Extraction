@@ -1,0 +1,9 @@
+GenericEntity : "{F76BD5785C7FE191}Prefabs/Systems/Compositions/PatrolPoint/PatrolPoint_ObservationPoint.et" {
+ ID "5CB0DBCC265217A0"
+ components {
+  Hierarchy "{5E5C73C1CD778004}" {
+  }
+ }
+ coords 17.449 0.131 3.489
+ angleY 48.711
+}

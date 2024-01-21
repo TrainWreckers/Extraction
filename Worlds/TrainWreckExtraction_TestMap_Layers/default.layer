@@ -80,14 +80,3 @@ GenericEntity : "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et"
  }
  coords 240.023 1 29.608
 }
-SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
- coords 249.252 1.252 6.99
- {
-  StaticModelEntity {
-   ID "52E8C3643526D54D"
-   coords 0 -0.752 0
-   angleX 3.825
-   angleZ 3.825
-  }
- }
-}

@@ -4,6 +4,9 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.CheckBox, category: "Spawn Details")]
 	protected bool m_DisableSpawns;
 	
+	[Attribute("", UIWidgets.CheckBox, category: "Spawn Details")]
+	protected bool m_DisableEvents;
+	
 	[Attribute("10", UIWidgets.Slider, params: "5 75 1", category: "Spawn Details")]
 	protected int m_MaxAgents;
 	
@@ -80,15 +83,16 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
-		if(m_DisableSpawns)
-			return;
-		
-		GetGame().GetCallqueue().CallLater(FirstPass, 15 * 1000, false);
-		
 		// These methods periodically update our stuff. Thus need to repeat indefinitely
-		GetGame().GetCallqueue().CallLater(ReinitializePlayers, SCR_TW_Util.FromSecondsToMilliseconds(10), true);
-		GetGame().GetCallqueue().CallLater(GarbageCollection, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
-		GetGame().GetCallqueue().CallLater(SpawnLoop, SCR_TW_Util.FromSecondsToMilliseconds(m_SpawnTimerInSeconds), true);
+		// If units can spawn OR events can spawn
+		if(!m_DisableSpawns || !m_DisableEvents)
+		{
+			GetGame().GetCallqueue().CallLater(ReinitializePlayers, SCR_TW_Util.FromSecondsToMilliseconds(10), true);
+			GetGame().GetCallqueue().CallLater(GarbageCollection, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
+		}
+		
+		if(!m_DisableSpawns)
+			GetGame().GetCallqueue().CallLater(SpawnLoop, SCR_TW_Util.FromSecondsToMilliseconds(m_SpawnTimerInSeconds), true);
 		
 		Print(string.Format("TrainWreck: Registered Vehicle Spawn Points: %1", m_VehicleSpawnPoints.Count()), LogLevel.WARNING);
 	}

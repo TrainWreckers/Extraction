@@ -14,6 +14,6 @@ SCR_TW_EventAISpawner {
   "{A914A9FF67CA2AF3}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman.et" "{5417A56C4E66F48A}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman2.et" "{B18BE995428363E1}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman3.et" "{8CBFCCAD37EFEAD6}Prefabs/Groups/OPFOR/TW_OPFOR_1Rifleman4.et"
  }
  m_WaypointPrefabs {
-  "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+  "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et"
  }
 }

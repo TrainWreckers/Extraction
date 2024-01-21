@@ -1,0 +1,15 @@
+GenericEntity : "{F76BD5785C7FE191}Prefabs/Systems/Compositions/PatrolPoint/PatrolPoint_ObservationPoint.et" {
+ ID "5CB0DBCC265217A0"
+ components {
+  SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+   AIBehaviorTree "{3BFBE9096323AFE3}AI/BehaviorTrees/SmartActions/SA_GatePost.bt"
+   Tags {
+    "GatePost"
+   }
+  }
+  Hierarchy "{606AD8DB10463977}" {
+  }
+ }
+ coords 18.87 -0.253 -2.416
+ angleY -78.003
+}

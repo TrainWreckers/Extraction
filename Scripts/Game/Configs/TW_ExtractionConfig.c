@@ -67,6 +67,9 @@ class TW_ExtractionConfig
 		if(!m_TaskPrefab)
 			return;
 		
+		if(m_CurrentTask)
+			m_CurrentTask.Remove();	
+		
 		m_CurrentTask = SCR_BaseTask.Cast(GetTaskManager().SpawnTask(m_TaskPrefab));
 		m_CurrentTask.SetTitle(m_TaskTitle);
 		m_CurrentTask.SetDescription(m_TaskDescription);

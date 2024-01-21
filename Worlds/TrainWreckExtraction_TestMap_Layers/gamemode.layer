@@ -74,11 +74,34 @@ SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskMan
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
  coords 116.216 1 126.552
 }
+SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
+ coords 64.119 1 168.108
+ m_EventPrefabs {
+  "{A3057017F574212F}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_3.et"
+ }
+ m_SpawnChance 1
+ {
+  StaticModelEntity {
+   ID "605C0176B4543B3B"
+   coords 0 0 0
+  }
+ }
+}
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
  coords 114.825 1 106.67
 }
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
  coords 114.616 1 106.678
+}
+SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
+ coords 248.544 1 8.711
+ {
+  StaticModelEntity {
+   ID "52E8C3643526D54D"
+   coords 0 0 0
+   angleZ 3.825
+  }
+ }
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
  coords 114.585 1 106.716

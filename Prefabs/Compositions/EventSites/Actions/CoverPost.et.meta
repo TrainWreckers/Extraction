@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

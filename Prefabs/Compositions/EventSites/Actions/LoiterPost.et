@@ -1,0 +1,15 @@
+GenericEntity : "{F76BD5785C7FE191}Prefabs/Systems/Compositions/PatrolPoint/PatrolPoint_ObservationPoint.et" {
+ ID "5CB0DBCC265217A0"
+ components {
+  SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+   AIBehaviorTree "{684D91360A81CF19}AI/BehaviorTrees/SmartActions/SA_LoiterPost.bt"
+   Tags {
+    "LoiterPost"
+   }
+  }
+  Hierarchy "{606AD8DB24ACEDD1}" {
+  }
+ }
+ coords -14.27 -0.382 -5.825
+ angleY -36.876
+}
