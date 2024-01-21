@@ -77,7 +77,7 @@ class SCR_TW_VehicleSpawn : ScriptComponent
 		if(!rpl.IsMaster() && rpl.Role() != RplRole.Authority)
 			return false;
 		
-		if(!ignoreChanceSpawnAtStart && random.RandIntInclusive(0,100) > m_ChanceToSpawn)
+		if(random.RandIntInclusive(0,100) > m_ChanceToSpawn)
 			return false;
 
 		ResourceName prefabName = m_VehiclePrefabs.GetRandomElement();

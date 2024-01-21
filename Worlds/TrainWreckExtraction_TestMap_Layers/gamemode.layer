@@ -1,0 +1,85 @@
+SCR_AIWorld : "{10EF0F8A76B4929C}Reforger/Prefabs/Conflict/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5AF8B9A1D80D8DFA}" {
+     NavmeshFile "{2A0D9FE8B56183EE}NavMeshes/TestMapSoldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{2E83C6A6D2E015A0}NavMeshes/TestMapLowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 227.523 1 46.738
+}
+SCR_CampaignFactionManager CampaignFactionManager1 : "{1AA920CCA4384330}Reforger/Prefabs/Conflict/CampaignFactionManager.et" {
+ coords 224.703 1 16.012
+}
+SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+ components {
+  SCR_CompositionSlotManagerComponent "{5ED5118F1FF0C7AE}" {
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_AutoSpawnLogic "{5ED8F1A8045926B2}" {
+   }
+  }
+  SCR_TW_ExtractionHandler "{5ECF3441B37ADCAE}" {
+   catalogConfigs {
+    SCR_EntityCatalogMultiList "{606838461AB80BF4}" : "{E908001749419691}Configs/EntityCatalog/FIA/FIA_InventoryItems.conf" {
+    }
+    SCR_EntityCatalogMultiList "{606838461F588879}" : "{5F7EC52FC40A03E2}Configs/EntityCatalog/US/US_InventoryItems.conf" {
+    }
+    SCR_EntityCatalogMultiList "{606838461D1ED4D7}" : "{C53421647C3D0D2E}Configs/EntityCatalog/USSR/USSR_InventoryItems.conf" {
+    }
+   }
+   extractionTimePeriod 10
+   m_ExtractionTaskPrefab "{7259F0B101761BD5}Prefabs/Tasks/MoveTask.et"
+   m_ExtractionTaskDescriptionFormat "We'll pick you up at the following grid: (%1, %2)"
+  }
+  SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
+  }
+  SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
+   m_DisableSpawns 1
+   m_MaxAgents 20
+   m_SpawnTimerInSeconds 1
+   m_GarbageCollectionTimer 80
+  }
+  SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
+  }
+ }
+ coords 191.393 1 69.437
+}
+TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
+ coords 114.419 1 106.494
+}
+PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Conflict/PerceptionManager.et" {
+ coords 114.81 1 106.69
+}
+RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
+ coords 114.848 1 106.726
+}
+ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
+ coords 114.624 1 106.583
+ "Base style" BaseChatChannelStyle "{5ECF344074775EDF}" {
+ }
+}
+SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
+ coords 187.476 1 83.216
+}
+SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
+ coords 116.216 1 126.552
+}
+SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
+ coords 114.825 1 106.67
+}
+ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
+ coords 114.616 1 106.678
+}
+HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
+ coords 114.585 1 106.716
+}

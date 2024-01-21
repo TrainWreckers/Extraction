@@ -43,8 +43,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	protected ref array<SCR_ChimeraAIAgent> m_Groups = {};
 	
 	protected ref TW_GridCoordManager<SCR_TW_AISpawnPoint> spawnGrid = new TW_GridCoordManager<SCR_TW_AISpawnPoint>(m_SpawnGridSize);
-	protected ref TW_GridCoordManager<SCR_TW_EventSite> eventGrid = new TW_GridCoordManager<SCR_TW_EventSite>();
-	protected ref TW_GridCoordManager<SCR_TW_VehicleSpawn> vehicleGrid = new TW_GridCoordManager<SCR_TW_VehicleSpawn>();
+	protected ref TW_GridCoordManager<SCR_TW_EventSite> eventGrid = new TW_GridCoordManager<SCR_TW_EventSite>(m_SpawnGridSize);
+	protected ref TW_GridCoordManager<SCR_TW_VehicleSpawn> vehicleGrid = new TW_GridCoordManager<SCR_TW_VehicleSpawn>(m_SpawnGridSize);
 	
 	protected ref array<ref TW_GridCoord<SCR_TW_AISpawnPoint>> spawnPointsNearPlayers = {};
 	protected ref array<SCR_TW_AISpawnPoint> aiSpawnPointsNearPlayers = {};
@@ -418,19 +418,14 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			{
 				// Spawn vehicles in loaded chunks
 				IEntity vehicle;
-				int vehicleSpawnCount = Math.RandomIntInclusive(1, vehiclePointCount);
 				
-				for(int i = 0; i < vehicleSpawnCount; i++)
+				for(int i = 0; i < vehiclePointCount; i++)
 				{
-					if(vehicleSpawnsNearPlayers.IsEmpty())
-						break;
-					
-					int vehicleIndex = vehicleSpawnsNearPlayers.GetRandomIndex();				
-					SCR_TW_VehicleSpawn vehicleSpawn = vehicleSpawnsNearPlayers.Get(vehicleIndex);				
-					GetGame().GetCallqueue().CallLater(InvokeSpawnOnVehicle, SCR_TW_Util.FromSecondsToMilliseconds(i * 1), false, vehicleSpawn);	
-					vehicleSpawnsNearPlayers.Remove(vehicleIndex);
+					SCR_TW_VehicleSpawn vehicleSpawn = vehicleSpawnsNearPlayers.Get(i);					
+					GetGame().GetCallqueue().CallLater(InvokeSpawnOnVehicle, SCR_TW_Util.FromSecondsToMilliseconds(i * 1), false, vehicleSpawn);
 				}
 			}
+			else Print("TrainWreck: No vehicle spawns were found in the active grid squares", LogLevel.WARNING);
 			
 			// Cleanup vehicle spawns
 			vehicleSpawnsNearPlayers.Clear();

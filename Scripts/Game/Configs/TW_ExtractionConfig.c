@@ -70,7 +70,7 @@ class TW_ExtractionConfig
 		m_CurrentTask = SCR_BaseTask.Cast(GetTaskManager().SpawnTask(m_TaskPrefab));
 		m_CurrentTask.SetTitle(m_TaskTitle);
 		m_CurrentTask.SetDescription(m_TaskDescription);
-		m_CurrentTask.SetOrigin(source.GetOrigin());
+		m_CurrentTask.SetOrigin(source.GetOrigin());				
 		
 		GetTaskManager().CreateTaskExecutors();
 		
@@ -81,6 +81,8 @@ class TW_ExtractionConfig
 			SCR_BaseTaskExecutor executor = SCR_BaseTaskExecutor.GetTaskExecutorByID(playerId);
 			executor.AssignNewTask(m_CurrentTask);
 		}
+		
+		GetTaskManager().UpdateTaskInformation(m_CurrentTask, m_TaskTitle, m_TaskDescription, source.GetOrigin());
 	}
 	
 	//! When this state becomes active. Passes entity which detected activation.

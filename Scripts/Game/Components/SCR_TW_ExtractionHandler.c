@@ -301,6 +301,12 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	void CallExtraction(TW_ExtractionType type)
 	{
+		if(!TW_Global.IsServer(GetOwner()))
+		{
+			Print("TrainWreck: CallExtraction has been invoked on the client. Error", LogLevel.ERROR);
+			return;
+		}
+		
 		ref array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
 		ref array<IEntity> players = {};
@@ -321,7 +327,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 					return;					
 				}
 				
-				SCR_TW_ExtractionSite site = GetFurthestSpawnPointFrom(players);
+				SCR_TW_ExtractionSite site = GetRandomExtractionSite();
 				
 				if(!site)
 				{

@@ -75,12 +75,12 @@ class SCR_TW_ExtractionSite : SCR_SiteSlotEntity
 			
 			string description = SCR_TW_ExtractionHandler.GetInstance().GetExtractionDescription(GetOrigin());
 			SCR_BaseTask task = SCR_BaseTask.Cast(GetTaskManager().SpawnTask(taskPrefab));
-			task.SetTitle("Extract");
-			task.SetDescription(description);
+			
 			vector center = GetOrigin();
 			center[0] = taskX;
 			center[2] = taskY;
-			task.SetOrigin(center);
+								
+			GetTaskManager().UpdateTaskInformation(task, "Extract", description, center);
 			
 			ref array<int> playerIds = {};
 			GetGame().GetPlayerManager().GetPlayers(playerIds);
@@ -89,7 +89,7 @@ class SCR_TW_ExtractionSite : SCR_SiteSlotEntity
 			{
 				SCR_BaseTaskExecutor executor = SCR_BaseTaskExecutor.GetTaskExecutorByID(playerId);
 				executor.AssignNewTask(task);
-			}			
+			}
 		}
 	}
 	

@@ -1,0 +1,31 @@
+SCR_TW_ExtractionSite {
+ components {
+  SCR_MapDescriptorComponent "{5ED8F1AA7B581567}" {
+   DisplayName "Extraction"
+   MapItemDescriptor 1
+   MainType Task
+   Scale 2
+  }
+  RplComponent "{5ED8F1AA76BD5BAF}" {
+  }
+ }
+ coords 173.363 1 87.192
+ extractionSitePrefabs {
+  "{540ABA8EAC791800}Prefabs/TrainWreck/Compositions/TW_Comp_ExtractionSite_Bunkers.et"
+ }
+ m_TriggerPrefab "{3451BE9A39F516F9}Prefabs/TrainWreck/TW_SmallTrigger.et"
+}
+$grp SCR_TW_ExtractionSite : "{A46C2A6689C20BC9}Prefabs/TrainWreck/TW_ExtractionSite.et" {
+ {
+  coords 106.61 1 84.096
+ }
+ {
+  coords 149.995 1 129.272
+ }
+ {
+  coords 88.424 1 118.443
+ }
+ {
+  coords 109.219 1 166.091
+ }
+}

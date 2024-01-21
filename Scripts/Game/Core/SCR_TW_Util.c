@@ -2,6 +2,7 @@ class SCR_TW_Util
 {	
 	private static ref map<FactionKey, ref array<ResourceName>> _factionGroups = new map<FactionKey, ref array<ResourceName>>();
 	
+	//! Output x and y coordinates for center of grid square
 	static void GetCenterOfGridSquare(vector position, out int x, out int y, int gridSize = 1000)
 	{
 		x = (int)(position[0] / gridSize);
