@@ -11,6 +11,11 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords -4.109 0 2.905
    angleY -59.359
   }
+  GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   ID "606E0CCCC86EE16D"
+   coords 3.929 -0.078 1.343
+   angleY 0
+  }
   $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
    {
     ID "606205F3E647613D"
@@ -70,6 +75,40 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    }
    coords -3.763 0 2.649
    angleY 120.328
+  }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCCC86EE171"
+    coords 3.522 -0.378 -0.285
+    angleY 0
+   }
+   {
+    ID "606E0CCCC86EE184"
+    coords -1.49 -0.378 -1.241
+    angleY 0
+   }
+   {
+    ID "606E0CCCC86EE18A"
+    coords 1.123 -0.378 3.075
+    angleY 0
+   }
+   {
+    ID "606E0CCCC86EE19F"
+    coords -2.662 -0.378 3.889
+    angleY 0
+   }
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCCC86EE1AD"
+    coords -1.422 -0.749 0.87
+    angleY 0
+   }
+   {
+    ID "606E0CCCC86EE1CA"
+    coords 0.902 -0.749 1.167
+    angleY 0
+   }
   }
   GenericEntity : "{547BB04867B503E5}Prefabs/Props/Military/Camps/PalletMRE_01_US.et" {
    ID "606205F3E6469906"

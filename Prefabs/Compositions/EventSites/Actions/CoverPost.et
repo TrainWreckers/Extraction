@@ -10,6 +10,6 @@ GenericEntity : "{F76BD5785C7FE191}Prefabs/Systems/Compositions/PatrolPoint/Patr
   Hierarchy "{606AD8DB0003143F}" {
   }
  }
- coords 17.243 0.149 4.153
- angleY -34.866
+ coords 3.522 -0.378 -0.285
+ angleY 20.842
 }

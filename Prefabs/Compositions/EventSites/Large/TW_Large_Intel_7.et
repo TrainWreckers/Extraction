@@ -21,6 +21,11 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    }
    coords -8.783 0 -16.34
   }
+  GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   ID "606E0CCA8333DF8C"
+   coords 9.845 0.129 10.966
+   angleY -44.147
+  }
   $grp GenericEntity : "{19DA1F395962511D}Prefabs/Vegetation/Cuttings/Pinus_sylvestris_medium_01.et" {
    {
     ID "606205E4D70E01FA"
@@ -211,6 +216,33 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     scale 2
    }
   }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCA8333D834"
+    coords 5.485 -0.118 11.856
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DF92"
+    coords 3.386 0.524 -6.364
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFA7"
+    coords 7.827 0.505 -6.086
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFBB"
+    coords -16.115 0.51 -6.721
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFC1"
+    coords -4.656 0.51 -10.833
+    angleY 0
+   }
+  }
   $grp Tree : "{3C1D0706AC587223}Prefabs/Vegetation/Tree/t_carpinus_betulus_3f.et" {
    {
     ID "606205E4D7080601"
@@ -378,6 +410,53 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     }
     coords 3.705 0 -18.465
     angleY -84.962
+   }
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCA8333D802"
+    coords -6.992 0.023 8.423
+    angleY 39.268
+   }
+   {
+    ID "606E0CCA8333D810"
+    coords 7.168 -0.072 7.03
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFAF"
+    coords 5.903 0.583 -6.15
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFB6"
+    coords 1.581 0.144 -6.312
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFC9"
+    coords -12.522 0.512 -8.071
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFD0"
+    coords -7 0.512 -9.817
+    angleY 0
+   }
+   {
+    ID "606E0CCA8333DFE6"
+    coords -5.68 0.023 -3.466
+    angleY -123.689
+   }
+   {
+    ID "606E0CCA8333DFE9"
+    coords -10.401 0.023 2.802
+    angleY -48.708
+   }
+   {
+    ID "606E0CCA8333DFFE"
+    coords -5.266 0.023 5.133
+    angleY -48.708
    }
   }
   GenericEntity : "{4EF68238FE2FC26B}Prefabs/Compositions/Misc/SubCompositions/CanvasCover_Cluttered_USSR_04.et" {

@@ -11,6 +11,28 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords 5.239 0.068 7.339
    angleY 28.59
   }
+  $grp GenericEntity : "{0A5883758E7FA8BC}Prefabs/Compositions/EventSites/Actions/GatePost.et" {
+   {
+    ID "606E0CCD6FF4A60C"
+    coords 8.81 0.077 6.917
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A613"
+    coords -0.405 0.077 -12.347
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A619"
+    coords -8.579 0.077 -2.785
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A62E"
+    coords -8.643 0.077 4.053
+    angleY 0
+   }
+  }
   $grp GenericEntity : "{0BB4B21E4F560431}Prefabs/Props/Furniture/Chest_01.et" {
    {
     ID "605D5320D4D70666"
@@ -191,6 +213,63 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    }
    coords 4.665 0 4.07
   }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCD6FF4A634"
+    coords 7.334 0.113 -7.516
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A63B"
+    coords -1.29 0.113 -12.713
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A640"
+    coords -7.484 0.113 -10.378
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A65D"
+    coords -10.152 0.113 -7.817
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A665"
+    coords -10.755 0.113 -4.198
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A66B"
+    coords -11.492 0.113 3.33
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A672"
+    coords -12.34 0.113 4.445
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A678"
+    coords -10.159 0.113 7.967
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A68B"
+    coords -9.036 0.113 9.426
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A692"
+    coords -6.41 0.113 10.35
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6A7"
+    coords -3.65 0.113 11.333
+    angleY 0
+   }
+  }
   $grp StaticModelEntity : "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et" {
    {
     ID "605D5320D4D6291C"
@@ -256,6 +335,73 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleX -89.966
     angleZ -64.191
     scale 10
+   }
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCD6FF4A607"
+    coords 2.58 0.072 10.441
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6AB"
+    coords -6.625 0.072 -4.043
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6B0"
+    coords -2.624 0.072 -10.55
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6C2"
+    coords 6.111 0.072 -8.521
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6C8"
+    coords 7.634 0.072 -7.01
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6DB"
+    coords 6.978 0.072 1.83
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6EE"
+    coords 3.642 0.072 3.167
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A6F2"
+    coords -0.502 0.072 1.662
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A703"
+    coords -4.318 0.072 9.306
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A709"
+    coords -10.058 0.072 4.976
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A71D"
+    coords 3.323 0.072 7.008
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A72C"
+    coords 1.653 0.072 8
+    angleY 0
+   }
+   {
+    ID "606E0CCD6FF4A74B"
+    coords 4.822 0.072 8.876
+    angleY 0
    }
   }
   SCR_DestructibleBuildingEntity : "{4E331E7D8DAD1EAD}Prefabs/Structures/Military/Camps/TentUSSR_01/TentUSSR_01.et" {

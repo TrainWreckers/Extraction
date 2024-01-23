@@ -1,32 +1,36 @@
-GenericEntity : "{9E31552F8018A818}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_4.et" {
+GenericEntity {
  ID "605C017C86C39F73"
  coords 65.026 0 105.905
  {
-  GenericEntity {
-   ID "606118D6046AE1C4"
+  $grp GenericEntity {
    {
-    GenericEntity {
-     ID "5706819A36EF5C4D"
-     {
-      GenericEntity {
-       ID "5706818670C4360C"
-       coords -0.003 0.056 0.015
+    ID "606118D6046AE1C4"
+    {
+     GenericEntity {
+      ID "5706819A36EF5C4D"
+      {
+       GenericEntity {
+        ID "5706818670C4360C"
+        coords -0.003 0.056 0.015
+       }
       }
      }
     }
    }
+   {
+    ID "606118D60472D383"
+    coords 2.371 0.042 -9.426
+   }
   }
-  GenericEntity {
-   ID "606118D60472D383"
-   coords 2.371 0.042 -9.426
-  }
-  SCR_TW_EventAISpawner {
-   ID "606118D604718DE5"
-   coords -1.068 0.125 7.323
-  }
-  SCR_TW_EventAISpawner {
-   ID "606118D60472D387"
-   coords -7.827 0.126 -4.345
+  $grp SCR_TW_EventAISpawner {
+   {
+    ID "606118D604718DE5"
+    coords -1.068 0.125 7.323
+   }
+   {
+    ID "606118D60472D387"
+    coords -7.827 0.126 -4.345
+   }
   }
   GenericEntity : "{03DE957D8161212B}Prefabs/Props/Civilian/Notebook_01_Open.et" {
    ID "6066DD2FFC9A5A9A"
@@ -447,6 +451,103 @@ GenericEntity : "{9E31552F8018A818}Prefabs/Compositions/EventSites/Large/TW_Larg
    }
    coords -10.501 1.056 6.706
    angleY 75.418
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCDF34C0D6D"
+    coords -8.904 0.114 8.554
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0D73"
+    coords -17.914 0.025 6.101
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0D7B"
+    coords -17.765 0.025 7.957
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0DBF"
+    coords -14.013 0.025 6.022
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0DC7"
+    coords -14.458 0.025 9.681
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0DD3"
+    coords 7.156 0.204 0.699
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0DDA"
+    coords 5.491 0.204 -0.683
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0DE0"
+    coords 5.732 0.204 1.256
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0DF6"
+    coords 6.32 0.13 7.174
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0DFB"
+    coords 8.331 0.139 6.619
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E03"
+    coords 7.619 0.029 13.559
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E0A"
+    coords 1.034 0.127 6.511
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E11"
+    coords -0.228 0.033 13.171
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E27"
+    coords 1.234 0.147 -1.363
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E2E"
+    coords -0.975 0.121 -4.117
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E30"
+    coords 0.701 0.058 -7.143
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E43"
+    coords -8.926 0.136 -1.039
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E57"
+    coords -7.871 0.027 -5.679
+    angleY 0
+   }
+   {
+    ID "606E0CCDF34C0E71"
+    coords -7.113 0.117 9.076
+    angleY 0
+   }
   }
   $grp GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
    {

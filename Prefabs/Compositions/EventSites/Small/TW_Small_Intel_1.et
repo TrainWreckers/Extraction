@@ -12,6 +12,23 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    angleX 40.031
    angleY -27.963
   }
+  $grp GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   {
+    ID "606E0CCCF356B621"
+    coords 2.788 0.61 4.388
+    angleY 0
+   }
+   {
+    ID "606E0CCCF356B635"
+    coords 2.559 0.47 -3.46
+    angleY 0
+   }
+   {
+    ID "606E0CCCF356B63A"
+    coords -3.563 0.485 2.61
+    angleY 0
+   }
+  }
   $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
    {
     ID "6060D816ED4188AE"
@@ -64,6 +81,28 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleY 55.48
    }
   }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCCF356B64B"
+    coords 1.601 -0.041 4.038
+    angleY 0
+   }
+   {
+    ID "606E0CCCF356B65C"
+    coords -3.053 -0.041 2.716
+    angleY 0
+   }
+   {
+    ID "606E0CCCF356B673"
+    coords -3.134 -0.041 -1.847
+    angleY 0
+   }
+   {
+    ID "606E0CCCF356B684"
+    coords 2.253 -0.041 -2.989
+    angleY 0
+   }
+  }
   StaticModelEntity : "{39F7EE885940DC8F}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v1.et" {
    ID "6060D816ED427EF7"
    components {
@@ -82,6 +121,18 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords 1.33 0.137 -0.244
    angleX -90
    scale 10
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCCF356B61D"
+    coords 1.631 -0.062 -1.002
+    angleY 0
+   }
+   {
+    ID "606E0CCCF356B6AD"
+    coords -0.458 -0.062 1.349
+    angleY 0
+   }
   }
   GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
    ID "6060D816ED427EEF"

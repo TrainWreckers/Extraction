@@ -2,9 +2,52 @@ GenericEntity : "{2ACD080E4555396A}Prefabs/Compositions/EventSites/Large/TW_Larg
  ID "605C017C86C39F73"
  coords 40.611 -0.116 71.153
  {
+  SCR_DestructibleBuildingEntity {
+   ID "6060D81D9F90A107"
+   placement slopelandcontact
+  }
   SCR_TW_EventAISpawner {
    ID "6060D81D9F9154D0"
    coords -3.612 0.48 -6.646
+  }
+  $grp GenericEntity : "{0A5883758E7FA8BC}Prefabs/Compositions/EventSites/Actions/GatePost.et" {
+   {
+    ID "606B17658D491E21"
+    coords 3.962 0.208 -17.767
+    angleY 0
+   }
+   {
+    ID "606B17658D491E37"
+    coords 10.317 0.208 -14.666
+    angleY 0
+   }
+   {
+    ID "606B17658D491E3B"
+    coords -5.021 0.208 5.733
+    angleY 0
+   }
+   {
+    ID "606B17658D491E43"
+    coords -1.568 0.213 15.337
+    angleY 0
+   }
+   {
+    ID "606B17658D491E48"
+    coords -14.241 0.207 9.542
+    angleY 0
+   }
+  }
+  $grp GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   {
+    ID "606B17658D491E1A"
+    coords 16.445 7.122 6.882
+    angleY -36.428
+   }
+   {
+    ID "606B17658D491F86"
+    coords 15.984 7.122 5.44
+    angleY 48.711
+   }
   }
   GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_ammo.et" {
    ID "6066EAF9D2029775"
@@ -14,6 +57,133 @@ GenericEntity : "{2ACD080E4555396A}Prefabs/Compositions/EventSites/Large/TW_Larg
    }
    coords -4.329 0.116 -12.568
    angleY 30.753
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606B17658D491E5C"
+    coords -7.424 0.137 1.519
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491E62"
+    coords -13.239 0.137 -2.765
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491E69"
+    coords -11.689 0.137 -0.639
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491E72"
+    coords -11.404 0.137 -6.809
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491E7A"
+    coords -6.355 0.137 -5.63
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491E81"
+    coords -0.795 0.137 -8.984
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491E91"
+    coords 1.066 0.137 -13.271
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491EA6"
+    coords 9.67 0.137 -12.043
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491EA8"
+    coords 12.877 0.137 -7.823
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491EAF"
+    coords 10.644 0.137 -10.175
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491EBF"
+    coords 9.574 0.137 -4.682
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491EC5"
+    coords 9.959 0.137 -6.754
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491ECB"
+    coords 12.713 0.137 -3.428
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491ED0"
+    coords 10.563 0.137 -2.574
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491EE4"
+    coords 6.113 0.137 -5.312
+    angleY -36.876
+   }
+   {
+    ID "606B17658D491EE8"
+    coords 8.685 0.137 -1.022
+    angleY 74.233
+   }
+   {
+    ID "606B17658D491EFB"
+    coords 8.868 0.137 6.403
+    angleY 28.587
+   }
+   {
+    ID "606B17658D491F00"
+    coords 6.286 0.137 5.667
+    angleY 28.587
+   }
+   {
+    ID "606B17658D491F15"
+    coords 6.681 0.137 7.678
+    angleY 28.587
+   }
+   {
+    ID "606B17658D491F1B"
+    coords 5.324 0.137 11.756
+    angleY 28.587
+   }
+   {
+    ID "606B17658D491F2D"
+    coords 0.185 0.137 8.692
+    angleY 28.587
+   }
+   {
+    ID "606B17658D491F32"
+    coords 0.668 0.137 14.01
+    angleY 28.587
+   }
+   {
+    ID "606B17658D491F42"
+    coords 4.392 0.137 9.354
+    angleY 0
+   }
+   {
+    ID "606B17658D491F55"
+    coords 4.392 0.137 9.354
+    angleY 0
+   }
+   {
+    ID "606B17658D491F66"
+    coords 4.392 0.137 9.354
+    angleY -38.941
+   }
   }
   $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_supplies.et" {
    {

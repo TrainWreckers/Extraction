@@ -146,6 +146,48 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     scale 10
    }
   }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCD4E10C853"
+    coords -1.974 0.059 7.924
+    angleY 0
+   }
+   {
+    ID "606E0CCD4E10C864"
+    coords -5.388 0.059 -8.378
+    angleY 0
+   }
+   {
+    ID "606E0CCD4E10C873"
+    coords -6.94 0.059 -0.002
+    angleY 0
+   }
+   {
+    ID "606E0CCD4E10C887"
+    coords 6.426 0.059 5.651
+    angleY 0
+   }
+   {
+    ID "606E0CCD4E10C88A"
+    coords 7.58 0.059 -1.729
+    angleY 0
+   }
+   {
+    ID "606E0CCD4E10C89C"
+    coords 0.413 0.059 -1.91
+    angleY 0
+   }
+   {
+    ID "606E0CCD4E10C8A8"
+    coords -1.948 0.059 -3.8
+    angleY 0
+   }
+   {
+    ID "606E0CCD4E10C8D5"
+    coords 0.326 0.059 5.592
+    angleY 0
+   }
+  }
   GenericEntity : "{4EF68238FE2FC26B}Prefabs/Compositions/Misc/SubCompositions/CanvasCover_Cluttered_USSR_04.et" {
    ID "606118D3438B745B"
    coords 1.163 0 -3.985

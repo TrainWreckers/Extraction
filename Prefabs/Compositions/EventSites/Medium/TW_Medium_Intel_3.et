@@ -31,6 +31,18 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleY -61.486
    }
   }
+  $grp GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   {
+    ID "606E0CCD18441005"
+    coords 0.308 0.092 6.906
+    angleY 0
+   }
+   {
+    ID "606E0CCD18441008"
+    coords -6.122 0.107 2.368
+    angleY 0
+   }
+  }
   $grp StaticModelEntity : "{1D0170B58B108CC9}Prefabs/Structures/Military/Camps/TentUS_01/Parts/TentUS_01_Floor01.et" {
    {
     ID "606205FD323AFEFE"
@@ -225,6 +237,43 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords -0.691 0.988 3.465
    angleY 40.615
   }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCD18441778"
+    coords -6.168 0.093 -2.174
+    angleY 0
+   }
+   {
+    ID "606E0CCD1844178E"
+    coords 3.696 0.096 -4.503
+    angleY 0
+   }
+   {
+    ID "606E0CCD184417BE"
+    coords 6.806 0.06 0.365
+    angleY 0
+   }
+   {
+    ID "606E0CCD184417C3"
+    coords 4.172 0.06 4.187
+    angleY 0
+   }
+   {
+    ID "606E0CCD184417D3"
+    coords -0.445 0.06 7.005
+    angleY 0
+   }
+   {
+    ID "606E0CCD184417E7"
+    coords -3.499 0.06 7.512
+    angleY 0
+   }
+   {
+    ID "606E0CCD184417F7"
+    coords -5.586 0.06 3.602
+    angleY 0
+   }
+  }
   $grp GenericEntity : "{3E4C223A92230572}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_base.et" {
    {
     ID "606205FD3230F2B8"
@@ -334,6 +383,33 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     coords -4.298 0 -8.284
     angleX -90
     scale 10
+   }
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCD1844103D"
+    coords -7.388 0.427 -0.185
+    angleY 0
+   }
+   {
+    ID "606E0CCD18441775"
+    coords -5.431 0.427 -2.478
+    angleY 0
+   }
+   {
+    ID "606E0CCD18441791"
+    coords -3.075 0.094 1.312
+    angleY 0
+   }
+   {
+    ID "606E0CCD184417A4"
+    coords 0.096 0.094 1.961
+    angleY 0
+   }
+   {
+    ID "606E0CCD184417A8"
+    coords -0.244 0.094 -0.691
+    angleY 0
    }
   }
   GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
@@ -1161,7 +1237,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    }
    {
     ID "606205FD33C633D8"
-    coords -6.16 -0 8.561
+    coords -6.16 0 8.561
    }
    {
     ID "606205FD33C6F192"

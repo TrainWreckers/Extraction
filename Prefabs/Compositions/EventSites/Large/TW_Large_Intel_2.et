@@ -128,6 +128,43 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleY 8.419
    }
   }
+  $grp GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   {
+    ID "606E0CCDA36A1155"
+    coords -7.349 -0.059 10.156
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A12B6"
+    coords -9.757 0.556 -7.151
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A12B9"
+    coords 4.54 0.593 -9.028
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A12C8"
+    coords 11.604 0.496 -4.452
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A12D8"
+    coords 12.084 0.628 2.367
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A12E8"
+    coords 7.701 0.181 10.937
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1313"
+    coords 1.816 0.135 11.475
+    angleY 0
+   }
+  }
   SCR_DestructibleBuildingEntity : "{22759E6CD7F7BFF8}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Corner_Stairs.et" {
    ID "6060D81984193C1E"
    coords -0.441 0.137 -11.583
@@ -239,6 +276,103 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    ID "6060D819841A85CA"
    coords 4.613 0.137 5.267
    angleY 88.78
+  }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCDA36A11D8"
+    coords 11.696 0.259 3.305
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A11F3"
+    coords 10.804 0.259 -4.279
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A11FB"
+    coords 1.639 0.259 4.015
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1201"
+    coords 0.369 0.259 -0.272
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A120A"
+    coords 1.678 0.259 -2.493
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1219"
+    coords 4.051 0.259 -2.995
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A122E"
+    coords 3.874 0.259 2.451
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1236"
+    coords 4.617 0.259 -7.213
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A123D"
+    coords 3.351 0.259 -9.372
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1243"
+    coords -4.732 0.259 -11.705
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A124A"
+    coords -6.679 0.259 -11.882
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1251"
+    coords -9.651 0.259 -8.781
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1267"
+    coords -9.468 0.259 -0.538
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A126E"
+    coords -9.467 0.259 -5.447
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1275"
+    coords -6.923 0.259 8.926
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1279"
+    coords -6.467 0.259 11.229
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A128B"
+    coords 5.252 0.259 11.254
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1290"
+    coords 8.284 0.259 10.544
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A12A3"
+    coords 0.61 0.259 11.556
+    angleY 0
+   }
   }
   StaticModelEntity : "{39F7EE885940DC8F}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v1.et" {
    ID "6060D8198414DBB1"
@@ -588,6 +722,78 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    ID "6060D8198419EEBB"
    coords 11.278 0.137 4.095
    angleY -86.187
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCDA36A115D"
+    coords 9.666 -0.07 2.903
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1165"
+    coords 9.023 -0.07 -2.438
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A116D"
+    coords 2.496 -0.07 2.479
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1173"
+    coords 1.84 -0.07 -1.12
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A117B"
+    coords -0.231 -0.07 -7.569
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1181"
+    coords -7.302 -0.07 -9.875
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1189"
+    coords -8.887 -0.07 -5.139
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1190"
+    coords -3.422 -0.07 -1.078
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A1198"
+    coords -6.235 -0.07 4.055
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A11AF"
+    coords -2.48 -0.07 4.537
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A11B5"
+    coords -6.142 -0.07 8.471
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A11B9"
+    coords -2.646 -0.07 11.584
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A11C0"
+    coords 2.926 -0.07 8.416
+    angleY 0
+   }
+   {
+    ID "606E0CCDA36A11D6"
+    coords 9.63 -0.07 9.037
+    angleY 0
+   }
   }
   $grp DecalEntity : "{4E2502622DA0DB28}Prefabs/Decals/Miscellaneous/Decal_Damage_Burnt_01.et" {
    {

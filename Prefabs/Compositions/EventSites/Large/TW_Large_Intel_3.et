@@ -11,6 +11,11 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords -5.612 -0.017 -1.981
    angleY 0
   }
+  GenericEntity : "{0A5883758E7FA8BC}Prefabs/Compositions/EventSites/Actions/GatePost.et" {
+   ID "606B1768C8FED418"
+   coords 18.815 -0.229 -2.367
+   angleY 0
+  }
   $grp Tree : "{1244D02EB99D4756}Prefabs/Vegetation/Tree/t_carpinus_betulus_branch_01.et" {
    {
     ID "606118D1155046B9"
@@ -265,6 +270,23 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleY -90.348
    }
   }
+  $grp GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   {
+    ID "606B1777508EEA99"
+    coords -10.188 0.128 11.698
+    angleY 0
+   }
+   {
+    ID "606B1777508EEAEF"
+    coords -0.729 0.127 -17.06
+    angleY 0
+   }
+   {
+    ID "606B1777508EEAF1"
+    coords 17.088 0.117 4.114
+    angleY 0
+   }
+  }
   $grp GenericEntity : "{19DA1F395962511D}Prefabs/Vegetation/Cuttings/Pinus_sylvestris_medium_01.et" {
    {
     ID "606118D115567E87"
@@ -429,17 +451,6 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords -3.225 0 -9.871
    angleY 53.018
   }
-  $grp GenericEntity : "{2F4E74E28B1114AB}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_ObservationPost_Soviet.et" {
-   {
-    ID "606118D1155DE4E9"
-    coords 4.309 0 -8.117
-   }
-   {
-    ID "606118D1155DE4EA"
-    coords -5.445 0 -3.051
-    angleY 92.351
-   }
-  }
   StaticModelEntity : "{335F55E7E294F9FC}Prefabs/Compositions/Misc/SubCompositions/Furniture/Cabinet_Books_USSR_01.et" {
    ID "606118D11552F90D"
    coords -5.493 0 -1.377
@@ -455,6 +466,38 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    angleX 27.33
    angleY -60.405
    angleZ -38.545
+  }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606B1777508EEAB1"
+    coords -15.344 -0.589 -3.604
+    angleY 0
+   }
+   {
+    ID "606B1777508EEAC4"
+    coords -17.244 -0.701 -6.34
+    angleY 0
+   }
+   {
+    ID "606B1777508EEADB"
+    coords -13.909 -0.706 -8.338
+    angleY 0
+   }
+   {
+    ID "606B1777508EEB0F"
+    coords 4.021 -0.617 14.524
+    angleY 0
+   }
+   {
+    ID "606B1777508EEB1D"
+    coords -0.685 -0.545 14.399
+    angleY 0
+   }
+   {
+    ID "606B1777508EEB2C"
+    coords -4.318 -0.09 12.555
+    angleY 0
+   }
   }
   Tree : "{3C1D0706AC587223}Prefabs/Vegetation/Tree/t_carpinus_betulus_3f.et" {
    ID "606118D11553FBE3"
@@ -935,6 +978,38 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleY -53.086
    }
   }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606B1777508EEA95"
+    coords 5.967 -0.285 2.212
+    angleY 0
+   }
+   {
+    ID "606B1777508EEAAD"
+    coords -14.352 -0.382 -5.796
+    angleY 0
+   }
+   {
+    ID "606B1777508EEB38"
+    coords 0.633 -0.285 -3.181
+    angleY 0
+   }
+   {
+    ID "606B1777508EEB55"
+    coords -3.974 -0.285 -3.088
+    angleY 0
+   }
+   {
+    ID "606B1777508EEB66"
+    coords 4.65 -0.285 -7.561
+    angleY 0
+   }
+   {
+    ID "606B1777508EEB83"
+    coords 0.582 -0.285 6.602
+    angleY 0
+   }
+  }
   StaticModelEntity : "{52D00BCAC3D201B9}Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_Garbage_US_01.et" {
    ID "606118D11552F9F3"
    coords 1.888 0 -3.159
@@ -1172,11 +1247,6 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
       ID "5CB0D9919CD6F6BC"
       coords 4.394 0.1 -0.726
       angleY -36.936
-     }
-     GenericEntity {
-      ID "5CD2AC4CB8F41923"
-      coords 0.045 0.146 0.435
-      angleY -95.529
      }
      StaticModelEntity {
       ID "5CB0D9919CD6021B"

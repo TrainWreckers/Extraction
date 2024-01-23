@@ -32,6 +32,18 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords 4.623 0 -3.189
    angleY -30.822
   }
+  $grp GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   {
+    ID "606E0CCCD20F569D"
+    coords -1.172 -0.499 -4.818
+    angleY 0
+   }
+   {
+    ID "606E0CCCD20F56B7"
+    coords 1.575 -0.382 3.662
+    angleY 0
+   }
+  }
   $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
    {
     ID "606118CE8754680D"
@@ -74,6 +86,38 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     ID "606118CE8755507E"
     coords -5.382 0 -3.045
     angleY -115.349
+   }
+  }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCCD20F5641"
+    coords 1.29 -0.416 2.765
+    angleY 0
+   }
+   {
+    ID "606E0CCCD20F5657"
+    coords -3.496 -0.416 -1.46
+    angleY 0
+   }
+   {
+    ID "606E0CCCD20F5659"
+    coords -3.945 -0.416 2.028
+    angleY 0
+   }
+   {
+    ID "606E0CCCD20F566D"
+    coords -1.39 -0.416 -4.352
+    angleY 0
+   }
+   {
+    ID "606E0CCCD20F567F"
+    coords 2.498 -0.561 3.37
+    angleY 0
+   }
+   {
+    ID "606E0CCCD20F5680"
+    coords -0.155 -0.561 3.861
+    angleY 0
    }
   }
   GenericEntity : "{3B2D8CB93F906062}Prefabs/Compositions/Misc/SubCompositions/Sandbag_round_Cluttered_USSR_01.et" {
@@ -124,6 +168,18 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleX -89.98
     angleZ 117.299
     scale 10
+   }
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCCD20F5630"
+    coords 1.478 -0.661 1.052
+    angleY 0
+   }
+   {
+    ID "606E0CCCD20F56D4"
+    coords -0.625 -0.661 -1.306
+    angleY 0
    }
   }
   GenericEntity : "{8C7C140EEB0ECF36}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Weapon_01_USSR.et" {

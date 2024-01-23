@@ -55,6 +55,23 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    angleX -90
    scale 4
   }
+  $grp GenericEntity : "{194CC8881DE0D515}Prefabs/Compositions/EventSites/Actions/ObservationPost.et" {
+   {
+    ID "606E0CCA31260801"
+    coords -4.021 0.324 6.912
+    angleY 0
+   }
+   {
+    ID "606E0CCA31260864"
+    coords -9.868 -0.114 -14.675
+    angleY 0
+   }
+   {
+    ID "606E0CCA31260899"
+    coords 12.684 0.205 -10.639
+    angleY 0
+   }
+  }
   GenericEntity : "{19A3C48FC2665A3F}Prefabs/Props/Construction/GravelPile_01/GravelPile_01_large.et" {
    ID "606118CCB6104C57"
    components {
@@ -168,6 +185,28 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    }
    coords -3.748 0 -3.182
    angleY -20.498
+  }
+  $grp GenericEntity : "{38EBA476C0910B5B}Prefabs/Compositions/EventSites/Actions/CoverPost.et" {
+   {
+    ID "606E0CCA31260809"
+    coords -1.886 -0.377 5.252
+    angleY 0
+   }
+   {
+    ID "606E0CCA31260810"
+    coords -6.221 -0.324 6.246
+    angleY 0
+   }
+   {
+    ID "606E0CCA312608C5"
+    coords 13.27 0.075 -9.835
+    angleY 20.842
+   }
+   {
+    ID "606E0CCA31260FEA"
+    coords 15.382 0.075 -5.962
+    angleY 20.842
+   }
   }
   StaticModelEntity : "{39F7EE885940DC8F}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v1.et" {
    ID "606118CCB62FFFF2"
@@ -400,6 +439,58 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     coords 5.276 0 0
     angleX -90
     scale 10
+   }
+  }
+  $grp GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   {
+    ID "606E0CCA31260827"
+    coords -4.288 -0.068 4.023
+    angleY 0
+   }
+   {
+    ID "606E0CCA3126082C"
+    coords -10.029 -0.068 3.779
+    angleY 0
+   }
+   {
+    ID "606E0CCA31260832"
+    coords -5.166 -0.068 1.888
+    angleY 0
+   }
+   {
+    ID "606E0CCA3126083A"
+    coords -5.594 -0.068 -1.793
+    angleY 0
+   }
+   {
+    ID "606E0CCA3126084E"
+    coords -12.239 -0.068 -7.851
+    angleY 0
+   }
+   {
+    ID "606E0CCA31260851"
+    coords -6.952 -0.068 -13.831
+    angleY 0
+   }
+   {
+    ID "606E0CCA31260877"
+    coords -1.66 0.169 -5.997
+    angleY 0
+   }
+   {
+    ID "606E0CCA3126087A"
+    coords -2.218 0.333 -15.771
+    angleY 0
+   }
+   {
+    ID "606E0CCA3126088C"
+    coords 12.626 -0.16 -7.193
+    angleY 0
+   }
+   {
+    ID "606E0CCA31260FF9"
+    coords -1.266 0.144 -4.561
+    angleY 0
    }
   }
   DecalEntity : "{4E2502622DA0DB28}Prefabs/Decals/Miscellaneous/Decal_Damage_Burnt_01.et" {
