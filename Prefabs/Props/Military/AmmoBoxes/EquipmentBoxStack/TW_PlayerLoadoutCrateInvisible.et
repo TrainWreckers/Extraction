@@ -1,0 +1,61 @@
+GenericEntity : "{86EB7E536E8A7206}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Enabled 0
+   Object ""
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Enabled 0
+   SimState None
+   ResponseIndex "NoCollision"
+   ModelGeometry 0
+  }
+  SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{58D2F2C60843B78D}" {
+     m_ModelPrefabs {
+      "{794B469B4F5E42AB}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V6_dst/EquipmentBoxStack_01_V6_dst_02.xob" "{0E412E13BBFCADDB}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V6_dst/EquipmentBoxStack_01_V6_dst_03.xob"
+     }
+    }
+   }
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{58D2F2C60B6E95FA}" {
+     m_PhaseModel "{E055FF0252B9733B}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V6_dst/EquipmentBoxStack_01_V6_dst_01.xob"
+     m_PhaseDestroySpawnObjects {
+      SCR_DebrisSpawnable "{58D2F2C6D54B997F}" {
+       m_vOffsetPosition 0 -0.5 0
+       m_ModelPrefabs {
+        "{93EFECB868140B8E}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V1_dst/EquipmentBoxStack_01_V1_dst_02.xob" "{E4E584309CB6E4FE}Assets/Props/Military/AmmoBox/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V1_dst/EquipmentBoxStack_01_V1_dst_03.xob"
+       }
+      }
+     }
+    }
+   }
+  }
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_TW_PlayerCrateComponent "{607733ADB3CF782C}" {
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 1000000
+   m_fMaxWeight 1000000
+  }
+  SCR_InventoryStorageManagerComponent "{607733ADB3CF782F}" {
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+  }
+  RplComponent "{5476B36C54387F41}" {
+   Enabled 1
+   "Rpl State Override" Runtime
+   AutoHierarchy 1
+  }
+  Hierarchy "{607733ADB3CF7813}" {
+  }
+ }
+ coords -3.089 -0.06 -3.523
+ angleY -95.705
+}

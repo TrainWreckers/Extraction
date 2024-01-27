@@ -60,6 +60,7 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 			Print(string.Format("TrainWreck: Failed to save %1's crate to %2", playerName, filename), LogLevel.ERROR);
 			return;
 		}
+				
 	}
 	
 	void onPlayerNameChange()

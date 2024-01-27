@@ -29,6 +29,8 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    }
   }
   SCR_TW_ExtractionHandler "{5ECF3441B37ADCAE}" {
+   m_EnableLootSpawns 1
+   m_InvisibleLootCratePrefab "{FF9846A7C3FFC487}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrateInvisible.et"
    catalogConfigs {
     SCR_EntityCatalogMultiList "{606838461AB80BF4}" : "{E908001749419691}Configs/EntityCatalog/FIA/FIA_InventoryItems.conf" {
     }
@@ -38,7 +40,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
     }
    }
    extractionTimePeriod 10
-   m_ExtractionTaskPrefab "{7259F0B101761BD5}Prefabs/Tasks/MoveTask.et"
+   m_ExtractionTaskPrefab "{8AED8D30B5040F93}Prefabs/Tasks/TWTask.et"
    m_ExtractionTaskDescriptionFormat "We'll pick you up at the following grid: (%1, %2)"
   }
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
@@ -73,19 +75,6 @@ SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskMan
 }
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
  coords 116.216 1 126.552
-}
-SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
- coords 64.119 1 168.108
- m_EventPrefabs {
-  "{A3057017F574212F}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_3.et"
- }
- m_SpawnChance 1
- {
-  StaticModelEntity {
-   ID "605C0176B4543B3B"
-   coords 0 0 0
-  }
- }
 }
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
  coords 114.825 1 106.67

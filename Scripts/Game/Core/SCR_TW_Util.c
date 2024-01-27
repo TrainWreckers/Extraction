@@ -527,52 +527,44 @@ class SCR_TW_Util
 		return wp;
 	}	
 	
-	static bool IsMagazineNotFull(MagazineComponent magazine)
+	static string GetPlayerLootFileName(int playerId = -1)
 	{
-		return magazine.GetAmmoCount() < magazine.GetMaxAmmoCount();
+		if(playerId < 0)
+			playerId = TW_Global.GetPlayerId();
+		
+		return GetGame().GetPlayerManager().GetPlayerName(playerId) + ".json";
 	}
 	
-	static bool CharacterMagCount(MagazineComponent currentMag, SCR_InventoryStorageManagerComponent storageManager)
+	static bool PlayerHasLootFile(int playerId = -1)
 	{
-		SCR_MagazinePredicate magPredicate = new SCR_MagazinePredicate();
-		BaseMagazineWell magWell = currentMag.GetMagazineWell();
+		string filename = GetPlayerLootFileName(playerId);
 		
-		magPredicate.magWellType = magWell.Type();
+		SCR_JsonLoadContext context = new SCR_JsonLoadContext();
 		
-		array<IEntity> magEntities = new array<IEntity>();
-		int magCount = storageManager.FindItems(magEntities, magPredicate);
-		return magCount > 1;
+		return context.LoadFromFile(filename);
 	}
 	
-	static array<MagazineComponent> SortedMagazines(notnull array<IEntity> magEntities)
+	static map<string, int> DeserializeLootJson(string jsonContents)
 	{
-		array<MagazineComponent> mags = new array<MagazineComponent>();		
-		array<int> tempArray = new array<int>();
+		MenuManager menuManager = GetGame().GetMenuManager();
+		SCR_InventoryMenuUI inventoryMenu = SCR_InventoryMenuUI.Cast(menuManager.OpenMenu(ChimeraMenuPreset.Inventory20Menu));
 		
-		foreach(IEntity item : magEntities)
+		SCR_JsonLoadContext context = new SCR_JsonLoadContext();
+		
+		if(!context.ImportFromString(jsonContents))
 		{
-			MagazineComponent mag = MagazineComponent.Cast(item.FindComponent(MagazineComponent));
-			int ammoCount = mag.GetAmmoCount();
-			
-			if(tempArray.Contains(ammoCount))
-				continue;
-			
-			tempArray.Insert(mag.GetAmmoCount());
+			Print(string.Format("TrainWreck: Player failed to load jsonContents %1", jsonContents), LogLevel.ERROR);
+			return null;
 		}
 		
-		tempArray.Sort();
-		
-		foreach(int count : tempArray)
+		ref map<string, int> items;		
+		if(!context.ReadValue("items", items))
 		{
-			foreach(IEntity item : magEntities)
-			{
-				MagazineComponent mag = MagazineComponent.Cast(item.FindComponent(MagazineComponent));
-				if(mag.GetAmmoCount() == count)
-					mags.Insert(mag);
-			}
+			Print(string.Format("TrainWreck: Player failed to load items from jsonContents: %1", jsonContents), LogLevel.ERROR);
+			return null;
 		}
 		
-		return mags;
+		return items;
 	}
 	
 	static void ResetInventoryMenu()

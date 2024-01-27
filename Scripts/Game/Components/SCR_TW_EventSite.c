@@ -33,6 +33,11 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 		return Math.RandomFloat01() <= m_SpawnChance;
 	}
 	
+	void SetVisited(bool value)
+	{
+		m_HasBeenVisited = value;
+	}
+	
 	//! Is something loaded on site.
 	bool HasBeenLoaded() { return m_SpawnedEntity != null; }
 	
@@ -64,7 +69,7 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 		if(GetOccupant())
 			SCR_EntityHelper.DeleteEntityAndChildren(GetOccupant());
 		
-		SetOccupant(m_SpawnedEntity); // should be null at this point
+		SetOccupant(null); // should be null at this point
 	}
 	
 	void SpawnSite()
@@ -182,6 +187,14 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 	//! Triggers visited site to be true. 
 	private void OnEntered()
 	{
+		Print("TrainWreck: I have been entered");
 		m_HasBeenVisited = true;
+		
+		if(!Replication.IsServer())
+		{
+			SCR_PlayerController controller = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+			if(controller)
+				controller.MarkEventSiteAsVisited(this);
+		}
 	}
 };

@@ -132,7 +132,7 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 		}
 		
 		controller.CallForExtraction(calledType);		
-		Close();
+		GetGame().GetMenuManager().CloseAllMenus();
 	}
 	
 };

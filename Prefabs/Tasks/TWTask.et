@@ -1,0 +1,17 @@
+SCR_TriggerTask : "{830711F178046FA7}Prefabs/Tasks/BaseTriggerTask.et" {
+ ID "55D072570E7E8AB8"
+ components {
+  SCR_MapDescriptorComponent "{55D072570E7E8AB7}" {
+   VisibleOnMap 0
+  }
+ }
+ m_sName "#AR-Editor_MoveTask_1_Name"
+ m_sDescription "#AR-Editor_MoveTask_1_Description"
+ m_bNotifyAssignment 1
+ {
+  SCR_FactionPlayerTriggerEntity {
+   ID "55D072570E7E8ABF"
+   SphereRadius 5
+  }
+ }
+}

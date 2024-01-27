@@ -54,9 +54,15 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	int GetCatalogCount() { return globalItems.Count(); }
 	
+	[Attribute("0", UIWidgets.CheckBox, category: "Systems", desc: "Larger the map, longer it takes to start scenario. May want to disable during rapid testing of a non-loot item")]
+	private bool m_EnableLootSpawns;
+	
 	[Attribute("{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et", UIWidgets.ResourcePickerThumbnail, category: "Player Spawn", desc: "Player loadout crate prefab", params: "et")]
 	private ResourceName playerCratePrefab;
-		
+	
+	[Attribute("{FF9846A7C3FFC487}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrateInvisible.et", UIWidgets.ResourcePickerThumbnail, category: "Player Spawn", desc: "Invisible crate used for managing player loot", params: "et")]
+	private ResourceName m_InvisibleLootCratePrefab;
+	
 	[Attribute("{5A52168A894DDB7E}Prefabs/Compositions/Slotted/SlotFlatSmall/TW_US_PlayerHub_Extraction.et", UIWidgets.ResourcePickerThumbnail, params: "et", category: "Player Spawn", desc: "Composition to spawn as a player starting area")]
 	private ResourceName playerHubPrefab;
 	
@@ -91,6 +97,11 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	private string m_ExtractionTaskDescriptionFormat;
 	
 	ResourceName GetExtractionTaskPrefab() { return m_ExtractionTaskPrefab; }
+	ResourceName GetPlayerCratePrefab() { return playerCratePrefab; }
+	
+	//! Prefab which has all container related components needed to perform storage operations
+	ResourceName GetPlaceholderCratePrefab() { return m_InvisibleLootCratePrefab; }
+	
 	string GetExtractionDescription(vector position)
 	{
 		if(m_ExtractionTaskDescriptionFormat == string.Empty)
@@ -194,62 +205,85 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		SaveAndDeleteCrate(playerId);
 	}
 	
-	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
+	//------------------------------------------------------------------------------------------------
+	override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
 	{
-		super.OnPlayerSpawned(playerId, controlledEntity);
+		super.OnPlayerSpawnFinalize_S(requestComponent, handlerComponent, data, entity);
 		
 		if(!TW_Global.IsServer(GetOwner()))
 			return;
 		
 		playersHaveSpawned = true;
 		
-		SpawnPlayerCrate(playerId, controlledEntity);
-	}
-	
-	private void SpawnPlayerCrate(int playerId, IEntity controlledEntity)
-	{
-		vector forwardDirection = SCR_TW_Util.GetForwardVec(controlledEntity) * (playerId * 3.5);
-		vector position = controlledEntity.GetOrigin() + forwardDirection;
-		
-		Resource crateResource = Resource.Load(playerCratePrefab);
-		
-		if(!crateResource.IsValid())
+		if(!SCR_TW_Util.PlayerHasLootFile(requestComponent.GetPlayerId()))
 		{
-			Debug.Error("TrainWreck: Invalid crate prefab");
+			Print(string.Format("TrainWreck: Player does not have a loot file. Ignoring showing loot menu: %1", requestComponent.GetPlayerId()));
 			return;
 		}
 		
-		EntitySpawnParams params = EntitySpawnParams();
-		controlledEntity.GetTransform(params.Transform);				
+		SCR_PlayerController controller = SCR_PlayerController.Cast(requestComponent.GetPlayerController());
+		if(!controller)
+		{
+			Print(string.Format("TrainWreck: Invalid player controller for opening loot menu: %1", requestComponent.GetPlayerId()), LogLevel.ERROR);
+			return;
+		}
 		
-		position[1] = GetGame().GetWorld().GetSurfaceY(position[0], position[2]);
-		params.Transform[3] = position;
+		SCR_TW_PlayerCrateComponent playerCrate = SpawnPlayerCrate(requestComponent, entity);
 		
-		if(crates.Contains(playerId))
+		if(!playerCrate)
+		{
+			Print(string.Format("TrainWreck: Failed to spawn loot crate for player %1", requestComponent.GetPlayerId()), LogLevel.ERROR);
+			return;
+		}
+		
+		RplComponent rplComp = TW<RplComponent>.Find(playerCrate.GetOwner());
+		RplId rplId = rplComp.Id();
+
+		controller.OnPlayerSpawnedEvent(rplId);
+	}
+	
+	private SCR_TW_PlayerCrateComponent SpawnPlayerCrate(SCR_SpawnRequestComponent requestComponent, IEntity playerEntity)
+	{
+		int playerId = requestComponent.GetPlayerId();
+		
+		// Lets spawn the player crate at game mode position
+		EntitySpawnParams crateSpawnParams = EntitySpawnParams();
+		playerEntity.GetTransform(crateSpawnParams.Transform);
+		
+		Resource crateResource = Resource.Load(GetPlaceholderCratePrefab());
+		if(!crateResource.IsValid())
+		{
+			Print(string.Format("TrainWreck: Invalid placeholder crate resource: %1", GetPlaceholderCratePrefab()), LogLevel.ERROR);
+			return null;
+		}
+		
+		if(crates.Contains(requestComponent.GetPlayerId()))
 		{
 			SCR_EntityHelper.DeleteEntityAndChildren(crates.Get(playerId).GetOwner());
 			crates.Remove(playerId);
 		}
 		
-		IEntity crateEntity = GetGame().SpawnEntityPrefab(crateResource, GetGame().GetWorld(), params);
+		IEntity crateEntity = GetGame().SpawnEntityPrefab(crateResource, GetGame().GetWorld(), crateSpawnParams);
 		
 		if(!crateEntity)
 		{
 			Debug.Error("TrainWreck: Crate couldn't spawn");
-			return;
+			return null;
 		}
 		
-		SCR_TW_PlayerCrateComponent crate = SCR_TW_PlayerCrateComponent.Cast(crateEntity.FindComponent(SCR_TW_PlayerCrateComponent));
+		SCR_TW_PlayerCrateComponent crate = TW<SCR_TW_PlayerCrateComponent>.Find(crateEntity);
 		
 		if(!crate)
 		{
 			Debug.Error("TrainWreck: Could not locate SCR_TW_PlayerCrateComponent");
-			return;
+			return null;
 		}
 		
-		crate.InitializeForPlayer(playerId);		
-		crates.Insert(playerId, crate);
-	}
+		crate.InitializeForPlayer(requestComponent.GetPlayerId());
+		crates.Insert(requestComponent.GetPlayerId(), crate);
+		
+		return crate;
+	}	
 	
 	//------------------------------------------------------------------------------------------------
 	//! RPC Call to server to ensure only the server updates/saves inventory 
@@ -296,7 +330,9 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(CheckPlayerWipe, SCR_TW_Util.FromSecondsToMilliseconds(15), true);
 		
 		TW_LootManager.InitializeLootTable();
-		TW_LootManager.SpawnLoot();
+		
+		if(m_EnableLootSpawns)			
+			TW_LootManager.SpawnLoot();
 	}
 	
 	void CallExtraction(TW_ExtractionType type)

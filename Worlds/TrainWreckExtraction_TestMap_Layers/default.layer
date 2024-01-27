@@ -20,6 +20,19 @@ GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpa
  coords 210.245 1 40.435
  angleY 0
 }
+SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
+ coords 34.22 1 222.011
+ m_EventPrefabs {
+  "{A3057017F574212F}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_3.et"
+ }
+ m_SpawnChance 1
+ {
+  StaticModelEntity {
+   ID "605C0176B4543B3B"
+   coords 0 0 0
+  }
+ }
+}
 GenericEntity : "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" {
  coords 239.43 1 30.963
 }

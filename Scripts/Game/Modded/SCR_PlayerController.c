@@ -1,5 +1,107 @@
 modded class SCR_PlayerController
 {
+	bool m_isLocked = false;
+	
+	void OnPlayerSpawnedEvent(RplId playerCrateId)
+	{
+		if(!playerCrateId.IsValid())
+		{
+			Debug.Error(string.Format("Invalid crate ID. IsServer: %1. IsClient: %2", 
+			    Replication.IsServer(),
+				Replication.IsClient())
+			);
+			return;
+		}
+		
+		Rpc(RpcAsk_Owner_OpenLootManager, playerCrateId);
+	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcAsk_Owner_OpenLootManager(RplId crateId)
+	{		
+		CheckForReplicatedItem(crateId);		
+	}
+	
+	protected void OpenLootManager_Owner(IEntity crate)
+	{		
+		SCR_TW_PlayerCrateComponent crateComp = SCR_TW_PlayerCrateComponent.Cast(crate.FindComponent(SCR_TW_PlayerCrateComponent));
+		
+		if(!crateComp)
+		{
+			Debug.Error("TrainWreck: No SCR_TW_PlayerCrateComponent found");
+			return;
+		}
+		
+		MenuBase menu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.Inventory20Menu);
+		
+		SCR_InventoryMenuUI inventory = SCR_InventoryMenuUI.Cast(menu);
+		inventory.SetOpenStorageToLootCrateContents(crateComp);
+	}
+	
+	protected void CheckForReplicatedItem(RplId id, int currentAttempt = 0, int maxAttempts = 100)
+	{
+		if(currentAttempt >= maxAttempts)
+		{
+			Print(string.Format("TrainWreck: Failed to find replicated item with Id: %1. Attempt(%2/%3)", id, currentAttempt, maxAttempts), LogLevel.ERROR);
+			return;
+		}
+		
+		currentAttempt++;
+		
+		if(!id.IsValid())
+		{
+			GetGame().GetCallqueue().CallLater(CheckForReplicatedItem, 100, false, id, currentAttempt, maxAttempts);
+			return;
+		}
+		
+		RplComponent comp = RplComponent.Cast(Replication.FindItem(id));
+		
+		if(!comp)
+		{
+			GetGame().GetCallqueue().CallLater(CheckForReplicatedItem, 100, false, id, currentAttempt, maxAttempts);
+			return;
+		}
+		
+		IEntity entity = comp.GetEntity();
+		if(!entity)
+		{
+			GetGame().GetCallqueue().CallLater(CheckForReplicatedItem, 100, false, id, currentAttempt, maxAttempts);
+			return;
+		}
+		
+		OpenLootManager_Owner(entity);
+	}
+	
+	void OnLootManagerClosed()
+	{
+		Rpc(RpcAsk_Authority_OnLootManagerClosed, GetPlayerId());
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_Authority_OnLootManagerClosed(int playerId)
+	{
+		SCR_TW_ExtractionHandler.GetInstance().SaveAndDeleteCrate(playerId);
+	}
+	
+	void MarkEventSiteAsVisited(SCR_TW_EventSite site)
+	{
+		Rpc(RpcAsk_MarkSiteAsVisited, Replication.FindId(site), true);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_MarkSiteAsVisited(RplId siteId, bool value)
+	{
+		SCR_TW_EventSite site = SCR_TW_EventSite.Cast(Replication.FindItem(siteId));
+		
+		if(!site)
+		{
+			PrintFormat("TrainWreck: Invalid Event Site Replication Id: %1", siteId);
+			return;
+		}
+		
+		site.SetVisited(value);
+	}
+	
 	void CallForExtraction(TW_ExtractionType type)
 	{
 		if(!TW_Global.IsServer(this))
