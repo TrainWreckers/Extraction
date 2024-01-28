@@ -1,7 +1,41 @@
 SCR_DestructibleBuildingEntity : "{84DEA01FFFE606FE}Prefabs/Structures/Military/Bunkers/AirfieldBunker_E_01/AirfieldBunker_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C558C30C521"
+    coords -1.279 -0.999 -2.689
+   }
+   {
+    ID "60794C558C30C547"
+    coords -9.053 -1.02 4.077
+   }
+   {
+    ID "60794C558C30C56A"
+    coords -4.902 -1.02 6.493
+   }
+   {
+    ID "60794C558C30C57A"
+    coords -9.571 -1.018 6.943
+   }
+   {
+    ID "60794C558C30C58B"
+    coords 8.854 -1.02 4.258
+   }
+   {
+    ID "60794C558C30C59D"
+    coords 6.215 -1.02 4.078
+   }
+   {
+    ID "60794C558C30C5AB"
+    coords -1.157 -1 6.833
+   }
+   {
+    ID "60794C558C30C5BC"
+    coords 9.106 -1.02 6.766
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B175FAB30D"
     coords 0.528 -1 -2.877
@@ -12,7 +46,7 @@ SCR_DestructibleBuildingEntity : "{84DEA01FFFE606FE}Prefabs/Structures/Military/
    }
    {
     ID "5EC371B175FAB343"
-    coords -1.112 -0 13.127
+    coords -1.112 0 13.127
    }
    {
     ID "5EC371B175FAB351"

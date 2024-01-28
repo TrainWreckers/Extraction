@@ -1,7 +1,37 @@
 SCR_DestructibleBuildingEntity : "{63F42771BBDF3915}Prefabs/Structures/Industrial/Houses/Sawmill_E_01/Sawmill_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C48EFF6F3BD"
+    coords 6.615 0.025 13.935
+   }
+   {
+    ID "60794C48EFF6F3C3"
+    coords -6.552 0.054 5.665
+   }
+   {
+    ID "60794C48EFF6F3CD"
+    coords -5.812 0.038 -6.321
+   }
+   {
+    ID "60794C48EFF6F3D9"
+    coords -5.553 0.021 14.324
+   }
+   {
+    ID "60794C48EFF6F3E4"
+    coords 2.452 0.041 -6.874
+   }
+   {
+    ID "60794C48EFF6F3EC"
+    coords -3.734 0.025 -13.565
+   }
+   {
+    ID "60794C48EFF6F3FA"
+    coords 1.694 0.032 2.484
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B493E9ECFF"
     coords 0.298 -0.39 16.906

@@ -1,6 +1,56 @@
 SCR_DestructibleBuildingEntity : "{E35EA41864A3B0ED}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_Base.et" {
  ID "51DC7DF1903152C8"
  {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C48F7088804"
+    coords -6.377 0.05 4.819
+   }
+   {
+    ID "60794C48F7088829"
+    coords -0.118 0.05 -4.956
+   }
+   {
+    ID "60794C48F7088833"
+    coords -3.642 0.05 4.953
+   }
+   {
+    ID "60794C48F708883F"
+    coords 1.517 0.05 5.308
+   }
+   {
+    ID "60794C48F7088845"
+    coords 5.17 0.05 5.294
+   }
+   {
+    ID "60794C48F7088853"
+    coords 9.791 0.05 3.518
+   }
+   {
+    ID "60794C48F7088869"
+    coords -1.802 1.119 1.298
+   }
+   {
+    ID "60794C48F7088870"
+    coords 13.102 0.05 4.714
+   }
+   {
+    ID "60794C48F708887B"
+    coords 2.356 0.05 1.111
+   }
+   {
+    ID "60794C48F7088895"
+    coords -4.537 4.033 0.382
+   }
+   {
+    ID "60794C48F708889D"
+    coords -15.833 0.05 -5.823
+   }
+   {
+    ID "60794C48F70889E4"
+    coords -9.684 0.05 -5.848
+   }
+  }
   $grp GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    {
     ID "5ED715F01291CF77"

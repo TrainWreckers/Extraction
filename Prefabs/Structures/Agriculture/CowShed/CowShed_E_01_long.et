@@ -1,7 +1,74 @@
 SCR_DestructibleBuildingEntity : "{5478F1635999CE3B}Prefabs/Structures/Agriculture/CowShed/CowShed_E_01_long_Base.et" {
  ID "6D222784C250C790"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
+   ID "60794C4412DF4072"
+   coords 5.939 0 -26.019
+   angleY 89.689
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4412DF4002"
+    coords -3.967 0 -3.59
+   }
+   {
+    ID "60794C4412DF400C"
+    coords 6.785 0 22.26
+   }
+   {
+    ID "60794C4412DF401A"
+    coords -7.052 0 -10.49
+   }
+   {
+    ID "60794C4412DF402A"
+    coords -5.871 0 23.213
+   }
+   {
+    ID "60794C4412DF4034"
+    coords -4.316 0 17.565
+   }
+   {
+    ID "60794C4412DF403E"
+    coords -6.629 0 20.661
+   }
+   {
+    ID "60794C4412DF4044"
+    coords 5.171 0 -41.6
+   }
+   {
+    ID "60794C4412DF4052"
+    coords 3.102 0 24.048
+   }
+   {
+    ID "60794C4412DF405A"
+    coords 7.962 0 13.421
+   }
+   {
+    ID "60794C4412DF41E3"
+    coords 8.405 0 -29.663
+   }
+   {
+    ID "60794C4412DF41EC"
+    coords 2.408 -0.25 -22.709
+   }
+   {
+    ID "60794C4412DF41F8"
+    coords 8.233 0 -41.426
+   }
+  }
+  $grp GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
+   {
+    ID "60794C4412DF41AA"
+    coords 0.552 0 19.873
+    angleY 0
+   }
+   {
+    ID "60794C4412DF41C5"
+    coords 0.824 -0.25 -3.901
+    angleY -179.907
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3034210B11F9C"
     coords -5.248 0 21.663

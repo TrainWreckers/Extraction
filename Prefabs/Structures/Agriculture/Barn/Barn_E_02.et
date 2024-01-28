@@ -1,9 +1,14 @@
 SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
+   ID "60794C459321AE55"
+   coords -1.919 1.398 0.379
+   angleY -178.903
+  }
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    ID "5EC2FDC74934900A"
-   coords -1.767 0.94 1.924
+   coords 2.518 0.94 1.924
   }
  }
 }

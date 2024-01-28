@@ -1,7 +1,49 @@
 SCR_DestructibleBuildingEntity : "{76D7178C2C1F92A9}Prefabs/Structures/Services/Government/MunicipalOffice_E_01/MunicipalOffice_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C56AED68D7D"
+    coords -1.191 0.2 -5.947
+   }
+   {
+    ID "60794C56AED68D86"
+    coords -9.627 3.997 3.977
+   }
+   {
+    ID "60794C56AED68D9A"
+    coords -9.401 0.2 -0.625
+   }
+   {
+    ID "60794C56AED68DA0"
+    coords 0.017 3.997 6.428
+   }
+   {
+    ID "60794C56AED68DAB"
+    coords 9.535 3.997 5.029
+   }
+   {
+    ID "60794C56AED68DB3"
+    coords -3.291 3.997 6.532
+   }
+   {
+    ID "60794C56AED68DC7"
+    coords -9.157 3.997 -0.582
+   }
+   {
+    ID "60794C56AED68DCF"
+    coords -2.781 0.2 -5.949
+   }
+   {
+    ID "60794C56AED68DD3"
+    coords 3.62 2.098 -6.209
+   }
+   {
+    ID "60794C56AED68DDE"
+    coords -2.718 3.997 -6.4
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC4C7743633CA08"
     coords -4.822 3.997 6.299

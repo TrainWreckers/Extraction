@@ -1,7 +1,41 @@
 SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4A66F4D74B"
+    coords 1.051 19.554 -0.46
+   }
+   {
+    ID "60794C4A66F4D76B"
+    coords 0.931 19.392 -2.52
+   }
+   {
+    ID "60794C4A66F4D782"
+    coords -1.009 8.537 -0.544
+   }
+   {
+    ID "60794C4A66F4D78C"
+    coords 1.558 2.837 -0.228
+   }
+   {
+    ID "60794C4A66F4D798"
+    coords 0.767 14.237 0.953
+   }
+   {
+    ID "60794C4A66F4D7A3"
+    coords -0.898 0.748 1.144
+   }
+   {
+    ID "60794C4A66F4D7AC"
+    coords 2.299 0.748 -2.446
+   }
+   {
+    ID "60794C4A66F4D7B6"
+    coords 1.279 0.748 0.74
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B63B3CE3A8"
     coords -0.423 19.392 2.48

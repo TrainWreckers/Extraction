@@ -1,6 +1,56 @@
 SCR_DestructibleBuildingEntity : "{8FE02C29CCA9942D}Prefabs/Structures/Services/Fire/FireStation_E_01/FireStation_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C560E3ED01E"
+    coords 0.994 0.05 1.697
+   }
+   {
+    ID "60794C560E3ED02A"
+    coords -1.482 0.05 4.999
+   }
+   {
+    ID "60794C560E3ED039"
+    coords 0.788 0.05 6.097
+   }
+   {
+    ID "60794C560E3ED04C"
+    coords -2.901 0.05 -1.334
+   }
+   {
+    ID "60794C560E3ED054"
+    coords -0.06 3.25 6.611
+   }
+   {
+    ID "60794C560E3ED05E"
+    coords -0.113 6.2 6.498
+   }
+   {
+    ID "60794C560E3ED060"
+    coords -1.518 0.05 -6.462
+   }
+   {
+    ID "60794C560E3ED06A"
+    coords 5.95 0.05 -5.592
+   }
+   {
+    ID "60794C560E3ED077"
+    coords 1.47 0.053 -6.567
+   }
+   {
+    ID "60794C560E3ED081"
+    coords 6.259 0.05 -2.755
+   }
+   {
+    ID "60794C560E3ED08A"
+    coords 6.202 0.05 3.064
+   }
+   {
+    ID "60794C560E3ED098"
+    coords 2.757 0.098 -6.702
+   }
+  }
   GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    ID "5ED715F1952B1469"
    coords -5.071 0.045 0.131

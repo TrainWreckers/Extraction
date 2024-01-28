@@ -1,7 +1,89 @@
 SCR_DestructibleBuildingEntity : "{5094A4257B7F4FB4}Prefabs/Structures/Houses/Villa/Villa_E_2I01/Villa_E_2I01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4C25232107"
+    coords -0.151 -0.208 4.851
+   }
+   {
+    ID "60794C4C25232119"
+    coords -5.036 0 -2.314
+   }
+   {
+    ID "60794C4C25232604"
+    coords -4.118 -0 0.87
+   }
+   {
+    ID "60794C4C2523262D"
+    coords -5.93 1.9 0.64
+   }
+   {
+    ID "60794C4C2523263F"
+    coords -5.502 1.9 2.584
+   }
+   {
+    ID "60794C4C25232649"
+    coords -1.281 3.801 5.86
+   }
+   {
+    ID "60794C4C2523265B"
+    coords -0.758 3.8 0.371
+   }
+   {
+    ID "60794C4C25232663"
+    coords 3.636 3.8 2.855
+   }
+   {
+    ID "60794C4C25232675"
+    coords 4.403 3.8 5.666
+   }
+   {
+    ID "60794C4C2523268B"
+    coords -0.58 3.8 -3.032
+   }
+   {
+    ID "60794C4C25232691"
+    coords 4.469 3.8 -2.882
+   }
+   {
+    ID "60794C4C2523269B"
+    coords 1.949 3.8 -3.096
+   }
+   {
+    ID "60794C4C252326A1"
+    coords 4.351 7.3 0.751
+   }
+   {
+    ID "60794C4C252326AD"
+    coords 0.915 7.3 -2.577
+   }
+   {
+    ID "60794C4C252326B6"
+    coords -5.056 3.8 -2.632
+   }
+   {
+    ID "60794C4C252326C1"
+    coords -2.973 7.3 2.658
+   }
+   {
+    ID "60794C4C252326CB"
+    coords 1.982 7.3 -0.732
+   }
+   {
+    ID "60794C4C252326D5"
+    coords 0.999 7.3 5.653
+   }
+   {
+    ID "60794C4C252326EC"
+    coords 4.719 -0 5.92
+   }
+   {
+    ID "60794C4C252326FB"
+    coords 4.653 0 -2.901
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3486CF84F8508"
     coords -4.592 -0.763 4.544
@@ -24,7 +106,7 @@ SCR_DestructibleBuildingEntity : "{5094A4257B7F4FB4}Prefabs/Structures/Houses/Vi
    }
    {
     ID "5EC3486CF84F8AED"
-    coords 3.145 -0 4.777
+    coords 3.145 0 4.777
    }
   }
  }

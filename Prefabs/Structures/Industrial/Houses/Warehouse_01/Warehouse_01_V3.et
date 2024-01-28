@@ -1,6 +1,73 @@
 SCR_DestructibleBuildingEntity : "{E35EA41864A3B0ED}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
+  GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
+   ID "60794C4B66E67E29"
+   coords -13.643 0.05 3.064
+   angleY 0
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4B66E67E06"
+    coords 6.516 0.05 -5.684
+   }
+   {
+    ID "60794C4B66E67E1A"
+    coords 10.69 0.831 -5.616
+   }
+   {
+    ID "60794C4B66E67E30"
+    coords 13.078 0.05 -5.577
+   }
+   {
+    ID "60794C4B66E67E39"
+    coords 15.993 0.05 -5.402
+   }
+   {
+    ID "60794C4B66E67F6B"
+    coords -19.081 0.05 5.308
+   }
+   {
+    ID "60794C4B66E67F84"
+    coords -16.091 2.609 -5.054
+   }
+   {
+    ID "60794C4B66E67FAD"
+    coords -5.136 0.055 4.633
+   }
+   {
+    ID "60794C4B66E67FB3"
+    coords -8.222 0.05 1.442
+   }
+   {
+    ID "60794C4B66E67FBD"
+    coords -11.719 0.05 -3.3
+   }
+   {
+    ID "60794C4B66E67FC1"
+    coords -5.171 0.05 0.08
+   }
+   {
+    ID "60794C4B66E67FCD"
+    coords -0.344 0.05 5.742
+   }
+   {
+    ID "60794C4B66E67FDA"
+    coords -3.429 0.05 1.524
+   }
+   {
+    ID "60794C4B66E67FE4"
+    coords 4.98 0.05 4.73
+   }
+   {
+    ID "60794C4B66E67FEF"
+    coords 15.118 0.05 4.158
+   }
+   {
+    ID "60794C4B66E67FF8"
+    coords 1.77 0.05 -0.259
+   }
+  }
   GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    ID "5ED715F08A8E4693"
    coords 9.361 0.05 -0.532

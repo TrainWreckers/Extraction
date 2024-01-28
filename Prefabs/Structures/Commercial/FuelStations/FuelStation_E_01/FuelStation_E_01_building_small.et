@@ -1,7 +1,11 @@
 SCR_DestructibleBuildingEntity : "{614555E9CD7A4399}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_building_small_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   ID "60794C479C2FC8B2"
+   coords -1.529 0.1 -0.163
+  }
+  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    ID "5EC3034264F6B6A8"
    coords 0.326 0.1 -0.565
   }

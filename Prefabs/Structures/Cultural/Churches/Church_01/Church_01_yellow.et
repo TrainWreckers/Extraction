@@ -1,7 +1,149 @@
 SCR_DestructibleBuildingEntity : "{A05E08085F564AFB}Prefabs/Structures/Cultural/Churches/Church_01/Church_01_Base.et" {
  ID "5206DA6BF27D60C9"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C439C941009"
+    coords 1.709 11.778 16.464
+   }
+   {
+    ID "60794C439C94101C"
+    coords 0.017 13.11 17.218
+   }
+   {
+    ID "60794C439C941023"
+    coords -0.097 8.55 16.881
+   }
+   {
+    ID "60794C439C94102F"
+    coords 1.766 5.698 13.784
+   }
+   {
+    ID "60794C439C941035"
+    coords 0.129 10.258 13.769
+   }
+   {
+    ID "60794C439C941046"
+    coords 2.092 10.155 -8.143
+   }
+   {
+    ID "60794C439C94105A"
+    coords -1.549 4.178 14.73
+   }
+   {
+    ID "60794C439C941061"
+    coords -2.075 10.155 -0.294
+   }
+   {
+    ID "60794C439C94106E"
+    coords 2.037 10.155 6.487
+   }
+   {
+    ID "60794C439C941073"
+    coords -1.407 10.15 -8.7
+   }
+   {
+    ID "60794C439C941083"
+    coords -3.1 3.59 5.463
+   }
+   {
+    ID "60794C439C94109A"
+    coords -5.326 3.59 0.506
+   }
+   {
+    ID "60794C439C9410A6"
+    coords 3.81 3.59 2.1
+   }
+   {
+    ID "60794C439C9410B0"
+    coords -5.796 3.59 8.582
+   }
+   {
+    ID "60794C439C9410BC"
+    coords 5.692 3.59 1.275
+   }
+   {
+    ID "60794C439C9410D1"
+    coords 5.691 3.59 9.052
+   }
+   {
+    ID "60794C439C9410DD"
+    coords -4.609 0.37 -7.014
+   }
+   {
+    ID "60794C439C9410E8"
+    coords -0.969 0.37 -11.898
+   }
+   {
+    ID "60794C439C9410F2"
+    coords 0.413 0.37 -9.908
+   }
+   {
+    ID "60794C439C9410FC"
+    coords 1.29 0.37 -12.293
+   }
+   {
+    ID "60794C439C9411C3"
+    coords -1.416 18.108 13.564
+   }
+   {
+    ID "60794C439C9411E1"
+    coords 0.658 14.818 13.697
+   }
+   {
+    ID "60794C439C9411EE"
+    coords -1.51 14.818 13.818
+   }
+   {
+    ID "60794C439C941309"
+    coords 5.187 0.15 5.655
+   }
+   {
+    ID "60794C439C941315"
+    coords 2.51 0.15 0.302
+   }
+   {
+    ID "60794C439C94131F"
+    coords 2.641 0.15 1.905
+   }
+   {
+    ID "60794C439C941320"
+    coords 4.286 -0 -1.382
+   }
+   {
+    ID "60794C439C941329"
+    coords 4.532 2.078 -4.506
+   }
+   {
+    ID "60794C439C941336"
+    coords 2.037 3.97 10.077
+   }
+   {
+    ID "60794C439C941343"
+    coords -2.401 -4 1.577
+   }
+   {
+    ID "60794C439C94134D"
+    coords 3.111 -4 1.296
+   }
+   {
+    ID "60794C439C941353"
+    coords 8.327 0 -2.387
+   }
+   {
+    ID "60794C439C94135D"
+    coords 0.203 -4 -7.141
+   }
+   {
+    ID "60794C439C941362"
+    coords 1.735 18.108 15.448
+   }
+   {
+    ID "60794C439C941379"
+    coords -0.549 -4 -1.335
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC30340F6BA510C"
     coords 1.53 4.178 16.461
@@ -24,7 +166,7 @@ SCR_DestructibleBuildingEntity : "{A05E08085F564AFB}Prefabs/Structures/Cultural/
    }
    {
     ID "5EC30340F6BA515C"
-    coords 4.532 -0 11.004
+    coords 4.532 0 11.004
    }
   }
  }

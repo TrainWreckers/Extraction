@@ -1,7 +1,25 @@
 SCR_DestructibleBuildingEntity : "{0C818BB5D185C49F}Prefabs/Structures/Infrastructure/Waterworks/WaterTreatmentPlant_01/WaterTreatmentPlant_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C55485AA875"
+    coords 3.686 0.57 1.154
+   }
+   {
+    ID "60794C55485AA880"
+    coords 7.142 0.1 12.015
+   }
+   {
+    ID "60794C55485AA887"
+    coords -5.291 0.1 -12.156
+   }
+   {
+    ID "60794C55485AA891"
+    coords -5.24 0.101 1.267
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B133D7FA82"
     coords 3.285 0.705 6.947

@@ -1,7 +1,41 @@
 SCR_DestructibleBuildingEntity : "{23ED22AC15AA9EE7}Prefabs/Structures/Houses/Farm/FarmHouse_E_1L01/FarmHouse_E_1L01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C422D449A8B"
+    coords -0.831 0.278 1.118
+   }
+   {
+    ID "60794C422D449A92"
+    coords 0 0.278 9.144
+   }
+   {
+    ID "60794C422D449AA0"
+    coords -7.559 0.278 -7.294
+   }
+   {
+    ID "60794C422D449AAC"
+    coords -3.923 0.283 -3.478
+   }
+   {
+    ID "60794C422D449AB6"
+    coords -2.522 0.278 -7.263
+   }
+   {
+    ID "60794C422D449AC0"
+    coords -7.822 3.583 -5.436
+   }
+   {
+    ID "60794C422D449ACB"
+    coords 3.9 0.278 6.766
+   }
+   {
+    ID "60794C422D449AD7"
+    coords 3.348 3.586 -5.573
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3034144F2F8A0"
     coords 2.362 0.278 -6.242

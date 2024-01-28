@@ -6,7 +6,7 @@ SCR_TW_EventAISpawner {
   Hierarchy "{605C017B92917E8B}" {
   }
  }
- coords 91.909 0 75.882
+ coords -0.431 16.502 11.332
  m_ScavengerPrefabs {
   "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et"
  }

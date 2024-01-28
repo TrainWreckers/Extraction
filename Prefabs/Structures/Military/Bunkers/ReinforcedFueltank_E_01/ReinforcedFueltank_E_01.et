@@ -1,10 +1,52 @@
 SCR_DestructibleBuildingEntity : "{51043B1D2125E391}Prefabs/Structures/Military/Bunkers/ReinforcedFueltank_E_01/ReinforcedFueltank_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C55B0326806"
+    coords 2.96 -0 9.949
+   }
+   {
+    ID "60794C55B0326822"
+    coords 2.249 -0 8.412
+   }
+   {
+    ID "60794C55B032682F"
+    coords -0.173 -0.001 6.441
+   }
+   {
+    ID "60794C55B0326846"
+    coords 4.685 0 2.356
+   }
+   {
+    ID "60794C55B032685A"
+    coords -5.181 0 2.827
+   }
+   {
+    ID "60794C55B032686A"
+    coords -3.213 0 -9.737
+   }
+   {
+    ID "60794C55B0326874"
+    coords -0.147 -0.001 -7.894
+   }
+   {
+    ID "60794C55B032687F"
+    coords -2.794 0 -8.074
+   }
+   {
+    ID "60794C55B0326880"
+    coords -0.371 -0 10.184
+   }
+   {
+    ID "60794C55B0326897"
+    coords 0.435 -0 -10.046
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B1E9C41A79"
-    coords -1.928 -0 -8.032
+    coords -1.928 0 -8.032
    }
    {
     ID "5EC371B1E9C41A81"
