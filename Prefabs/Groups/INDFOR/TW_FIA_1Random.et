@@ -100,4 +100,5 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  m_aUnitPrefabSlots {
   "{527DB718FB7DB939}Prefabs/Characters/Factions/INDFOR/FIA/FIA_Random.et"
  }
+ m_bSnapToTerrain 0
 }

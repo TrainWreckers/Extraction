@@ -41,7 +41,6 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    }
   }
   SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
-   m_EnableLootSpawns 1
    m_InvisibleLootCratePrefab "{FF9846A7C3FFC487}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrateInvisible.et"
    catalogConfigs {
     SCR_EntityCatalogMultiList "{60685695D6A71BD8}" : "{E908001749419691}Configs/EntityCatalog/FIA/FIA_InventoryItems.conf" {
@@ -62,9 +61,9 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionSpawnHandler "{5EBF0B14A6CAF6AB}" {
    m_MaxAgents 35
    m_GarbageCollectionTimer 1
-   m_AIWanderChance 0.2
-   m_AIWanderMinimumPercent 0.1
-   m_AIWanderMaximumPercent 0.25
+   m_AIWanderChance 0
+   m_AIWanderMinimumPercent 0.01
+   m_AIWanderMaximumPercent 0.05
   }
   SCR_TimeAndWeatherHandlerComponent "{5ED74C1C84F55A6E}" {
    m_bRandomStartingDaytime 1

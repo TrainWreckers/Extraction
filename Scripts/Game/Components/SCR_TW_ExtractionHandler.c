@@ -57,9 +57,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("0", UIWidgets.CheckBox, category: "Systems", desc: "Larger the map, longer it takes to start scenario. May want to disable during rapid testing of a non-loot item")]
 	private bool m_EnableLootSpawns;
 	
-	[Attribute("{CB7CDB3864826FD3}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrate.et", UIWidgets.ResourcePickerThumbnail, category: "Player Spawn", desc: "Player loadout crate prefab", params: "et")]
-	private ResourceName playerCratePrefab;
-	
 	[Attribute("{FF9846A7C3FFC487}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrateInvisible.et", UIWidgets.ResourcePickerThumbnail, category: "Player Spawn", desc: "Invisible crate used for managing player loot", params: "et")]
 	private ResourceName m_InvisibleLootCratePrefab;
 	
@@ -68,9 +65,6 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	[Attribute("", UIWidgets.Auto, params: "conf SCR_EntityCatalogMultiList", desc: "Catalogs of items that are lootable")]
 	private ref array<ref SCR_EntityCatalogMultiList> catalogConfigs;
-	
-	[Attribute("", UIWidgets.Slider, params: "3, 20, 1", category: "Player Spawn", desc: "After this timer elapses, the player spawn composition is deleted")]
-	private int playerHubDespawnTimerInMinutes;
 	
 	[Attribute("60", UIWidgets.Slider, params: "5 180 5", category: "Extraction", desc: "Time in minutes until Game Mode ends")]
 	private int gameModeDurationInMinutes;
@@ -96,8 +90,8 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.EditBox, category: "Extraction", desc: "Text format to use for extraction description")]
 	private string m_ExtractionTaskDescriptionFormat;
 	
+	
 	ResourceName GetExtractionTaskPrefab() { return m_ExtractionTaskPrefab; }
-	ResourceName GetPlayerCratePrefab() { return playerCratePrefab; }
 	
 	//! Prefab which has all container related components needed to perform storage operations
 	ResourceName GetPlaceholderCratePrefab() { return m_InvisibleLootCratePrefab; }

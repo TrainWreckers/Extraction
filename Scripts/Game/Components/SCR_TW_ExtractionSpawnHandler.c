@@ -28,7 +28,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("120", UIWidgets.Slider, params: "0 500 1", category: "Garbage Collection", desc: "Time in seconds. Interval GC is checked (nothing happens)")]
 	protected float m_GarbageCollectionTimer;
 	
-	[Attribute("0.6", UIWidgets.Slider, params: "0.01 1 0.01", category: "AI", desc: "Chance for AI to wander per spawn iteration")]
+	[Attribute("0.6", UIWidgets.Slider, params: "0.00 1 0.01", category: "AI", desc: "Chance for AI to wander per spawn iteration")]
 	protected float m_AIWanderChance;
 	
 	[Attribute("0.15", UIWidgets.Slider, params: "0.01 1 0.01", category: "AI", desc: "Minimum percentage of AI to wander")]
@@ -205,7 +205,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		{
 			float wanderChance = Math.RandomFloat01();
 			
-			if(wanderChance <= m_AIWanderChance)
+			if(wanderChance < m_AIWanderChance)
 			{
 				float wanderPercent = Math.RandomFloatInclusive(m_AIWanderMinimumPercent, m_AIWanderMaximumPercent);
 				int wanderCount = Math.Round(m_Groups.Count() * wanderPercent);

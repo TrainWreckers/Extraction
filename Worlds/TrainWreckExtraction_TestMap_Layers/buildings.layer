@@ -1,15 +1,3 @@
-SCR_DestructibleBuildingEntity : "{12310677867A85D4}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01.et" {
- coords 212.186 1.794 209.884
-}
-SCR_DestructibleBuildingEntity : "{1A18A755842DCA36}Prefabs/Structures/Industrial/Houses/Sawmill_E_01/Sawmill_E_01.et" {
- coords 94.361 1.973 24.253
-}
-SCR_DestructibleBuildingEntity : "{427D2BB4E4D96606}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_Office_V2.et" {
- coords 202.158 1.93 139.657
-}
-SCR_DestructibleBuildingEntity : "{51F233A0BA73532A}Prefabs/Structures/Industrial/Houses/Office_E_01/Office_E_01.et" {
- coords 133.812 0 183.584
-}
 $grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
  {
   components {
@@ -89,18 +77,13 @@ $grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base
   coords 229.632 1 7.22
  }
 }
-SCR_DestructibleBuildingEntity : "{80A5B37A1472B084}Prefabs/Structures/Industrial/Garages/Garage_E_02/Garage_E_02.et" {
- coords 167.132 0 43.431
-}
 SCR_DestructibleBuildingEntity : "{A33B68467443EBAF}Prefabs/Structures/Industrial/Houses/Office_E_01/Office_E_01_ENP.et" {
  coords 209.691 0 103.19
 }
-SCR_DestructibleBuildingEntity : "{A92A5F3B79FF56BE}Prefabs/Structures/Industrial/Houses/ConcretePlant_E_01/ConcretePlant_E_01.et" {
- coords 88.816 0 68.142
-}
 $grp SCR_DestructibleBuildingEntity : "{B1F1B1BEB21102A7}Prefabs/Structures/Industrial/Houses/FactoryHall_E_01/FactoryHall_E_01.et" {
  {
-  coords 211.924 1 65.369
+  coords 231.069 1 34.513
+  angleY -121.573
   {
    GenericEntity {
     ID "57132DCB5CEA6D51"
@@ -137,15 +120,6 @@ $grp SCR_DestructibleBuildingEntity : "{B1F1B1BEB21102A7}Prefabs/Structures/Indu
   coords 120.043 1 129.933
  }
 }
-SCR_DestructibleBuildingEntity : "{BBCEDBF2C4E3E896}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_Office.et" {
- coords 206.589 2.024 172.495
-}
 SCR_DestructibleBuildingEntity : "{BE70E3BA6C1911A9}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_Workshop.et" {
  coords 157.178 0 117.621
-}
-SCR_DestructibleBuildingEntity : "{E30E1250FD927736}Prefabs/Structures/Industrial/Houses/PortableCabin_E_01/PortableCabin_E_01_beige.et" {
- coords 225.935 1.484 27.655
-}
-SCR_DestructibleBuildingEntity : "{F6CCBBDD7EDF3BEC}Prefabs/Structures/Industrial/Houses/Warehouse_01/Warehouse_01_V2.et" {
- coords 139.915 0 89.482
 }

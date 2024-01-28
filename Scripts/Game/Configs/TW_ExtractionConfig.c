@@ -68,7 +68,10 @@ class TW_ExtractionConfig
 			return;
 		
 		if(m_CurrentTask)
-			m_CurrentTask.Remove();	
+		{						
+			GetTaskManager().SetTaskState(m_CurrentTask.GetTaskID(), SCR_TaskState.REMOVED, true);
+			GetTaskManager().DeleteLocalTask(m_CurrentTask);
+		}
 		
 		m_CurrentTask = SCR_BaseTask.Cast(GetTaskManager().SpawnTask(m_TaskPrefab));
 		m_CurrentTask.SetTitle(m_TaskTitle);
@@ -81,7 +84,7 @@ class TW_ExtractionConfig
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
 		foreach(int playerId: playerIds)
 		{
-			SCR_BaseTaskExecutor executor = SCR_BaseTaskExecutor.GetTaskExecutorByID(playerId);
+			SCR_BaseTaskExecutor executor = SCR_BaseTaskExecutor.GetTaskExecutorByID(playerId);			
 			executor.AssignNewTask(m_CurrentTask);
 		}
 		
@@ -108,12 +111,9 @@ class TW_ExtractionConfig
 		PrintFormat("TrainWreck: %1 deactivated/ended", GetStateName());
 		
 		m_CurrentState = TW_ExtractionState.Completed;
-		
+				
 		if(m_CurrentTask)
-		{
-			m_CurrentTask.SetState(SCR_TaskState.FINISHED);
-			SCR_EntityHelper.DeleteEntityAndChildren(m_CurrentTask);
-		}
+			GetTaskManager().DeleteLocalTask(m_CurrentTask);
 	}
 };
 
@@ -276,6 +276,8 @@ class TW_ExtractionConfig_Defend : TW_ExtractionConfig
 		if(players.IsEmpty())
 			return;
 		
+		ref array<string> extractedPlayerNames = {};
+			
 		foreach(IEntity player : players)
 		{
 			// Player must have died, or something. Old reference
@@ -285,14 +287,28 @@ class TW_ExtractionConfig_Defend : TW_ExtractionConfig
 			// Ensure players are within the intended extraction distance
 			float distance = vector.Distance(activationSource.GetOrigin(), player.GetOrigin());
 			if(distance > m_DefendRadius)
+			{
+				if(m_CurrentTask)
+					m_CurrentTask.SetState(SCR_TaskState.CANCELLED);
 				continue;
+			}
 			
 			// If players meet the criteria they'll be considered for extraction
 			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(player);
+			
 			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-			SCR_TW_ExtractionHandler.GetInstance().PopUpMessage(playerName, "Successfully extracted");
+			extractedPlayerNames.Insert(playerName);
+			
 			SCR_TW_ExtractionPlayerInventoryComponent.GetInstance().UpdatePlayerInventory(playerId);
 			SCR_TW_ExtractionHandler.GetInstance().DeletePlayer(playerId);
+			
+			if(m_CurrentTask)
+				m_CurrentTask.SetState(SCR_TaskState.FINISHED);			
+		}
+		
+		if(!extractedPlayerNames.IsEmpty())
+		{
+			SCR_TW_ExtractionHandler.GetInstance().PopUpMessage(SCR_StringHelper.Join(", ", extractedPlayerNames), "Successfully extracted");
 		}
 	}
 };

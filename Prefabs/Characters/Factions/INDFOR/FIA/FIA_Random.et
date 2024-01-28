@@ -23,6 +23,21 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   }
   SCR_TW_RandomInventoryComponent "{605E616904C9F017}" {
    m_Config TW_InventoryConfig "{5EDF17E32FABF23C}" : "{A264CF3B7AF6405D}Configs/RandomLoadouts/Default.conf" {
+    m_ItemConfigs {
+     TW_ProbabilityItem "{5EDF17E3F51B3157}" {
+      m_Prefabs {
+       "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et"
+      }
+     }
+     TW_ProbabilityItem "{607831D24DB8EDBA}" {
+      m_UseChance 1
+      m_Chance 0.15
+      m_Prefabs {
+       "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et" "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
+      }
+      m_RandomAmount 3
+     }
+    }
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {

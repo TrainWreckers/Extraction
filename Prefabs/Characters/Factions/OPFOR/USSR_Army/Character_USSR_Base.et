@@ -23,6 +23,16 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   }
   SCR_TW_RandomInventoryComponent "{5EDF17E34181DF74}" {
    m_Config TW_InventoryConfig "{5EDF17E32FABF23C}" : "{A264CF3B7AF6405D}Configs/RandomLoadouts/Default.conf" {
+    m_ItemConfigs {
+     TW_ProbabilityItem "{607831D1DE765E1E}" {
+      m_UseChance 1
+      m_Chance 0.15
+      m_Prefabs {
+       "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et" "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et"
+      }
+      m_RandomAmount 3
+     }
+    }
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {

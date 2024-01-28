@@ -1,15 +1,6 @@
 GenericEntity : "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et" {
  coords 205.853 1 43.945
 }
-GenericEntity : "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench_base.et" {
- coords 205.231 1 43.371
-}
-GenericEntity : "{4181B1C8B5E56392}Prefabs/Items/Equipment/Radios/Radio_R107M_FIA.et" {
- coords 239.192 1 30.564
-}
-GenericEntity : "{54C68E438DD34265}Prefabs/Items/Equipment/Radios/Radio_R107M.et" {
- coords 238.671 1 30.521
-}
 GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
  components {
   SCR_TW_VehicleSpawn "{5ED715FC73F50321}" {
@@ -20,76 +11,6 @@ GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpa
  coords 210.245 1 40.435
  angleY 0
 }
-SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
- coords 34.22 1 222.011
- m_EventPrefabs {
-  "{A3057017F574212F}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_3.et"
- }
- m_SpawnChance 1
- {
-  StaticModelEntity {
-   ID "605C0176B4543B3B"
-   coords 0 0 0
-  }
- }
-}
-GenericEntity : "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" {
- coords 239.43 1 30.963
-}
-GenericEntity : "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et" {
- components {
-  ActionsManagerComponent "{508AB5952B584B2E}" {
-   ActionContexts {
-    UserActionContext "{60674EF2607A01C0}" {
-     UIInfo SCR_ItemHintUIInfo "{60674EF128C82799}" {
-      m_bShowIconInInventory 1
-      m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
-      m_sImageTileName "ambush"
-     }
-     Position InventoryStorageSlot FromInventory {
-     }
-    }
-   }
-  }
- }
- coords 239.932 1 30.944
-}
 SCR_DestructibleBuildingEntity : "{A4D0B331414901A5}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_tankpistol.et" {
  coords 193.368 0 44.273
-}
-GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/ArsenalBox_USSR.et" {
- components {
-  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
-   m_bUseSupplies 0
-  }
- }
- coords 202.342 1 42.937
-}
-GenericEntity : "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" {
- components {
-  ActionsManagerComponent "{508AB5952B584B2E}" {
-   ActionContexts {
-    UserActionContext "{60674EF2607A01C0}" {
-     UIInfo SCR_ItemHintUIInfo "{60674EF128C82799}" {
-      m_bShowIconInInventory 1
-      m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
-      m_sImageTileName "ambush"
-     }
-     Position InventoryStorageSlot FromInventory {
-     }
-     Radius 0
-    }
-   }
-   additionalActions {
-    TW_OpenExtractionMenuAction "{60674EF6F9355C48}" {
-     UIInfo SCR_ItemHintUIInfo "{60674EF6E192D1E8}" {
-      m_bShowIconInInventory 1
-      m_sImageSet "{C3F217CA9CF060B4}UI/Imagesets/Conflict/ConflictIconsSet.imageset"
-      m_sImageTileName "SupplyDepot"
-     }
-    }
-   }
-  }
- }
- coords 240.023 1 29.608
 }

@@ -46,10 +46,11 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
-   m_DisableSpawns 1
-   m_MaxAgents 20
-   m_SpawnTimerInSeconds 1
+   m_AntiSpawnGridSize 50
    m_GarbageCollectionTimer 80
+   m_AIWanderChance 0.05
+   m_AIWanderMinimumPercent 0.05
+   m_AIWanderMaximumPercent 0.1
   }
   SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
   }

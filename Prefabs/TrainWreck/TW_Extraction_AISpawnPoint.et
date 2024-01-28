@@ -6,11 +6,18 @@ SCR_TW_AISpawnPoint {
  }
  coords 1.381 -1.019 1.8
  m_EntityPrefabs {
-  "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{36AB49E86A57AAA9}Prefabs/Groups/OPFOR/TW_OPFOR_1Random.et"
+  "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{683034BEEF743E26}Prefabs/Groups/INDFOR/TW_FIA_1Random.et" "{36AB49E86A57AAA9}Prefabs/Groups/OPFOR/TW_OPFOR_1Random.et" "{36AB49E86A57AAA9}Prefabs/Groups/OPFOR/TW_OPFOR_1Random.et"
  }
  m_ChanceToSpawn 10
  m_CanRespawn 1
  m_WaypointPrefabs {
-  "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" "{2A81753527971941}Prefabs/AI/Waypoints/AIWaypoint_Defend_CP.et" "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
+  "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et"
+ }
+ {
+  GenericEntity : "{4DCDE986772C4E39}Prefabs/Compositions/EventSites/Actions/LoiterPost.et" {
+   ID "6078FA5B4B81AFA7"
+   coords 0 0 0
+   angleY 0
+  }
  }
 }
