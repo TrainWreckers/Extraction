@@ -1,7 +1,93 @@
 SCR_DestructibleBuildingEntity : "{74CBD673D67C58FF}Prefabs/Structures/Industrial/Houses/Office_E_01/Office_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C48AD23F8BF"
+    coords 6.43 4.254 2.861
+   }
+   {
+    ID "60794C48AD23F8C1"
+    coords 5.936 4.254 -3.426
+   }
+   {
+    ID "60794C48AD23F8E3"
+    coords 1.112 4.254 -3.48
+   }
+   {
+    ID "60794C48AD23F8F0"
+    coords 3.757 4.254 -4.079
+   }
+   {
+    ID "60794C48AD23FA1E"
+    coords 5.508 4.254 5.485
+   }
+   {
+    ID "60794C48AD23FB00"
+    coords -3.547 4.254 5.451
+   }
+   {
+    ID "60794C48AD23FB0E"
+    coords -1.472 4.254 5.381
+   }
+   {
+    ID "60794C48AD23FB11"
+    coords 1.984 4.254 5.009
+   }
+   {
+    ID "60794C48AD23FB20"
+    coords -7.474 4.254 3.267
+   }
+   {
+    ID "60794C48AD23FB46"
+    coords -7.573 4.254 -0.222
+   }
+   {
+    ID "60794C48AD23FB54"
+    coords -2.573 4.254 -3.949
+   }
+   {
+    ID "60794C48AD23FB69"
+    coords -7.653 1.054 0.252
+   }
+   {
+    ID "60794C48AD23FB77"
+    coords -5.729 2.574 -6.09
+   }
+   {
+    ID "60794C48AD23FB8B"
+    coords -3.759 0 5.465
+   }
+   {
+    ID "60794C48AD23FB99"
+    coords -7.603 1.054 3.303
+   }
+   {
+    ID "60794C48AD23FBA7"
+    coords 1.94 1.054 5.213
+   }
+   {
+    ID "60794C48AD23FBB8"
+    coords -1.561 1.054 5.129
+   }
+   {
+    ID "60794C48AD23FBC7"
+    coords 6.047 1.054 -0.1
+   }
+   {
+    ID "60794C48AD23FBD9"
+    coords 6.861 1.054 2.481
+   }
+   {
+    ID "60794C48AD23FBE8"
+    coords -5.009 1.054 -3.253
+   }
+   {
+    ID "60794C48AD23FBF9"
+    coords 5.648 1.054 -2.947
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B443666600"
     coords 6.093 4.254 -0.226

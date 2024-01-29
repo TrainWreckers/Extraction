@@ -1,7 +1,11 @@
 SCR_DestructibleBuildingEntity : "{8F342A3BBEADECD3}Prefabs/Structures/Recreation/Houses/Cottage_E_01/Cottage_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   ID "60794C57EE85DB44"
+   coords -0.835 1.024 -2.131
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC4C7753182A26D"
     coords 0.404 1.024 0.405

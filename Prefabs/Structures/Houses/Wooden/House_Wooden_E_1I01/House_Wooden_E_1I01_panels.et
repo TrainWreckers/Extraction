@@ -1,7 +1,29 @@
 SCR_DestructibleBuildingEntity : "{339AC3B9905BA1AE}Prefabs/Structures/Houses/Wooden/House_Wooden_E_1I01/House_Wooden_E_1I01_panels_Base.et" {
  ID "51A2846100141E7D"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C49989B4FBF"
+    coords 1.568 1.16 -1.363
+   }
+   {
+    ID "60794C49989B4FC3"
+    coords 1.941 1.16 1.314
+   }
+   {
+    ID "60794C49989B4FEA"
+    coords 5.617 1.159 -0.733
+   }
+   {
+    ID "60794C49989B4FF2"
+    coords -3.447 1.16 1.279
+   }
+   {
+    ID "60794C49989B4FFE"
+    coords 5.356 4.251 0.039
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3486804926A0C"
     coords -2.529 1.16 -1.878

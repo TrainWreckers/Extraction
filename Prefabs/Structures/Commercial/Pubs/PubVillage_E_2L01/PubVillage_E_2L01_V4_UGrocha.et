@@ -1,7 +1,73 @@
 SCR_DestructibleBuildingEntity : "{0B1B8B16E7E9481F}Prefabs/Structures/Commercial/Pubs/PubVillage_E_2L01/PubVillage_E_2L01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C465199A201"
+    coords -1.886 3.8 -3.069
+   }
+   {
+    ID "60794C465199A20C"
+    coords -6.3 3.8 -0.149
+   }
+   {
+    ID "60794C465199A212"
+    coords 5.384 3.808 -3.368
+   }
+   {
+    ID "60794C465199A228"
+    coords 4.434 0 -7.134
+   }
+   {
+    ID "60794C465199A236"
+    coords -6.636 3.8 -4.408
+   }
+   {
+    ID "60794C465199A376"
+    coords 6.482 0 -5.138
+   }
+   {
+    ID "60794C465199A381"
+    coords -5.744 0 -7.656
+   }
+   {
+    ID "60794C465199A38E"
+    coords -2.213 0 -6.371
+   }
+   {
+    ID "60794C465199A394"
+    coords -7.039 0 -3.424
+   }
+   {
+    ID "60794C465199A3A6"
+    coords 6.509 -0 5.263
+   }
+   {
+    ID "60794C465199A3BA"
+    coords -7.744 -0 -1.057
+   }
+   {
+    ID "60794C465199A3C7"
+    coords 6.449 3.8 2.583
+   }
+   {
+    ID "60794C465199A3D2"
+    coords 3.064 3.8 0.146
+   }
+   {
+    ID "60794C465199A3DC"
+    coords 6.633 3.8 4.531
+   }
+   {
+    ID "60794C465199A3E7"
+    coords 1.112 3.8 -6.841
+   }
+   {
+    ID "60794C465199A3F2"
+    coords 1.983 3.8 -0.219
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC303433E1C48DB"
     coords 1.056 0 -7.157

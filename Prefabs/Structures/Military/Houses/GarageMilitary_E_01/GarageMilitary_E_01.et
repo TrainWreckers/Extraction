@@ -36,6 +36,14 @@ SCR_DestructibleBuildingEntity : "{1E7AC996BD3B73A7}Prefabs/Structures/Military/
     ID "5EC4C776218392E7"
     coords 23.968 0.439 3.227
    }
+   {
+    ID "60794C57320E5365"
+    coords -17.909 0.439 8.824
+   }
+   {
+    ID "60794C57320E5389"
+    coords 15.714 0.439 -3.979
+   }
   }
  }
 }

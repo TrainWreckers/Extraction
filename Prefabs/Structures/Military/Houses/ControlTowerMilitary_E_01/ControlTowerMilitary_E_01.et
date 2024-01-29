@@ -1,7 +1,105 @@
 SCR_DestructibleBuildingEntity : "{EFAB965711619154}Prefabs/Structures/Military/Houses/ControlTowerMilitary_E_01/ControlTowerMilitary_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C54D16EA602"
+    coords -1.362 4.846 4.216
+   }
+   {
+    ID "60794C54D16EA60C"
+    coords -2.426 9.026 2.391
+   }
+   {
+    ID "60794C54D16EA614"
+    coords -5.05 4.846 4.123
+   }
+   {
+    ID "60794C54D16EA635"
+    coords 2.428 9.026 -1.884
+   }
+   {
+    ID "60794C54D16EA63C"
+    coords 4.888 9.023 3.955
+   }
+   {
+    ID "60794C54D16EA717"
+    coords -5.949 9.023 -4.803
+   }
+   {
+    ID "60794C54D16EA724"
+    coords 2.01 1.05 0.07
+   }
+   {
+    ID "60794C54D16EA737"
+    coords 0.498 0.1 3.955
+   }
+   {
+    ID "60794C54D16EA74A"
+    coords -4.901 1.05 -4.788
+   }
+   {
+    ID "60794C54D16EA750"
+    coords 5.073 1.05 -0.711
+   }
+   {
+    ID "60794C54D16EA75B"
+    coords 3.996 1.05 -5.051
+   }
+   {
+    ID "60794C54D16EA764"
+    coords -3.212 1.05 -0.563
+   }
+   {
+    ID "60794C54D16EA779"
+    coords -8.448 0.104 -0.639
+   }
+   {
+    ID "60794C54D16EA788"
+    coords -1.769 1.05 3.997
+   }
+   {
+    ID "60794C54D16EA790"
+    coords -5.567 1.05 1.828
+   }
+   {
+    ID "60794C54D16EA79C"
+    coords -5.229 1.05 3.987
+   }
+   {
+    ID "60794C54D16EA7A1"
+    coords 0.032 1.05 -0.479
+   }
+   {
+    ID "60794C54D16EA7AB"
+    coords 2.342 4.846 -0.794
+   }
+   {
+    ID "60794C54D16EA7B3"
+    coords 0.421 2.946 4.04
+   }
+   {
+    ID "60794C54D16EA7C1"
+    coords 4.918 4.846 -0.629
+   }
+   {
+    ID "60794C54D16EA7CC"
+    coords 4.131 4.846 -5.081
+   }
+   {
+    ID "60794C54D16EA7D6"
+    coords 5.267 4.846 4.069
+   }
+   {
+    ID "60794C54D16EA7E6"
+    coords -3.968 4.846 -0.71
+   }
+   {
+    ID "60794C54D16EA7F9"
+    coords 0.097 4.846 -5.234
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B0E2DCFD46"
     coords -2.616 12.618 -1.903

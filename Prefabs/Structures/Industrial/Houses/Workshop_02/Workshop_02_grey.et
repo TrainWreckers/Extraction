@@ -1,7 +1,33 @@
 SCR_DestructibleBuildingEntity : "{ED6901CF01CD7360}Prefabs/Structures/Industrial/Houses/Workshop_02/Workshop_02_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4BB9C2FEB1"
+    coords -1.988 0.5 4.53
+   }
+   {
+    ID "60794C4BB9C2FECC"
+    coords -1.474 0.5 -7.659
+   }
+   {
+    ID "60794C4BB9C2FED1"
+    coords -0.936 0.5 -3.647
+   }
+   {
+    ID "60794C4BB9C2FEDF"
+    coords 2.234 0.5 -2.841
+   }
+   {
+    ID "60794C4BB9C2FEE1"
+    coords 2.29 0.5 2.92
+   }
+   {
+    ID "60794C4BB9C2FEF5"
+    coords 0.325 0.5 -6.67
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B76427928E"
     coords -1.942 0.5 -0.947

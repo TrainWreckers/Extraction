@@ -1,7 +1,73 @@
 SCR_DestructibleBuildingEntity : "{10DB3EEB6DB494AD}Prefabs/Structures/Houses/Town/House_Town_E_2I02/House_Town_E_2I02_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4D96266D02"
+    coords 1.524 4.056 4.758
+   }
+   {
+    ID "60794C4D96266D0D"
+    coords 5.728 4.056 -4.333
+   }
+   {
+    ID "60794C4D96266D15"
+    coords -5.772 4.056 0.875
+   }
+   {
+    ID "60794C4D96266D23"
+    coords -5.806 7.031 -2.927
+   }
+   {
+    ID "60794C4D96266D2E"
+    coords 7.495 7.465 -2.675
+   }
+   {
+    ID "60794C4D96266D37"
+    coords -7.922 5.951 -4.634
+   }
+   {
+    ID "60794C4D96266D44"
+    coords -2.681 7.476 -1.563
+   }
+   {
+    ID "60794C4D96266D4D"
+    coords -6.248 7.476 3.227
+   }
+   {
+    ID "60794C4D96266D5A"
+    coords 5.696 7.476 3.143
+   }
+   {
+    ID "60794C4D96266D79"
+    coords -6.67 0.256 0.412
+   }
+   {
+    ID "60794C4D962672A0"
+    coords -6.182 0.256 3.018
+   }
+   {
+    ID "60794C4D962672CA"
+    coords 5.956 0.256 4.851
+   }
+   {
+    ID "60794C4D962672DF"
+    coords 1.818 0.261 3.59
+   }
+   {
+    ID "60794C4D962672EA"
+    coords -7.619 2.158 -4.656
+   }
+   {
+    ID "60794C4D962672F4"
+    coords 5.771 0.256 -4.757
+   }
+   {
+    ID "60794C4D962672FF"
+    coords 1.883 0.265 -4.488
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3486C9F27EA27"
     coords -4.77 0.256 -2.715

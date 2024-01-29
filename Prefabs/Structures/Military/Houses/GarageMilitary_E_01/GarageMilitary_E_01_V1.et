@@ -1,6 +1,60 @@
 SCR_DestructibleBuildingEntity : "{1E7AC996BD3B73A7}Prefabs/Structures/Military/Houses/GarageMilitary_E_01/GarageMilitary_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
+  $grp GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
+   {
+    ID "60794C576D2ADA5A"
+    coords 8.015 0.496 4.082
+    angleY -11.358
+   }
+   {
+    ID "60794C576D2ADBB9"
+    coords -14.657 0.439 5.97
+    angleY 14.704
+   }
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C576D2ADA03"
+    coords 20.968 0.439 -0.334
+   }
+   {
+    ID "60794C576D2ADA18"
+    coords 18.495 0.439 -5.698
+   }
+   {
+    ID "60794C576D2ADA29"
+    coords 27.348 0.439 6.211
+   }
+   {
+    ID "60794C576D2ADA30"
+    coords 16.508 0.439 -0.962
+   }
+   {
+    ID "60794C576D2ADA3B"
+    coords 11.689 0.439 2.137
+   }
+   {
+    ID "60794C576D2ADBCC"
+    coords -15.153 0.439 -6.72
+   }
+   {
+    ID "60794C576D2ADBDC"
+    coords -7.761 0.439 -3.998
+   }
+   {
+    ID "60794C576D2ADBE0"
+    coords 12.067 0.439 -6.322
+   }
+   {
+    ID "60794C576D2ADBEC"
+    coords 9.75 0.439 -2.465
+   }
+   {
+    ID "60794C576D2ADBF7"
+    coords -13.13 0.439 -6.598
+   }
+  }
   GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    ID "5ED715F16E01DCB4"
    coords -0.696 0.439 0.077

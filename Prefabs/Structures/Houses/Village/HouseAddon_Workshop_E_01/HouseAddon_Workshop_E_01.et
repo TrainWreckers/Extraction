@@ -13,7 +13,7 @@ SCR_DestructibleBuildingEntity : "{4472D9B48597C94D}Prefabs/Structures/Houses/Vi
    }
    {
     ID "5EC34869D2C509E7"
-    coords 1.39 0.3 0.403
+    coords 1.815 0.3 0.825
    }
   }
  }

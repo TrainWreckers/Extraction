@@ -1,7 +1,73 @@
 SCR_DestructibleBuildingEntity : "{9ABD5AF92E43D2AA}Prefabs/Structures/Commercial/Shops/ShopModern_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4015EA3509"
+    coords 10.98 0 -11.917
+   }
+   {
+    ID "60794C4015EA351B"
+    coords 10.937 0 -9.85
+   }
+   {
+    ID "60794C4015EA3523"
+    coords 0.354 -0 4.017
+   }
+   {
+    ID "60794C4015EA352F"
+    coords 3.339 -0 0.213
+   }
+   {
+    ID "60794C4015EA3539"
+    coords 11.832 -0 4.143
+   }
+   {
+    ID "60794C4015EA3546"
+    coords -5.684 0 -11.471
+   }
+   {
+    ID "60794C4015EA355C"
+    coords 0.467 -0 0.324
+   }
+   {
+    ID "60794C4015EA3564"
+    coords 10.533 4 3.653
+   }
+   {
+    ID "60794C4015EA356F"
+    coords -2.454 4 3.944
+   }
+   {
+    ID "60794C4015EA3570"
+    coords -2.938 -0 -1.68
+   }
+   {
+    ID "60794C4015EA3579"
+    coords 0.919 0 -7.949
+   }
+   {
+    ID "60794C4015EA3581"
+    coords 10.623 4 -11.348
+   }
+   {
+    ID "60794C4015EA358C"
+    coords -9.675 4 -11.448
+   }
+   {
+    ID "60794C4015EA35A0"
+    coords 2.518 0 -4.926
+   }
+   {
+    ID "60794C4015EA35B7"
+    coords -9.322 4 -1.406
+   }
+   {
+    ID "60794C4015EA3AFA"
+    coords 6.337 0 -5.012
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3034018622FAB"
     coords 10.865 0 -7.261

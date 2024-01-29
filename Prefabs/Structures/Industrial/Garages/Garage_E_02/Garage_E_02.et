@@ -1,6 +1,29 @@
 SCR_DestructibleBuildingEntity : "{9D656741EA2AABC5}Prefabs/Structures/Industrial/Garages/Garage_E_02/Garage_E_02_base.et" {
  ID "F0DBA538AC2A0552"
  {
+  GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
+   ID "60794C4801625633"
+   coords 10.048 0.073 5.164
+   angleY 0
+  }
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4801625600"
+    coords -3.633 0.073 -7.87
+   }
+   {
+    ID "60794C4801625614"
+    coords 7.144 0.073 -7.189
+   }
+   {
+    ID "60794C48016257C2"
+    coords 0.013 0.073 -0.599
+   }
+   {
+    ID "60794C48016257E2"
+    coords -5.642 0.073 0.186
+   }
+  }
   $grp GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    {
     ID "5ED715FFC1B7AD41"
@@ -21,7 +44,7 @@ SCR_DestructibleBuildingEntity : "{9D656741EA2AABC5}Prefabs/Structures/Industria
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B5C7EFA904"
-    coords 10.525 0.073 6.608
+    coords 12.376 0.073 0.907
    }
    {
     ID "5EC371B5C7EFA913"

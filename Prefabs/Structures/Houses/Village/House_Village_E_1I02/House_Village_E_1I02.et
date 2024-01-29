@@ -1,7 +1,49 @@
 SCR_DestructibleBuildingEntity : "{556A40267288B406}Prefabs/Structures/Houses/Village/House_Village_E_1I02/House_Village_E_1I02_base.et" {
  ID "46B3A6A453594AB6"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4CCBEC7C0C"
+    coords 3.867 0.486 -0.854
+   }
+   {
+    ID "60794C4CCBEC7C26"
+    coords -2.612 0.486 -1.193
+   }
+   {
+    ID "60794C4CCBEC7C45"
+    coords -1.277 0.486 -9.518
+   }
+   {
+    ID "60794C4CCBEC7C4D"
+    coords 4.767 0.486 -8.635
+   }
+   {
+    ID "60794C4CCBEC7C51"
+    coords -0.123 0.486 -3.761
+   }
+   {
+    ID "60794C4CCBEC7C5B"
+    coords -3.58 0.486 -8.463
+   }
+   {
+    ID "60794C4CCBEC7C66"
+    coords 4.399 0.486 4.494
+   }
+   {
+    ID "60794C4CCBEC7C6D"
+    coords 4.015 0.486 -4.492
+   }
+   {
+    ID "60794C4CCBEC7C75"
+    coords -1.629 0.486 8.01
+   }
+   {
+    ID "60794C4CCBEC7C7E"
+    coords 2.221 0.486 7.718
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3486FF5EADABB"
     coords -2.963 0.486 -4.081

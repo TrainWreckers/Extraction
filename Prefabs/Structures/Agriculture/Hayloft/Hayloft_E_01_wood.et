@@ -1,6 +1,28 @@
 SCR_DestructibleBuildingEntity : "{DD1503B65ED9DA65}Prefabs/Structures/Agriculture/Hayloft/Hayloft_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C4764800CC7"
+    coords 8.294 0.015 3.069
+   }
+   {
+    ID "60794C4764800CE1"
+    coords -1.123 -0.034 1.539
+   }
+   {
+    ID "60794C4764800CEA"
+    coords 2.806 0.018 2.587
+   }
+   {
+    ID "60794C4764800F14"
+    coords 3.345 -0.014 -1.611
+   }
+   {
+    ID "60794C4764800F1B"
+    coords 5.755 -0 -7.191
+   }
+  }
   GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    ID "5ED715FD3E364098"
    coords -8.308 -0.008 -2.441

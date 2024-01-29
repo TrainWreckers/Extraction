@@ -1,3 +1,15 @@
 SCR_DestructibleBuildingEntity : "{9E1B1BC411CE2CBC}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_medical_base.et" {
  ID "F0DBA538AC2A0552"
+ {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C544885E7C1"
+    coords 0.512 0.119 12.728
+   }
+   {
+    ID "60794C544885E7FB"
+    coords 2.292 0.119 8.244
+   }
+  }
+ }
 }

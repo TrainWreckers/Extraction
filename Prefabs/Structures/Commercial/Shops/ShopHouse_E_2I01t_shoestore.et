@@ -1,7 +1,105 @@
 SCR_DestructibleBuildingEntity : "{9064E65F34097C8F}Prefabs/Structures/Commercial/Shops/ShopHouse_E_2I01t_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TW_Extraction_AISpawnPoint.et" {
+  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   {
+    ID "60794C41FBC482DC"
+    coords 2.885 0.2 4.337
+   }
+   {
+    ID "60794C41FBC482E5"
+    coords -0.402 0.2 5.841
+   }
+   {
+    ID "60794C41FBC482F8"
+    coords 4.765 0.2 6.086
+   }
+   {
+    ID "60794C41FBC4BC04"
+    coords -0.838 7.6 -0.932
+   }
+   {
+    ID "60794C41FBC4BC0F"
+    coords 1.441 0.2 4.271
+   }
+   {
+    ID "60794C41FBC4BC19"
+    coords -2.573 7.6 -0.076
+   }
+   {
+    ID "60794C41FBC4BD07"
+    coords 1.625 0.2 -1.677
+   }
+   {
+    ID "60794C41FBC4BD19"
+    coords -0.338 0.2 0.94
+   }
+   {
+    ID "60794C41FBC4BD21"
+    coords -3.502 0.2 3.894
+   }
+   {
+    ID "60794C41FBC4BD2F"
+    coords -0.74 2.21 -7.167
+   }
+   {
+    ID "60794C41FBC4BD34"
+    coords 4.011 0.2 -5.559
+   }
+   {
+    ID "60794C41FBC4BD47"
+    coords -3.156 4.3 1.657
+   }
+   {
+    ID "60794C41FBC4BD5B"
+    coords 1.201 4.318 -1.902
+   }
+   {
+    ID "60794C41FBC4BD64"
+    coords 0.308 4.3 6.236
+   }
+   {
+    ID "60794C41FBC4BD78"
+    coords -3.447 4.3 5.179
+   }
+   {
+    ID "60794C41FBC4BD86"
+    coords 5.035 4.3 -7.149
+   }
+   {
+    ID "60794C41FBC4BD90"
+    coords 4.456 4.3 6.253
+   }
+   {
+    ID "60794C41FBC4BD9C"
+    coords 3.308 4.3 -0.862
+   }
+   {
+    ID "60794C41FBC4BDAE"
+    coords -0.213 6.39 -7.185
+   }
+   {
+    ID "60794C41FBC4BDB1"
+    coords 4.363 4.3 -4.478
+   }
+   {
+    ID "60794C41FBC4BDBE"
+    coords 1.472 6.39 -7.215
+   }
+   {
+    ID "60794C41FBC4BDDC"
+    coords -2.393 7.6 -4.174
+   }
+   {
+    ID "60794C41FBC4BDEE"
+    coords -4.558 7.6 -0.54
+   }
+   {
+    ID "60794C41FBC4BDF2"
+    coords -3.799 7.6 -1.972
+   }
+  }
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC30343FBBAF42E"
     coords -3.804 4.3 -3.953
