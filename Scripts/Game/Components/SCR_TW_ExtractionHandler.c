@@ -325,8 +325,12 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 		
 		TW_LootManager.InitializeLootTable();
 		
-		if(m_EnableLootSpawns)			
+		#ifdef WORKBENCH
+		if(m_EnableLootSpawns)	
 			TW_LootManager.SpawnLoot();
+		#else
+		TW_LootManager.SpawnLoot();
+		#endif
 	}
 	
 	void CallExtraction(TW_ExtractionType type)
