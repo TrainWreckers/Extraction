@@ -28,8 +28,14 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("120", UIWidgets.Slider, params: "0 500 1", category: "Garbage Collection", desc: "Time in seconds. Interval GC is checked (nothing happens)")]
 	protected float m_GarbageCollectionTimer;
 	
+	[Attribute("0.2", UIWidgets.Slider, params: "0.00 1 0.01", category: "AI", desc: "Chance for AI to be enabled for wandering")]
+	protected float m_AIFlaggedAsWandererChance;
+	
 	[Attribute("0.6", UIWidgets.Slider, params: "0.00 1 0.01", category: "AI", desc: "Chance for AI to wander per spawn iteration")]
 	protected float m_AIWanderChance;
+	
+	[Attribute("60", UIWidgets.Slider, params: "5 600 5", category: "AI", desc: "Timer in seconds for wandering system check")]
+	protected int m_AIIntervalInSeconds;
 	
 	[Attribute("0.15", UIWidgets.Slider, params: "0.01 1 0.01", category: "AI", desc: "Minimum percentage of AI to wander")]
 	protected float m_AIWanderMinimumPercent;
@@ -97,6 +103,7 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		{
 			GetGame().GetCallqueue().CallLater(ReinitializePlayers, SCR_TW_Util.FromSecondsToMilliseconds(10), true);
 			GetGame().GetCallqueue().CallLater(GarbageCollection, SCR_TW_Util.FromSecondsToMilliseconds(m_GarbageCollectionTimer), true);
+			GetGame().GetCallqueue().CallLater(WanderSystem, SCR_TW_Util.FromSecondsToMilliseconds(m_AIIntervalInSeconds), true);
 		}
 		
 		if(!m_DisableSpawns)
@@ -180,53 +187,64 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		}
 	}
 	
-	private void WanderRandomGroups()
+	private void WanderSystem()
 	{		
 		if(m_Groups.IsEmpty())
-			return;				
-		
-		int index = m_Groups.GetRandomIndex();
-		SCR_ChimeraAIAgent agent = m_Groups.Get(index);
-		
-		// Only wander if they aren't flagged to ignore wandering system.
-		if(!SCR_TW_Util.IsValidWanderer_Agent(agent))
-			return;
-		Print("TrainWreck: Wandering 1 agent");
-		m_Groups.Remove(index);
-		
-		SCR_AIInfoComponent aiInfo = TW<SCR_AIInfoComponent>.Find(agent);
-		
-		if(!aiInfo)
 			return;
 		
-		EAIThreatState state = aiInfo.GetThreatState();
+		float wanderChance = Math.RandomFloat01();
 		
-		if(state == EAIThreatState.SAFE || SCR_Enum.HasFlag(state, EAIThreatState.SAFE))
+		if(wanderChance > m_AIWanderChance)
+			return;
+		
+		float wanderPercent = Math.RandomFloatInclusive(m_AIWanderMinimumPercent, m_AIWanderMaximumPercent);
+		int wanderCount = Math.Round(m_Groups.Count() * wanderPercent);
+			
+		for(int i = 0; i < wanderCount; i++)
 		{
-			AIGroup group = agent.GetParentGroup();			
+			int index = m_Groups.GetRandomIndex();
+			SCR_ChimeraAIAgent agent = m_Groups.Get(index);
 			
-			if(!group)
+			// Only wander if they aren't flagged to ignore wandering system.
+			if(!SCR_TW_Util.IsValidWanderer_Agent(agent))
+				continue;
+			
+			Print("TrainWreck: Wandering 1 agent");
+			m_Groups.Remove(index);
+			
+			SCR_AIInfoComponent aiInfo = TW<SCR_AIInfoComponent>.Find(agent);
+		
+			if(!aiInfo)
 				return;
 			
-			// We need to remove waypoints from the group to ensure they'll go to the next set of waypoints
-			ref array<AIWaypoint> currentWaypoints = {};
-			group.GetWaypoints(currentWaypoints);
-			
-			foreach(AIWaypoint waypoint : currentWaypoints)
-				group.RemoveWaypoint(waypoint);
-			
-			// Where are they going
-			SCR_TW_AISpawnPoint moveToPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
-			
-			if(!moveToPoint)
-				return;
-			
-			// Add all the wandering waypoints in order of the array
-			foreach(ResourceName waypointPrefab : m_WanderingWaypoints)
+			EAIThreatState state = aiInfo.GetThreatState();
+			if(state == EAIThreatState.SAFE || SCR_Enum.HasFlag(state, EAIThreatState.SAFE))
 			{
-				AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointPrefab, moveToPoint.GetOrigin());
-				if(waypoint)
-					group.AddWaypoint(waypoint);
+				AIGroup group = agent.GetParentGroup();			
+				
+				if(!group)
+					continue;
+				
+				// We need to remove waypoints from the group to ensure they'll go to the next set of waypoints
+				ref array<AIWaypoint> currentWaypoints = {};
+				group.GetWaypoints(currentWaypoints);
+				
+				foreach(AIWaypoint waypoint : currentWaypoints)
+					group.RemoveWaypoint(waypoint);
+				
+				// Where are they going
+				SCR_TW_AISpawnPoint moveToPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
+				
+				if(!moveToPoint)
+					continue;
+				
+				// Add all the wandering waypoints in order of the array
+				foreach(ResourceName waypointPrefab : m_WanderingWaypoints)
+				{
+					AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointPrefab, moveToPoint.GetOrigin());
+					if(waypoint)
+						group.AddWaypoint(waypoint);
+				}
 			}
 		}
 	}
@@ -244,21 +262,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		ref array<SCR_AIGroup> agents = {};		
 		currentAgents = GetAgentCount(agents);
-		
-		// Wandering system
-		if(currentAgents > 0)
-		{
-			float wanderChance = Math.RandomFloat01();
-			
-			if(wanderChance < m_AIWanderChance)
-			{
-				float wanderPercent = Math.RandomFloatInclusive(m_AIWanderMinimumPercent, m_AIWanderMaximumPercent);
-				int wanderCount = Math.Round(m_Groups.Count() * wanderPercent);
-				
-				for(int i = 0; i < wanderCount; i++)
-					WanderRandomGroups();
-			}
-		}
 		
 		if(isTrickleSpawning)
 		{
@@ -326,7 +329,15 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		SCR_TW_AISpawnPoint spawnPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
 		
 		if(IsValidSpawn(spawnPoint))
+		{
 			SCR_AIGroup group = spawnPoint.Spawn();
+			
+			float tagAsWanderer = Math.RandomFloat01();
+			// The chance to be a wanderer should role <= configured value
+			// So if we exceed this value they will NOT be a wanderer
+			bool tag = tagAsWanderer > m_AIFlaggedAsWandererChance;
+			group.SetIgnoreWandering(tag);
+		}
 		
 		// Recurse
 		if(remainingCount > 0)
