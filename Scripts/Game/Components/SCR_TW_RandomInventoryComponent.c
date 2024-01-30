@@ -168,9 +168,11 @@ class TW_InventoryConfig
 					break;
 		}
 		
-		storage = GetBestStorage(storages);
-		
-		// Only work with secondary weapons if they are provided
+		GetGame().GetCallqueue().CallLater(SpawnSecondaryConfigOptions, 500, false, storageManager);
+	}
+	
+	private void SpawnSecondaryConfigOptions(SCR_InventoryStorageManagerComponent storageManager)
+	{
 		if(m_SecondaryWeaponConfig)
 		{
 			if(!m_SecondaryWeaponConfig.UseChance() || (m_SecondaryWeaponConfig.UseChance() && m_SecondaryWeaponConfig.RollChance()))
@@ -180,14 +182,17 @@ class TW_InventoryConfig
 				{
 					int magCount = m_SecondaryWeaponConfig.GetRandomMagCount();
 					for(int i = 0; i < magCount; i++)
-						if(!SpawnItem(secondaryWeaponMag, storageManager, storage))
+						if(!SpawnItem(secondaryWeaponMag, storageManager))
 							break;
 				}
 			}
-		}		
+		}
 		
-		storage = GetBestStorage(storages);
-		
+		GetGame().GetCallqueue().CallLater(SpawnItemConfigOptions, 500, false, storageManager);
+	}
+	
+	private void SpawnItemConfigOptions(SCR_InventoryStorageManagerComponent storageManager)
+	{
 		if(!m_ItemConfigs.IsEmpty())
 		{
 			foreach(TW_ProbabilityItem item : m_ItemConfigs)
@@ -196,7 +201,7 @@ class TW_InventoryConfig
 					int spawnCount = item.RandomCount();
 				
 					for(int i = 0; i < spawnCount; i++)
-						if(!SpawnItem(item.GetRandomPrefab(), storageManager, storage))
+						if(!SpawnItem(item.GetRandomPrefab(), storageManager))
 							break;
 				}
 		}

@@ -8,8 +8,8 @@ GenericEntity VehicleSpawn : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpa
    ignoreChanceSpawnAtStart 1
   }
  }
- coords 210.245 1 40.435
- angleY 0
+ coords 206.254 1 39.603
+ angleY 24.234
 }
 SCR_DestructibleBuildingEntity : "{A4D0B331414901A5}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_tankpistol.et" {
  coords 193.368 0 44.273

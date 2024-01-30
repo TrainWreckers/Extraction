@@ -1,3 +1,9 @@
+enum TW_ResourceNameType
+{
+	ResourceName,
+	DisplayName
+}
+
 sealed class TW_LootManager 
 {
 	// Provide the ability to grab 
@@ -14,6 +20,100 @@ sealed class TW_LootManager
 	static bool IsValidItem(ResourceName resource)
 	{
 		return s_GlobalItems.Contains(resource);
+	}
+	
+	static bool FlagHasResource(SCR_EArsenalItemType flags, ResourceName resource)
+	{
+		if(resource.IsEmpty())
+			return false;
+		
+		foreach(SCR_EArsenalItemType itemType : s_ArsenalItemTypes)
+		{
+			if(!s_LootTable.Contains(itemType))
+				continue;
+			
+			if(!SCR_Enum.HasFlag(flags, itemType))
+				continue;
+			
+			ref array<ref TW_LootConfigItem> items = s_LootTable.Get(itemType);
+			foreach(ref TW_LootConfigItem item : items)
+			{
+				if(item.resourceName == resource)
+					return true;
+			}
+		}
+		
+		return false;
+	}
+			
+	static void SelectRandomPrefabsFromFlags(SCR_EArsenalItemType flags, int count, notnull map<string, int> selected, TW_ResourceNameType type = TW_ResourceNameType.DisplayName)
+	{
+		int selectedCount = 0;
+		
+		foreach(SCR_EArsenalItemType itemType : s_ArsenalItemTypes)
+		{
+			if(selectedCount >= count)
+				return;
+			
+			if(!SCR_Enum.HasFlag(flags, itemType))
+				continue;
+			
+			if(!s_LootTable.Contains(itemType))
+				continue;
+			
+			ref array<ResourceName> items = {};
+			selectedCount += SelectRandomPrefabsFromType(itemType, Math.RandomIntInclusive(1, count), items);
+			
+			foreach(ResourceName name : items)
+			{
+				string value = name;
+				switch(type)
+				{
+					case TW_ResourceNameType.DisplayName:
+						value = WidgetManager.Translate(SCR_TW_Util.GetPrefabDisplayName(name));
+						break;
+				}
+				
+				if(selected.Contains(value))
+					selected.Set(value, selected.Get(value) + 1);
+				else
+					selected.Set(value, 1);
+			}
+		}
+		
+		// If we didn't select enough, we'll do it again.
+		// Subtracting what we have from the desired amount
+		if(selectedCount < count)
+			SelectRandomPrefabsFromFlags(flags, count - selectedCount, selected, type);
+	}
+	
+	static int SelectRandomPrefabsFromType(SCR_EArsenalItemType flag, int randomCount, notnull array<ResourceName> selected)
+	{
+		if(!s_LootTable.Contains(flag))
+			return 0;
+		
+		ref array<ref TW_LootConfigItem> items = s_LootTable.Get(flag);
+		ref set<int> indicies = new set<int>();
+		
+		int count = 0;
+		for(int i = 0; i < randomCount; i++)
+		{			
+			ref TW_LootConfigItem item = items.GetRandomElement();
+			
+			int randomIndex = items.GetRandomIndex();
+			
+			while(indicies.Contains(randomIndex) && selected.Count() < items.Count())
+				randomIndex = items.GetRandomIndex();	
+			
+			if(indicies.Contains(randomIndex))
+				break;
+			
+			count++;
+			indicies.Insert(randomIndex);
+			selected.Insert(items.Get(randomIndex).resourceName);
+		}
+		
+		return count;
 	}
 
 	static void InitializeLootTable()

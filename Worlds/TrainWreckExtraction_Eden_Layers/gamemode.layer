@@ -62,9 +62,12 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionSpawnHandler "{5EBF0B14A6CAF6AB}" {
    m_MaxAgents 35
    m_GarbageCollectionTimer 1
-   m_AIWanderChance 0
-   m_AIWanderMinimumPercent 0.01
-   m_AIWanderMaximumPercent 0.05
+   m_AIWanderChance 0.05
+   m_AIWanderMinimumPercent 0.1
+   m_AIWanderMaximumPercent 0.15
+   m_WanderingWaypoints {
+    "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+   }
   }
   SCR_TimeAndWeatherHandlerComponent "{5ED74C1C84F55A6E}" {
    m_bRandomStartingDaytime 1
@@ -72,6 +75,12 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    m_fNightTimeAcceleration 12
    m_bRandomStartingWeather 1
    m_bRandomWeatherChanges 1
+  }
+  TW_MissionHandlerComponent "{607B0955E940081F}" {
+   m_MissionPool {
+    "{52393F4686A3A4F2}Configs/Missions/Mission_Medical.conf" "{B3409047F637A864}Configs/Missions/Mission_ScavengeDelivery.conf"
+   }
+   m_Interval 300
   }
   SerializerInventoryStorageManagerComponent "{5EBF4A5F293DC235}" {
   }

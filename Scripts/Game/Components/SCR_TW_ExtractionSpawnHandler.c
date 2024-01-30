@@ -37,6 +37,12 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	[Attribute("0.5", UIWidgets.Slider, params: "0.01 1 0.01", category: "AI", desc: "Maximum percentage of AI to wander")]
 	protected float m_AIWanderMaximumPercent;
 	
+	[Attribute("{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et", UIWidgets.ResourcePickerThumbnail, category: "Rewards", desc: "Intelligence reward", params: "et")]
+	protected ResourceName m_IntelligenceRewardPrefab;
+	
+	[Attribute("", UIWidgets.Auto, category: "Wandering Waypoints", desc: "These will be assigned in order to wandering units", params: "et")]
+	protected ref array<ResourceName> m_WanderingWaypoints;
+	
 	private ref array<SCR_TW_EventSite> eventSites = {};
 	protected ref array<SCR_AIGroup> m_CurrentGroups = {};
 	protected ref array<SCR_TW_AISpawnPoint> m_AISpawnPoints = {};
@@ -76,6 +82,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		return sInstance;
 	}
 	
+	ResourceName GetIntelligenceRewardPrefab() { return m_IntelligenceRewardPrefab; }
+	
 	array<IEntity> GetPlayers() { return players; }
 	
 	override void OnGameModeStart()
@@ -105,6 +113,40 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	void UnregisterEventSite(SCR_TW_EventSite site)
 	{
 		Debug.Error("Implement this");
+	}
+	
+	IEntity GetLocationBySpawnRule(TW_MissionSpawnArea rule)
+	{
+		switch(rule)
+		{
+			case TW_MissionSpawnArea.EventSite:
+			{
+				ref array<SCR_TW_EventSite> allSites = {};
+				int siteCount = eventGrid.GetAllItems(allSites);
+								
+				while(siteCount > 0)
+				{
+					int index = allSites.GetRandomIndex();
+					SCR_TW_EventSite site = allSites.Get(index);
+					allSites.Remove(index);
+					siteCount--;
+					
+					if(!site)
+						continue;
+							
+					if(!site.IsOccupied())
+						return site;
+				}
+				
+				return null;
+			}
+			
+			case TW_MissionSpawnArea.ExtractionSite:
+			{
+				return SCR_TW_ExtractionHandler.GetInstance().GetRegisteredExtractionSite();
+			}			
+		}		
+		return null;
 	}
 	
 	void FirstPass()
@@ -145,11 +187,12 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		int index = m_Groups.GetRandomIndex();
 		SCR_ChimeraAIAgent agent = m_Groups.Get(index);
-		m_Groups.Remove(index);
 		
 		// Only wander if they aren't flagged to ignore wandering system.
 		if(!SCR_TW_Util.IsValidWanderer_Agent(agent))
 			return;
+		Print("TrainWreck: Wandering 1 agent");
+		m_Groups.Remove(index);
 		
 		SCR_AIInfoComponent aiInfo = TW<SCR_AIInfoComponent>.Find(agent);
 		
@@ -165,23 +208,25 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			if(!group)
 				return;
 			
-			SCR_TW_AISpawnPoint moveToPoint = spawnGrid.GetNextItemFromPointer(playerChunks); // spawnPointsNearPlayers.GetRandomElement(); points.GetRandomElement();
+			// We need to remove waypoints from the group to ensure they'll go to the next set of waypoints
+			ref array<AIWaypoint> currentWaypoints = {};
+			group.GetWaypoints(currentWaypoints);
+			
+			foreach(AIWaypoint waypoint : currentWaypoints)
+				group.RemoveWaypoint(waypoint);
+			
+			// Where are they going
+			SCR_TW_AISpawnPoint moveToPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
 			
 			if(!moveToPoint)
 				return;
 			
-			ResourceName randomWaypointType = moveToPoint.GetRandomWaypoint();
-			AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(randomWaypointType, moveToPoint.GetOrigin());
-			
-			if(waypoint)
+			// Add all the wandering waypoints in order of the array
+			foreach(ResourceName waypointPrefab : m_WanderingWaypoints)
 			{
-				AIWaypoint currentWaypoint = group.GetCurrentWaypoint();
-				
-				// Ensure whatever they're currently doing -- it's overriden 
-				if(currentWaypoint)
-					group.RemoveWaypoint(currentWaypoint);
-				
-				group.AddWaypoint(waypoint);
+				AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointPrefab, moveToPoint.GetOrigin());
+				if(waypoint)
+					group.AddWaypoint(waypoint);
 			}
 		}
 	}
@@ -395,7 +440,8 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 					
 					int siteCount = grid.GetData(coordSites);
 					foreach(SCR_TW_EventSite site : coordSites)
-						site.Despawn();
+						if(!site.IsIgnoreGC()) // Only delete those who shouldn't get deleted
+							site.Despawn();
 				}				
 			}
 		}

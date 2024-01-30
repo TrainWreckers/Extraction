@@ -314,5 +314,16 @@ class TW_GridCoordManager<Class T>
 		}
 		
 		return count;
-	}	
+	}
+	
+	int GetAllItems(notnull out array<T> items)
+	{
+		int count = 0;
+		
+		foreach(int x, ref map<int, ref TW_GridCoord<T>> values : grid)
+			foreach(int y, ref TW_GridCoord<T> value : values)
+				count += value.GetData(items);
+		
+		return count;
+	}
 }

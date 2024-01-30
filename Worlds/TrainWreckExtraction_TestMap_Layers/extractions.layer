@@ -17,15 +17,15 @@ SCR_TW_ExtractionSite {
 }
 $grp SCR_TW_ExtractionSite : "{A46C2A6689C20BC9}Prefabs/TrainWreck/TW_ExtractionSite.et" {
  {
-  coords 106.61 1 84.096
+  coords 112.949 1 95.621
  }
  {
-  coords 149.995 1 129.272
+  coords 152.197 1 132.868
  }
  {
   coords 88.424 1 118.443
  }
  {
-  coords 109.219 1 166.091
+  coords 119.28 1 159.818
  }
 }

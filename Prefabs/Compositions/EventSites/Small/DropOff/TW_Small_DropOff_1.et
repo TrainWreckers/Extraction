@@ -1,7 +1,9 @@
 GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBase.et" {
+ ID "605C017C86C39F73"
  coords 78.643 0 40.975
  {
   GenericEntity : "{22E2462FA3AE0849}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Long_Pile.et" {
+   ID "607C3EF7BD9A68D4"
    components {
     Hierarchy "{607C3EF7B216F089}" {
     }
@@ -10,6 +12,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    angleY 87.688
   }
   GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
+   ID "607C3EF7BD9A68CB"
    components {
     Hierarchy "{607C3EF7B2173855}" {
     }
@@ -17,6 +20,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    coords 0.818 0 -0.33
   }
   GenericEntity : "{6720CD0D5B7B7768}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Long.et" {
+   ID "607C3EF7BD9A68D7"
    components {
     Hierarchy "{607C3EF7B2171418}" {
     }
@@ -25,6 +29,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    angleY 24.008
   }
   GenericEntity : "{A240B5FCD17D5686}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Medium.et" {
+   ID "607C3EF7BD9A68DC"
    components {
     Hierarchy "{607C3EF7B2169438}" {
     }
@@ -34,56 +39,7 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
   }
   $grp DecalEntity : "{A8F7CB83AA7FE99B}Prefabs/Decals/Dirt/Decal_Dirt_Footprints_02.et" {
    {
-    components {
-     Hierarchy "{607C3EF7B2176427}" {
-     }
-    }
-    coords 0.586 0 -0.894
-    angleX -89.972
-    angleY 180
-    angleZ 76.384
-   }
-   {
-    components {
-     Hierarchy "{607C3EF7B2179152}" {
-     }
-    }
-    coords 0.984 0 -2.4
-    angleX -89.972
-    angleY 180
-    angleZ 76.384
-   }
-   {
-    components {
-     Hierarchy "{607C3EF7B217B87F}" {
-     }
-    }
-    coords 1.527 0 -4.192
-    angleX -89.972
-    angleY 180
-    angleZ 76.384
-   }
-   {
-    components {
-     Hierarchy "{607C3EF7B217E189}" {
-     }
-    }
-    coords 1.895 0 -5.996
-    angleX -89.972
-    angleY 180
-    angleZ 76.384
-   }
-   {
-    components {
-     Hierarchy "{607C3EF7B2180DFB}" {
-     }
-    }
-    coords 3.229 -0.001 5.957
-    angleX -89.972
-    angleY -180
-    angleZ 118.477
-   }
-   {
+    ID "607C3EF7BD9A1276"
     components {
      Hierarchy "{607C3EF7B2183A69}" {
      }
@@ -94,16 +50,62 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleZ 118.477
    }
    {
+    ID "607C3EF7BD9A68C0"
     components {
-     Hierarchy "{607C3EF7B218601D}" {
+     Hierarchy "{607C3EF7B2179152}" {
      }
     }
-    coords 1.717 -0.001 2.878
-    angleX -89.96
+    coords 0.984 0 -2.4
+    angleX -89.972
+    angleY 180
+    angleZ 76.384
+   }
+   {
+    ID "607C3EF7BD9A68CF"
+    components {
+     Hierarchy "{607C3EF7B2176427}" {
+     }
+    }
+    coords 0.586 0 -0.894
+    angleX -89.972
+    angleY 180
+    angleZ 76.384
+   }
+   {
+    ID "607C3EF7BD9A71C0"
+    components {
+     Hierarchy "{607C3EF7B217E189}" {
+     }
+    }
+    coords 1.895 0 -5.996
+    angleX -89.972
+    angleY 180
+    angleZ 76.384
+   }
+   {
+    ID "607C3EF7BD9A71C1"
+    components {
+     Hierarchy "{607C3EF7B217B87F}" {
+     }
+    }
+    coords 1.527 0 -4.192
+    angleX -89.972
+    angleY 180
+    angleZ 76.384
+   }
+   {
+    ID "607C3EF7BD9A71C3"
+    components {
+     Hierarchy "{607C3EF7B2180DFB}" {
+     }
+    }
+    coords 3.229 -0.001 5.957
+    angleX -89.972
     angleY -180
     angleZ 118.477
    }
    {
+    ID "607C3EF7BD9ACA86"
     components {
      Hierarchy "{607C3EF7B2188E37}" {
      }
@@ -113,8 +115,20 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
     angleY -180
     angleZ 118.477
    }
+   {
+    ID "607C3EF7BD9ACA87"
+    components {
+     Hierarchy "{607C3EF7B218601D}" {
+     }
+    }
+    coords 1.717 -0.001 2.878
+    angleX -89.96
+    angleY -180
+    angleZ 118.477
+   }
   }
   GenericEntity : "{D5062960B7211EB4}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Long.et" {
+   ID "607C3EF7BD9A68DF"
    components {
     Hierarchy "{607C3EF7B216CE1D}" {
     }
@@ -123,11 +137,19 @@ GenericEntity : "{D7ABF66640799D81}Prefabs/Compositions/Slotted/TW_CompositionBa
    angleY 92.396
   }
   GenericEntity : "{EEC781AC391B7400}Prefabs/Props/Commercial/ShoppingCart_01.et" {
+   ID "607C3EF7BD9ACA83"
    components {
     SCR_UniversalInventoryStorageComponent "{607C3EF6B6AE2AE2}" {
+     Attributes SCR_ItemAttributeCollection "{607CDC33AFC0C172}" {
+      ItemDisplayName SCR_InventoryUIInfo "{5EBB1455037011C9}" {
+       Name "Loot"
+      }
+     }
      UseCapacityCoefficient 0
      MaxCumulativeVolume 999999
      m_fMaxWeight 999999
+    }
+    TW_MissionDeliveryComponent "{607C3EF78EF0E96B}" {
     }
     SCR_InventoryStorageManagerComponent "{607C3EF6A2D59AC8}" {
     }

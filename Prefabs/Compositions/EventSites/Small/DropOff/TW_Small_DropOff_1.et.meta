@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{14347EB7A5DC340E}Prefabs/Compositions/EventSites/Small/DropOff/TW_Small_DropOff_1.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
