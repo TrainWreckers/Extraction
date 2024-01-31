@@ -68,9 +68,10 @@ class TW_MissionDeliveryComponent : ScriptComponent
 	{
 		if(!m_Mission)
 			return;
-		string name = WidgetManager.Translate(SCR_TW_Util.GetPrefabDisplayName(entity.GetPrefabData().GetPrefab().GetResourceName()));
-		if(m_delivered.Contains(name) && m_delivered.Get(name) > 0)
-			m_delivered.Set(name, m_delivered.Get(name) - 1);
+		
+		ResourceName prefab = entity.GetPrefabData().GetPrefab().GetResourceName();
+		if(m_delivered.Contains(prefab) && m_delivered.Get(prefab) > 0)
+			m_delivered.Set(prefab, m_delivered.Get(prefab) - 1);
 	}
 	
 	private void Complete()
@@ -86,14 +87,15 @@ class TW_MissionDeliveryComponent : ScriptComponent
 	private void OnItemAdded(IEntity entity, BaseInventoryStorageComponent storageComponent)
 	{
 		if(!m_Mission) return;
-		string name;
-		if(!m_Mission.IsAcceptableItem(entity, name))
+		if(!m_Mission.IsAcceptableItem(entity))
 			return;
 		
-		if(m_delivered.Contains(name))
-			m_delivered.Set(name, m_delivered.Get(name) + 1);
+		ResourceName prefab = entity.GetPrefabData().GetPrefab().GetResourceName();
+		
+		if(m_delivered.Contains(prefab))
+			m_delivered.Set(prefab, m_delivered.Get(prefab) + 1);
 		else 
-			m_delivered.Set(name, 1);
+			m_delivered.Set(prefab, 1);
 		
 		if(m_Mission.HasAllItems(m_delivered))
 			GetGame().GetCallqueue().CallLater(Complete, SCR_TW_Util.FromSecondsToMilliseconds(2), false);

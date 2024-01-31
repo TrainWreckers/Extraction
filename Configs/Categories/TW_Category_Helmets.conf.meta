@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{6E4F1972BD0BECC9}Configs/Categories/TW_Category_Helmets.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{33FCC0AF1EAE9C47}Configs/Missions/Mission_General_Vests.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

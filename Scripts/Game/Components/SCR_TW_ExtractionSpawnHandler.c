@@ -209,7 +209,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 			if(!SCR_TW_Util.IsValidWanderer_Agent(agent))
 				continue;
 			
-			Print("TrainWreck: Wandering 1 agent");
 			m_Groups.Remove(index);
 			
 			SCR_AIInfoComponent aiInfo = TW<SCR_AIInfoComponent>.Find(agent);

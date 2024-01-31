@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{0429BD80BA8CDA3A}Configs/Categories/TW_Category_Ammo.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

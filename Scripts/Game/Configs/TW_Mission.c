@@ -144,13 +144,16 @@ class TW_MissionDeliver : TW_Mission
 	[Attribute("", UIWidgets.Auto, category: "Delivery", desc: "Entity to deliver something to")]
 	protected ref array<ResourceName> m_DropOffPrefabs;
 	
-	[Attribute("", UIWidgets.Flags, category: "Item Types", desc: "Types of items to locate", enums: ParamEnumArray.FromEnum(SCR_EArsenalItemType))]	
-	protected int m_RequestedItemTypes;
+	[Attribute("", UIWidgets.Auto, category: "Items", desc: "Category to pull items from", params: "conf class=TW_Category")]
+	protected ref TW_Category m_Category;
 	
-	[Attribute("", UIWidgets.Slider, category: "Items", desc: "Random number of items associated with mission", params: "1 20 1")]
+	[Attribute("0", UIWidgets.CheckBox, category: "Items", desc: "Should a specific item be selected from category")]
+	protected bool m_UseSpecificItem;
+	
+	[Attribute("1", UIWidgets.Slider, category: "Items", desc: "Random number of items associated with mission", params: "1 20 1")]
 	protected int m_MinAmount;
 	
-	[Attribute("", UIWidgets.Slider, category: "Items", desc: "Random number of items associated with mission", params: "1 20 1")]
+	[Attribute("2", UIWidgets.Slider, category: "Items", desc: "Random number of items associated with mission", params: "1 20 1")]
 	protected int m_MaxAmount;
 	
 	private ref map<string, int> itemsForDelivery = new map<string, int>();
@@ -172,38 +175,47 @@ class TW_MissionDeliver : TW_Mission
 	}
 	
 	//! Does the provided item fit criteria for delivery
-	bool IsAcceptableItem(IEntity entity, out string name)
-	{
+	bool IsAcceptableItem(IEntity entity)
+	{				
 		IEntity root = SCR_EntityHelper.GetMainParent(entity, self: true);
 		ResourceName prefabData = entity.GetPrefabData().GetPrefab().GetResourceName();
-		name = WidgetManager.Translate(SCR_TW_Util.GetPrefabDisplayName(prefabData));
-		bool result = itemsForDelivery.Contains(name);
-		
-		PrintFormat("TrainWreck: %1 tried being added to %2. Success: %3", name, m_Name, result);
-		return result;
+		return m_Category.HasPrefab(prefabData);
 	}
 	
 	//! Check whether tracked items meet all criteria for delivery
 	bool HasAllItems(notnull map<string, int> delivered)
 	{
-		foreach(string name, int count : itemsForDelivery)
+		int acceptedItems = 0;
+		
+		if(m_UseSpecificItem)
 		{
-			if(!delivered.Contains(name))
-				return false;
+			foreach(string name, int count : itemsForDelivery)
+			{
+				if(!delivered.Contains(name))
+					return false;
+				
+				if(delivered.Get(name) < count)
+					return false;
+			}
 			
-			if(delivered.Get(name) < count)
-				return false;
+			return true;
 		}
 		
-		return true;
+		// Must be anything in category
+		foreach(string name, int count : delivered)
+		{
+			if(m_Category.HasPrefab(name))
+				acceptedItems += count;
+		}
+		
+		return acceptedItems >= totalRequiredAmount;
 	}
 	
 	override void InitializeMission()
 	{
-		if(m_RequestedItemTypes != 0)
-			InitializeSelectedPrefabs();
+		InitializeSelectedPrefabs();
 		
-		if(itemsForDelivery.IsEmpty())
+		if(m_UseSpecificItem && itemsForDelivery.IsEmpty())
 			Debug.Error("Delivery mission should have a populated items for delivery map");
 				
 		SpawnDelivery();
@@ -269,18 +281,19 @@ class TW_MissionDeliver : TW_Mission
 	
 	protected void InitializeSelectedPrefabs()
 	{
-		int count = GetAmount();
+		totalRequiredAmount= GetAmount();		
 		itemsForDelivery = new map<string, int>();
-		TW_LootManager.SelectRandomPrefabsFromFlags(m_RequestedItemTypes, count, itemsForDelivery);
 		
-		string combined = string.Empty;
-		foreach(string name, int itemCount : itemsForDelivery)
+		if(m_UseSpecificItem)
 		{
-			string displayName = SCR_TW_Util.GetPrefabDisplayName(name);
-			combined += string.Format("%1 x %2\n", displayName, itemCount);
+			ResourceName randomItem = m_Category.GetRandomElement();
+			if(!randomItem)
+				Debug.Error("Invalid item from category");
+			itemsForDelivery.Insert(randomItem, totalRequiredAmount);
+			m_Description = string.Format("You must deliver the following items:\n %1 x %2", WidgetManager.Translate(SCR_TW_Util.GetPrefabDisplayName(randomItem)), totalRequiredAmount);					
 		}
-		
-		m_Description = string.Format("You must deliver the following items:\n %1",combined);
+		else
+			m_Description = string.Format("You must deliver %1 items from the %2 category.\n%3", totalRequiredAmount, m_Category.GetName(), m_Category.GetNameList());
 	}
 	
 	void OnDeliverComplete()
