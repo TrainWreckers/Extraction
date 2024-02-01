@@ -1,23 +1,23 @@
 SCR_DestructibleBuildingEntity : "{F3C04211BAE932F2}Prefabs/Structures/Agriculture/WeightStation/WeightStation_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
-    ID "60794C47777F30DE"
-    coords 1.933 -0 3.217
+    ID "5EC30342593AB7B7"
+    coords 0.833 0 -2.986
    }
    {
-    ID "60794C47777F30ED"
-    coords -0.541 0 4.222
+    ID "60821BDF4B47C667"
+    coords -0.553 0 4.241
    }
    {
-    ID "60794C47777F30FF"
-    coords 1.181 -0 0.735
+    ID "60821BDF4B47C685"
+    coords 1.218 -0 0.671
    }
-  }
-  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
-   ID "5EC30342593AB7B7"
-   coords 0.833 0 -2.986
+   {
+    ID "60821BDF4B47C6B3"
+    coords 1.993 -0 3.211
+   }
   }
  }
 }

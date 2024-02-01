@@ -1,24 +1,6 @@
 SCR_DestructibleBuildingEntity : "{A42808C98FD3A19F}Prefabs/Structures/Commercial/Pubs/PubVillage_E_1L01/PubVillage_E_1L01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C47BED8A61C"
-    coords 4.221 0.206 1.162
-   }
-   {
-    ID "60794C47BED8A626"
-    coords 2.527 3.956 3.507
-   }
-   {
-    ID "60794C47BED8A63A"
-    coords -2.283 3.956 -4.278
-   }
-   {
-    ID "60794C47BED8A651"
-    coords 4.279 0.206 -3.519
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC30342B3946829"
@@ -31,6 +13,22 @@ SCR_DestructibleBuildingEntity : "{A42808C98FD3A19F}Prefabs/Structures/Commercia
    {
     ID "5EC30342B394685A"
     coords 0.518 0.206 -0.603
+   }
+   {
+    ID "60821BDF9DB46258"
+    coords 2.527 3.956 3.573
+   }
+   {
+    ID "60821BDF9DB4626D"
+    coords 4.296 0.206 -3.507
+   }
+   {
+    ID "60821BDF9DB4627D"
+    coords -2.316 3.956 -4.275
+   }
+   {
+    ID "60821BDF9DB4629D"
+    coords 4.221 0.206 1.28
    }
   }
  }

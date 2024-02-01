@@ -12,52 +12,6 @@ SCR_DestructibleBuildingEntity : "{07465627D9BD8A0A}Prefabs/Structures/Houses/Pr
    coords 2.368 0.011 4.484
    angleY 0
   }
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C42C3A64A7C"
-    coords -3.115 0.011 2.81
-   }
-   {
-    ID "60794C42C3A64A84"
-    coords -2.706 0.013 -1.503
-   }
-   {
-    ID "60794C42C3A64A97"
-    coords -2.483 0.011 -4.516
-   }
-   {
-    ID "60794C42C3A64AA5"
-    coords -3.613 2.997 -4.27
-   }
-   {
-    ID "60794C42C3A64AB1"
-    coords -1.835 2.997 -4.799
-   }
-   {
-    ID "60794C42C3A64ABA"
-    coords 2.611 2.997 -5.1
-   }
-   {
-    ID "60794C42C3A64ACB"
-    coords 2.1 0.011 -4.668
-   }
-   {
-    ID "60794C42C3A64AD4"
-    coords -2.375 2.997 6.203
-   }
-   {
-    ID "60794C42C3A64ADE"
-    coords 2.012 2.997 5.754
-   }
-   {
-    ID "60794C42C3A64AE2"
-    coords 3.896 0.011 4.332
-   }
-   {
-    ID "60794C42C3A64AF7"
-    coords -2.576 0.011 6.125
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC30341BB4513A2"
@@ -74,6 +28,50 @@ SCR_DestructibleBuildingEntity : "{07465627D9BD8A0A}Prefabs/Structures/Houses/Pr
    {
     ID "5EC30341BB4513D9"
     coords -0.616 0.011 4.714
+   }
+   {
+    ID "60821BD50B21541D"
+    coords -2.547 0.011 6.13
+   }
+   {
+    ID "60821BD50B215430"
+    coords -3.132 0.011 2.829
+   }
+   {
+    ID "60821BD50B215575"
+    coords -2.723 0.013 -1.491
+   }
+   {
+    ID "60821BD50B21558E"
+    coords -3.619 2.997 -4.258
+   }
+   {
+    ID "60821BD50B215598"
+    coords -2.519 0.011 -4.52
+   }
+   {
+    ID "60821BD50B2155BF"
+    coords -1.827 2.997 -4.814
+   }
+   {
+    ID "60821BD50B2155C2"
+    coords 2.106 0.011 -4.662
+   }
+   {
+    ID "60821BD50B2155D0"
+    coords 2.613 2.997 -5.104
+   }
+   {
+    ID "60821BD50B2155E0"
+    coords 2.049 2.997 5.764
+   }
+   {
+    ID "60821BD50B2155EE"
+    coords 3.899 0.011 4.33
+   }
+   {
+    ID "60821BD50B2155F2"
+    coords -2.354 2.997 6.188
    }
   }
  }

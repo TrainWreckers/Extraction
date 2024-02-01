@@ -1,32 +1,6 @@
 SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C5556259992"
-    coords 6.331 -0 -25.88
-   }
-   {
-    ID "60794C55562599AB"
-    coords -12.673 0 -2.157
-   }
-   {
-    ID "60794C55562599B2"
-    coords -10.474 0 -8.684
-   }
-   {
-    ID "60794C55562599BE"
-    coords -13.22 0 -6.052
-   }
-   {
-    ID "60794C55562599C8"
-    coords -5.675 0 -25.418
-   }
-   {
-    ID "60794C55562599DA"
-    coords -6.781 0 -0.474
-   }
-  }
   GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    ID "5ED715F113A60039"
    coords -3.112 0 -14.723
@@ -44,6 +18,30 @@ SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/
    {
     ID "5EC371B150B18996"
     coords 5.806 0 -7.349
+   }
+   {
+    ID "60823D45D712120F"
+    coords -10.488 0 -8.691
+   }
+   {
+    ID "60823D45D712122E"
+    coords -13.127 0 -6.051
+   }
+   {
+    ID "60823D45D7121248"
+    coords -5.728 0 -25.453
+   }
+   {
+    ID "60823D45D712127D"
+    coords -6.78 0 -0.491
+   }
+   {
+    ID "60823D45D7121293"
+    coords 6.337 -0 -25.871
+   }
+   {
+    ID "60823D45D71213E0"
+    coords -12.643 0 -2.163
    }
   }
  }

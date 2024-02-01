@@ -1,64 +1,6 @@
 SCR_DestructibleBuildingEntity : "{5F97E54397247954}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_military_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C54342DD40F"
-    coords -6.573 0.119 10.167
-   }
-   {
-    ID "60794C54342DD413"
-    coords -6.598 0.119 12.164
-   }
-   {
-    ID "60794C54342DD425"
-    coords 6.215 0.119 3.544
-   }
-   {
-    ID "60794C54342DD43B"
-    coords -3.34 0.119 7.86
-   }
-   {
-    ID "60794C54342DD449"
-    coords 6.538 0.119 -10.748
-   }
-   {
-    ID "60794C54342DD451"
-    coords 6.193 0.119 0.382
-   }
-   {
-    ID "60794C54342DD45F"
-    coords 6.655 0.119 -7.417
-   }
-   {
-    ID "60794C54342DD460"
-    coords -6.515 0.119 -6.786
-   }
-   {
-    ID "60794C54342DD46A"
-    coords -5.202 0.119 -1.952
-   }
-   {
-    ID "60794C54342DD473"
-    coords -6.278 0.119 -10.698
-   }
-   {
-    ID "60794C54342DD48A"
-    coords -6.25 0.119 8.56
-   }
-   {
-    ID "60794C54342DD496"
-    coords -6.323 0.119 1.426
-   }
-   {
-    ID "60794C54342DD49F"
-    coords -3.749 0.119 4.489
-   }
-   {
-    ID "60794C54342DD4B2"
-    coords 6.144 0.119 7.798
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B05178EC01"

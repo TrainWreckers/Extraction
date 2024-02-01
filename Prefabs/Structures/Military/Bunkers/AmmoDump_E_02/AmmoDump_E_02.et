@@ -1,20 +1,6 @@
 SCR_DestructibleBuildingEntity : "{0921B79E3B234115}Prefabs/Structures/Military/Bunkers/AmmoDump_E_02/AmmoDump_E_02_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C55AB223207"
-    coords 2.72 0.13 -3.622
-   }
-   {
-    ID "60794C55AB223230"
-    coords 2.855 0.13 -6.991
-   }
-   {
-    ID "60794C55AB2233EC"
-    coords -2.959 0.139 -3.394
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B1A6559A45"
@@ -23,6 +9,18 @@ SCR_DestructibleBuildingEntity : "{0921B79E3B234115}Prefabs/Structures/Military/
    {
     ID "5EC371B1A6559A7F"
     coords 2.146 0.131 -13.917
+   }
+   {
+    ID "60823D46549EF554"
+    coords 2.858 0.13 -6.935
+   }
+   {
+    ID "60823D46549EF562"
+    coords 2.712 0.13 -3.594
+   }
+   {
+    ID "60823D46549EF572"
+    coords -3.022 0.139 -3.362
    }
   }
  }

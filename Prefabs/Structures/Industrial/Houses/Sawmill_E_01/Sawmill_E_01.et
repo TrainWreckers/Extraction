@@ -1,68 +1,66 @@
 SCR_DestructibleBuildingEntity : "{63F42771BBDF3915}Prefabs/Structures/Industrial/Houses/Sawmill_E_01/Sawmill_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C48EFF6F3BD"
-    coords 6.615 0.025 13.935
-   }
-   {
-    ID "60794C48EFF6F3C3"
-    coords -6.552 0.054 5.665
-   }
-   {
-    ID "60794C48EFF6F3CD"
-    coords -5.812 0.038 -6.321
-   }
-   {
-    ID "60794C48EFF6F3D9"
-    coords -5.553 0.021 14.324
-   }
-   {
-    ID "60794C48EFF6F3E4"
-    coords 2.452 0.041 -6.874
-   }
-   {
-    ID "60794C48EFF6F3EC"
-    coords -3.734 0.025 -13.565
-   }
-   {
-    ID "60794C48EFF6F3FA"
-    coords 1.694 0.032 2.484
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
-    ID "5EC371B493E9ECFF"
-    coords 0.298 -0.39 16.906
+    ID "60823D433DE4006A"
+    coords 6.598 0.025 13.947
    }
    {
-    ID "5EC371B493E9EF04"
-    coords -9.974 0 12.327
+    ID "60823D433DE4008B"
+    coords -6.549 0.054 5.664
    }
    {
-    ID "5EC371B493E9EF0D"
-    coords -4.932 0.025 1.971
+    ID "60823D433DE400A1"
+    coords -5.818 0.038 -6.328
    }
    {
-    ID "5EC371B493E9EF1A"
-    coords -9.712 -0.313 5.443
+    ID "60823D433DE400C2"
+    coords 2.453 0.041 -6.845
    }
    {
-    ID "5EC371B493E9EF24"
-    coords 6.476 0.039 4.497
+    ID "60823D433DE400D0"
+    coords -5.552 0.021 14.302
    }
    {
-    ID "5EC371B493E9EF2A"
-    coords 2.153 0.025 -11.792
+    ID "60823D433DE400E1"
+    coords 1.693 0.032 2.477
    }
    {
-    ID "5EC371B493E9EF38"
-    coords -4.382 0.025 -9.669
+    ID "60823D433DE400EF"
+    coords 0.398 -0.408 16.96
    }
    {
-    ID "5EC371B493E9EF53"
-    coords 10.848 0.021 -1.065
+    ID "60823D433DE400F3"
+    coords -3.735 0.025 -13.52
+   }
+   {
+    ID "60823D433DE4030D"
+    coords -4.943 0.025 1.954
+   }
+   {
+    ID "60823D433DE4031D"
+    coords -9.901 0 12.272
+   }
+   {
+    ID "60823D433DE40320"
+    coords -9.67 -0.311 5.451
+   }
+   {
+    ID "60823D433DE4034D"
+    coords -4.393 0.025 -9.615
+   }
+   {
+    ID "60823D433DE40351"
+    coords 6.453 0.039 4.508
+   }
+   {
+    ID "60823D433DE4035E"
+    coords 2.126 0.025 -11.799
+   }
+   {
+    ID "60823D433DE40379"
+    coords 10.878 0.021 -1.087
    }
   }
  }

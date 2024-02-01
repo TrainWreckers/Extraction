@@ -1,104 +1,6 @@
 SCR_DestructibleBuildingEntity : "{5F97E54397247954}Prefabs/Structures/Military/Houses/Barracks_01/Barracks_01_military_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C546DCF6102"
-    coords -2.921 0.119 12.348
-   }
-   {
-    ID "60794C546DCF6110"
-    coords -6.674 0.119 8.149
-   }
-   {
-    ID "60794C546DCF611A"
-    coords -3.183 0.119 7.695
-   }
-   {
-    ID "60794C546DCF6601"
-    coords -5.776 0.119 10.341
-   }
-   {
-    ID "60794C546DCF662A"
-    coords 6.612 0.119 7.429
-   }
-   {
-    ID "60794C546DCF663D"
-    coords 5.813 0.119 11.119
-   }
-   {
-    ID "60794C546DCF6641"
-    coords -1.256 0.119 7.569
-   }
-   {
-    ID "60794C546DCF664C"
-    coords 0.708 0.119 3.55
-   }
-   {
-    ID "60794C546DCF6656"
-    coords 0.73 0.119 13.027
-   }
-   {
-    ID "60794C546DCF6662"
-    coords 4.967 0.119 0.222
-   }
-   {
-    ID "60794C546DCF666C"
-    coords 2.48 0.119 -5.131
-   }
-   {
-    ID "60794C546DCF6678"
-    coords 5.583 0.119 3.978
-   }
-   {
-    ID "60794C546DCF6682"
-    coords 5.442 0.119 -10.449
-   }
-   {
-    ID "60794C546DCF668B"
-    coords 2.898 0.119 -10.273
-   }
-   {
-    ID "60794C546DCF6697"
-    coords 6.469 0.119 -14.528
-   }
-   {
-    ID "60794C546DCF66A8"
-    coords -2.941 0.119 -9.533
-   }
-   {
-    ID "60794C546DCF66B5"
-    coords -3.817 0.119 -14.654
-   }
-   {
-    ID "60794C546DCF66BE"
-    coords -6.59 0.119 -10.66
-   }
-   {
-    ID "60794C546DCF66C6"
-    coords -6.399 0.119 0.395
-   }
-   {
-    ID "60794C546DCF66D1"
-    coords -4.177 0.119 -3.181
-   }
-   {
-    ID "60794C546DCF66DC"
-    coords -2.104 0.119 -5.389
-   }
-   {
-    ID "60794C546DCF66E5"
-    coords -3.063 0.119 4.161
-   }
-   {
-    ID "60794C546DCF66F0"
-    coords -3.192 0.119 0.576
-   }
-   {
-    ID "60794C546DCF66F9"
-    coords -5.9 0.119 4.166
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B07AEC1D0F"
@@ -127,6 +29,102 @@ SCR_DestructibleBuildingEntity : "{5F97E54397247954}Prefabs/Structures/Military/
    {
     ID "5EC371B07AEC1D7B"
     coords -6.502 0.119 -3.411
+   }
+   {
+    ID "60823D479CD5480F"
+    coords 4.959 0.119 0.255
+   }
+   {
+    ID "60823D479CD5481E"
+    coords 0.685 0.119 12.836
+   }
+   {
+    ID "60823D479CD54823"
+    coords 2.502 0.119 -5.065
+   }
+   {
+    ID "60823D479CD54852"
+    coords 5.703 0.119 3.966
+   }
+   {
+    ID "60823D479CD5485F"
+    coords 5.559 0.119 -10.413
+   }
+   {
+    ID "60823D479CD5486F"
+    coords -2.943 0.119 -9.569
+   }
+   {
+    ID "60823D479CD54872"
+    coords 3.108 0.119 -10.339
+   }
+   {
+    ID "60823D479CD5487F"
+    coords 6.435 0.119 -14.468
+   }
+   {
+    ID "60823D479CD54886"
+    coords -3.786 0.119 -14.594
+   }
+   {
+    ID "60823D479CD548A9"
+    coords -6.37 0.119 0.317
+   }
+   {
+    ID "60823D479CD548B9"
+    coords -6.551 0.119 -10.779
+   }
+   {
+    ID "60823D479CD548CD"
+    coords -2.199 0.119 -5.186
+   }
+   {
+    ID "60823D479CD548D8"
+    coords -4.129 0.119 -3.11
+   }
+   {
+    ID "60823D479CD548ED"
+    coords -3.093 0.119 0.76
+   }
+   {
+    ID "60823D479CD548FB"
+    coords -3.02 0.119 4.024
+   }
+   {
+    ID "60823D479CD5496C"
+    coords -2.962 0.119 12.397
+   }
+   {
+    ID "60823D479CD54988"
+    coords -6.562 0.119 8.171
+   }
+   {
+    ID "60823D479CD549AC"
+    coords -5.719 0.119 10.391
+   }
+   {
+    ID "60823D479CD549B8"
+    coords -3.234 0.119 7.75
+   }
+   {
+    ID "60823D479CD549CC"
+    coords 5.794 0.119 11.256
+   }
+   {
+    ID "60823D479CD549DC"
+    coords 6.492 0.119 7.504
+   }
+   {
+    ID "60823D479CD549EC"
+    coords 0.73 0.119 3.657
+   }
+   {
+    ID "60823D479CD549FD"
+    coords -1.105 0.119 7.611
+   }
+   {
+    ID "60823D479CD54B19"
+    coords -5.941 0.119 4.121
    }
   }
  }

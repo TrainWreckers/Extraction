@@ -6,52 +6,6 @@ SCR_DestructibleBuildingEntity : "{578B698AE1F03DE9}Prefabs/Structures/Houses/Vi
    coords 6.485 0 -0.211
    angleY 0
   }
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C4FAD7548AE"
-    coords 9.254 -0 -0.736
-   }
-   {
-    ID "60794C4FAD7548CC"
-    coords 4.577 0 -2.361
-   }
-   {
-    ID "60794C4FAD7548FD"
-    coords 2.098 0.19 -2.415
-   }
-   {
-    ID "60794C4FAD754B06"
-    coords -1.154 0.19 -4.083
-   }
-   {
-    ID "60794C4FAD754B13"
-    coords 1.672 0.19 3.876
-   }
-   {
-    ID "60794C4FAD754B28"
-    coords -7.142 0.19 -0.359
-   }
-   {
-    ID "60794C4FAD754B30"
-    coords -1.54 0.19 1.481
-   }
-   {
-    ID "60794C4FAD754B3A"
-    coords -6.675 0.19 3.891
-   }
-   {
-    ID "60794C4FAD754B41"
-    coords -9.706 0.19 -3.185
-   }
-   {
-    ID "60794C4FAD754B4C"
-    coords 9.41 -0 3.525
-   }
-   {
-    ID "60794C4FAD754B54"
-    coords -6.58 0.19 -3.333
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3486EA877888F"
@@ -68,6 +22,50 @@ SCR_DestructibleBuildingEntity : "{578B698AE1F03DE9}Prefabs/Structures/Houses/Vi
    {
     ID "5EC3486EA87788BC"
     coords -8.575 0.19 3.939
+   }
+   {
+    ID "60821BD1D8044E1D"
+    coords -6.678 0.19 3.861
+   }
+   {
+    ID "60821BD1D8044E37"
+    coords -9.635 0.19 -3.223
+   }
+   {
+    ID "60821BD1D8044E4F"
+    coords -6.556 0.19 -3.33
+   }
+   {
+    ID "60821BD1D8044E56"
+    coords 9.376 -0 3.519
+   }
+   {
+    ID "60821BD1D8044E64"
+    coords 9.202 -0 -0.707
+   }
+   {
+    ID "60821BD1D8044F23"
+    coords 4.608 0 -2.334
+   }
+   {
+    ID "60821BD1D8044F7D"
+    coords 2.144 0.19 -2.417
+   }
+   {
+    ID "60821BD1D8044F9A"
+    coords -1.136 0.19 -4.088
+   }
+   {
+    ID "60821BD1D8044FBE"
+    coords 1.68 0.19 3.788
+   }
+   {
+    ID "60821BD1D8044FDD"
+    coords -7.112 0.19 -0.325
+   }
+   {
+    ID "60821BD1D8044FFB"
+    coords -1.504 0.19 1.498
    }
   }
  }
