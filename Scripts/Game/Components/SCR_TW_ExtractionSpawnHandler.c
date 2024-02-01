@@ -188,7 +188,11 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	}
 	
 	private void WanderSystem()
-	{		
+	{	
+		// If a mission is active we shall not 	
+		if(TW_MissionDownload.IsDownloadActive())
+			return;
+		
 		if(m_Groups.IsEmpty())
 			return;
 		

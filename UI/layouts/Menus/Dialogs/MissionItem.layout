@@ -1,0 +1,250 @@
+FrameWidgetClass {
+ Name "Root"
+ {
+  VerticalLayoutWidgetClass "{60821A40B17076AD}" {
+   Name "VerticalLayout0"
+   Slot FrameWidgetSlot "{593899036CFAA41D}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 150
+    OffsetRight -150
+    SizeY 40
+    OffsetBottom -40
+    SizeToContent 1
+   }
+   {
+    HorizontalLayoutWidgetClass "{60821A40B17076AF}" {
+     Name "HorizontalLayout"
+     Slot LayoutSlot "{599ACE78CE415D97}" {
+     }
+     {
+      FrameWidgetClass "{60821A40B17076A0}" {
+       Name "Frame0"
+       Slot LayoutSlot "{56DEA1E8EFA09F2A}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 0 0 0 0
+       }
+       Clipping False
+       {
+        OverlayWidgetClass "{60821A40B17076A2}" {
+         Name "m_LockFrame"
+         Slot FrameWidgetSlot "{599A8526D126526E}" {
+          Anchor 1 0 1 0
+          PositionX 5
+          OffsetLeft 5
+          PositionY 0
+          OffsetTop 0
+          SizeX 18
+          OffsetRight -23
+          SizeY 18
+          OffsetBottom -18
+          Alignment 1 0
+         }
+         {
+          ImageWidgetClass "{60821A40B17076A4}" {
+           Name "m_wLockBackground"
+           Slot OverlayWidgetSlot "{599A8526D16B2ED0}" {
+           }
+           Color 0 0 0 0.643
+           Texture "{0250208EA4A9AB25}UI/Textures/Icons/icons_wrapperUI-32-glow.imageset"
+           Image "server-locked"
+           Size 32 32
+          }
+          ImageWidgetClass "{60821A40B17076A5}" {
+           Name "m_wLock"
+           Slot OverlayWidgetSlot "{599A8526D16B2ED0}" {
+           }
+           Color 0.761 0.386 0.078 1
+           Texture "{D17288006833490F}UI/Textures/Icons/icons_wrapperUI-32.imageset"
+           Image "server-locked"
+           Size 32 32
+          }
+         }
+        }
+        ImageWidgetClass "{60821A40B17035CB}" {
+         Name "m_wIconBackground"
+         Slot FrameWidgetSlot "{5704B881C3878CB0}" {
+          SizeToContent 1
+         }
+         Color 0 0 0 0.502
+         Texture "{ABC6B36856013403}UI/Textures/Icons/icons_wrapperUI-64-glow.imageset"
+         Image "lanServer"
+         Size 64 64
+         "Transition width" 0
+         Progress 0.99
+         "Mask Mode" "Include Below"
+         Range 0.048
+        }
+        ImageWidgetClass "{60821A40B17035C9}" {
+         Name "m_wIcon"
+         Slot FrameWidgetSlot "{5704B881C2DBA3EC}" {
+          OffsetLeft 0
+          OffsetTop 0
+          OffsetRight -100
+          OffsetBottom -30
+          SizeToContent 1
+         }
+         Color 0.761 0.386 0.078 1
+         Texture "{2EFEA2AF1F38E7F0}UI/Textures/Icons/icons_wrapperUI-64.imageset"
+         Image "lanServer"
+         Size 64 64
+         "Transition width" 0
+         Progress 0.99
+         "Mask Mode" "Include Below"
+        }
+       }
+      }
+      TextWidgetClass "{60821A40B17035F6}" {
+       Prefab "{00000000D9CC2917}"
+       Name "m_wText"
+       Slot LayoutSlot "{599ACE79FB98C169}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 4 0 4 0
+       }
+       Text "Mission"
+       "Font Size" 15
+       "Min Font Size" 15
+       FontProperties FontProperties "{56DEA1E7C2B810CB}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        ShadowSize 8
+        ShadowOpacity 0.7
+       }
+      }
+      TextWidgetClass "{60821A40B17035F7}" {
+       Name "m_wSeparator"
+       Slot LayoutSlot "{56DEA1E790FD22B0}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 2 0 2 0
+       }
+       Clipping False
+       Text "|"
+       "Font Size" 20
+       "Min Font Size" 20
+       FontProperties FontProperties "{56DEA1E7C2B810CB}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        ShadowSize 10
+        ShadowOpacity 0.7
+       }
+      }
+      FrameWidgetClass "{60821A43B9715877}" {
+       Name "Frame2"
+       Slot LayoutSlot "{606738D9A8A18BC3}" {
+       }
+       {
+        ImageWidgetClass "{60821A43A952A7CC}" {
+         Name "m_wIconBackground"
+         Slot FrameWidgetSlot "{5704B881C3878CB0}" {
+          SizeToContent 1
+         }
+         Color 0 0 0 0.502
+         Texture "{ABC6B36856013403}UI/Textures/Icons/icons_wrapperUI-64-glow.imageset"
+         Image "supplies"
+         Size 64 64
+         "Transition width" 0
+         Progress 0.99
+         "Mask Mode" "Include Below"
+         Range 0.048
+        }
+        ImageWidgetClass "{60821A43A952A730}" {
+         Name "m_wIcon"
+         Slot FrameWidgetSlot "{5704B881C2DBA3EC}" {
+          OffsetLeft 0
+          OffsetTop 0
+          OffsetRight -100
+          OffsetBottom -30
+          SizeToContent 1
+         }
+         Color 0.761 0.386 0.078 1
+         Texture "{2EFEA2AF1F38E7F0}UI/Textures/Icons/icons_wrapperUI-64.imageset"
+         Image "supplies"
+         Size 64 64
+         "Transition width" 0
+         Progress 0.99
+         "Mask Mode" "Include Below"
+        }
+       }
+      }
+      TextWidgetClass "{60821A43411B2012}" {
+       Name "m_wCost"
+       Slot LayoutSlot "{599ACE79FB98C169}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 4 0 4 0
+       }
+       Text "123"
+       "Font Size" 15
+       "Min Font Size" 15
+       FontProperties FontProperties "{56DEA1E7C2B810CB}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        ShadowSize 8
+        ShadowOpacity 0.7
+       }
+      }
+      TextWidgetClass "{60821A43411B2045}" {
+       Name "m_wSeparator0"
+       Slot LayoutSlot "{56DEA1E790FD22B0}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 2 0 2 0
+       }
+       Clipping False
+       Text "|"
+       "Font Size" 20
+       "Min Font Size" 20
+       FontProperties FontProperties "{56DEA1E7C2B810CB}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        ShadowSize 10
+        ShadowOpacity 0.7
+       }
+      }
+      FrameWidgetClass "{60821A40B17035F4}" {
+       Name "Frame1"
+       Slot LayoutSlot "{606738D9A8A18BC3}" {
+       }
+       {
+        ButtonWidgetClass "{60821A40B17035F5}" {
+         Name "m_wCallButton"
+         Slot FrameWidgetSlot "{606738D9AE9098EB}" {
+          Anchor 0 0.519 0 0.519
+          PositionX 1.744
+          OffsetLeft 1.744
+          PositionY -16.919
+          OffsetTop -16.919
+          SizeX 32
+          OffsetRight -33.744
+          SizeY 32
+          OffsetBottom -15.081
+         }
+         Color 0.028 0.028 0.028 0.525
+         components {
+          TW_UI_MissionButton "{60821A4638F203A3}" {
+          }
+         }
+         {
+          ImageWidgetClass "{60821A40B17035F2}" {
+           Name "m_wIcon"
+           Slot ButtonWidgetSlot "{60673D7AF98B0FC3}" {
+           }
+           Color 0.761 0.386 0.078 1
+           Texture "{2EFEA2AF1F38E7F0}UI/Textures/Icons/icons_wrapperUI-64.imageset"
+           Image "veh_right"
+           Size 64 64
+           "Transition width" 0
+           Progress 0.99
+           "Mask Mode" "Include Below"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

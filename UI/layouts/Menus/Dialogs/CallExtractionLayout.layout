@@ -24,7 +24,7 @@ FrameWidgetClass {
    {
     ImageWidgetClass "{60681123FEA4B6E6}" {
      Name "ButtonExitIcon"
-     Slot ButtonWidgetSlot {
+     Slot ButtonWidgetSlot "{60821A6A6BF90180}" {
      }
      Color 0.761 0.386 0.078 1
      Texture "{D17288006833490F}UI/Textures/Icons/icons_wrapperUI-32.imageset"
@@ -52,29 +52,55 @@ FrameWidgetClass {
   PanelWidgetClass "{60681123D82AEB97}" {
    Name "Panel0"
    Slot FrameWidgetSlot "{60681123C403C426}" {
+    Anchor 0.372 0.272 0.627 0.726
+    PositionX -3.301
+    OffsetLeft -3.301
+    PositionY -3.301
+    OffsetTop -3.301
+    SizeX 8.411
+    OffsetRight -5.11
+    SizeY 8.37
+    OffsetBottom -5.069
+   }
+  }
+  OverlayWidgetClass "{6082E37825DB740E}" {
+   Name "Overlay0"
+   Slot FrameWidgetSlot "{6082E37825DB7BED}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -250
-    OffsetLeft -250
-    PositionY -250
-    OffsetTop -250
-    SizeX 500
-    OffsetRight -250
-    SizeY 500
-    OffsetBottom -250
+    PositionX -249.194
+    OffsetLeft -249.194
+    PositionY -248.464
+    OffsetTop -248.464
+    SizeX 493.724
+    OffsetRight -244.53
+    SizeY 497.359
+    OffsetBottom -248.895
    }
    {
-    VerticalLayoutWidgetClass "{606730A53E8528D1}" {
-     Name "m_Extractions"
-     Slot FrameWidgetSlot "{606730A53E8528B1}" {
-      Anchor 0.5 0.5 0.5 0.5
-      PositionX -250
-      OffsetLeft -250
-      PositionY -250
-      OffsetTop -250
-      SizeX 500
-      OffsetRight -250
-      SizeY 500
-      OffsetBottom -250
+    SizeLayoutWidgetClass "{60821A6DE47ED605}" {
+     Name "SizeLayout0"
+     Slot OverlayWidgetSlot {
+     }
+     {
+      ScrollLayoutWidgetClass "{60821A6A53085C5A}" {
+       Name "ScrollLayout0"
+       Slot AlignableSlot "{6082E378500C4D6C}" {
+       }
+       {
+        VerticalLayoutWidgetClass "{60821A6DDEEECD4C}" {
+         Name "VerticalLayout0"
+         Slot AlignableSlot "{6082E378B87941E4}" {
+         }
+         {
+          VerticalLayoutWidgetClass "{606730A53E8528D1}" {
+           Name "m_Extractions"
+           Slot LayoutSlot {
+           }
+          }
+         }
+        }
+       }
+      }
      }
     }
    }

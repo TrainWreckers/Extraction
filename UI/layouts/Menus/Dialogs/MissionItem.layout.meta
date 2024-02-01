@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{CB28B4DD636D615F}UI/layouts/Menus/Dialogs/MissionItem.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -28,6 +28,35 @@ enum TW_MissionSpawnArea
 	EventSiteOpposite
 };
 
+[BaseContainerProps(configRoot: true)]
+class TW_CallableItem : ScriptAndConfig
+{
+	[Attribute("", UIWidgets.CheckBox, category: "Radio Requirement", desc: "Does this require higher tier radio?")]
+	protected bool m_RequireHigherTier;
+	
+	[Attribute("{3A38DA6B79CBDC30}Configs/ActionCosts/ActionCost_Intelligence.conf", UIWidgets.Auto, category: "Cost", desc: "Cost of calling in", params: "conf class=TW_Actioncost")]
+	protected ref TW_ActionCost m_ActionCost;
+	
+	//! Cost of calling this mission in
+	TW_ActionCost GetActionCost() { return m_ActionCost; }
+	
+	//! Does this require higher tier radios to call in
+	bool RequiresHigherTierRadio() { return m_RequireHigherTier; }
+};
+
+[BaseContainerProps(configRoot: true)]
+class TW_ExtractionCall : TW_CallableItem
+{
+	[Attribute("", UIWidgets.ComboBox, category: "Extraction", desc: "Type of extraction", enums: ParamEnumArray.FromEnum(TW_ExtractionType))]
+	protected TW_ExtractionType m_ExtractionType;
+	
+	[Attribute("", UIWidgets.EditBox, category: "Extraction", desc: "Name of extraction tier")]
+	protected string m_ExtractionName;
+	
+	TW_ExtractionType GetExtractionType() { return m_ExtractionType; }
+	string GetExtractionName() { return m_ExtractionName; }
+};
+
 //! Represents a type of reward to provide for completing a mission
 [BaseContainerProps(configRoot: true)]
 class TW_MissionReward
@@ -53,9 +82,22 @@ class TW_MissionReward
 	}
 };
 
+[BaseContainerProps(configRoot: true)]
+class TW_ActionCost
+{
+	[Attribute("", UIWidgets.ResourceNamePicker, params: "et", category: "Cost")]
+	protected ResourceName m_ItemPrefab;
+	
+	[Attribute("1", UIWidgets.Slider, params: "1 100 1", category: "Cost")]
+	protected int m_Cost;
+	
+	int GetCost() { return m_Cost; }
+	ResourceName GetResource() { return m_ItemPrefab; }
+}
+
 //! Represents the basic structure for missions
 [BaseContainerProps(configRoot: true)]
-class TW_Mission
+class TW_Mission : TW_CallableItem
 {
 	protected int m_MissionId;
 	

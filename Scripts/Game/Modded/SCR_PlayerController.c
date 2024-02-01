@@ -127,6 +127,14 @@ modded class SCR_PlayerController
 			RpcAsk_CallForExtraction(type);
 	}
 	
+	void CallForMission(ResourceName resource)
+	{
+		if(!TW_Global.IsServer(this))
+			Rpc(RpcAsk_CallForMission, resource);
+		else
+			RpcAsk_CallForMission(resource);
+	}
+	
 	void CombineMags(MagazineComponent fromMag, MagazineComponent toMag, SCR_InventoryStorageManagerComponent managerComp)
 	{
 		if(!fromMag || !toMag)
@@ -198,6 +206,18 @@ modded class SCR_PlayerController
 	void RpcAsk_CallForExtraction(TW_ExtractionType type)
 	{
 		SCR_TW_ExtractionHandler.GetInstance().CallExtraction(type);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_CallForMission(ResourceName resourceName)
+	{
+		if(!TW_MissionHandlerComponent.GetInstance().CanSpawnMission())
+		{
+			Print("TrainWreck: Too many active missions", LogLevel.WARNING);
+			return;
+		}
+		
+		TW_MissionHandlerComponent.GetInstance().SpawnMission(resourceName);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
