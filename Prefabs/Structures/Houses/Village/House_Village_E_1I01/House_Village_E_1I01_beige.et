@@ -1,24 +1,6 @@
 SCR_DestructibleBuildingEntity : "{5B74046E4F7FBBDC}Prefabs/Structures/Houses/Village/House_Village_E_1I01/House_Village_E_1I01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C4C96126DBC"
-    coords -2.418 0.337 1.5
-   }
-   {
-    ID "60794C4C96126DC3"
-    coords -2.626 0.337 -3.258
-   }
-   {
-    ID "60794C4C96126DCD"
-    coords 1.832 0.337 4.781
-   }
-   {
-    ID "60794C4C96126DD5"
-    coords 0.495 0.337 1.361
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC3486FC223F0AB"
@@ -31,6 +13,22 @@ SCR_DestructibleBuildingEntity : "{5B74046E4F7FBBDC}Prefabs/Structures/Houses/Vi
    {
     ID "5EC3486FC223F0F0"
     coords -2.959 0.337 4.474
+   }
+   {
+    ID "60821BD02E0EF0FD"
+    coords -2.645 0.337 -3.234
+   }
+   {
+    ID "60821BD02E0EF300"
+    coords 1.837 0.337 4.784
+   }
+   {
+    ID "60821BD02E0EF331"
+    coords 0.599 0.337 1.329
+   }
+   {
+    ID "60821BD02E0EF33E"
+    coords -2.417 0.337 1.493
    }
   }
  }

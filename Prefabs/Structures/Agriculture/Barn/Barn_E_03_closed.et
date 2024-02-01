@@ -6,19 +6,19 @@ SCR_DestructibleBuildingEntity : "{63BD8E3A8AC76F88}Prefabs/Structures/Agricultu
    coords 4.711 0.219 0.357
    angleY 0
   }
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C45B556EB25"
-    coords -6.469 0.105 1.405
-   }
-   {
-    ID "60794C45B556EB41"
-    coords -2.619 0.105 -0.895
-   }
+  SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
+   ID "60794C45B556EB41"
+   coords -2.619 0.105 -0.895
   }
-  SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
-   ID "5EC2FDC75CEE215A"
-   coords 1.405 0.105 -0.486
+  $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
+   {
+    ID "5EC2FDC75CEE215A"
+    coords 1.405 0.105 -0.486
+   }
+   {
+    ID "60821BDE8D204C61"
+    coords -6.343 0.105 1.325
+   }
   }
  }
 }

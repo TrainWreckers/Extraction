@@ -1,20 +1,6 @@
 SCR_DestructibleBuildingEntity : "{CDEFEE1847C0933A}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_03/FuelTank_03_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C49C3EABC04"
-    coords -6.61 0.065 3.185
-   }
-   {
-    ID "60794C49C3EABC0D"
-    coords -1.163 9.276 -5.36
-   }
-   {
-    ID "60794C49C3EABDEA"
-    coords 1.709 0.263 -8.534
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B5828603B7"
@@ -27,6 +13,18 @@ SCR_DestructibleBuildingEntity : "{CDEFEE1847C0933A}Prefabs/Structures/Industria
    {
     ID "5EC371B5828603DD"
     coords 2.01 9.494 3.173
+   }
+   {
+    ID "60823D41CB312EA3"
+    coords -1.192 9.279 -5.323
+   }
+   {
+    ID "60823D41CB312EC9"
+    coords 1.685 0.263 -8.52
+   }
+   {
+    ID "60823D41CB312EFE"
+    coords -6.621 0.062 3.221
    }
   }
  }

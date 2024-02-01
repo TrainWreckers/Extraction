@@ -6,24 +6,6 @@ SCR_DestructibleBuildingEntity : "{9D656741EA2AABC5}Prefabs/Structures/Industria
    coords 10.048 0.073 5.164
    angleY 0
   }
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C4801625600"
-    coords -3.633 0.073 -7.87
-   }
-   {
-    ID "60794C4801625614"
-    coords 7.144 0.073 -7.189
-   }
-   {
-    ID "60794C48016257C2"
-    coords 0.013 0.073 -0.599
-   }
-   {
-    ID "60794C48016257E2"
-    coords -5.642 0.073 0.186
-   }
-  }
   $grp GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    {
     ID "5ED715FFC1B7AD41"
@@ -57,6 +39,22 @@ SCR_DestructibleBuildingEntity : "{9D656741EA2AABC5}Prefabs/Structures/Industria
    {
     ID "5EC371B5C7EFAEFB"
     coords 11.624 0.073 -6.078
+   }
+   {
+    ID "60823D41D33C0503"
+    coords -5.604 0.073 0.179
+   }
+   {
+    ID "60823D41D33C0533"
+    coords -3.659 0.073 -7.867
+   }
+   {
+    ID "60823D41D33C0ACD"
+    coords 7.114 0.073 -7.169
+   }
+   {
+    ID "60823D41D33C0AEF"
+    coords 0.028 0.073 -0.589
    }
   }
  }

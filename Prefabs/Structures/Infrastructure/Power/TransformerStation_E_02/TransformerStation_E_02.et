@@ -1,52 +1,6 @@
 SCR_DestructibleBuildingEntity : "{9ACEB1AC0BA9561D}Prefabs/Structures/Infrastructure/Power/TransformerStation_E_02/TransformerStation_E_02_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C553ED11E00"
-    coords -5.387 0.05 -2.487
-   }
-   {
-    ID "60794C553ED11E0C"
-    coords -5.604 1.2 4.101
-   }
-   {
-    ID "60794C553ED11E14"
-    coords -1.708 0.05 -3.845
-   }
-   {
-    ID "60794C553ED11F8C"
-    coords -2.224 1.2 4.026
-   }
-   {
-    ID "60794C553ED11FA9"
-    coords -1.151 1.2 3.83
-   }
-   {
-    ID "60794C553ED11FC0"
-    coords 4.219 0.026 -4
-   }
-   {
-    ID "60794C553ED11FCB"
-    coords 6.059 0.05 -1.184
-   }
-   {
-    ID "60794C553ED11FD6"
-    coords 2.338 1.2 3.809
-   }
-   {
-    ID "60794C553ED11FE8"
-    coords -3.857 5.25 -2.649
-   }
-   {
-    ID "60794C553ED11FF6"
-    coords 2.228 9.65 1.169
-   }
-   {
-    ID "60794C553ED11FFF"
-    coords 0.146 5.25 -3.723
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC371B6FD37ED6B"
@@ -71,6 +25,50 @@ SCR_DestructibleBuildingEntity : "{9ACEB1AC0BA9561D}Prefabs/Structures/Infrastru
    {
     ID "5EC371B6FD37EDB5"
     coords 4.784 0.05 2.197
+   }
+   {
+    ID "60823D45BCE9E602"
+    coords 6.024 0.05 -1.207
+   }
+   {
+    ID "60823D45BCE9E63A"
+    coords 2.291 1.2 3.857
+   }
+   {
+    ID "60823D45BCE9E654"
+    coords -3.874 5.25 -2.638
+   }
+   {
+    ID "60823D45BCE9E686"
+    coords 2.214 9.65 1.171
+   }
+   {
+    ID "60823D45BCE9E6A7"
+    coords -5.379 0.05 -2.458
+   }
+   {
+    ID "60823D45BCE9E6B4"
+    coords 0.127 5.25 -3.695
+   }
+   {
+    ID "60823D45BCE9E798"
+    coords -5.628 1.2 4.086
+   }
+   {
+    ID "60823D45BCE9E7A0"
+    coords -1.734 0.05 -3.856
+   }
+   {
+    ID "60823D45BCE9E7DA"
+    coords -2.188 1.2 4.071
+   }
+   {
+    ID "60823D45BCE9E7EB"
+    coords 4.24 0.035 -4.02
+   }
+   {
+    ID "60823D45BCE9E7F0"
+    coords -1.095 1.2 3.849
    }
   }
  }

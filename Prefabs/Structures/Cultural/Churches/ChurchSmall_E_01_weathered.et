@@ -1,44 +1,6 @@
 SCR_DestructibleBuildingEntity : "{8E796437146BA2D2}Prefabs/Structures/Cultural/Churches/ChurchSmall_E_01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C4043E85C96"
-    coords 0.548 4.102 6.833
-   }
-   {
-    ID "60794C4043E85CA8"
-    coords 2.442 0.19 -8.347
-   }
-   {
-    ID "60794C4043E85CB1"
-    coords 3.158 4.097 2.569
-   }
-   {
-    ID "60794C4043E85CBE"
-    coords -3.686 0.19 1.709
-   }
-   {
-    ID "60794C4043E85CC0"
-    coords -1.826 0.19 -3.377
-   }
-   {
-    ID "60794C4043E85CCB"
-    coords 4 1.628 5.525
-   }
-   {
-    ID "60794C4043E85CD2"
-    coords 0.057 0.19 -10.887
-   }
-   {
-    ID "60794C4043E85CE1"
-    coords 0.222 8.067 6.173
-   }
-   {
-    ID "60794C4043E85CF7"
-    coords 3.686 2.38 7.519
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC30340317DF902"
@@ -51,6 +13,42 @@ SCR_DestructibleBuildingEntity : "{8E796437146BA2D2}Prefabs/Structures/Cultural/
    {
     ID "5EC30340317DFEEC"
     coords 0.029 4.097 2.846
+   }
+   {
+    ID "60821BDB92490F58"
+    coords 0.539 4.102 6.852
+   }
+   {
+    ID "60821BDB92490F6A"
+    coords 3.177 4.097 2.568
+   }
+   {
+    ID "60821BDB92490F76"
+    coords 2.427 0.19 -8.351
+   }
+   {
+    ID "60821BDB92490F87"
+    coords -1.843 0.19 -3.353
+   }
+   {
+    ID "60821BDB92490F97"
+    coords -3.668 0.19 1.698
+   }
+   {
+    ID "60821BDB92490FA2"
+    coords 0.044 0.19 -10.899
+   }
+   {
+    ID "60821BDB92490FAD"
+    coords 0.23 8.067 6.176
+   }
+   {
+    ID "60821BDB92490FB5"
+    coords 4.028 1.629 5.556
+   }
+   {
+    ID "60821BDB92490FDA"
+    coords 3.679 2.38 7.521
    }
   }
  }

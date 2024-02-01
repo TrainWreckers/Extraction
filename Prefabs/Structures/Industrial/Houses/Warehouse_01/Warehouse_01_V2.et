@@ -6,64 +6,6 @@ SCR_DestructibleBuildingEntity : "{E35EA41864A3B0ED}Prefabs/Structures/Industria
    coords 10.475 0.05 2.439
    angleY -179.131
   }
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C4B5CD4D204"
-    coords 14.283 0.05 4.44
-   }
-   {
-    ID "60794C4B5CD4D229"
-    coords 8.328 0.05 -5.939
-   }
-   {
-    ID "60794C4B5CD4D233"
-    coords 14.625 0.05 -5.057
-   }
-   {
-    ID "60794C4B5CD4D23F"
-    coords 10.743 0.05 -5.786
-   }
-   {
-    ID "60794C4B5CD4D241"
-    coords -0.314 0.05 -6.153
-   }
-   {
-    ID "60794C4B5CD4D24B"
-    coords 1.516 0.05 -4.181
-   }
-   {
-    ID "60794C4B5CD4D255"
-    coords 6.259 0.05 -6.241
-   }
-   {
-    ID "60794C4B5CD4D263"
-    coords -17.257 0.05 -6.169
-   }
-   {
-    ID "60794C4B5CD4D26D"
-    coords -18.714 0.05 3.215
-   }
-   {
-    ID "60794C4B5CD4D279"
-    coords -5.589 0.05 -3.246
-   }
-   {
-    ID "60794C4B5CD4D280"
-    coords -3.562 0.05 4.816
-   }
-   {
-    ID "60794C4B5CD4D289"
-    coords -0.416 0.05 5.483
-   }
-   {
-    ID "60794C4B5CD4D296"
-    coords -18.255 2.584 5.102
-   }
-   {
-    ID "60794C4B5CD4D3EA"
-    coords 15.698 0.05 5.342
-   }
-  }
   GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    ID "5ED715F062B38EC2"
    coords -7.974 0.05 1.238
@@ -89,6 +31,62 @@ SCR_DestructibleBuildingEntity : "{E35EA41864A3B0ED}Prefabs/Structures/Industria
    {
     ID "5EC371B4E0019BFF"
     coords 4.506 0.05 3.292
+   }
+   {
+    ID "60823D43CAA5E203"
+    coords 14.351 0.05 4.426
+   }
+   {
+    ID "60823D43CAA5E214"
+    coords 15.669 0.05 5.326
+   }
+   {
+    ID "60823D43CAA5E332"
+    coords 8.333 0.05 -5.989
+   }
+   {
+    ID "60823D43CAA5E347"
+    coords 10.679 0.05 -5.631
+   }
+   {
+    ID "60823D43CAA5E352"
+    coords 14.59 0.05 -5.03
+   }
+   {
+    ID "60823D43CAA5E36A"
+    coords 1.552 0.05 -4.085
+   }
+   {
+    ID "60823D43CAA5E377"
+    coords -0.289 0.05 -6.114
+   }
+   {
+    ID "60823D43CAA5E39E"
+    coords 6.248 0.05 -6.22
+   }
+   {
+    ID "60823D43CAA5E3A0"
+    coords -18.766 0.05 3.089
+   }
+   {
+    ID "60823D43CAA5E3B0"
+    coords -16.784 0.05 -6.208
+   }
+   {
+    ID "60823D43CAA5E3C1"
+    coords -3.608 0.05 4.759
+   }
+   {
+    ID "60823D43CAA5E3D0"
+    coords -5.433 0.05 -3.436
+   }
+   {
+    ID "60823D43CAA5E3E7"
+    coords -18.081 2.612 4.988
+   }
+   {
+    ID "60823D43CAA5E3F8"
+    coords -0.436 0.05 5.515
    }
   }
  }

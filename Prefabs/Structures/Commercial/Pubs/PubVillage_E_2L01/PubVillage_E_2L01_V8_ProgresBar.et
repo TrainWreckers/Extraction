@@ -1,80 +1,6 @@
 SCR_DestructibleBuildingEntity : "{0B1B8B16E7E9481F}Prefabs/Structures/Commercial/Pubs/PubVillage_E_2L01/PubVillage_E_2L01_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C46FFD35E04"
-    coords 5.189 3.8 -4.378
-   }
-   {
-    ID "60794C46FFD35E17"
-    coords 0.484 3.8 -6.659
-   }
-   {
-    ID "60794C46FFD35E22"
-    coords -6.943 3.8 -4.028
-   }
-   {
-    ID "60794C46FFD35E2C"
-    coords -5.601 3.8 -0.309
-   }
-   {
-    ID "60794C46FFD35E35"
-    coords -1.515 3.8 -2.806
-   }
-   {
-    ID "60794C46FFD35E5A"
-    coords -8.12 0 -3.319
-   }
-   {
-    ID "60794C46FFD35F56"
-    coords -4.593 0 -3.576
-   }
-   {
-    ID "60794C46FFD35F68"
-    coords 6.513 -0 -4.726
-   }
-   {
-    ID "60794C46FFD35F77"
-    coords -1.153 0 -5.954
-   }
-   {
-    ID "60794C46FFD35F89"
-    coords 4.405 0 -7.444
-   }
-   {
-    ID "60794C46FFD35F9B"
-    coords 6.467 0 -6.295
-   }
-   {
-    ID "60794C46FFD35FAB"
-    coords 2.947 1.9 5.427
-   }
-   {
-    ID "60794C46FFD35FBB"
-    coords 6.662 -0 3.739
-   }
-   {
-    ID "60794C46FFD35FC5"
-    coords -1.833 3.8 0.225
-   }
-   {
-    ID "60794C46FFD35FD8"
-    coords 0.825 1.9 5.112
-   }
-   {
-    ID "60794C46FFD35FE0"
-    coords 6.498 3.8 -0.077
-   }
-   {
-    ID "60794C46FFD35FEC"
-    coords 6.219 3.8 4.06
-   }
-   {
-    ID "60794C46FFD35FF2"
-    coords 3.28 3.8 0.299
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC303438D691248"
@@ -91,6 +17,78 @@ SCR_DestructibleBuildingEntity : "{0B1B8B16E7E9481F}Prefabs/Structures/Commercia
    {
     ID "5EC303438D69127A"
     coords 0.996 0 -0.919
+   }
+   {
+    ID "60821BDDB7D71206"
+    coords 6.487 0 -6.296
+   }
+   {
+    ID "60821BDDB7D71219"
+    coords 4.442 0 -7.492
+   }
+   {
+    ID "60821BDDB7D71220"
+    coords 6.875 -0 3.658
+   }
+   {
+    ID "60821BDDB7D7122E"
+    coords -2.138 3.8 0.245
+   }
+   {
+    ID "60821BDDB7D71233"
+    coords 2.982 1.9 5.494
+   }
+   {
+    ID "60821BDDB7D71247"
+    coords 6.485 3.8 -0.199
+   }
+   {
+    ID "60821BDDB7D7125A"
+    coords 0.771 1.9 5.224
+   }
+   {
+    ID "60821BDDB7D71271"
+    coords 6.204 3.8 4.18
+   }
+   {
+    ID "60821BDDB7D7127D"
+    coords 3.235 3.8 0.295
+   }
+   {
+    ID "60821BDDB7D7136D"
+    coords 5.164 3.8 -4.369
+   }
+   {
+    ID "60821BDDB7D7138C"
+    coords 0.576 3.8 -6.598
+   }
+   {
+    ID "60821BDDB7D713A8"
+    coords -5.648 3.8 -0.357
+   }
+   {
+    ID "60821BDDB7D713B8"
+    coords -6.938 3.8 -4.002
+   }
+   {
+    ID "60821BDDB7D713C4"
+    coords -8.092 0 -3.328
+   }
+   {
+    ID "60821BDDB7D713D5"
+    coords -1.503 3.8 -2.822
+   }
+   {
+    ID "60821BDDB7D713EC"
+    coords -1.17 0 -5.985
+   }
+   {
+    ID "60821BDDB7D713F3"
+    coords -4.526 0 -3.514
+   }
+   {
+    ID "60821BDDB7D713FF"
+    coords 6.558 -0 -4.709
    }
   }
  }

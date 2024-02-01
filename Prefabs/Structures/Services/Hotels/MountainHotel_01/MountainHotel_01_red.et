@@ -1,100 +1,6 @@
 SCR_DestructibleBuildingEntity : "{80F53B22769563A5}Prefabs/Structures/Services/Hotels/MountainHotel_01/MountainHotel_01_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C56F736C509"
-    coords -0.966 0 -4.12
-   }
-   {
-    ID "60794C56F736C51B"
-    coords -1.531 0 -0.784
-   }
-   {
-    ID "60794C56F736C52B"
-    coords -0.868 3.4 -8.644
-   }
-   {
-    ID "60794C56F736C533"
-    coords -8.207 3.4 1.121
-   }
-   {
-    ID "60794C56F736C53E"
-    coords -12.053 3.422 -7.816
-   }
-   {
-    ID "60794C56F736C556"
-    coords 8.332 3.4 -8.653
-   }
-   {
-    ID "60794C56F736C55F"
-    coords 8.488 3.4 0.84
-   }
-   {
-    ID "60794C56F736C565"
-    coords 5.836 0.021 1.808
-   }
-   {
-    ID "60794C56F736C571"
-    coords 3.874 3.4 1.1
-   }
-   {
-    ID "60794C56F736C57C"
-    coords -4.799 3.4 -3.575
-   }
-   {
-    ID "60794C56F736CA76"
-    coords 11.791 0 -3.652
-   }
-   {
-    ID "60794C56F736CA8A"
-    coords 6.772 0 -3.381
-   }
-   {
-    ID "60794C56F736CA93"
-    coords 9.328 0 -9.087
-   }
-   {
-    ID "60794C56F736CA9E"
-    coords 4.296 0 -9.16
-   }
-   {
-    ID "60794C56F736CAA7"
-    coords -17.764 0 -5.026
-   }
-   {
-    ID "60794C56F736CAB4"
-    coords -4.204 0 -11.991
-   }
-   {
-    ID "60794C56F736CABE"
-    coords -13.568 0 -4.594
-   }
-   {
-    ID "60794C56F736CAC9"
-    coords -7.432 0 1.114
-   }
-   {
-    ID "60794C56F736CAD2"
-    coords -16.67 0 -7.386
-   }
-   {
-    ID "60794C56F736CADE"
-    coords -13.449 0 0.712
-   }
-   {
-    ID "60794C56F736CAE3"
-    coords -4.289 0 -1.461
-   }
-   {
-    ID "60794C56F736CAEE"
-    coords -4.397 0 -3.64
-   }
-   {
-    ID "60794C56F736CAF8"
-    coords -4.312 -0 1.082
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC4C7722EF2B200"
@@ -159,6 +65,98 @@ SCR_DestructibleBuildingEntity : "{80F53B22769563A5}Prefabs/Structures/Services/
    {
     ID "5EC4C7722EF2B3FA"
     coords -16.863 0 -3.863
+   }
+   {
+    ID "60823D4B45CC4405"
+    coords 6.808 0 -3.496
+   }
+   {
+    ID "60823D4B45CC4417"
+    coords 11.686 0 -3.597
+   }
+   {
+    ID "60823D4B45CC442A"
+    coords -17.677 0 -5.096
+   }
+   {
+    ID "60823D4B45CC4432"
+    coords 9.339 0 -9.204
+   }
+   {
+    ID "60823D4B45CC443F"
+    coords 4.314 0 -9.146
+   }
+   {
+    ID "60823D4B45CC4445"
+    coords -13.559 0 -4.58
+   }
+   {
+    ID "60823D4B45CC4458"
+    coords -4.263 0 -11.942
+   }
+   {
+    ID "60823D4B45CC4466"
+    coords -16.653 0 -7.349
+   }
+   {
+    ID "60823D4B45CC4476"
+    coords -7.388 -0 1.099
+   }
+   {
+    ID "60823D4B45CC4486"
+    coords -4.49 -0 -1.476
+   }
+   {
+    ID "60823D4B45CC4496"
+    coords -13.471 0 0.699
+   }
+   {
+    ID "60823D4B45CC44A0"
+    coords -4.305 0 1.124
+   }
+   {
+    ID "60823D4B45CC44B3"
+    coords -4.551 -0 -3.745
+   }
+   {
+    ID "60823D4B45CC4544"
+    coords -0.98 0 -4.115
+   }
+   {
+    ID "60823D4B45CC4564"
+    coords -1.531 -0 -0.78
+   }
+   {
+    ID "60823D4B45CC4585"
+    coords -8.187 3.4 1.018
+   }
+   {
+    ID "60823D4B45CC4595"
+    coords -0.894 3.4 -8.604
+   }
+   {
+    ID "60823D4B45CC45AB"
+    coords 8.262 3.4 -8.585
+   }
+   {
+    ID "60823D4B45CC45B8"
+    coords -11.985 3.421 -7.807
+   }
+   {
+    ID "60823D4B45CC45CC"
+    coords 5.92 0.023 1.853
+   }
+   {
+    ID "60823D4B45CC45DB"
+    coords 8.448 3.4 0.86
+   }
+   {
+    ID "60823D4B45CC45E7"
+    coords -4.701 3.4 -3.582
+   }
+   {
+    ID "60823D4B45CC45FB"
+    coords 3.834 3.4 1.096
    }
   }
  }

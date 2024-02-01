@@ -6,64 +6,6 @@ SCR_DestructibleBuildingEntity : "{959977CBD62F40DE}Prefabs/Structures/Military/
    coords 1.595 0.609 3.408
    angleY 0
   }
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C57D89A794F"
-    coords 7.955 0.609 4.693
-   }
-   {
-    ID "60794C57D89A7955"
-    coords 5.774 0.609 4.685
-   }
-   {
-    ID "60794C57D89A796B"
-    coords 11.262 0.609 -5.626
-   }
-   {
-    ID "60794C57D89A797C"
-    coords 11.606 0.609 2.76
-   }
-   {
-    ID "60794C57D89A7980"
-    coords 6.276 0.596 -7.919
-   }
-   {
-    ID "60794C57D89A7989"
-    coords 4.394 0.609 -4.668
-   }
-   {
-    ID "60794C57D89A7995"
-    coords 8.161 0.609 -7.187
-   }
-   {
-    ID "60794C57D89A79A1"
-    coords -5.932 0.609 -7.728
-   }
-   {
-    ID "60794C57D89A79AD"
-    coords -10.012 0.609 -5.57
-   }
-   {
-    ID "60794C57D89A79B8"
-    coords 1.865 0.609 -7.136
-   }
-   {
-    ID "60794C57D89A79C3"
-    coords -5.658 0.609 2.385
-   }
-   {
-    ID "60794C57D89A79CD"
-    coords -1.98 0.609 3.534
-   }
-   {
-    ID "60794C57D89A79DA"
-    coords -10.232 0.609 0.537
-   }
-   {
-    ID "60794C57D89A79FA"
-    coords -0.336 0.609 0.809
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC4C776F54AED8C"
@@ -92,6 +34,62 @@ SCR_DestructibleBuildingEntity : "{959977CBD62F40DE}Prefabs/Structures/Military/
    {
     ID "5EC4C776F54AEDDE"
     coords -9.755 0.609 3.265
+   }
+   {
+    ID "60823D499854090F"
+    coords 11.257 0.609 -5.712
+   }
+   {
+    ID "60823D499854091D"
+    coords 5.824 0.609 4.71
+   }
+   {
+    ID "60823D4998540923"
+    coords 11.668 0.609 2.842
+   }
+   {
+    ID "60823D4998540945"
+    coords 4.56 0.609 -4.505
+   }
+   {
+    ID "60823D4998540955"
+    coords 6.115 0.598 -7.826
+   }
+   {
+    ID "60823D4998540975"
+    coords 8.296 0.609 -7.248
+   }
+   {
+    ID "60823D4998540984"
+    coords -9.853 0.609 -5.426
+   }
+   {
+    ID "60823D4998540994"
+    coords -5.939 0.609 -7.715
+   }
+   {
+    ID "60823D49985409AB"
+    coords -5.507 0.609 2.546
+   }
+   {
+    ID "60823D49985409B8"
+    coords 1.874 0.609 -7.111
+   }
+   {
+    ID "60823D49985409CD"
+    coords -10.073 0.609 0.54
+   }
+   {
+    ID "60823D49985409DE"
+    coords -1.954 0.609 3.5
+   }
+   {
+    ID "60823D49985409FE"
+    coords -0.145 0.609 0.523
+   }
+   {
+    ID "60823D4998540EFA"
+    coords 7.999 0.609 4.704
    }
   }
  }

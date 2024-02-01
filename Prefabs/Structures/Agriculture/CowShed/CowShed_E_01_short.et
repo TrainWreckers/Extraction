@@ -3,62 +3,8 @@ SCR_DestructibleBuildingEntity : "{07452F959762A7C0}Prefabs/Structures/Agricultu
  {
   GenericEntity : "{00B065782C480109}Prefabs/TrainWreck/TW_VehicleSpawnPoint.et" {
    ID "60794C445469D032"
-   coords 0.507 -0 18.256
+   coords 0.507 0 18.256
    angleY 0
-  }
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C445469D010"
-    coords -1.984 -0 23.525
-   }
-   {
-    ID "60794C445469D03D"
-    coords -5.768 -0 23.463
-   }
-   {
-    ID "60794C445469D162"
-    coords -6.221 -0 20.897
-   }
-   {
-    ID "60794C445469D18F"
-    coords 8.27 -0 15.883
-   }
-   {
-    ID "60794C445469D19F"
-    coords 7.748 -0 23.545
-   }
-   {
-    ID "60794C445469D1A4"
-    coords 8.313 0 -17.666
-   }
-   {
-    ID "60794C445469D1AF"
-    coords 4.936 0 -17.737
-   }
-   {
-    ID "60794C445469D1BA"
-    coords 8.229 -0 13.333
-   }
-   {
-    ID "60794C445469D1C1"
-    coords -3.599 0 -3.783
-   }
-   {
-    ID "60794C445469D1CE"
-    coords -6.879 -0 4.146
-   }
-   {
-    ID "60794C445469D1D8"
-    coords -4.945 0 -17.46
-   }
-   {
-    ID "60794C445469D1E4"
-    coords -7.071 -0 17.545
-   }
-   {
-    ID "60794C445469D1F9"
-    coords -6.506 -0 11.088
-   }
   }
   GenericEntity : "{58D8E77BF23F7AD8}Prefabs/TrainWreck/TW_VehicleSpawnPoint_PlusLarge.et" {
    ID "60794C445469D004"
@@ -73,6 +19,58 @@ SCR_DestructibleBuildingEntity : "{07452F959762A7C0}Prefabs/Structures/Agricultu
    {
     ID "5EC3034238D65816"
     coords -3.915 0 16.283
+   }
+   {
+    ID "60821BDF00137B39"
+    coords -5.794 -0 23.475
+   }
+   {
+    ID "60821BDF00137B4A"
+    coords 8.295 -0 15.887
+   }
+   {
+    ID "60821BDF00137B58"
+    coords -6.24 -0 20.963
+   }
+   {
+    ID "60821BDF00137B61"
+    coords 8.311 0 -17.717
+   }
+   {
+    ID "60821BDF00137B76"
+    coords 7.722 -0 23.545
+   }
+   {
+    ID "60821BDF00137B89"
+    coords -3.631 0 -3.775
+   }
+   {
+    ID "60821BDF00137B91"
+    coords 4.882 0 -17.733
+   }
+   {
+    ID "60821BDF00137B9E"
+    coords 8.181 -0 13.436
+   }
+   {
+    ID "60821BDF00137BA5"
+    coords -4.95 0 -17.468
+   }
+   {
+    ID "60821BDF00137BB8"
+    coords -6.864 -0 4.147
+   }
+   {
+    ID "60821BDF00137BC1"
+    coords -7.117 -0 17.533
+   }
+   {
+    ID "60821BDF00137BE0"
+    coords -2.035 -0 23.572
+   }
+   {
+    ID "60821BDF00137BF3"
+    coords -6.54 -0 11.085
    }
   }
  }

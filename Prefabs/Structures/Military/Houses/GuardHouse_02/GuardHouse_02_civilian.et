@@ -1,20 +1,6 @@
 SCR_DestructibleBuildingEntity : "{906CB40C3D7DBA68}Prefabs/Structures/Military/Houses/GuardHouse_02/GuardHouse_02_base.et" {
  ID "F0DBA538AC2A0552"
  {
-  $grp SCR_TW_EventAISpawner : "{23E8A73614FDA5A9}Prefabs/TrainWreck/TW_EventAISpawner.et" {
-   {
-    ID "60794C57A6FEB888"
-    coords 3.56 0.36 -4.885
-   }
-   {
-    ID "60794C57A6FEB890"
-    coords 0.61 0.36 2.635
-   }
-   {
-    ID "60794C57A6FEB8B6"
-    coords -4.28 0.36 -1.02
-   }
-  }
   $grp SCR_TW_AISpawnPoint : "{A43529BF0CA29F16}Prefabs/TrainWreck/TW_Extraction_AISpawnPoint.et" {
    {
     ID "5EC4C776C3A21A2B"
@@ -39,6 +25,18 @@ SCR_DestructibleBuildingEntity : "{906CB40C3D7DBA68}Prefabs/Structures/Military/
    {
     ID "5EC4C776C3A21A7C"
     coords -1.417 0.36 1.197
+   }
+   {
+    ID "60823D4967B34AB3"
+    coords 0.571 0.36 2.539
+   }
+   {
+    ID "60823D4967B34AC3"
+    coords 3.536 0.36 -4.851
+   }
+   {
+    ID "60823D4967B34AD3"
+    coords -4.192 0.36 -0.98
    }
   }
  }
