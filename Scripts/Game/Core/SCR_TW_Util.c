@@ -702,4 +702,10 @@ class SCR_TW_Util
 		
 		return insertedItem;
 	}
+	
+	//! Retrieve translated display name for a resource
+	static string GetTranslatedDisplayName(ResourceName resource)
+	{
+		return WidgetManager.Translate(GetPrefabDisplayName(resource));
+	}
 };

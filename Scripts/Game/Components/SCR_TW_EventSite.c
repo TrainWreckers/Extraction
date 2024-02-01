@@ -27,10 +27,18 @@ class SCR_TW_EventSite : SCR_SiteSlotEntity
 	private ref array<SCR_TW_InventoryLoot> m_LootContainers = {};
 	private ref array<SCR_TW_EventAISpawner> m_Spawners = {};
 	private bool canSpawn;
+	private bool ignoreGC = false;
 	
 	private bool RollChance() 
 	{
 		return Math.RandomFloat01() <= m_SpawnChance;
+	}
+	
+	bool IsIgnoreGC() { return ignoreGC; }
+	
+	void IgnoreGC(bool value)
+	{
+		ignoreGC = value;	
 	}
 	
 	void SetVisited(bool value)

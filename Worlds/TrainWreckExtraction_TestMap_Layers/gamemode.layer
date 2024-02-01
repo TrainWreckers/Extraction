@@ -46,42 +46,85 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
+   m_DisableSpawns 1
+   m_DisableEvents 1
    m_AntiSpawnGridSize 50
    m_GarbageCollectionTimer 80
-   m_AIWanderChance 0.05
-   m_AIWanderMinimumPercent 0.05
-   m_AIWanderMaximumPercent 0.1
+   m_AIWanderChance 0.15
+   m_AIWanderMinimumPercent 0.1
+   m_AIWanderMaximumPercent 0.15
+   m_WanderingWaypoints {
+    "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+   }
+  }
+  TW_MissionHandlerComponent "{607C2921604DCEC1}" {
+   m_MissionPool {
+    "{505EB23AA80A6DB4}Configs/Missions/Mission_EOD_Grenades.conf" "{A9FC2EDD237E3BE2}Configs/Missions/Mission_EOD_Launchers.conf" "{FDE4C059B823EE06}Configs/Missions/Mission_EOD_Mines.conf" "{3C6C60B382B13823}Configs/Missions/Mission_General_Backpacks.conf" "{07C6C2A7BC6E03B0}Configs/Missions/Mission_General_Clothing.conf" "{4445B529AA53586C}Configs/Missions/Mission_General_Equipment.conf" "{33FCC0AF1EAE9C47}Configs/Missions/Mission_General_Vests.conf" "{DFDEB1FCC002E29B}Configs/Missions/Mission_GunRun_MachineGuns.conf" "{FDE4C059B823EE07}Configs/Missions/Mission_GunRun_Pistols.conf" "{B3409047F637A864}Configs/Missions/Mission_GunRun_Rifles.conf" "{52393F4686A3A4F2}Configs/Missions/Mission_Medical.conf" "{B0C1D7F42A2E78BB}Configs/Missions/Mission_Stockpile_Ammo.conf"
+   }
   }
   SerializerInventoryStorageManagerComponent "{5ED3474B7A328ECC}" {
   }
  }
- coords 191.393 1 69.437
+ coords 173.613 1 114.381
 }
 TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
- coords 114.419 1 106.494
+ coords 123.96 1 107.444
 }
 PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Conflict/PerceptionManager.et" {
- coords 114.81 1 106.69
+ coords 124.351 1 107.64
 }
 RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
- coords 114.848 1 106.726
+ coords 124.389 1 107.676
 }
 ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
- coords 114.624 1 106.583
+ coords 124.165 1 107.533
  "Base style" BaseChatChannelStyle "{5ECF344074775EDF}" {
  }
 }
 SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
- coords 187.476 1 83.216
+ coords 176.922 1 105.472
+ {
+  SCR_ScenarioFrameworkTaskClearAreaSupportEntity {
+   ID "5A96783D483C9642"
+   coords 0 0 0
+  }
+  SCR_ScenarioFrameworkTaskDefendSupportEntity {
+   ID "5E38B27D6204EDC7"
+   coords 0 0 0
+  }
+  SCR_ScenarioFrameworkTaskDeliverSupportEntity {
+   ID "5A96783D483C9644"
+   coords 0 0 0
+  }
+  SCR_ScenarioFrameworkTaskDestroySupportEntity {
+   ID "5A96783D483C61C4"
+   coords 0 0 0
+  }
+  SCR_ScenarioFrameworkTaskExtractSupportEntity {
+   ID "5A96783D483C61C5"
+   coords 0 0 0
+  }
+  SCR_ScenarioFrameworkTaskKillSupportEntity {
+   ID "5E38B27D9A1E8ABC"
+   coords 0 0 0
+  }
+  SCR_ScenarioFrameworkTaskSupportEntity {
+   ID "5A96783D483C25E4"
+   coords 0 0 0
+  }
+  SCR_TriggerTaskSupportEntity {
+   ID "5A0AA0B0D37D2BFF"
+  }
+ }
 }
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
  coords 116.216 1 126.552
 }
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
- coords 114.825 1 106.67
+ coords 124.366 1 107.62
 }
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
- coords 114.616 1 106.678
+ coords 124.157 1 107.628
 }
 SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
  coords 248.544 1 8.711
@@ -94,5 +137,5 @@ SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallAre
  }
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
- coords 114.585 1 106.716
+ coords 124.126 1 107.666
 }

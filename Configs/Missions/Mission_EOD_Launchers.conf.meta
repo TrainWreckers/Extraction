@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A9FC2EDD237E3BE2}Configs/Missions/Mission_GunRun_Launchers.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

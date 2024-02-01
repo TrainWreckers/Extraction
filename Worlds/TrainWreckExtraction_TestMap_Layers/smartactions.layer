@@ -1,0 +1,51 @@
+GenericEntity : "{0AA94C2082A4A3A0}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/AmmoBoxArsenal_Medical_FIA.et" {
+ coords 241.583 1.872 13.068
+}
+GenericEntity : "{0FC1D6E9B592F75D}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Equipment_US.et" {
+ coords 239.654 1.992 9.964
+}
+$grp SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
+ {
+  coords 58.373 1 47.385
+  m_SpawnChance 0
+  {
+   StaticModelEntity {
+    ID "605C0176B4543B3B"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 127.768 1 61.859
+  m_SpawnChance 0
+  {
+   StaticModelEntity {
+    ID "605C0176B4543B3B"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 80.668 1 77.759
+  m_SpawnChance 0
+  {
+   StaticModelEntity {
+    ID "605C0176B4543B3B"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 52.812 1 104.923
+  m_SpawnChance 0
+  {
+   StaticModelEntity {
+    ID "605C0176B4543B3B"
+    coords 0 0 0
+   }
+  }
+ }
+}
+GenericEntity : "{891EF8A5FB7162F1}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Medical_US.et" {
+ coords 239.436 1 12.36
+}
