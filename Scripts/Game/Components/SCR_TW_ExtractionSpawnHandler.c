@@ -251,6 +251,26 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 	private int spawnQueueCount = 0;
 	private int currentAgents = 0;
 	
+	void SendExistingUnitsToDownloadSite()
+	{
+		ref array<SCR_AIGroup> groups = {};
+		int groupCount = GetAgentCount(groups, true);
+		
+		ref array<AIWaypoint> waypoints = {};
+		TW_MissionDownload mission = TW_MissionDownload.GetActiveMission();
+		
+		foreach(SCR_AIGroup group : groups)
+		{
+			waypoints.Clear();
+			group.GetWaypoints(waypoints);
+			
+			foreach(AIWaypoint waypoint : waypoints)
+				group.RemoveWaypoint(waypoint);
+			
+			group.AddWaypoint(SCR_TW_Util.CreateWaypointAt(mission.GetWaypointPrefab(), mission.GetMissionEntity().GetOrigin()));
+		}
+	}
+	
 	void SpawnLoop()
 	{
 		if(!TW_Global.IsServer(GetOwner()))
@@ -327,9 +347,19 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		
 		SCR_TW_AISpawnPoint spawnPoint = spawnGrid.GetNextItemFromPointer(playerChunks);
 		
+		ResourceName waypointOverride = ResourceName.Empty;
+		IEntity positionOverride = null;
+		
+		if(TW_MissionDownload.IsDownloadActive())
+		{
+			TW_MissionDownload mission = TW_MissionDownload.GetActiveMission();
+			waypointOverride = mission.GetWaypointPrefab();
+			positionOverride = mission.GetMissionEntity();
+		}
+		
 		if(IsValidSpawn(spawnPoint))
 		{
-			SCR_AIGroup group = spawnPoint.Spawn();
+			SCR_AIGroup group = spawnPoint.Spawn(waypointOverride, positionOverride);
 			
 			float tagAsWanderer = Math.RandomFloat01();
 			// The chance to be a wanderer should role <= configured value
@@ -355,8 +385,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		if(currentAgents <= 0 && m_SpawnedVehicles.IsEmpty())
 			return;
 		
-		Print("TrainWreck: GarbageCollection Pass");
-		
 		int x, y;
 		string positionText;
 		foreach(int agentN, SCR_AIGroup agent : agents)
@@ -373,8 +401,6 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 				queuedForGC++;
 			}
 		}
-		
-		Print(string.Format("TrainWreck: AI Agents Detected: %1. Queued for GC: %2", currentAgents, queuedForGC), LogLevel.WARNING);
 	}
 	
 	void ReinitializePlayers()

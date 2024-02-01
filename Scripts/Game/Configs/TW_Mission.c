@@ -1,7 +1,8 @@
 enum TW_MissionType
 {
 	Deliver,
-	ExtractWith
+	ExtractWith,
+	Download
 };
 
 enum TW_RewardType

@@ -63,7 +63,7 @@ class SCR_TW_AISpawnPoint : GenericEntity
 	ResourceName GetRandomPrefab() { return m_EntityPrefabs.GetRandomElement(); }
 	ResourceName GetRandomWaypoint() { return m_WaypointPrefabs.GetRandomElement(); }
 	
-	SCR_AIGroup Spawn()
+	SCR_AIGroup Spawn(ResourceName waypointOverride = ResourceName.Empty, IEntity goToPositionOverride = null)
 	{
 		if(!TW_Global.IsServer(this))
 			return null;
@@ -89,7 +89,17 @@ class SCR_TW_AISpawnPoint : GenericEntity
 		}
 		
 		auto waypointPrefab = GetRandomWaypoint();
-		AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointPrefab, spawnPosition);
+		
+		vector goToPosition = spawnPosition;
+		if(goToPositionOverride)
+			goToPosition = goToPositionOverride.GetOrigin();
+		
+		ResourceName selectedWaypointPrefab = waypointPrefab;
+		
+		if(waypointOverride != ResourceName.Empty)
+			selectedWaypointPrefab = waypointOverride;
+		
+		AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(selectedWaypointPrefab, goToPosition);
 		
 		if(!waypoint)
 		{

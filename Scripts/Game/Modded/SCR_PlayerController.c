@@ -2,6 +2,23 @@ modded class SCR_PlayerController
 {
 	bool m_isLocked = false;
 	
+	void OnDownloadStart()
+	{
+		Print("TrainWreck: Starting download");
+		Rpc(RplAsk_Server_StartDownload);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	private void RplAsk_Server_StartDownload()
+	{
+		Print("TrainWreck: Starting download (Server)");
+		TW_MissionDownload mission = TW_MissionDownload.GetActiveMission();
+		if(!mission)
+			return;
+		
+		mission.StartDownload();
+	}
+	
 	void OnPlayerSpawnedEvent(RplId playerCrateId)
 	{
 		if(!playerCrateId.IsValid())

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{5D9B61758E8FF81A}Configs/Missions/Mission_Download_Intel.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

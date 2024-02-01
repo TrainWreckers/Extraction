@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{8109E3187E03A4A9}Prefabs/Compositions/EventSites/Medium/Downloads/TW_Medium_Download_1.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

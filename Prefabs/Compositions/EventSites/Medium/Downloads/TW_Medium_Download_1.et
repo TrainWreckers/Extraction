@@ -1,0 +1,59 @@
+GenericEntity : "{A3057017F574212F}Prefabs/Compositions/EventSites/Large/TW_Large_Intel_3.et" {
+ ID "605C017C86C39F73"
+ coords 40.343 0 72.45
+ {
+  GenericEntity {
+   ID "606118D114AB3E9B"
+   components {
+    SCR_TW_IntelligenceSpawnerComponent "{605D0186354E543D}" {
+     Enabled 0
+    }
+    SCR_TW_InventoryLoot "{605D018756249078}" {
+     Enabled 0
+    }
+    TW_RewardSpawnerComponent "{607F5D0C025D1865}" {
+    }
+   }
+   coords 5.767 -0.017 -7.38
+   angleY 19.752
+  }
+  GenericEntity Downloads : "{34736979381CA219}Prefabs/Props/Military/Radios/RadioStation_ANGRC160_01.et" {
+   ID "607F5D0DEC5FBE8B"
+   components {
+    ActionsManagerComponent "{607F5D0C442183AB}" {
+     ActionContexts {
+      UserActionContext "{607F5D0C4E1421B4}" {
+       ContextName "default"
+       Position PointInfo "{607F5D0C4D2EBB5E}" {
+       }
+       Radius 0.8
+       Omnidirectional 0
+      }
+     }
+     additionalActions {
+      TW_StartDownloadAction "{607F5D0C2182DE34}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{607F5D0C27B0DA82}" {
+        Name "Start Download"
+       }
+      }
+     }
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+    Hierarchy "{607F5D0C0BF25695}" {
+    }
+   }
+   coords 5.403 0.9 -7.871
+   angleY -55.646
+  }
+  GenericEntity : "{CF4F7AEE0BFA7B25}Prefabs/Props/Military/Compositions/US/Antenna_01_US.et" {
+   ID "607F5D0DEC5FBE8C"
+   coords 0.429 0 2.506
+   angleY -24.041
+  }
+ }
+}
