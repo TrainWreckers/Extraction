@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{0B44871A805D64E4}Prefabs/MP/TW_PlayerRadioSpawnPoint.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

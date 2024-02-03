@@ -1,0 +1,48 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  InventoryItemComponent "{6086F28977E5BD8E}" {
+   Attributes SCR_ItemAttributeCollection "{6086F28975C53A7B}" {
+    ItemDisplayName SCR_InventoryUIInfo "{6086F289789EFF19}" {
+     Name "Tent Canvas"
+     Description "Material used to pitch a tent"
+    }
+    m_Size SLOT_2x2
+    m_SlotType SLOT_ANY
+    m_bStackable 0
+   }
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{B8AA18B725C167A5}Assets/Structures/Military/Camps/Canvas_Cover/CanvasCover_Folded.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Mass 50
+   CenterOfMass 0 0.2 0
+   ResponseIndex "SmallDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  ActionsManagerComponent "{6086F2890DFE369F}" {
+   ActionContexts {
+    UserActionContext "{6086F288F34B4F3A}" {
+     ContextName "default"
+     Position PointInfo "{6086F288F76214B0}" {
+     }
+    }
+   }
+   additionalActions {
+    SCR_PickUpItemAction "{6086F288FF9D352D}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6086F288E3EA53FB}" {
+      Name "#AR-Inventory_PickUp"
+     }
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+}

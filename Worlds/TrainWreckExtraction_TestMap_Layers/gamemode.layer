@@ -24,6 +24,10 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
  components {
   SCR_CompositionSlotManagerComponent "{5ED5118F1FF0C7AE}" {
   }
+  SCR_PlayerSpawnPointManagerComponent "{6086F28B01332358}" {
+   m_SpawnPointPrefab "{0B44871A805D64E4}Prefabs/MP/TW_PlayerRadioSpawnPoint.et"
+   m_bRadioVehicleSpawningEnabled 1
+  }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_AutoSpawnLogic "{5ED8F1A8045926B2}" {
    }

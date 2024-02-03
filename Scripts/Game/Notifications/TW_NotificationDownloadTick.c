@@ -29,3 +29,36 @@ class SCR_NotificationDownloadPlayerLeft : SCR_NotificationDisplayData
 		return string.Format(super.GetText(data), totalPlayers);
 	}	
 };
+
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(ENotification, "m_NotificationKey")]
+class SCR_NotificationNameFormat1Arg : SCR_NotificationDisplayData
+{
+	override string GetText(SCR_NotificationData data)
+	{
+		int value1;
+		data.GetParams(value1);
+		return string.Format(super.GetText(data), value1);
+	}
+}
+
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(ENotification, "m_NotificationKey")]
+class SCR_NotificationNameFormat2Arg: SCR_NotificationDisplayData
+{
+	override string GetText(SCR_NotificationData data)
+	{
+		int value1, value2;
+		data.GetParams(value1, value2);
+		return string.Format(super.GetText(data), value1, value2);
+	}
+}
+
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(ENotification, "m_NotificationKey")]
+class SCR_NotificationNameFormat3Arg: SCR_NotificationDisplayData
+{
+	override string GetText(SCR_NotificationData data)
+	{
+		int value1, value2, value3;
+		data.GetParams(value1, value2, value3);
+		return string.Format(super.GetText(data), value1, value2, value3);
+	}
+}

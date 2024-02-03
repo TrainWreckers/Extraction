@@ -1,8 +1,10 @@
 GenericEntity : "{0AA94C2082A4A3A0}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/AmmoBoxArsenal_Medical_FIA.et" {
- coords 241.583 1.872 13.068
+ coords 238.126 1.024 14.294
+ angleY 61.101
 }
 GenericEntity : "{0FC1D6E9B592F75D}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Equipment_US.et" {
- coords 239.654 1.992 9.964
+ coords 236.395 0.983 13.407
+ angleY 60.695
 }
 $grp SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_Large_Site.et" {
  {
@@ -48,63 +50,67 @@ $grp SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_La
 }
 $grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et" {
  {
-  coords 242.721 1 15.456
+  coords 238.615 1 15.445
  }
  {
-  coords 242.738 1 15.544
+  coords 238.616 1 15.47
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
  {
-  coords 242.738 1 15.544
+  coords 238.632 1 15.533
  }
 }
 GenericEntity : "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" {
- coords 244.303 1.785 13.671
+ coords 239.117 1.014 14.531
 }
 GenericEntity : "{891EF8A5FB7162F1}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Medical_US.et" {
- coords 239.436 1 12.36
+ coords 237.271 1 13.752
+ angleY 61.21
+}
+GenericEntity : "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et" {
+ coords 239.73 1 14.926
 }
