@@ -224,15 +224,27 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 		{
 			if(extraction.RequiresHigherTierRadio() && ! m_ShowHighTier)
 				continue;
+			
 			Widget newRow = m_wWorkspace.CreateWidgets(TW_UI_ExtractionItemWidgets.s_sLayout, m_ExtractionsList);
 			ref TW_UI_ExtractionItemWidgets widgets = new TW_UI_ExtractionItemWidgets();
 			if(widgets.Init(newRow))
 			{
 				widgets.SetExtractionType(extraction.GetExtractionType(), extraction.GetExtractionName(), extraction.GetActionCost());
-				widgets.m_wCallButton.m_OnClicked.Clear();
-				widgets.m_wCallButton.m_OnClicked.Insert(OnCallExtraction);
+				
+				if(!HasRequiredItemsFor(extraction))
+				{
+					widgets.m_wCallButton.SetEnabled(false);					
+				}
+				else
+				{
+					widgets.m_wCallButton.m_OnClicked.Clear();
+					widgets.m_wCallButton.m_OnClicked.Insert(OnCallExtraction);
+				}				
 			}
 		}
+		
+		if(!TW_MissionHandlerComponent.GetInstance().CanSpawnMission())
+			return;
 		
 		foreach(ResourceName resourceName, TW_CallableItem callableItem : resourceMissionMap)
 		{
@@ -254,10 +266,16 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 			{
 				ref TW_UI_MissionItemWidgets widgets = new TW_UI_MissionItemWidgets();
 				if(widgets.Init(newRow))
-				{
+				{					
 					widgets.SetMission(mission, resourceName);
-					widgets.m_wCallButton.m_OnClicked.Clear();
-					widgets.m_wCallButton.m_OnClicked.Insert(OnCallMission);
+					
+					if(!HasRequiredItemsFor(mission))
+						widgets.m_wCallButton.SetEnabled(false);
+					else
+					{
+						widgets.m_wCallButton.m_OnClicked.Clear();
+						widgets.m_wCallButton.m_OnClicked.Insert(OnCallMission);
+					}					
 				}
 			}
 		}
@@ -272,9 +290,13 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 		
 		if(!cost)
 		{
-			Print("TrainWreck: Action cost cannot be null", LogLevel.ERROR);
-			return false;
+			Print(string.Format("TrainWreck: %1 has no action cost", callable.ClassName()), LogLevel.WARNING);
+			return true;
 		}
+		
+		// No cost associated with this thing
+		if(cost.GetCost() <= 0)
+			return true;
 		
 		if(!m_PlayerItems.Contains(cost.GetResource()))
 			return false;
@@ -286,6 +308,8 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 	//! Remove specified amount of a resource from player's inventory
 	private void RemoveAmount(TW_ActionCost cost)
 	{
+		if(!cost) return;
+		
 		int remaining = cost.GetCost();
 		ref array<IEntity> items = {};
 		m_StorageManager.GetItems(items);
@@ -310,7 +334,7 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 	}
 	
 	void OnCallMission(TW_UI_MissionButton button)
-	{
+	{		
 		PrintFormat("TrainWreck: User clicked on mission: %1", button.GetMission().GetName());
 		SCR_PlayerController controller = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		
@@ -322,6 +346,8 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 		
 		controller.CallForMission(button.GetMissionResource());
 		GetGame().GetMenuManager().CloseAllMenus();
+		
+		RemoveAmount(button.GetMission().GetActionCost());
 	}
 	
 	void OnCallExtraction(TW_UI_ExtractionButton button)
@@ -339,6 +365,8 @@ class TW_UI_ExtractionDisplay : ChimeraMenuBase
 		
 		controller.CallForExtraction(calledType);		
 		GetGame().GetMenuManager().CloseAllMenus();
+		
+		RemoveAmount(button.GetCost());
 	}
 	
 };

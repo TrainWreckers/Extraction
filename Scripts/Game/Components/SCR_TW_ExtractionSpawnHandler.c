@@ -354,14 +354,17 @@ class SCR_TW_ExtractionSpawnHandler : SCR_BaseGameModeComponent
 		ResourceName waypointOverride = ResourceName.Empty;
 		IEntity positionOverride = null;
 		
-		if(TW_MissionDownload.IsDownloadActive())
+		if(TW_MissionDownload.IsDownloadActive() && spawnPoint)
 		{
 			TW_MissionDownload mission = TW_MissionDownload.GetActiveMission();
 			waypointOverride = mission.GetWaypointPrefab();
 			positionOverride = mission.GetMissionEntity();
+			
+			SCR_AIGroup group = SCR_TW_Util.SpawnGroup(spawnPoint.GetRandomPrefab(), positionOverride.GetOrigin(), (m_SpawnGridSize * 2) * m_SpawnGridRadius);
+			AIWaypoint waypoint = SCR_TW_Util.CreateWaypointAt(waypointOverride, positionOverride.GetOrigin());	
+			group.AddWaypoint(waypoint);
 		}
-		
-		if(IsValidSpawn(spawnPoint))
+		else if(IsValidSpawn(spawnPoint))
 		{
 			SCR_AIGroup group = spawnPoint.Spawn(waypointOverride, positionOverride);
 			

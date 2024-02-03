@@ -49,7 +49,7 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 	
 	bool IsValidItem(ResourceName resource)
 	{
-		return TW_LootManager.IsValidItem(resource);
+		return TW_LootManager.IsValidItem(resource) || resource == "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et";
 	}
 	
 	int GetCatalogCount() { return globalItems.Count(); }
@@ -197,6 +197,13 @@ class SCR_TW_ExtractionHandler : SCR_BaseGameModeComponent
 			return;
 		
 		SaveAndDeleteCrate(playerId);
+		
+		if(TW_MissionDownload.IsDownloadActive())
+		{
+			// If the player is inside this mission
+			// it will remove them 
+			TW_MissionDownload.GetActiveMission().RemovePlayer(playerId);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

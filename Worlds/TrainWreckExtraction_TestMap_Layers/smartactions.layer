@@ -46,6 +46,62 @@ $grp SCR_TW_EventSite : "{6285204EBB2F7D4C}Prefabs/Compositions/EventSites/TW_La
   }
  }
 }
+$grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et" {
+ {
+  coords 242.721 1 15.456
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+ {
+  coords 242.738 1 15.544
+ }
+}
 GenericEntity : "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" {
  coords 244.303 1.785 13.671
 }

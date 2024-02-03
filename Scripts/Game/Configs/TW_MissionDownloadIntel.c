@@ -49,6 +49,17 @@ class TW_MissionDownload : TW_Mission
 	//! Composition containing the download event
 	IEntity GetCompositionEntity() { return m_CompositionEntity; }		
 	
+	void RemovePlayer(int playerId)
+	{
+		if(!m_PlayersInArea.Contains(playerId))
+			return;
+		
+		IEntity player = m_PlayersInArea.Get(playerId);
+		
+		// Simply because we have some logic in here for checking failure
+		OnPlayerExited(player);
+	}
+	
 	override void InitializeMission()
 	{
 		if(s_ActiveMission)
