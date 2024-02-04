@@ -1,0 +1,13 @@
+GenericEntity : "{5879D8E9C56E358D}Prefabs/Items/Core/Radio_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SCR_RestrictedDeployableSpawnPointComponent "{5EA4A89F0D06E1A8}" {
+   m_sReplacementPrefab "{0B44871A805D64E4}Prefabs/MP/TW_PlayerRadioSpawnPoint.et"
+   m_FactionKey "US"
+   m_bQueryBases 0
+   m_bQueryAllBases 0
+   m_bAllowAllGroupsToSpawn 1
+   m_bUnlockActionsForAllGroups 1
+  }
+ }
+}

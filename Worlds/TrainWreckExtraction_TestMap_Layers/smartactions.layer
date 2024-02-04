@@ -2,6 +2,9 @@ GenericEntity : "{0AA94C2082A4A3A0}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/
  coords 238.126 1.024 14.294
  angleY 61.101
 }
+GenericEntity : "{0D26E697345FACD1}Prefabs/Structures/Military/Camps/Canvas_Covers/US/TW_CanvasCover_Folded_US.et" {
+ coords 238.881 1 11.95
+}
 GenericEntity : "{0FC1D6E9B592F75D}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Equipment_US.et" {
  coords 236.395 0.983 13.407
  angleY 60.695
@@ -112,5 +115,11 @@ GenericEntity : "{891EF8A5FB7162F1}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/A
  angleY 61.21
 }
 GenericEntity : "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et" {
+ components {
+  SCR_RestrictedDeployableSpawnPointComponent "{5EA4A89F0D06E1A8}" {
+   m_bQueryBases 0
+   m_bQueryAllBases 0
+  }
+ }
  coords 239.73 1 14.926
 }

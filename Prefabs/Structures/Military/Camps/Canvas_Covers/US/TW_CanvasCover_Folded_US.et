@@ -1,17 +1,6 @@
 GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
  ID "F0DBA538AC2A0552"
  components {
-  InventoryItemComponent "{6086F28977E5BD8E}" {
-   Attributes SCR_ItemAttributeCollection "{6086F28975C53A7B}" {
-    ItemDisplayName SCR_InventoryUIInfo "{6086F289789EFF19}" {
-     Name "Tent Canvas"
-     Description "Material used to pitch a tent"
-    }
-    m_Size SLOT_2x2
-    m_SlotType SLOT_ANY
-    m_bStackable 0
-   }
-  }
   MeshObject "{5872F0EB7FA40561}" {
    Object "{B8AA18B725C167A5}Assets/Structures/Military/Camps/Canvas_Cover/CanvasCover_Folded.xob"
   }
@@ -21,6 +10,28 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
    ResponseIndex "SmallDestructible"
    ModelGeometry 1
    Static 1
+  }
+  SCR_DeployableInventoryItemInventoryComponent "{6087745F917C89D6}" {
+   Attributes SCR_ItemAttributeCollection "{6087745F9B858EF4}" {
+    ItemDisplayName SCR_InventoryUIInfo "{6087745F9F642D35}" {
+     Name "Tent Canvas"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{60881A0F25F8528A}" {
+     Weight 1
+    }
+    m_Size SLOT_2x2
+    m_SlotType SLOT_ANY
+    m_bStackable 0
+   }
+   CanBeGarbaged 0
+  }
+  SCR_RestrictedDeployableSpawnPointComponent "{608774585025414B}" {
+   m_sReplacementPrefab "{C25C52DF4657DA36}Prefabs/Systems/DeployableRadios/TW_DeployableSpawnPointTent.et"
+   m_FactionKey "US"
+   m_iMaxRespawns 25
+   m_bQueryBases 0
+   m_bAllowAllGroupsToSpawn 1
+   m_bUnlockActionsForAllGroups 1
   }
   ActionsManagerComponent "{6086F2890DFE369F}" {
    ActionContexts {
@@ -37,6 +48,14 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
      }
      UIInfo UIInfo "{6086F288E3EA53FB}" {
       Name "#AR-Inventory_PickUp"
+     }
+    }
+    SCR_DeployInventoryItemRestrictedAction "{6087745B6367D9F4}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6087745B65A6C5E9}" {
+      Name "Make Camp"
      }
     }
    }

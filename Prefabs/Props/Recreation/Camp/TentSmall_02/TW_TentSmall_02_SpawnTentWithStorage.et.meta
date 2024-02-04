@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{7B79AB060CCD7797}Prefabs/Props/Recreation/Camp/TentSmall_02/TW_TentSmall_02_SpawnTentWithStorage.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

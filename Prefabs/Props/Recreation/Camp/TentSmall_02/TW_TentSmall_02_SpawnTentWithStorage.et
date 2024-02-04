@@ -1,0 +1,48 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{850DE8CCCEF0C587}Assets/Props/Recreation/Camp/TentSmall_02/TentSmall_02.xob"
+   ClutterOccluder 1
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   m_fBaseHealth 1000
+   m_DestroySpawnObjects {
+    SCR_ParticleSpawnable "{6087745FA4C64371}" {
+     m_vOffsetPosition 0 0 -0.5
+     m_Particle "{CEE298DA573A1161}Particles/Props/Dest_WoodenWall.ptc"
+    }
+    SCR_ParticleSpawnable "{6087745FA4C64369}" {
+     m_vOffsetPosition 0 0 0.5
+     m_Particle "{33A69D10CE4AFE4F}Particles/Props/Dest_PipeRailing.ptc"
+    }
+    SCR_PrefabSpawnable "{6087745FA4C6436C}" {
+     m_Prefabs {
+      "{57ADB9C57B695BA1}Prefabs/Props/Recreation/Camp/TentSmall_02/Dst/TentSmall_02_Dst_base.et"
+     }
+    }
+   }
+   m_eMaterialSoundType BREAK_TENT
+  }
+  SCR_UniversalInventoryStorageComponent "{6087745F56EC1F07}" {
+   Attributes SCR_ItemAttributeCollection "{6087745F559E25B7}" {
+    ItemDisplayName UIInfo "{6087745F5B1A9229}" {
+     Name "Tent Storage"
+    }
+    m_Size SLOT_2x2
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 2000
+   m_fMaxWeight 5000
+  }
+  SCR_InventoryStorageManagerComponent "{6087745F3FD7A255}" {
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 0 0 0
+}

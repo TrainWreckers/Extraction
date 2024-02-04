@@ -1,0 +1,77 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{AA473E53D483267F}Assets/Structures/Military/Camps/TentSmallFIA_01/TentSmallFIA_01.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Mass 20
+   CenterOfMass 0 0.5 0
+   ResponseIndex "MediumDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DeployableInventoryItemReplacementComponent "{6087745EED48AB5A}" {
+   m_vItemPosition PointInfo "{6087745EED48AB54}" {
+    Offset 1.7286 0 0
+   }
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   Enabled 1
+   "Additional hit zones" {
+    ScriptedHitZone Default {
+     AreaOverride 1
+    }
+   }
+   m_fBaseHealth 500
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{6087745EED48AB42}" {
+     m_fPhaseHealth 300
+     m_PhaseModel "{365E8FE6DDC960ED}Assets/Structures/Military/Camps/TentSmallFIA_01/Dst/TentSmallFIA_01_dst_01.xob"
+    }
+   }
+   m_eMaterialSoundType BREAK_MATRESS
+  }
+  SCR_UniversalInventoryStorageComponent "{6087745DDA44897B}" {
+   Attributes SCR_ItemAttributeCollection "{6087745DDF9479A7}" {
+    ItemDisplayName UIInfo "{6087745DC2B7D78D}" {
+     Name "Tent Storage"
+    }
+   }
+   CanBeGarbaged 0
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 9999
+   m_fMaxWeight 9999
+  }
+  SCR_InventoryStorageManagerComponent "{6087745DD93236A8}" {
+  }
+  ActionsManagerComponent "{6087745D9EDE7FC0}" {
+   ActionContexts {
+    UserActionContext "{6087745D9C7E10A0}" {
+     ContextName "default"
+     Position PointInfo "{6087745D8016253F}" {
+      Offset 0 0.5 0
+     }
+     Radius 2
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{6087745D7EFB3CD4}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{60877453D2B83216}" {
+      Name "Open Tent Storage"
+     }
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+   "Rpl State Override" Runtime
+  }
+  Hierarchy "{6087745EED48AB46}" {
+  }
+ }
+ coords 0.025 0 0
+}
