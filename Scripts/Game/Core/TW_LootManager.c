@@ -7,7 +7,7 @@ enum TW_ResourceNameType
 sealed class TW_LootManager 
 {
 	// Provide the ability to grab 
-	private static ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>> s_LootTable = new ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>>();
+	private static ref map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>> s_LootTable = new map<SCR_EArsenalItemType, ref array<ref TW_LootConfigItem>>();
 	
 	// This should contain the resource names of all items that are valid for saving/loading 
 	private static ref set<string> s_GlobalItems = new set<string>();
@@ -271,8 +271,9 @@ sealed class TW_LootManager
 	
 	private static bool OutputLootTableFile(notnull map<SCR_EArsenalItemType, ref array<SCR_ArsenalItem>> lootMap)
 	{
-		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
-		
+		ContainerSerializationSaveContext saveContext = new ContainerSerializationSaveContext();
+		PrettyJsonSaveContainer prettyContainer = new PrettyJsonSaveContainer();
+		saveContext.SetContainer(prettyContainer);
 		foreach(SCR_EArsenalItemType type, ref array<SCR_ArsenalItem> items : lootMap)
 		{
 			ref array<ref TW_LootConfigItem> typeLoot = {};
@@ -291,7 +292,7 @@ sealed class TW_LootManager
 			saveContext.WriteValue(SCR_TW_Util.ArsenalTypeAsString(type), typeLoot);
 		}
 		
-		return saveContext.SaveToFile(LootFileName);
+		return prettyContainer.SaveToFile(LootFileName);
 	}
 	
 	private static bool HasLootTable()
@@ -307,7 +308,7 @@ sealed class TW_LootManager
 		
 		if(!loadSuccess)
 		{
-			Print("TrainWreck: Was unable to laod loot map. Please verify it exists, and has valid syntax");
+			Print("TrainWreck: Was unable to load loot map. Please verify it exists, and has valid syntax");
 			return false;
 		}
 		

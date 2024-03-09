@@ -31,10 +31,10 @@ $grp GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base
  {
   components {
    SCR_TW_InventoryLoot "{5EBB14553FD5CF9E}" {
-    m_lootItemTypes 384
+    m_lootItemTypes BACKPACK
    }
   }
-  coords 237.334 1 7.22
+  coords 237.386 1 7.291
  }
  {
   components {

@@ -160,7 +160,6 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
    }
   }
   SCR_TW_ExtractionHandler "{5EBEC834FC261CA8}" {
-   m_EnableLootSpawns 1
    m_InvisibleLootCratePrefab "{FF9846A7C3FFC487}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/TW_PlayerLoadoutCrateInvisible.et"
    catalogConfigs {
     SCR_EntityCatalogMultiList "{60685695D6A71BD8}" : "{E908001749419691}Configs/EntityCatalog/FIA/FIA_InventoryItems.conf" {
@@ -179,6 +178,8 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5EBF4A5F232BAFAE}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5EBF0B14A6CAF6AB}" {
+   m_DisableSpawns 1
+   m_DisableEvents 1
    m_MaxAgents 35
    m_GarbageCollectionTimer 1
    m_AIFlaggedAsWandererChance 0.4
@@ -214,30 +215,30 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
  }
  coords 6454.624 125.285 6437.566
 }
-TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
- coords 6841.94 125.282 6661.059
-}
 PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Conflict/PerceptionManager.et" {
- coords 6841.824 125.284 6661.328
+ coords 8776.518 99.353 2775.005
 }
 RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
- coords 6842.523 125.281 6661.002
+ coords 8772.816 95.556 2764.446
 }
 ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
- coords 6597.423 159.83 6413.302
-}
-SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
- coords 10066.156 0 1424.222
+ coords 8781.045 95.598 2764.78
 }
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
- coords 6838.284 125.351 6655.269
+ coords 8778.999 95.547 2755.586
+}
+SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
+ coords 8774.052 100.706 2777.697
+}
+SCR_BaseTaskManager : "{826C5AFFA977DAC3}Reforger/Prefabs/Conflict/CampaignTaskManager.et" {
+ coords 8779.749 97.417 2774.249
 }
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
- coords 6841.999 125.282 6661.14
+ coords 8777.184 98.118 2775.276
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
- coords 6841.941 125.282 6661.145
+ coords 8779.065 95.782 2769.071
 }
 BasePreloadManager PreloadManager_Campaign1 : "{F686EF3A41A0262A}Reforger/Prefabs/Conflict/PreloadManager_Campaign.et" {
- coords 6842.64 125.281 6660.99
+ coords 8775.851 95.483 2765.904
 }

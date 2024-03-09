@@ -200,7 +200,7 @@ class SCR_TW_Util
 					factionMap.Get("default").Insert(base);
 				else
 				{
-					factionMap.Insert("default", new ref array<SCR_CampaignMilitaryBaseComponent>);
+					factionMap.Insert("default", new array<SCR_CampaignMilitaryBaseComponent>);
 					factionMap.Get("default").Insert(base);
 				}
 				continue;
@@ -210,7 +210,7 @@ class SCR_TW_Util
 				factionMap.Get(baseFaction).Insert(base);
 			else
 			{
-				factionMap.Insert(baseFaction, new ref array<SCR_CampaignMilitaryBaseComponent>);
+				factionMap.Insert(baseFaction, new array<SCR_CampaignMilitaryBaseComponent>);
 				factionMap.Get(baseFaction).Insert(base);
 			}
 		}				

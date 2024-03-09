@@ -50,8 +50,8 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   SCR_TW_ExtractionPlayerInventoryComponent "{5ED3474A5D53BE3E}" {
   }
   SCR_TW_ExtractionSpawnHandler "{5ECF3441B1B5A754}" {
-   m_DisableSpawns 1
    m_DisableEvents 1
+   m_MaxAgents 20
    m_AntiSpawnGridSize 50
    m_GarbageCollectionTimer 80
    m_AIWanderChance 0.15
@@ -75,67 +75,29 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
  }
  coords 173.613 1 114.381
 }
-TagManager : "{3DCAEB3920DDA04F}Reforger/Prefabs/Conflict/TagManager.et" {
- coords 123.96 1 107.444
-}
 PerceptionManager PerceptionManager1 : "{700439516EC7DFA8}Reforger/Prefabs/Conflict/PerceptionManager.et" {
- coords 124.351 1 107.64
+ coords 249.599 1.434 14.912
 }
 RadioManagerEntity : "{705F3B815AF5D059}Reforger/Prefabs/Conflict/RadioManager.et" {
- coords 124.389 1 107.676
+ coords 249.509 1.44 14.961
 }
 ScriptedChatEntity : "{9D8E1BC210131261}Reforger/Prefabs/Conflict/ScriptedChat.et" {
- coords 124.165 1 107.533
- "Base style" BaseChatChannelStyle "{5ECF344074775EDF}" {
- }
-}
-SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
- coords 176.922 1 105.472
- {
-  SCR_ScenarioFrameworkTaskClearAreaSupportEntity {
-   ID "5A96783D483C9642"
-   coords 0 0 0
-  }
-  SCR_ScenarioFrameworkTaskDefendSupportEntity {
-   ID "5E38B27D6204EDC7"
-   coords 0 0 0
-  }
-  SCR_ScenarioFrameworkTaskDeliverSupportEntity {
-   ID "5A96783D483C9644"
-   coords 0 0 0
-  }
-  SCR_ScenarioFrameworkTaskDestroySupportEntity {
-   ID "5A96783D483C61C4"
-   coords 0 0 0
-  }
-  SCR_ScenarioFrameworkTaskExtractSupportEntity {
-   ID "5A96783D483C61C5"
-   coords 0 0 0
-  }
-  SCR_ScenarioFrameworkTaskKillSupportEntity {
-   ID "5E38B27D9A1E8ABC"
-   coords 0 0 0
-  }
-  SCR_ScenarioFrameworkTaskSupportEntity {
-   ID "5A96783D483C25E4"
-   coords 0 0 0
-  }
-  SCR_TriggerTaskSupportEntity {
-   ID "5A0AA0B0D37D2BFF"
-  }
- }
+ coords 249.387 1.448 14.858
 }
 SCR_LoadoutManager : "{41248433FBD990C0}Prefabs/MP/Campaign/TW_ExtractionLoadoutManager.et" {
- coords 116.216 1 126.552
+ coords 241.287 1 14.573
 }
 SCR_MapLocator : "{6DC1F9F676BC701C}Reforger/Prefabs/Conflict/MapLocator.et" {
- coords 124.366 1 107.62
+ coords 249.746 1.424 14.887
+}
+SCR_BaseTaskManager : "{826C5AFFA977DAC3}Reforger/Prefabs/Conflict/CampaignTaskManager.et" {
+ coords 249.987 1.408 14.532
 }
 ItemPreviewManagerEntity ItemPreviewManagerEntity1 : "{BE5A5AD4B35096CB}Reforger/Prefabs/Conflict/ItemPreviewManagerEntity.et" {
- coords 124.157 1 107.628
+ coords 250.016 1.406 14.722
 }
 SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallArea_SpawnSite.et" {
- coords 248.544 1 8.711
+ coords 249.815 1 8.592
  {
   StaticModelEntity {
    ID "52E8C3643526D54D"
@@ -145,5 +107,8 @@ SCR_SiteSlotEntity : "{EB093618D6DCB57C}PrefabsEditable/Slots/Flat/TW_E_SmallAre
  }
 }
 HitRegistrationManager HitRegManager1 : "{F4B87227A1D00DEE}Reforger/Prefabs/Conflict/HitRegManager.et" {
- coords 124.126 1 107.666
+ coords 249.888 1.415 14.381
+}
+BasePreloadManager PreloadManager_Campaign1 : "{F686EF3A41A0262A}Reforger/Prefabs/Conflict/PreloadManager_Campaign.et" {
+ coords 249.457 1.444 15.095
 }

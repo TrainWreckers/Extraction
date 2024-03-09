@@ -18,7 +18,7 @@ class TW_MissionHandlerComponent : ScriptComponent
 	protected static TW_MissionHandlerComponent s_Instance;
 	
 	//! Missions that are active in the world. Key: MissionID
-	private ref map<int, ref TW_Mission>> m_ActiveMissions = new ref map<int, ref TW_Mission>>();
+	private ref map<int, ref TW_Mission>> m_ActiveMissions = new map<int, ref TW_Mission>>();
 	private int lastMissionId = 0;
 	
 	//! Retrieve list of misions

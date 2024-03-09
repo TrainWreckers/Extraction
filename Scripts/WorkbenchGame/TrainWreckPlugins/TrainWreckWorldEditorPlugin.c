@@ -15,9 +15,9 @@ class TrainWreckWorldEditorPlugin : WorldEditorPlugin
 		
 		for(int i = 0; i < selectedEntitiesCount; i++)
 		{
-			IEntity selected = api.GetSelectedEntity(i);
+			IEntitySource selected = api.GetSelectedEntity(i);
 			
-			SCR_PrefabHelper.CreateEntitySourceComponentIfNeeded(api.EntityToSource(selected), "Hierarchy");
+			SCR_PrefabHelper.CreateEntitySourceComponentIfNeeded(selected, "Hierarchy");
 			count++;			
 		}
 		

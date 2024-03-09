@@ -16,14 +16,15 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
     ItemDisplayName SCR_InventoryUIInfo "{6087745F9F642D35}" {
      Name "Tent Canvas"
     }
-    ItemPhysAttributes ItemPhysicalAttributes "{60881A0F25F8528A}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{6088EC87C263DFD2}" {
      Weight 1
+     SizeSetupStrategy Size
+     ItemDimensions 1 1 10
     }
-    m_Size SLOT_2x2
-    m_SlotType SLOT_ANY
-    m_bStackable 0
+    CommonItemType "NONE"
+    m_Size SLOT_1x1
+    m_SlotType SLOT_LOOT_STORAGE
    }
-   CanBeGarbaged 0
   }
   SCR_RestrictedDeployableSpawnPointComponent "{608774585025414B}" {
    m_sReplacementPrefab "{C25C52DF4657DA36}Prefabs/Systems/DeployableRadios/TW_DeployableSpawnPointTent.et"
@@ -39,6 +40,12 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
      ContextName "default"
      Position PointInfo "{6086F288F76214B0}" {
      }
+    }
+    UserActionContext "{6088ECA0E241EA45}" {
+     ContextName "large"
+     Position PointInfo "{6088ECA0EAF0778F}" {
+     }
+     Radius 2.5
     }
    }
    additionalActions {
@@ -58,10 +65,20 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
       Name "Make Camp"
      }
     }
+    SCR_DismantleInventoryItemBaseAction "{6088ECA0F3D3CCB4}" {
+     ParentContextList {
+      "large"
+     }
+     UIInfo UIInfo "{6088ECA0F69C7537}" {
+      Name "Teardown"
+     }
+    }
    }
   }
   RplComponent "{5624A88DC2D9928D}" {
    Enabled 1
+  }
+  Hierarchy "{6088DA30E073C07A}" {
   }
  }
 }

@@ -26,7 +26,9 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		string filename = string.Format("$profile:%1.json", playerName);
 		
 		ref map<string, int> inventory = new map<string, int>();		
-		SCR_JsonSaveContext saveContext = new SCR_JsonSaveContext();
+		ContainerSerializationSaveContext saveContext = new ContainerSerializationSaveContext();
+		PrettyJsonSaveContainer prettyContainer = new PrettyJsonSaveContainer();
+		saveContext.SetContainer(prettyContainer);
 		
 		ref array<IEntity> items = {};
 		InventoryStorageManagerComponent storageManager = TW<InventoryStorageManagerComponent>.Find(GetOwner());
@@ -54,13 +56,12 @@ class SCR_TW_PlayerCrateComponent : ScriptComponent
 		saveContext.WriteValue("playerName", playerName);
 		saveContext.WriteValue("items", inventory);
 		
-		bool saveSuccess = saveContext.SaveToFile(filename);
+		bool saveSuccess = prettyContainer.SaveToFile(filename);
 		if(!saveSuccess)
 		{
 			Print(string.Format("TrainWreck: Failed to save %1's crate to %2", playerName, filename), LogLevel.ERROR);
 			return;
-		}
-				
+		}				
 	}
 	
 	void onPlayerNameChange()
