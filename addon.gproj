@@ -1,8 +1,22 @@
 GameProject {
  ID "TrainWreck"
- GUID "5EA62103CF1960BB"
  TITLE "TrainWreck"
+ GUID "60DECD2BF4E3B990"
  Dependencies {
   "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
  }
 }
